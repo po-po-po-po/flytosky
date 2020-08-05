@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fly.sky.repository.WxUserRepository">
+
+    <resultMap id="BaseResultMap" type="com.fly.sky.domain.WxUser">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="avatar_url" jdbcType="VARCHAR" property="avatarUrl" />
+        <result column="city" jdbcType="VARCHAR" property="city" />
+        <result column="country" jdbcType="VARCHAR" property="country" />
+        <result column="gender" jdbcType="VARCHAR" property="gender" />
+        <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+        <result column="province" jdbcType="VARCHAR" property="province" />
+        <result column="open_id" jdbcType="VARCHAR" property="openId" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    </resultMap>
+
+
+   <insert id="insertWxUser" parameterType="com.fly.sky.condition.WxUserCondition">
+        insert into wx_user (id, avatar_url, city,country,gender, nick_name,province,create_time,open_id)
+        values (#{id,jdbcType=INTEGER}, #{avatarUrl,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}
+        , #{country,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR},
+         #{province,jdbcType=VARCHAR}, #{createTime,jdbcType=DATE}, #{openId,jdbcType=VARCHAR})
+    </insert>
+
+
+    <select id="selectUserByOpenId"
+            resultType="com.fly.sky.domain.WxUser">
+        select id as id,avatar_url as avatarUrl , city as city ,country as country,
+        gender as gender,nick_name as nickName,province as province,create_time as createTime,
+        update_time as updateTime from wx_user WHERE
+        open_id = #{openId,jdbcType=VARCHAR}
+        limit 1
+    </select>
+
+
+</mapper>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fly.sky.repository.FlightRepository">
+
+    <resultMap id="BaseResultMap" type="com.fly.sky.domain.Flight">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="flight_no" jdbcType="VARCHAR" property="flightNo" />
+        <result column="flight_name_start" jdbcType="VARCHAR" property="flightNameStart" />
+        <result column="flight_name_end" jdbcType="VARCHAR" property="flightNameEnd" />
+        <result column="flight_date" jdbcType="VARCHAR" property="flightDate" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="airlines_code" jdbcType="VARCHAR" property="airlinesCode" />
+        <result column="airway_id" jdbcType="INTEGER" property="airwayId" />
+        <result column="flight_frequency" jdbcType="VARCHAR" property="flightRequency" />
+    </resultMap>
+
+    <select id="findFlightsByCondition"
+            parameterType="com.fly.sky.condition.FlightCondition"
+            resultType="com.fly.sky.domain.Flight">
+        select id as id,flight_no as flightNo , flight_name_start as flightNameStart ,airlines_code as airlinesCode,
+        airway_id as airwayId,flight_frequency as flightRequency,flight_name_end as flightNameEnd,flight_date as flightDate,
+        create_time as createTime from flight WHERE 1=1
+        <if test="id != null">
+            and  id = #{id,jdbcType=BIGINT}
+        </if>
+
+        <if test="flightNameEnd != null  and flightNameEnd != '' ">
+            AND flight_name_end = #{flightNameEnd,jdbcType=VARCHAR}
+        </if>
+
+        <if test="flightNameStart != null  and flightNameStart != '' ">
+            AND flight_name_start = #{flightNameStart,jdbcType=VARCHAR}
+        </if>
+
+        <if test="flightNo != null  and flightNo != '' ">
+            and  flight_no = #{flightNo,jdbcType=VARCHAR}
+        </if>
+
+        <if test="airlinesCode != null  and airlinesCode != '' ">
+            and  airlines_code = #{airlinesCode,jdbcType=VARCHAR}
+        </if>
+
+    </select>
+
+
+
+
+
+
+</mapper>

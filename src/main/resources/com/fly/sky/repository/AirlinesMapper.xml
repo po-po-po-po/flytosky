@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fly.sky.repository.AirlinesRepository">
+
+    <resultMap id="BaseResultMap" type="com.fly.sky.domain.Airlines">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="airlines_name" jdbcType="VARCHAR" property="airlinesName" />
+        <result column="airlines_code" jdbcType="VARCHAR" property="airlinesCode" />
+        <result column="airlines_description" jdbcType="VARCHAR" property="airlinesDescription" />
+        <result column="airlines_img" jdbcType="VARCHAR" property="airlinesImg" />
+        <result column="airlines_alliance" jdbcType="VARCHAR" property="airlinesAlliance" />
+        <result column="airlines_abbreviate" jdbcType="VARCHAR" property="airlinesAbbreviate" />
+        <result column="airlines_rank" jdbcType="INTEGER" property="airlinesRank" />
+
+    </resultMap>
+
+    <select id="findAirlinesByCondition"
+            parameterType="com.fly.sky.condition.AirlineCondition"
+            resultType="com.fly.sky.domain.Airlines">
+        select id as id,airlines_name as airlinesName , airlines_code as airlinesCode ,
+        airlines_description as airlinesDescription,airlines_abbreviate AS airlinesAbbreviate,
+        airlines_img as airlinesImg,airlines_alliance as airlinesAlliance
+         from airlines WHERE 1=1
+        <if test="id != null">
+            and  id = #{id,jdbcType=BIGINT}
+        </if>
+
+        <if test="airlinesName != null  and airlinesName != '' ">
+            AND airlines_name LIKE CONCAT('%',#{airlinesName,jdbcType=VARCHAR},'%')
+        </if>
+
+        <if test="airlinesCode != null  and airlinesCode != '' ">
+            and  airlines_code = #{airlinesCode,jdbcType=VARCHAR}
+        </if>
+
+        <if test="airlinesAbbreviate != null  and airlinesAbbreviate != '' ">
+            and  airlines_abbreviate = #{airlinesAbbreviate,jdbcType=VARCHAR}
+        </if>
+
+        <if test="airlinesAlliance != null  and airlinesAlliance != '' ">
+            and  airlines_alliance = #{airportArea,jdbcType=VARCHAR}
+        </if>
+       order by airlines_rank asc
+    </select>
+
+    <select id="findAirlinesById" resultType="com.fly.sky.domain.Airlines">
+       select id as id,airlines_name as airlinesName , airlines_code as airlinesCode ,
+        airlines_description as airlinesDescription,airlines_abbreviate AS airlinesAbbreviate,
+        airlines_img as airlinesImg,airlines_alliance as airlinesAlliance,airlines_rank as airlinesRank
+         from airlines  where id = #{id}  order by airlines_rank asc
+    </select>
+
+</mapper>

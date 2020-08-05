@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fly.sky.repository.AirportRepository">
+
+    <resultMap id="BaseResultMap" type="com.fly.sky.domain.Airport">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="airport_name" jdbcType="VARCHAR" property="airportName" />
+        <result column="airport_abbreviate" jdbcType="VARCHAR" property="airportAbbreviate" />
+        <result column="airport_code" jdbcType="VARCHAR" property="airportCode" />
+        <result column="airport_location" jdbcType="VARCHAR" property="airportLocation" />
+        <result column="airport_area" jdbcType="VARCHAR" property="airportArea" />
+        <result column="is_hot" jdbcType="VARCHAR" property="isHot" />
+        <result column="airport_url" jdbcType="VARCHAR" property="airportUrl" />
+        <result column="airport_rank" jdbcType="INTEGER" property="airportRank" />
+        <result column="city_url" jdbcType="VARCHAR" property="cityUrl" />
+        <result column="airport_description" jdbcType="VARCHAR" property="airportDescription" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    </resultMap>
+
+    <select id="findAirportByName" resultType="com.fly.sky.domain.Airport">
+        select * from airport where airport_name = #{airportName} limit 1
+    </select>
+
+    <select id="findAirportByCode" resultType="com.fly.sky.domain.Airport">
+        select * from airport where airport_code = #{airportCode} limit 1
+    </select>
+
+   <insert id="insertAirport" parameterType="com.fly.sky.domain.Airport">
+        insert into airport (id, airport_name, airport_code,airport_location,airport_area, create_time)
+        values (#{id,jdbcType=INTEGER}, #{airportName,jdbcType=VARCHAR}, #{airportCode,jdbcType=VARCHAR}
+        , #{airportLocation,jdbcType=VARCHAR}, #{airportArea,jdbcType=VARCHAR},
+        #{createTime,jdbcType=DATE})
+    </insert>
+
+
+    <select id="findAirportsByCondition"
+            parameterType="com.fly.sky.condition.AirportCondition"
+            resultType="com.fly.sky.domain.Airport">
+        select id as id,airport_name as airportName , airport_code as airportCode ,airport_description as airportDescription,
+        airport_location as airportLocation,airport_area as airportArea,is_hot as isHot,city_url as cityUrl,airport_abbreviate AS airportAbbreviate,
+        airport_url as airportUrl,airport_rank as airportRank,create_time as createTime from airport WHERE 1=1
+        <if test="id != null">
+            and  id = #{id,jdbcType=BIGINT}
+        </if>
+
+        <if test="airportName != null  and airportName != '' ">
+            AND airport_name LIKE CONCAT('%',#{airportName,jdbcType=VARCHAR},'%')
+        </if>
+
+        <if test="airportCode != null  and airportCode != '' ">
+            and  airport_code = #{airportCode,jdbcType=VARCHAR}
+        </if>
+
+        <if test="airportLocation != null  and airportLocation != '' ">
+            and  airport_location = #{airportLocation,jdbcType=VARCHAR}
+        </if>
+
+        <if test="airportArea != null  and airportArea != '' ">
+            and  airport_area = #{airportArea,jdbcType=VARCHAR}
+        </if>
+
+        <if test="search != null  and search != '' ">
+            AND (airport_name LIKE CONCAT('%',#{search,jdbcType=VARCHAR},'%')
+             OR airport_location = #{search,jdbcType=VARCHAR}
+             OR airport_area = #{search,jdbcType=VARCHAR}
+            )
+        </if>
+
+        <if test="isHot != null">
+            and  is_hot = #{isHot,jdbcType=BIGINT}
+        </if>
+       order by airport_rank asc
+    </select>
+
+
+    <select id="findAirwaysDestinationAndAirportByCondition"
+            parameterType="com.fly.sky.condition.AirportCondition"
+            resultType="com.fly.sky.domain.Airport">
+        select id as id,airport_name as airportName , airport_code as airportCode ,airport_description as airportDescription,
+        airport_location as airportLocation,airport_area as airportArea,is_hot as isHot,city_url as cityUrl,airport_abbreviate AS airportAbbreviate,
+        airport_url as airportUrl,airport_rank as airportRank,create_time as createTime from airport where
+        airport.airport_abbreviate in(
+        select airway.airway_name_end from airport inner join airway
+        on airport.airport_abbreviate=airway.airway_name_start
+        where 1=1
+        <if test="airportAbbreviate != null  and airportAbbreviate != '' ">
+        and airway.airway_name_start=#{airportAbbreviate,jdbcType=VARCHAR}
+        </if>
+        )
+        <if test="search != null  and search != '' ">
+           AND (airport_name LIKE CONCAT('%',#{search,jdbcType=VARCHAR},'%')
+             OR airport_location = #{search,jdbcType=VARCHAR}
+             OR airport_area = #{search,jdbcType=VARCHAR}
+            )
+        </if>
+
+    </select>
+
+    <select id="findAirportById" resultType="com.fly.sky.domain.Airport">
+        select id as id,airport_name as airportName , airport_code as airportCode ,airport_description as airportDescription,
+        airport_location as airportLocation,airport_area as airportArea,is_hot as isHot,city_url as cityUrl,airport_abbreviate AS airportAbbreviate,
+        airport_url as airportUrl,airport_rank as airportRank,create_time as createTime from airport where id = #{id}
+    </select>
+
+</mapper>
