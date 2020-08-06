@@ -4,6 +4,7 @@ package com.fly.sky.service;
 import com.fly.sky.condition.FlightCondition;
 import com.fly.sky.domain.Flight;
 import com.fly.sky.util.PagedList;
+import com.fly.sky.vo.FlightDetail;
 
 import java.util.List;
 
@@ -19,6 +20,6 @@ public interface FlightService {
 
     PagedList<Flight> findAllFlights(FlightCondition condition);
 
-    List<Flight> findAllFlightsByAirline(FlightCondition condition);
+    List<FlightDetail> findAllFlightsByAirline(FlightCondition condition);
 
 }

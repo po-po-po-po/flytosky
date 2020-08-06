@@ -18,7 +18,7 @@ import java.util.List;
 @ToString
 public class FlightList {
     //同一航线的航班列表
-    private List<Flight> flightList;
+    private List<FlightDetail> flightList;
     //所属航线
     private Airway airway;
 }

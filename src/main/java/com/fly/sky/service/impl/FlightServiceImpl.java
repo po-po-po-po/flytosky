@@ -11,6 +11,7 @@ import com.fly.sky.repository.FlightRepository;
 import com.fly.sky.service.AirwayService;
 import com.fly.sky.service.FlightService;
 import com.fly.sky.util.PagedList;
+import com.fly.sky.vo.FlightDetail;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
@@ -44,11 +45,11 @@ public class FlightServiceImpl implements FlightService {
     }
 
 
-    public List<Flight> findAllFlightsByAirline(FlightCondition condition) {
+    public List<FlightDetail> findAllFlightsByAirline(FlightCondition condition) {
         if(null!=condition&& StringUtils.isNotEmpty(condition.getAirlinesSelectId())){
             condition.setAirlinesCode(AirlinesEnum.getAirlineCode(condition.getAirlinesSelectId()));
         }
-        List<Flight>  airportList=flightRepository.findFlightsByCondition(condition);
+        List<FlightDetail>  airportList=flightRepository.findFlightsDetail(condition);
         return airportList;
     }
 
