@@ -11,7 +11,6 @@
         <result column="airlines_alliance" jdbcType="VARCHAR" property="airlinesAlliance" />
         <result column="airlines_abbreviate" jdbcType="VARCHAR" property="airlinesAbbreviate" />
         <result column="airlines_rank" jdbcType="INTEGER" property="airlinesRank" />
-
     </resultMap>
 
     <select id="findAirlinesByCondition"
