@@ -22,5 +22,5 @@ public interface AirlinesService {
 
     Airlines findAirlinesById(Integer id);
 
-
+    List<Airlines> selectAirlineListByAirlinesCodeList(List airlinesCodeList);
 }

@@ -49,4 +49,14 @@
          from airlines  where id = #{id}  order by airlines_rank asc
     </select>
 
+
+    <select id="selectAirlineListByAirlinesCodeList" parameterType="java.util.List" resultType="com.fly.sky.domain.Airlines">
+        select flight.id as id,flight.flight_no as flightNo , flight.flight_name_start as flightNameStart ,
+        flight.airlines_code as airlinesCode,flight.flight_frequency as flightRequency,flight.flight_name_end
+        as flightNameEnd,flight.flight_date as flightDate,airlines.airlines_abbreviate as airlinesName,
+        airlines.airlines_img as airlinesIcon from flight where airlines_code in
+        <foreach item="item" collection="airlinesCodeList" separator="," open="(" close=")" index="">  #{item, jdbcType=VARCHAR}
+        </foreach>
+    </select>
+
 </mapper>

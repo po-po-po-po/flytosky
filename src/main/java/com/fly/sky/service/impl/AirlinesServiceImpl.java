@@ -42,5 +42,7 @@ public class AirlinesServiceImpl implements AirlinesService {
         return airlinesRepository.findAirlinesById(id);
     }
 
-
+    public List<Airlines> selectAirlineListByAirlinesCodeList(List airlinesCodeList){
+        return airlinesRepository.selectAirlineListByAirlinesCodeList(airlinesCodeList);
+    }
 }

@@ -1,5 +1,6 @@
 package com.fly.sky.vo;
 
+import com.fly.sky.domain.Airlines;
 import com.fly.sky.domain.Airway;
 import com.fly.sky.domain.Flight;
 import lombok.Getter;
@@ -21,4 +22,6 @@ public class FlightList {
     private List<FlightDetail> flightList;
     //所属航线
     private Airway airway;
+    //航空公司列表
+    private List<Airlines> airlinesList;
 }

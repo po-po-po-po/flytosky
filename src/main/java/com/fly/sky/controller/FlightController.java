@@ -2,13 +2,16 @@ package com.fly.sky.controller;
 
 import com.fly.sky.condition.AirwayCondition;
 import com.fly.sky.condition.FlightCondition;
+import com.fly.sky.domain.Airlines;
 import com.fly.sky.domain.Airway;
 import com.fly.sky.domain.Flight;
+import com.fly.sky.service.AirlinesService;
 import com.fly.sky.service.AirwayService;
 import com.fly.sky.service.FlightService;
 import com.fly.sky.util.JsonUtil;
 import com.fly.sky.util.PagedList;
 import com.fly.sky.util.ResponseResult;
+import com.fly.sky.vo.FlightDetail;
 import com.fly.sky.vo.FlightList;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -20,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Auther wangzekun
@@ -39,6 +43,9 @@ public class FlightController {
 
     @Resource
     private AirwayService airwayService;
+
+    @Resource
+    private AirlinesService airlinesService;
 
 
     @PostMapping("findAllFlights")
@@ -62,7 +69,12 @@ public class FlightController {
         log.info("{} - 参数：findAllFlightsByAirline={}", logTitle, JsonUtil.toJSONString(condition));
         ResponseResult<FlightList> responseResult = new ResponseResult<>();
         FlightList flightList=new FlightList();
-        flightList.setFlightList(flightService.findAllFlightsByAirline(condition));
+        List<FlightDetail> flightDetailList=flightService.findAllFlightsByAirline(condition);
+        flightList.setFlightList(flightDetailList);
+        //获取航空公司信息
+        List<String> airlinesCodeList=flightDetailList.stream().map(FlightDetail::getAirlinesCode).collect(Collectors.toList()).stream().distinct().collect(Collectors.toList());
+        List<Airlines> airlinesList=airlinesService.selectAirlineListByAirlinesCodeList(airlinesCodeList);
+        flightList.setAirlinesList(airlinesList);
         AirwayCondition airwayCondition=new AirwayCondition();
         airwayCondition.setAirwayNameStart(condition.getFlightNameStart());
         airwayCondition.setAirwayNameEnd(condition.getFlightNameEnd());

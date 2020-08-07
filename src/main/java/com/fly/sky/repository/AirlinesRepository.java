@@ -18,4 +18,6 @@ public interface AirlinesRepository {
 
     Airlines findAirlinesById(Integer id);
 
+    List<Airlines> selectAirlineListByAirlinesCodeList(List airlinesCodeList);
+
 }
