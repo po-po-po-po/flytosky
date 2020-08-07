@@ -77,7 +77,7 @@
         <if test="sortId != null  and flightNameEnd ==2 ">
             order  by flight.flight_date desc
         </if>
-        <if test="sortId == null  ">
+        <if test="sortId == null or sortId==0 ">
             order  by flight.flight_date asc
         </if>
 
