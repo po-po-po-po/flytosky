@@ -39,4 +39,7 @@ public class FlightCondition extends PagedCondition{
     private String airlinesCode;
     @ApiModelProperty("下拉列表航司的编号")
     private String airlinesSelectId;
+    @ApiModelProperty("排序：1从早到晚 2从晚到早")
+    private Integer sortId;
+
 }
