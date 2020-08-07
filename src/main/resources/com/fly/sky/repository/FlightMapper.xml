@@ -61,7 +61,7 @@
             and  flight_no = #{flightNo,jdbcType=VARCHAR}
         </if>
         <if test="airlinesCode != null  and airlinesCode != '' ">
-            and  airlines_code = #{airlinesCode,jdbcType=VARCHAR}
+            and  flight.airlines_code = #{airlinesCode,jdbcType=VARCHAR}
         </if>
 
         order  by flight.flight_date asc
