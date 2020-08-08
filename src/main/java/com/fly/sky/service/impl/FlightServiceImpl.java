@@ -52,7 +52,7 @@ public class FlightServiceImpl implements FlightService {
         }
         List<FlightDetail>  airportList=flightRepository.findFlightsDetail(condition);
 
-        if(StringUtils.isNotEmpty(condition.getFlightDate())){
+        if(StringUtils.isNotEmpty(condition.getFlightDate())&&!"起飞时间".equals(condition.getFlightDate())){
           String flightDate= condition.getFlightDate();
             String[] split = flightDate.split("-");
             String flightDateStart=split[0];
