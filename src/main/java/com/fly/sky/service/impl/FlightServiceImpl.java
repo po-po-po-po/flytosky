@@ -59,7 +59,7 @@ public class FlightServiceImpl implements FlightService {
             String flightDateEnd=split[1];
             airportList = airportList.stream().filter(
                     flight ->
-                            flight.getFlightDate().split("-")[0].compareTo(flightDateStart)>0&&flight.getFlightDate().split("-")[0].compareTo(flightDateEnd)<=0).collect(
+                            flight.getFlightDate().split("-")[0].compareTo(flightDateStart)>=0&&flight.getFlightDate().split("-")[0].compareTo(flightDateEnd)<=0).collect(
                             Collectors.toList());
         }
         //对时间做处理
