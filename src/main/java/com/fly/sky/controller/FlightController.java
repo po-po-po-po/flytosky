@@ -16,12 +16,14 @@ import com.fly.sky.vo.FlightList;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -73,8 +75,10 @@ public class FlightController {
         flightList.setFlightList(flightDetailList);
         //获取航空公司信息
         List<String> airlinesCodeList=flightDetailList.stream().map(FlightDetail::getAirlinesCode).collect(Collectors.toList()).stream().distinct().collect(Collectors.toList());
-        List<Airlines> airlinesList=airlinesService.selectAirlineListByAirlinesCodeList(airlinesCodeList);
-        flightList.setAirlinesList(airlinesList);
+        if(!CollectionUtils.isEmpty(airlinesCodeList)){
+            List<Airlines> airlinesList=airlinesService.selectAirlineListByAirlinesCodeList(airlinesCodeList);
+            flightList.setAirlinesList(airlinesList);
+        }
         AirwayCondition airwayCondition=new AirwayCondition();
         airwayCondition.setAirwayNameStart(condition.getFlightNameStart());
         airwayCondition.setAirwayNameEnd(condition.getFlightNameEnd());
