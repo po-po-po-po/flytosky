@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Auther wangzekun
@@ -50,6 +51,18 @@ public class FlightServiceImpl implements FlightService {
             condition.setAirlinesCode(AirlinesEnum.getAirlineCode(condition.getAirlinesSelectId()));
         }
         List<FlightDetail>  airportList=flightRepository.findFlightsDetail(condition);
+
+        if(StringUtils.isNotEmpty(condition.getFlightDate())){
+          String flightDate= condition.getFlightDate();
+            String[] split = flightDate.split("-");
+            String flightDateStart=split[0];
+            String flightDateEnd=split[1];
+            airportList = airportList.stream().filter(
+                    flight ->
+                            flight.getFlightDate().split("-")[0].compareTo(flightDateStart)>0&&flight.getFlightDate().split("-")[0].compareTo(flightDateEnd)<=0).collect(
+                            Collectors.toList());
+        }
+        //对时间做处理
         return airportList;
     }
 
