@@ -79,4 +79,20 @@
 
 
 
+    <select id="findFlightsGroupByAirlineCode"
+            parameterType="com.fly.sky.condition.AirportCondition"
+            resultType="com.fly.sky.domain.Flight">
+        select  flight.flight_name_start as flightNameStart ,
+        flight.flight_name_end as flightNameEnd,
+        flight.airlines_code as airlinesCode
+        from flight
+        where flight.flight_name_start=#{airportAbbreviate,jdbcType=VARCHAR}
+        group by flightNameStart,flightNameEnd,airlinesCode
+        <if test="search != null  and search != '' ">
+            having  airlinesCode= #{search,jdbcType=VARCHAR}
+        </if>
+    </select>
+
+
+
 </mapper>

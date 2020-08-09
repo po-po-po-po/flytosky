@@ -44,7 +44,11 @@
         </if>
 
         <if test="airportName != null  and airportName != '' ">
-            AND airport_name LIKE CONCAT('%',#{airportName,jdbcType=VARCHAR},'%')
+        AND airport_name LIKE CONCAT('%',#{airportName,jdbcType=VARCHAR},'%')
+        </if>
+
+        <if test="airportAbbreviate != null  and airportAbbreviate != '' ">
+        AND airport_abbreviate = #{airportAbbreviate,jdbcType=VARCHAR}
         </if>
 
         <if test="airportCode != null  and airportCode != '' ">
@@ -101,5 +105,23 @@
         airport_location as airportLocation,airport_area as airportArea,is_hot as isHot,city_url as cityUrl,airport_abbreviate AS airportAbbreviate,
         airport_url as airportUrl,airport_rank as airportRank,create_time as createTime from airport where id = #{id}
     </select>
+
+
+
+    <select id="findAirportsByAirportAbbreviateList"
+            parameterType="java.util.List"
+            resultType="com.fly.sky.domain.Airport">
+        select id as id,airport_name as airportName ,
+        airport_code as airportCode ,airport_description as airportDescription,
+        airport_location as airportLocation,airport_area as airportArea,
+        is_hot as isHot,city_url as cityUrl,airport_abbreviate AS airportAbbreviate,
+        airport_url as airportUrl,airport_rank as airportRank from airport
+        WHERE airport_abbreviate  in
+        <foreach item="item" collection="airportAbbreviateList" separator="," open="(" close=")" index="">
+          #{item, jdbcType=VARCHAR}
+        </foreach>
+        order by airport_rank asc
+    </select>
+
 
 </mapper>

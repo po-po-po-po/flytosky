@@ -1,6 +1,7 @@
 package com.fly.sky.repository;
 
 
+import com.fly.sky.condition.AirportCondition;
 import com.fly.sky.condition.FlightCondition;
 import com.fly.sky.domain.Flight;
 import com.fly.sky.vo.FlightDetail;
@@ -16,4 +17,5 @@ import java.util.List;
 public interface FlightRepository {
     List<Flight> findFlightsByCondition(FlightCondition condition);
     List<FlightDetail> findFlightsDetail(FlightCondition condition);
+    List<Flight> findFlightsGroupByAirlineCode(AirportCondition condition);
 }
