@@ -125,6 +125,8 @@ public class AirportServiceImpl implements AirportService {
                     airportPagedList.setAirlines(airlines.getAirlinesAbbreviate()+"能飞往机场目的地如下：");
                 }
             }
+        }else{
+            airportPagedList.setAirlines("");
         }
 
         PageInfo pageInfo = new PageInfo(airportList);
