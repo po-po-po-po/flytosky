@@ -11,6 +11,7 @@ import com.fly.sky.util.PagedList;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -65,6 +66,9 @@ public class AirportServiceImpl implements AirportService {
     public PagedList<Airport> findAirportDetail(AirportCondition condition){
         PagedList<Airport> airportPagedList = new PagedList<>();
         PageHelper.startPage(condition.getPageNo(), condition.getPageSize());
+        if(null!=condition&& StringUtils.isNotEmpty(condition.getSearch())){
+            condition.setSearch(condition.getSearch().toUpperCase());
+        }
         List<Airport>  airportList=airportRepository.findAirwaysDestinationAndAirportByCondition(condition);
         PageInfo pageInfo = new PageInfo(airportList);
         airportPagedList.setPageNo(condition.getPageNo());
