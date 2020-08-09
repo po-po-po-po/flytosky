@@ -82,9 +82,6 @@
         airport.airport_abbreviate in(
         select airway.airway_name_end from airport inner join airway
         on airport.airport_abbreviate=airway.airway_name_start
-        inner join flight
-        on flight.flight_name_start=airway.airway_name_start
-        and flight.flight_name_end=airway.airway_name_end
         where 1=1
         <if test="airportAbbreviate != null  and airportAbbreviate != '' ">
         and airway.airway_name_start=#{airportAbbreviate,jdbcType=VARCHAR}
@@ -94,7 +91,6 @@
            AND (airport_name LIKE CONCAT('%',#{search,jdbcType=VARCHAR},'%')
              OR airport_location = #{search,jdbcType=VARCHAR}
              OR airport_area = #{search,jdbcType=VARCHAR}
-             OR flight.airlines_code=#{search,jdbcType=VARCHAR}
             )
         </if>
 
