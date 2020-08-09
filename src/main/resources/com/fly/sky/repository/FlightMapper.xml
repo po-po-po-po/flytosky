@@ -87,6 +87,7 @@
         flight.airlines_code as airlinesCode
         from flight
         where flight.flight_name_start=#{airportAbbreviate,jdbcType=VARCHAR}
+        AND flight.flight_name_end!=#{airportAbbreviate,jdbcType=VARCHAR}
         group by flightNameStart,flightNameEnd,airlinesCode
         <if test="search != null  and search != '' ">
             having  airlinesCode= #{search,jdbcType=VARCHAR}
