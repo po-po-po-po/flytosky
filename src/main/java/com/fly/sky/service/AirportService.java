@@ -4,6 +4,7 @@ package com.fly.sky.service;
 import com.fly.sky.condition.AirportCondition;
 import com.fly.sky.domain.Airport;
 import com.fly.sky.util.PagedList;
+import com.fly.sky.vo.AirportVo;
 import com.github.pagehelper.Page;
 
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.List;
 public interface AirportService {
 
 
-    PagedList<Airport> findAllAirport(AirportCondition condition);
+    PagedList<AirportVo> findAllAirport(AirportCondition condition);
 
 
     Airport findAirportById(Integer id);

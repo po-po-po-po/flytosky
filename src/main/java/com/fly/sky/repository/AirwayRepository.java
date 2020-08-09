@@ -4,6 +4,7 @@ package com.fly.sky.repository;
 import com.fly.sky.condition.AirwayCondition;
 import com.fly.sky.domain.Airport;
 import com.fly.sky.domain.Airway;
+import com.fly.sky.vo.AirportVo;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public interface AirwayRepository {
 
     List<Airway> findAirwaysByCondition(AirwayCondition condition);
 
-
     Airway findAirwaysByStartAndEnd(AirwayCondition condition);
+
+    List<AirportVo> findAirwayGroupByAirwayNameStart();
 }

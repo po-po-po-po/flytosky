@@ -9,13 +9,16 @@ import com.fly.sky.exceptions.BusinessCode;
 import com.fly.sky.exceptions.BusinessException;
 import com.fly.sky.repository.AirlinesRepository;
 import com.fly.sky.repository.AirportRepository;
+import com.fly.sky.repository.AirwayRepository;
 import com.fly.sky.repository.FlightRepository;
 import com.fly.sky.service.AirportService;
 import com.fly.sky.util.PagedList;
+import com.fly.sky.vo.AirportVo;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -41,16 +44,40 @@ public class AirportServiceImpl implements AirportService {
     AirlinesRepository airlinesRepository;
 
     @Resource
+    AirwayRepository airwayRepository;
+
+
+    @Resource
     FlightRepository flightRepository;
 
-    public PagedList<Airport> findAllAirport(AirportCondition condition) {
-        PagedList<Airport> listPagedList = new PagedList<Airport>();
+    public PagedList<AirportVo> findAllAirport(AirportCondition condition) {
+        PagedList<AirportVo> listPagedList = new PagedList<>();
         PageHelper.startPage(condition.getPageNo(), condition.getPageSize());
         List<Airport>  airportList=airportRepository.findAirportsByCondition(condition);
-        PageInfo pageInfo = new PageInfo(airportList);
+        List<AirportVo> airways=airwayRepository.findAirwayGroupByAirwayNameStart();
+        List<AirportVo> flights=flightRepository.findFlightsGroupByFlightNameStart();
+        List<AirportVo>  airportNewList=new ArrayList<>();
+        //获取机场的信息
+        for (Airport airport : airportList) {
+            AirportVo vo=new AirportVo();
+            BeanUtils.copyProperties(airport,vo);
+            for (AirportVo airway : airways) {
+                if(airport.getAirportAbbreviate().equals(airway.getAirportAbbreviate())){
+                    vo.setAirportAirwaysNum(airway.getAirportAirwaysNum());
+                }
+
+            }
+            for (AirportVo flight : flights) {
+                if(airport.getAirportAbbreviate().equals(flight.getAirportAbbreviate())){
+                    vo.setAirportAirwaysNum(flight.getAirportAirwaysNum());
+                }
+            }
+            airportNewList.add(vo);
+        }
+        PageInfo pageInfo = new PageInfo(airportNewList);
         listPagedList.setPageNo(condition.getPageNo());
         listPagedList.setPageSize(condition.getPageSize());
-        listPagedList.setData(airportList);
+        listPagedList.setData(airportNewList);
         listPagedList.setTotalRows(pageInfo.getTotal());
         return listPagedList;
     }

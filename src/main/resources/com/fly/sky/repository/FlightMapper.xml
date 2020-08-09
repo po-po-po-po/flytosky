@@ -93,6 +93,12 @@
         </if>
     </select>
 
-
+    <select id="findFlightsGroupByFlightNameStart"
+            resultType="com.fly.sky.vo.AirportVo">
+      select  flight.flight_name_start as airportAbbreviate,
+        count(*) as airportFlightNum
+        from flight
+        group by airportAbbreviate
+     </select>
 
 </mapper>

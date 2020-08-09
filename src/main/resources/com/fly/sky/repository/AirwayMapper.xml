@@ -48,4 +48,13 @@
     </select>
 
 
+    <select id="findAirwayGroupByAirwayNameStart"
+            resultType="com.fly.sky.vo.AirportVo">
+        select  airway.airway_name_start as airportAbbreviate,
+        count(*) as airportAirwaysNum
+        from airway
+        group by airportAbbreviate
+     </select>
+
+
 </mapper>

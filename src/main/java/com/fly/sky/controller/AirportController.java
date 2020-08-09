@@ -9,6 +9,7 @@ import com.fly.sky.util.JsonUtil;
 import com.fly.sky.util.PagedList;
 import com.fly.sky.util.ResponseResult;
 import com.fly.sky.vo.AirportDetail;
+import com.fly.sky.vo.AirportVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -42,10 +43,10 @@ public class AirportController {
     //@ApiOperation：用在controller的方法上，用来说明方法用途、作用
     @ApiOperation(value = "查询机场列表", notes = "查询机场列表")
     //@ApiImplicitParam：用来给方法入参增加说明
-    public ResponseResult<PagedList<Airport>> findAllAirport(@RequestBody AirportCondition condition){
+    public ResponseResult<PagedList<AirportVo>> findAllAirport(@RequestBody AirportCondition condition){
         String logTitle = "=查询机场列表=";
         log.info("{} - 参数：findAllAirport={}", logTitle, JsonUtil.toJSONString(condition));
-        ResponseResult<PagedList<Airport>> responseResult = new ResponseResult<>();
+        ResponseResult<PagedList<AirportVo>> responseResult = new ResponseResult<>();
         //替换掉机场二字
         String search=condition.getSearch();
         if(StringUtils.isNotEmpty(condition.getSearch())){
