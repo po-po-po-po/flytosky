@@ -68,7 +68,7 @@ public class AirportServiceImpl implements AirportService {
             }
             for (AirportVo flight : flights) {
                 if(airport.getAirportAbbreviate().equals(flight.getAirportAbbreviate())){
-                    vo.setAirportFlightNum(flight.getAirportAirwaysNum());
+                    vo.setAirportFlightNum(flight.getAirportFlightNum());
                 }
             }
             airportNewList.add(vo);
