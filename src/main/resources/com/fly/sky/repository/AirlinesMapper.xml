@@ -59,4 +59,11 @@
         </foreach>
     </select>
 
+    <select id="findAirlinesByAirlinesCode" resultType="com.fly.sky.domain.Airlines">
+       select id as id,airlines_name as airlinesName , airlines_code as airlinesCode ,
+        airlines_description as airlinesDescription,airlines_abbreviate AS airlinesAbbreviate,
+        airlines_img as airlinesImg,airlines_alliance as airlinesAlliance,airlines_rank as airlinesRank
+         from airlines  where airlines_code = #{airlinesCode} LIMIT 1
+    </select>
+
 </mapper>

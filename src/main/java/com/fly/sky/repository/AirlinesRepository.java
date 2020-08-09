@@ -21,4 +21,6 @@ public interface AirlinesRepository {
 
     List<Airlines> selectAirlineListByAirlinesCodeList(@Param("airlinesCodeList") List airlinesCodeList);
 
+
+    Airlines findAirlinesByAirlinesCode(String airlinesCode);
 }

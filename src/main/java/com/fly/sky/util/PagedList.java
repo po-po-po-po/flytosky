@@ -26,6 +26,9 @@ public class PagedList<T> {
     @ApiModelProperty("结果数据")
     private List<T> data;
 
+    @ApiModelProperty("航空公司")
+    private String airlines;
+
     @ApiModelProperty("结果页数")
     public long getTotalPages() {
         if (pageSize == 0) {
@@ -66,5 +69,11 @@ public class PagedList<T> {
         this.data = data;
     }
 
+    public String getAirlines() {
+        return airlines;
+    }
 
+    public void setAirlines(String airlines) {
+        this.airlines = airlines;
+    }
 }

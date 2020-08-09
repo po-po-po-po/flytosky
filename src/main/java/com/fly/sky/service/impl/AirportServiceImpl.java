@@ -2,10 +2,12 @@ package com.fly.sky.service.impl;
 
 
 import com.fly.sky.condition.AirportCondition;
+import com.fly.sky.domain.Airlines;
 import com.fly.sky.domain.Airport;
 import com.fly.sky.domain.Flight;
 import com.fly.sky.exceptions.BusinessCode;
 import com.fly.sky.exceptions.BusinessException;
+import com.fly.sky.repository.AirlinesRepository;
 import com.fly.sky.repository.AirportRepository;
 import com.fly.sky.repository.FlightRepository;
 import com.fly.sky.service.AirportService;
@@ -34,6 +36,9 @@ public class AirportServiceImpl implements AirportService {
 
     @Resource
     AirportRepository airportRepository;
+
+    @Resource
+    AirlinesRepository airlinesRepository;
 
     @Resource
     FlightRepository flightRepository;
@@ -80,6 +85,8 @@ public class AirportServiceImpl implements AirportService {
         List<Airport>  airportList=airportRepository.findAirwaysDestinationAndAirportByCondition(condition);
         //如果查询是空 则说明可能查询的是航空公司代码
         if(CollectionUtils.isEmpty(airportList)){
+            //获取航空公司信息
+            Airlines airlines= airlinesRepository.findAirlinesByAirlinesCode(condition.getSearch());
             List<Flight>  flightList=flightRepository.findFlightsGroupByAirlineCode(condition);
             List<String> airportDestinationList=new ArrayList<>();
             for (Flight flight: flightList) {
@@ -88,6 +95,9 @@ public class AirportServiceImpl implements AirportService {
             if(!CollectionUtils.isEmpty(airportDestinationList)){
                 //获取能到达的机场列表
                 airportList=airportRepository.findAirportsByAirportAbbreviateList(airportDestinationList);
+                if(null!=airlines){
+                    airportPagedList.setAirlines(airlines.getAirlinesAbbreviate()+"能飞往机场目的地如下：");
+                }
             }
         }
 
