@@ -53,7 +53,10 @@ public class AirportController {
             search=search.replace("机场","");
             condition.setSearch(search);
         }
-        responseResult.setData(airportService.findAllAirport(condition));
+        PagedList<AirportVo> list=airportService.findAllAirport(condition);
+        //获取机场数量
+        list.setAirlines(list.getTotalRows()+"");
+        responseResult.setData(list);
         return responseResult;
     }
 
