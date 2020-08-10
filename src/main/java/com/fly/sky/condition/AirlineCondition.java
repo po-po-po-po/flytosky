@@ -31,5 +31,7 @@ public class AirlineCondition {
     private String airlinesAbbreviate;
     @ApiModelProperty("航司排名")
     private Integer airlinesRank;
+    @ApiModelProperty("出发机场")
+    private String flightNameStart;
 
 }

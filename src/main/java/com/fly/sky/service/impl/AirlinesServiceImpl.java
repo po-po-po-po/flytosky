@@ -3,15 +3,19 @@ package com.fly.sky.service.impl;
 
 import com.fly.sky.condition.AirlineCondition;
 import com.fly.sky.condition.AirportCondition;
+import com.fly.sky.condition.FlightCondition;
 import com.fly.sky.domain.Airlines;
 import com.fly.sky.domain.Airport;
+import com.fly.sky.domain.Flight;
 import com.fly.sky.exceptions.BusinessCode;
 import com.fly.sky.exceptions.BusinessException;
 import com.fly.sky.repository.AirlinesRepository;
 import com.fly.sky.repository.AirportRepository;
+import com.fly.sky.repository.FlightRepository;
 import com.fly.sky.service.AirlinesService;
 import com.fly.sky.service.AirportService;
 import com.fly.sky.util.PagedList;
+import com.fly.sky.vo.AirlinesDetail;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Service;
@@ -32,6 +36,9 @@ public class AirlinesServiceImpl implements AirlinesService {
     @Resource
     AirlinesRepository airlinesRepository;
 
+    @Resource
+    FlightRepository flightRepository;
+
     public List<Airlines> findAllAirlines(AirlineCondition condition) {
         List<Airlines>  airlinesList=airlinesRepository.findAirlinesByCondition(condition);
         return airlinesList;
@@ -45,4 +52,16 @@ public class AirlinesServiceImpl implements AirlinesService {
     public List<Airlines> selectAirlineListByAirlinesCodeList(List airlinesCodeList){
         return airlinesRepository.selectAirlineListByAirlinesCodeList(airlinesCodeList);
     }
+
+
+    public AirlinesDetail findFlightsAndAirportsByAirlines(FlightCondition condition){
+        AirlinesDetail detail=new AirlinesDetail();
+        //查询航司能飞往的航班列表
+        List<Flight> flightList=flightRepository.findFlightsByCondition(condition);
+        detail.setFlightList(flightList);
+        //查询航司能飞往的出发机场列表
+        List<Airport> airportStartList=flightRepository.findFlightsGroupByFlightNameStartByAirlinesCode(condition.getAirlinesCode());
+        detail.setAirportStartList(airportStartList);
+        return detail;
+    };
 }

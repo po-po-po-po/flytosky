@@ -3,6 +3,7 @@ package com.fly.sky.repository;
 
 import com.fly.sky.condition.AirportCondition;
 import com.fly.sky.condition.FlightCondition;
+import com.fly.sky.domain.Airport;
 import com.fly.sky.domain.Flight;
 import com.fly.sky.vo.AirportVo;
 import com.fly.sky.vo.FlightDetail;
@@ -20,4 +21,5 @@ public interface FlightRepository {
     List<FlightDetail> findFlightsDetail(FlightCondition condition);
     List<Flight> findFlightsGroupByAirlineCode(AirportCondition condition);
     List<AirportVo> findFlightsGroupByFlightNameStart();
+    List<Airport> findFlightsGroupByFlightNameStartByAirlinesCode(String airlinesCode);
 }

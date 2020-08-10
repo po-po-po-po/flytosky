@@ -40,6 +40,22 @@
             and  airlines_code = #{airlinesCode,jdbcType=VARCHAR}
         </if>
 
+        <if test="sortId != null  and sortId == 1 ">
+            order  by flight.flight_date asc
+        </if>
+
+        <if test="sortId != null  and sortId ==2 ">
+            order  by flight.flight_date desc
+        </if>
+
+        <if test="sortId != null  and sortId ==3 ">
+            order  by flight.flight_name_start asc
+        </if>
+
+        <if test="sortId == null or sortId==0 ">
+            order  by flight.flight_date asc
+        </if>
+
     </select>
 
 
@@ -99,6 +115,14 @@
       select  flight.flight_name_start as airportAbbreviate,
         count(*) as airportFlightNum
         from flight
+        group by airportAbbreviate
+     </select>
+
+
+    <select id="findFlightsGroupByFlightNameStartByAirlinesCode"
+            resultType="com.fly.sky.domain.Airport">
+       select  flight.flight_name_start as airportAbbreviate
+        from flight  where airlines_code=#{airlinesCode,jdbcType=VARCHAR}
         group by airportAbbreviate
      </select>
 
