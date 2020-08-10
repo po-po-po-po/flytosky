@@ -16,13 +16,17 @@ import com.fly.sky.service.AirlinesService;
 import com.fly.sky.service.AirportService;
 import com.fly.sky.util.PagedList;
 import com.fly.sky.vo.AirlinesDetail;
+import com.fly.sky.vo.FlightDetail;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Auther wangzekun
@@ -58,6 +62,17 @@ public class AirlinesServiceImpl implements AirlinesService {
         AirlinesDetail detail=new AirlinesDetail();
         //查询航司能飞往的航班列表
         List<Flight> flightList=flightRepository.findFlightsByCondition(condition);
+        detail.setFlightList(flightList);
+        //对起飞时间做处理
+        if(StringUtils.isNotEmpty(condition.getFlightDate())&&!"0".equals(condition.getFlightDate())){
+            String[] split =  condition.getFlightDate().split("-");
+            String flightDateStart=split[0];
+            String flightDateEnd=split[1];
+            flightList = flightList.stream().filter(
+                    flight ->
+                            flight.getFlightDate().split("-")[0].compareTo(flightDateStart)>=0&&flight.getFlightDate().split("-")[0].compareTo(flightDateEnd)<=0).collect(
+                    Collectors.toList());
+        }
         detail.setFlightList(flightList);
         //查询航司能飞往的出发机场列表
         List<Airport> airportStartList=flightRepository.findFlightsGroupByFlightNameStartByAirlinesCode(condition.getAirlinesCode());
