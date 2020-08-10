@@ -1,5 +1,6 @@
 package com.fly.sky.vo;
 
+import com.fly.sky.domain.Airlines;
 import com.fly.sky.domain.Airport;
 import com.fly.sky.domain.Flight;
 import io.swagger.annotations.ApiModelProperty;
@@ -25,5 +26,8 @@ public class AirlinesDetail {
 
     @ApiModelProperty("航司可飞往的出发机场列表")
     List<Airport> airportStartList;
+
+    @ApiModelProperty("航司信息")
+    Airlines airlines;
 
 }
