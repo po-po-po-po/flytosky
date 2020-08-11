@@ -101,7 +101,7 @@
             resultType="com.fly.sky.domain.Flight">
         select  flight.flight_name_start as flightNameStart ,
         flight.flight_name_end as flightNameEnd,
-        flight.airlines_code as airlinesCode,flight_remark as flightRemark
+        flight.airlines_code as airlinesCode
         from flight
         where flight.flight_name_start=#{airportAbbreviate,jdbcType=VARCHAR}
         AND flight.flight_name_end!=#{airportAbbreviate,jdbcType=VARCHAR}
