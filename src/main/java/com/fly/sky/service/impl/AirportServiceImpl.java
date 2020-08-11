@@ -106,7 +106,7 @@ public class AirportServiceImpl implements AirportService {
         PagedList<Airport> airportPagedList = new PagedList<>();
         PageHelper.startPage(condition.getPageNo(), condition.getPageSize());
         if(null!=condition&& StringUtils.isNotEmpty(condition.getSearch())){
-            condition.setSearch(condition.getSearch().toUpperCase());
+            condition.setSearch(condition.getSearch().toUpperCase().replace("机场",""));
         }
         List<Airport>  airportList=airportRepository.findAirwaysDestinationAndAirportByCondition(condition);
         //如果查询是空 则说明可能查询的是航空公司代码
