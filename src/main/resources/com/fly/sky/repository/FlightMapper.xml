@@ -12,6 +12,7 @@
         <result column="airlines_code" jdbcType="VARCHAR" property="airlinesCode" />
         <result column="airway_id" jdbcType="INTEGER" property="airwayId" />
         <result column="flight_frequency" jdbcType="VARCHAR" property="flightRequency" />
+        <result column="flight_remark" jdbcType="VARCHAR" property="flightRemark" />
     </resultMap>
 
     <select id="findFlightsByCondition"
@@ -19,7 +20,7 @@
             resultType="com.fly.sky.domain.Flight">
         select id as id,flight_no as flightNo , flight_name_start as flightNameStart ,airlines_code as airlinesCode,
         airway_id as airwayId,flight_frequency as flightRequency,flight_name_end as flightNameEnd,flight_date as flightDate,
-        create_time as createTime from flight WHERE 1=1
+        create_time as createTime,flight_remark as flightRemark from flight WHERE 1=1
         <if test="id != null">
             and  id = #{id,jdbcType=BIGINT}
         </if>
@@ -66,7 +67,7 @@
         flight.airlines_code as airlinesCode,flight.flight_frequency as flightRequency,flight.flight_name_end
         as flightNameEnd,flight.flight_date as flightDate,airlines.airlines_abbreviate as airlinesName,
         airlines.airlines_img as airlinesIcon from flight left join airlines on
-        flight.airlines_code=airlines.airlines_code WHERE 1=1
+        flight.airlines_code=airlines.airlines_code,flight_remark as flightRemark  WHERE 1=1
         <if test="flightNameEnd != null  and flightNameEnd != '' ">
             AND flight_name_end = #{flightNameEnd,jdbcType=VARCHAR}
         </if>
@@ -100,7 +101,7 @@
             resultType="com.fly.sky.domain.Flight">
         select  flight.flight_name_start as flightNameStart ,
         flight.flight_name_end as flightNameEnd,
-        flight.airlines_code as airlinesCode
+        flight.airlines_code as airlinesCode,flight_remark as flightRemark
         from flight
         where flight.flight_name_start=#{airportAbbreviate,jdbcType=VARCHAR}
         AND flight.flight_name_end!=#{airportAbbreviate,jdbcType=VARCHAR}

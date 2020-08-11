@@ -34,6 +34,8 @@ public class Flight {
     private Integer airwayId;
     @ApiModelProperty("航班频率")
     private String flightRequency;
+    @ApiModelProperty("航班备注")
+    private String flightRemark;
     @ApiModelProperty("创建时间")
     private Date createTime;
 }
