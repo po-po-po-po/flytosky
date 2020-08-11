@@ -29,7 +29,7 @@ public class WxUserServiceImpl implements WxUserService {
     public void saveWxUser(WxUserCondition wxUser){
         String gender= "1".equals(wxUser.getGender()) ? "男" : "女";
         wxUser.setGender(gender);
-        wxUser.setCreateTime(new Date());
+        //wxUser.setCreateTime(new Date());
         wxUserRepository.insertWxUser(wxUser);
     }
 

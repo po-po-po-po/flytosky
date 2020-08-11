@@ -20,7 +20,7 @@
         insert into wx_user (id, avatar_url, city,country,gender, nick_name,province,create_time,open_id)
         values (#{id,jdbcType=INTEGER}, #{avatarUrl,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}
         , #{country,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR},
-         #{province,jdbcType=VARCHAR}, #{createTime,jdbcType=DATE}, #{openId,jdbcType=VARCHAR})
+         #{province,jdbcType=VARCHAR}, sysdate(), #{openId,jdbcType=VARCHAR})
     </insert>
 
 

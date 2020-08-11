@@ -17,7 +17,7 @@
         insert into wx_message (id, content, open_id,reply,status,create_time, reply_time)
         values (#{id,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}
         , #{reply,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER},
-         #{createTime,jdbcType=DATE}, #{replyTime,jdbcType=DATE})
+         sysdate(), #{replyTime,jdbcType=DATE})
     </insert>
 
     <select id="findWxMessageByCondition" resultType="com.fly.sky.domain.WxMessage">

@@ -26,7 +26,7 @@ public class WxMessageServiceImpl implements WxMessageService {
 
     @Override
     public void insertWxMessage(WxMessage wxMessage) {
-        wxMessage.setCreateTime(new Date());
+        //wxMessage.setCreateTime(new Date());
         wxMessage.setStatus(0);
         wxMessageRepository.insertWxMessage(wxMessage);
     }
