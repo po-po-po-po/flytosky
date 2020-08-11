@@ -127,4 +127,12 @@
         group by airportAbbreviate
      </select>
 
+    <select id="findFlightsGroupByFlightNameEndByAirlinesCode"
+            resultType="com.fly.sky.domain.Airport">
+       select  flight.flight_name_end as airportAbbreviate
+        from flight  where airlines_code=#{airlinesCode,jdbcType=VARCHAR}
+        group by airportAbbreviate
+     </select>
+
+
 </mapper>

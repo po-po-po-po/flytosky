@@ -27,6 +27,9 @@ public class AirlinesDetail {
     @ApiModelProperty("航司可飞往的出发机场列表")
     List<Airport> airportStartList;
 
+    @ApiModelProperty("航司可飞往的到达机场列表")
+    List<Airport> airportEndList;
+
     @ApiModelProperty("航司信息")
     Airlines airlines;
 

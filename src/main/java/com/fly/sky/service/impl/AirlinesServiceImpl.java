@@ -77,6 +77,9 @@ public class AirlinesServiceImpl implements AirlinesService {
         //查询航司能飞往的出发机场列表
         List<Airport> airportStartList=flightRepository.findFlightsGroupByFlightNameStartByAirlinesCode(condition.getAirlinesCode());
         detail.setAirportStartList(airportStartList);
+        //查询航司能飞往的出发机场列表
+        List<Airport> airportEndList=flightRepository.findFlightsGroupByFlightNameEndByAirlinesCode(condition.getAirlinesCode());
+        detail.setAirportEndList(airportEndList);
         //查询航司信息
         Airlines airlines=airlinesRepository.findAirlinesByAirlinesCode(condition.getAirlinesCode());
         detail.setAirlines(airlines);
