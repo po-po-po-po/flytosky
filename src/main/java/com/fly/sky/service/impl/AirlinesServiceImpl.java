@@ -64,7 +64,7 @@ public class AirlinesServiceImpl implements AirlinesService {
         List<Flight> flightList=flightRepository.findFlightsByCondition(condition);
         detail.setFlightList(flightList);
         //对起飞时间做处理
-        if(StringUtils.isNotEmpty(condition.getFlightDate())&&!"不限".equals(condition.getFlightDate())){
+        if(StringUtils.isNotEmpty(condition.getFlightDate())&&!"起飞时间".equals(condition.getFlightDate())){
             String[] split =  condition.getFlightDate().split("-");
             String flightDateStart=split[0];
             String flightDateEnd=split[1];
