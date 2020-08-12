@@ -126,16 +126,20 @@
 
     <select id="findFlightsGroupByFlightNameStartByAirlinesCode"
             resultType="com.fly.sky.domain.Airport">
-       select  flight.flight_name_start as airportAbbreviate
-        from flight  where flight.status=0 and airlines_code=#{airlinesCode,jdbcType=VARCHAR}
-        group by airportAbbreviate
+        SELECT airport_abbreviate as airportAbbreviate  FROM airport WHERE  airport.airport_abbreviate in(
+              select  flight.flight_name_start as airportAbbreviate
+                from flight  where flight.status=0 and airlines_code=#{airlinesCode,jdbcType=VARCHAR}
+                group by airportAbbreviate)
+        order by airport_rank
      </select>
 
     <select id="findFlightsGroupByFlightNameEndByAirlinesCode"
             resultType="com.fly.sky.domain.Airport">
+  SELECT airport_abbreviate as airportAbbreviate  FROM airport WHERE  airport.airport_abbreviate in(
        select  flight.flight_name_end as airportAbbreviate
         from flight  where  flight.status=0  and airlines_code=#{airlinesCode,jdbcType=VARCHAR}
-        group by airportAbbreviate
+        group by airportAbbreviate)
+          order by airport_rank
      </select>
 
 
