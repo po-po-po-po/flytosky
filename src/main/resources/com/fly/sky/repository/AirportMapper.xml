@@ -97,7 +97,7 @@
              OR airport_area = #{search,jdbcType=VARCHAR}
             )
         </if>
-
+        order by  airport.airport_rank asc
     </select>
 
     <select id="findAirportById" resultType="com.fly.sky.domain.Airport">
