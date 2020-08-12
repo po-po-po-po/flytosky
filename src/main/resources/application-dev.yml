@@ -1,5 +1,5 @@
 server:
-  port: 9999
+  port: 443
   ssl:
     key-store: classpath:www.potucs.com.pfx
     key-store-type: PKCS12
