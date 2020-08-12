@@ -86,7 +86,7 @@
         airport.airport_abbreviate in(
         select airway.airway_name_end from airport inner join airway
         on airport.airport_abbreviate=airway.airway_name_start
-        where 1=1
+        where 1=1 and airway.status=0
         <if test="airportAbbreviate != null  and airportAbbreviate != '' ">
         and airway.airway_name_start=#{airportAbbreviate,jdbcType=VARCHAR}
         </if>
