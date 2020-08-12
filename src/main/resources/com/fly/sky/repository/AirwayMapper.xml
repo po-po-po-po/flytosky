@@ -9,6 +9,7 @@
         <result column="airway_description" jdbcType="VARCHAR" property="airwayDescription" />
         <result column="airway_rate" jdbcType="INTEGER" property="airwayRate" />
         <result column="flight_num" jdbcType="INTEGER" property="flightNum" />
+        <result column="status" jdbcType="INTEGER" property="status" />
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     </resultMap>
 
@@ -17,6 +18,7 @@
             resultType="com.fly.sky.domain.Airway">
         select id as id,airway_name_start as airwayNameStart , airway_name_end as airwayNameEnd ,airway_description as airwayDescription,
         airway_rate as airwayRate,flight_num as flightNum,create_time as createTime from airway WHERE 1=1
+         and airway.status=0
         <if test="id != null">
             and  id = #{id,jdbcType=BIGINT}
         </if>
@@ -37,7 +39,7 @@
             parameterType="com.fly.sky.condition.AirwayCondition"
             resultType="com.fly.sky.domain.Airway">
         select id as id,airway_name_start as airwayNameStart , airway_name_end as airwayNameEnd ,airway_description as airwayDescription,
-        airway_rate as airwayRate,flight_num as flightNum,create_time as createTime from airway WHERE 1=1
+        airway_rate as airwayRate,flight_num as flightNum,create_time as createTime from airway WHERE 1=1 and airway.status=0
         <if test="airwayNameStart != null  and airwayNameStart != '' ">
             AND airway_name_start = #{airwayNameStart,jdbcType=VARCHAR}
         </if>
@@ -53,6 +55,7 @@
         select  airway.airway_name_start as airportAbbreviate,
         count(*) as airportAirwaysNum
         from airway
+        where  airway.status=0
         group by airportAbbreviate
      </select>
 

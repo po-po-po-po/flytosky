@@ -38,4 +38,6 @@ public class Flight {
     private String flightRemark;
     @ApiModelProperty("创建时间")
     private Date createTime;
+    @ApiModelProperty("航班状态:0有效 1 无效")
+    private Integer status;
 }

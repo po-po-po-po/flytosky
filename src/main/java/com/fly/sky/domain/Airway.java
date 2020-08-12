@@ -32,4 +32,6 @@ public class Airway {
     private String airwayDescription;
     @ApiModelProperty("创建时间")
     private Date createTime;
+    @ApiModelProperty("航线状态:0有效 1 无效")
+    private Integer status;
 }
