@@ -1,5 +1,9 @@
 server:
   port: 9999
+  ssl:
+    key-store: classpath:www.potucs.pfx
+    key-store-type: PKCS12
+    key-store-password: 5u722swq7v
 
 spring:
   datasource:
