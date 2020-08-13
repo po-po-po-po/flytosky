@@ -23,4 +23,5 @@ public interface FlightRepository {
     List<AirportVo> findFlightsGroupByFlightNameStart();
     List<Airport> findFlightsGroupByFlightNameStartByAirlinesCode(String airlinesCode);
     List<Airport> findFlightsGroupByFlightNameEndByAirlinesCode(String airlinesCode);
+    List<FlightDetail> findFlightsAndAirlinesByCondition(FlightCondition condition);
 }

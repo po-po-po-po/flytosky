@@ -22,7 +22,7 @@ import java.util.List;
 public class AirlinesDetail {
 
     @ApiModelProperty("航司可飞往的航班列表")
-    List<Flight> flightList;
+    List<FlightDetail> flightList;
 
     @ApiModelProperty("航司可飞往的出发机场列表")
     List<Airport> airportStartList;

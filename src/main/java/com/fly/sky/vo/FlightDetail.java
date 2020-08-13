@@ -39,5 +39,9 @@ public class FlightDetail {
     private String airlinesIcon;
     @ApiModelProperty("航班备注")
     private String flightRemark;
+    @ApiModelProperty("航空公司图标")
+    private String airlinesImg;
+    @ApiModelProperty("航空公司名称")
+    private String airlinesAbbreviate;
 
 }

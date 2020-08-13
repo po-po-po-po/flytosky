@@ -61,7 +61,7 @@ public class AirlinesServiceImpl implements AirlinesService {
     public AirlinesDetail findFlightsAndAirportsByAirlines(FlightCondition condition){
         AirlinesDetail detail=new AirlinesDetail();
         //查询航司能飞往的航班列表
-        List<Flight> flightList=flightRepository.findFlightsByCondition(condition);
+        List<FlightDetail> flightList=flightRepository.findFlightsAndAirlinesByCondition(condition);
         detail.setFlightList(flightList);
         //对起飞时间做处理
         if(StringUtils.isNotEmpty(condition.getFlightDate())&&!"起飞时间".equals(condition.getFlightDate())){
