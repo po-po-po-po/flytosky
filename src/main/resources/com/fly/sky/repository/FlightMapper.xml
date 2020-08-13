@@ -105,7 +105,7 @@
         flight.airlines_code as airlinesCode
         from flight
         where
-        flight.status=0
+        flight.status=0 AND
         flight.flight_name_start=#{airportAbbreviate,jdbcType=VARCHAR}
         AND flight.flight_name_end!=#{airportAbbreviate,jdbcType=VARCHAR}
         group by flightNameStart,flightNameEnd,airlinesCode
