@@ -38,7 +38,11 @@
             and  flight_no = #{flightNo,jdbcType=VARCHAR}
         </if>
 
-        <if test="airlinesCode != null  and airlinesCode != '' ">
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode=='MU'">
+            and  (airlines_code = 'MU' OR  airlines_code = 'FM')
+        </if>
+
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode!='MU'">
             and  airlines_code = #{airlinesCode,jdbcType=VARCHAR}
         </if>
 
