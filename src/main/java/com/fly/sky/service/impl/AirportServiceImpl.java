@@ -122,7 +122,7 @@ public class AirportServiceImpl implements AirportService {
                 //获取能到达的机场列表
                 airportList=airportRepository.findAirportsByAirportAbbreviateList(airportDestinationList);
                 if(null!=airlines){
-                    airportPagedList.setAirlines(airlines.getAirlinesAbbreviate()+"能飞往机场目的地如下：");
+                    airportPagedList.setAirlines(airlines.getAirlinesAbbreviate()+"在");
                 }
             }
         }else{
