@@ -200,4 +200,26 @@
     </select>
 
 
+    <update id="updateFlightByCondition"  parameterType="com.fly.sky.domain.Flight">
+    update Flight set
+    flight_name_start=#{flightNameStart},
+    flight_name_end=#{flightNameEnd},
+    flight_frequency=#{flightRequency},
+    flight_date=sysdate(),
+    flight_no=#{FlightRequency}
+    where flight_no=#{flightNo}
+  </update>
+
+
+    <select id="findFlightsForSynchronize"
+            parameterType="com.fly.sky.condition.FlightCondition"
+            resultType="com.fly.sky.domain.Flight">
+        select id as id,flight_no as flightNo , flight_name_start as flightNameStart ,airlines_code as airlinesCode,
+        airway_id as airwayId,flight_frequency as flightRequency,flight_name_end as flightNameEnd,flight_date as flightDate,
+        create_time as createTime,flight_remark as flightRemark from flight
+        order by id asc
+
+        limit #{pageNo},#{pageSize}
+
+    </select>
 </mapper>

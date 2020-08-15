@@ -133,7 +133,8 @@ public class XcFlightUtil {
 
     public static void main(String[] args) {
         try {
-            System.out.println(findFlightByFlightCode("CA1631","20200817"));;
+
+            //System.out.println(findFlightByFlightCode("CA1631","20200817"));;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

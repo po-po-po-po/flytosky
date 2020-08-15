@@ -24,4 +24,6 @@ public interface FlightRepository {
     List<Airport> findFlightsGroupByFlightNameStartByAirlinesCode(String airlinesCode);
     List<Airport> findFlightsGroupByFlightNameEndByAirlinesCode(String airlinesCode);
     List<FlightDetail> findFlightsAndAirlinesByCondition(FlightCondition condition);
+    void updateFlightByCondition(FlightCondition condition);
+    List<Flight> findFlightsForSynchronize(FlightCondition condition);
 }

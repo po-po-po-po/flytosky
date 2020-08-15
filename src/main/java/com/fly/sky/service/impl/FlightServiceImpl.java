@@ -66,4 +66,23 @@ public class FlightServiceImpl implements FlightService {
         return airportList;
     }
 
+
+    public void synchronizeFlight(FlightCondition condition){
+        boolean select = true;
+        //航班总数据
+        int size = 16340;
+        int pageindex = 1;
+        int pagesize =500;
+        while (select) {
+            int pageNo= (pageindex -1) * pagesize;
+            condition.setPageNo(pageNo);
+            condition.setPageSize(pagesize);
+            List<Flight> flightList= flightRepository.findFlightsForSynchronize(condition);
+            System.out.println("----------------------------"+flightList.size());
+            if (flightList.size() < 200) {
+                select = false;
+            }
+            pageindex++;
+        }
+    }
 }
