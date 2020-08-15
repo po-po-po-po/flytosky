@@ -29,4 +29,7 @@ public interface FlightRepository {
     List<Flight> findFlightsForSynchronize(FlightCondition condition);
     void updateFlightFrequencyNotExist(String flightNo);
     void updateFlightFrequencyShareCode(String flightNo);
+    void updateFlightFrequencyIp(String flightNo);
+    void deleteFlightByFlightNo(String flightNo);
+    void insertFlight(Flight flight);
 }

@@ -18,6 +18,7 @@ import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -75,28 +76,50 @@ public class FlightServiceImpl implements FlightService {
         boolean select = true;
         //航班总数据
         int pageindex = 1;
-        int pagesize =500;
+        int pagesize =1;
         while (select) {
             int pageNo= (pageindex -1) * pagesize;
-            System.out.println("----------------------------"+pageNo);
             condition.setPageNo(pageNo);
             condition.setPageSize(pagesize);
             List<Flight> flightList= flightRepository.findFlightsForSynchronize(condition);
             for (int i = 0; i < flightList.size(); i++) {
                 Flight flight= flightList.get(i);
-                FlightCondition conditions=new FlightCondition();
                 //获取航班数据信息
-                Flight flights= XcFlightUtil.findFlightByFlightCode(flight.getFlightNo(),"20201001");
-                System.out.println(flights);
+                List<Flight> flightLists= XcFlightUtil.findFlightByFlightCode(flight.getFlightNo(),"20201001");
+                System.out.println(flightLists);
                 //如果flights的数据是空  那说明这个航班没有数据 那备注不存在
-                if(null==flights){
+                if(CollectionUtils.isEmpty(flightLists)){
                     flightRepository.updateFlightFrequencyNotExist(flight.getFlightNo());
-                }else if(null!=flights&&"共享航班".equals(flights.getFlightRequency())){
-                    flightRepository.updateFlightFrequencyShareCode(flight.getFlightNo());
                 }else{
-                    BeanUtils.copyProperties(flights,conditions);
-                    flightRepository.updateFlightByCondition(conditions);
+                    //说明没有经停航班
+                    if(flightLists.size()==1){
+                        FlightCondition conditions=new FlightCondition();
+                        Flight flights=flightLists.get(0);
+                        if(null!=flights&&"共享航班".equals(flights.getFlightRequency())){
+                            //共享航班删除数据
+                            flightRepository.deleteFlightByFlightNo(flight.getFlightNo());
+                            //flightRepository.updateFlightFrequencyShareCode(flight.getFlightNo());
+                        }else if(null!=flights&&"IP被封".equals(flights.getFlightRequency())){
+                            //flightRepository.updateFlightFrequencyShareCode(flight.getFlightNo());
+                        }else{
+                            flightRepository.deleteFlightByFlightNo(flight.getFlightNo());
+                           // BeanUtils.copyProperties(flights,conditions);
+                            flightRepository.insertFlight(flights);
+                        }
+                    }else{
+                        //说明是经停航班
+                        flightRepository.deleteFlightByFlightNo(flight.getFlightNo());
+                        for (Flight flightsss : flightLists) {
+                            flightRepository.insertFlight(flightsss);
+                        }
+                        
+                    }
+
                 }
+
+
+
+
             }
 
             if (flightList.size() < 200) {
