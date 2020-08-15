@@ -42,13 +42,13 @@ public class XcFlightUtil {
      * @author:haoqingshuang
      * @CreateDate:2017年9月28日
      */
-    public static List<Flight> findFlightByFlightCode(String flightNumber, String nowDate ) throws Exception {
+    public static List<Flight> findFlightByFlightCode(String flightNumber, String nowDate ,String ip,Integer port) throws Exception {
         List<Flight> flightList=new ArrayList<>();
        // String nowDate = new SimpleDateFormat("yyyyMMdd").format(new Date());
         //直接访问
         //Document doc = getDocument("http://www.variflight.com/flight/fnum/"+FlightNumber.trim()+".html?AE71649A58c77&fdate="+nowDate);
         //利用ip代理访问
-        String content=HttpRequestUtils.send(flightNumber);
+        String content=HttpRequestUtils.send(flightNumber,ip,port);
         if(StringUtils.isEmpty(content)){
             Flight flight = new Flight();
             flight.setFlightRequency("IP被封");
@@ -144,7 +144,7 @@ public class XcFlightUtil {
     public static void main(String[] args) {
         try {
 
-            System.out.println(findFlightByFlightCode("MU4276","20200817"));;
+           // System.out.println(findFlightByFlightCode("MU4276","20200817"));;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

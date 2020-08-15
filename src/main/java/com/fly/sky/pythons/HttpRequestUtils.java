@@ -20,18 +20,15 @@ import org.jsoup.select.Elements;
  */
 public class HttpRequestUtils {
 
-    public static String send(String flightNumber)throws Exception{
-        //获取ip和端口
-        String url="http://http.9vps.com/getip.asp?username=13522715896&pwd=5fc61e8a197dfe289613f8d07fb1583f&geshi=1&fenge=1&fengefu=&getnum=1";
-        String po=GetUrlData.getHttpRequestData(url);
-        String[] split = po.split(":");
+    public static String send(String flightNumber,String ip,Integer port)throws Exception{
+
         String content="";
         // 创建httpget实例
         HttpGet httpGet = new HttpGet("http://www.variflight.com/flight/fnum/"+flightNumber.trim()+".html?AE71649A58c77&fdate="+20201001);
        // HttpGet httpGet=new HttpGet("http://www.variflight.com/flight/fnum/MU5138.html?AE71649A58c77");
         CloseableHttpClient client = setProxy(httpGet,
-                split[0],//   "123.162.174.198",//
-                Integer.parseInt(split[1]));//10001); //
+                ip,//   "123.162.174.198",//
+                port);//10001); //
         //设置请求头消息
         httpGet.setHeader("User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36");
         // 执行http get请求  也可以使用psot
