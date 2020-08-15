@@ -199,14 +199,28 @@
       limit 200
     </select>
 
-
     <update id="updateFlightByCondition"  parameterType="com.fly.sky.domain.Flight">
     update Flight set
     flight_name_start=#{flightNameStart},
     flight_name_end=#{flightNameEnd},
     flight_frequency=#{flightRequency},
-    flight_date=sysdate(),
-    flight_no=#{FlightRequency}
+    flight_date=#{flightDate},
+    airlines_code=#{airlinesCode},
+    create_time=sysdate()
+    where flight_no=#{flightNo}
+  </update>
+
+    <update id="updateFlightFrequencyNotExist"  parameterType="com.fly.sky.domain.Flight">
+    update Flight set
+    flight_frequency='航班不存在',
+    create_time=sysdate()
+    where flight_no=#{flightNo}
+  </update>
+
+  <update id="updateFlightFrequencyShareCode"  parameterType="com.fly.sky.domain.Flight">
+    update Flight set
+    flight_frequency='共享航班',
+    create_time=sysdate()
     where flight_no=#{flightNo}
   </update>
 
@@ -222,4 +236,7 @@
         limit #{pageNo},#{pageSize}
 
     </select>
+
+
+
 </mapper>

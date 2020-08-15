@@ -30,33 +30,6 @@ import java.util.TimerTask;
  */
 public class XcFlightUtil {
 
-    public static Map<String, Flight> cacheMap = new HashMap<String, Flight>();
-
-    public static Timer cacheFlightTimer;
-
-    static{
-        clearCacheMap();
-    }
-
-    public static synchronized Timer getFlightTimer(){
-        if(cacheFlightTimer == null){
-            return cacheFlightTimer = new Timer();
-        }else{
-            return cacheFlightTimer;
-        }
-    }
-
-    //定时清空航班缓存数据  立即清空 10分钟
-    public static void clearCacheMap(){
-        TimerTask timertask = new java.util.TimerTask() {
-            @Override
-            public void run() {
-                cacheMap.clear();
-            }
-        };
-        Timer cacheFlightTimer = getFlightTimer();
-        cacheFlightTimer.schedule(timertask,0,600000);
-    }
 
     public static  Document getDocument(String url) throws Exception {
         try {
@@ -78,27 +51,25 @@ public class XcFlightUtil {
             throw new Exception("请输入航班号！");
         }
 
-        for (String key : cacheMap.keySet()) {
-            if(FlightNumber.equals(key)){
-                if(null != cacheMap.get(key)){
-                    //return cacheMap.get(key).getFlightJsonobject();
-                }
-            }
-        }
 
        // String nowDate = new SimpleDateFormat("yyyyMMdd").format(new Date());
         Document doc = getDocument("http://www.variflight.com/flight/fnum/"+FlightNumber.trim()+".html?AE71649A58c77&fdate="+nowDate);
         if(null == doc){
             throw new Exception("网络异常，请稍后再试！");
         }
-        //获取共享航班
-        flight.setFlightRequency(doc.select("[class=\"list_share\"]").text());
         // 航班详情
         Elements flightDetail = doc.select("[class=\"li_com\"]");
+        if(flightDetail.size()==0){
+            return null;
+        }
+        //获取共享航班
+        flight.setFlightRequency(doc.select("[class=\"list_share\"]").text());
         Elements detailfly = flightDetail.select("[class=\"w150\"]");
         flight.setFlightNameStart(detailfly.get(1).text());//北京首都T2
         flight.setFlightNameEnd( detailfly.get(3).text());//上海虹桥T2
         flight.setFlightDate( detailfly.get(0).text()+"-"+detailfly.get(2).text());
+        flight.setFlightNo(FlightNumber);
+        flight.setAirlinesCode(FlightNumber.substring(0,2));
         return flight;
     }
 
@@ -134,7 +105,7 @@ public class XcFlightUtil {
     public static void main(String[] args) {
         try {
 
-            //System.out.println(findFlightByFlightCode("CA1631","20200817"));;
+            System.out.println(findFlightByFlightCode("MU4276","20200817"));;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

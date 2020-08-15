@@ -9,6 +9,7 @@ import com.fly.sky.vo.AirportVo;
 import com.fly.sky.vo.FlightDetail;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Auther wangzekun
@@ -26,4 +27,6 @@ public interface FlightRepository {
     List<FlightDetail> findFlightsAndAirlinesByCondition(FlightCondition condition);
     void updateFlightByCondition(FlightCondition condition);
     List<Flight> findFlightsForSynchronize(FlightCondition condition);
+    void updateFlightFrequencyNotExist(String flightNo);
+    void updateFlightFrequencyShareCode(String flightNo);
 }

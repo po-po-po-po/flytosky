@@ -22,5 +22,5 @@ public interface FlightService {
 
     List<FlightDetail> findAllFlightsByAirline(FlightCondition condition);
 
-    void synchronizeFlight(FlightCondition condition);
+    void synchronizeFlight(FlightCondition condition) throws Exception;
 }

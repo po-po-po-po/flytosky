@@ -6,6 +6,7 @@ import com.fly.sky.condition.FlightCondition;
 import com.fly.sky.domain.Airway;
 import com.fly.sky.domain.Flight;
 import com.fly.sky.enums.AirlinesEnum;
+import com.fly.sky.pythons.XcFlightUtil;
 import com.fly.sky.repository.AirwayRepository;
 import com.fly.sky.repository.FlightRepository;
 import com.fly.sky.service.AirwayService;
@@ -15,10 +16,13 @@ import com.fly.sky.vo.FlightDetail;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -67,18 +71,34 @@ public class FlightServiceImpl implements FlightService {
     }
 
 
-    public void synchronizeFlight(FlightCondition condition){
+    public void synchronizeFlight(FlightCondition condition) throws Exception {
         boolean select = true;
         //航班总数据
-        int size = 16340;
         int pageindex = 1;
         int pagesize =500;
         while (select) {
             int pageNo= (pageindex -1) * pagesize;
+            System.out.println("----------------------------"+pageNo);
             condition.setPageNo(pageNo);
             condition.setPageSize(pagesize);
             List<Flight> flightList= flightRepository.findFlightsForSynchronize(condition);
-            System.out.println("----------------------------"+flightList.size());
+            for (int i = 0; i < flightList.size(); i++) {
+                Flight flight= flightList.get(i);
+                FlightCondition conditions=new FlightCondition();
+                //获取航班数据信息
+                Flight flights= XcFlightUtil.findFlightByFlightCode(flight.getFlightNo(),"20201001");
+                System.out.println(flights);
+                //如果flights的数据是空  那说明这个航班没有数据 那备注不存在
+                if(null==flights){
+                    flightRepository.updateFlightFrequencyNotExist(flight.getFlightNo());
+                }else if(null!=flights&&"共享航班".equals(flights.getFlightRequency())){
+                    flightRepository.updateFlightFrequencyShareCode(flight.getFlightNo());
+                }else{
+                    BeanUtils.copyProperties(flights,conditions);
+                    flightRepository.updateFlightByCondition(conditions);
+                }
+            }
+
             if (flightList.size() < 200) {
                 select = false;
             }

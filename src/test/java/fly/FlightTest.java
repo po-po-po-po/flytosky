@@ -32,7 +32,7 @@ public class FlightTest {
 
     @Test
     @Rollback(false)
-    public void testFlight(){
+    public void testFlight() throws Exception {
         FlightCondition condition=new FlightCondition();
         flightService.synchronizeFlight(condition);
     }
