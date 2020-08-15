@@ -76,7 +76,7 @@ public class FlightServiceImpl implements FlightService {
         boolean select = true;
         //航班总数据
         int pageindex = 1;
-        int pagesize =1;
+        int pagesize =20;
         while (select) {
             int pageNo= (pageindex -1) * pagesize;
             condition.setPageNo(pageNo);
