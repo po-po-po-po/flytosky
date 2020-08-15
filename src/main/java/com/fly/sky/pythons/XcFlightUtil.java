@@ -91,6 +91,8 @@ public class XcFlightUtil {
         if(null == doc){
             throw new Exception("网络异常，请稍后再试！");
         }
+        //获取共享航班
+        flight.setFlightRequency(doc.select("[class=\"list_share\"]").text());
         // 航班详情
         Elements flightDetail = doc.select("[class=\"li_com\"]");
         Elements detailfly = flightDetail.select("[class=\"w150\"]");
@@ -131,7 +133,7 @@ public class XcFlightUtil {
 
     public static void main(String[] args) {
         try {
-            System.out.println(findFlightByFlightCode("MU5110","20200817"));;
+            System.out.println(findFlightByFlightCode("CA1631","20200817"));;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
