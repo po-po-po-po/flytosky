@@ -196,6 +196,7 @@
             order  by flight.flight_date asc
         </if>
 
+      limit 200
     </select>
 
 
