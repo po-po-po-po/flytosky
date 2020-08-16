@@ -22,5 +22,7 @@ public interface FlightService {
 
     List<FlightDetail> findAllFlightsByAirline(FlightCondition condition);
 
-    void synchronizeFlight(FlightCondition condition) throws Exception;
+    void synchronizeFeiChangzhunFlight(FlightCondition condition) throws Exception;
+
+    void synchronizeQunaerFlight(FlightCondition condition) throws Exception;
 }

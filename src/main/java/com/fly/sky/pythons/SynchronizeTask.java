@@ -32,7 +32,7 @@ public class SynchronizeTask{
         System.err.println("执行静态定时任务时间: " + LocalDateTime.now());
         FlightCondition condition=new FlightCondition();
         try {
-            flightService.synchronizeFlight(condition);
+            flightService.synchronizeFeiChangzhunFlight(condition);
         } catch (Exception e) {
             e.printStackTrace();
         }
