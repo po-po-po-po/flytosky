@@ -21,4 +21,8 @@ public interface AirwayRepository {
     Airway findAirwaysByStartAndEnd(AirwayCondition condition);
 
     List<AirportVo> findAirwayGroupByAirwayNameStart();
+
+    List<Airway> findAirwaysForAirwayName(AirwayCondition condition);
+
+    void updateAirwayForAirwayName(AirwayCondition condition);
 }

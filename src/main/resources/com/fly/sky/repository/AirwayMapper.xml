@@ -60,4 +60,21 @@
      </select>
 
 
+    <select id="findAirwaysForAirwayName"
+            parameterType="com.fly.sky.condition.AirwayCondition"
+            resultType="com.fly.sky.domain.Airway">
+        select id as id,airway_name_start as airwayNameStart , airway_name_end as airwayNameEnd
+        from airway  where status=0 limit #{pageNo},#{pageSize}
+    </select>
+
+
+    <update id="updateAirwayForAirwayName"  parameterType="com.fly.sky.condition.AirwayCondition">
+    update airway set
+     airway_name_start=#{airwayNameStart},
+     airway_name_end=#{airwayNameEnd},
+    create_time=sysdate(),
+    status=1
+    where id=#{id}
+  </update>
+
 </mapper>
