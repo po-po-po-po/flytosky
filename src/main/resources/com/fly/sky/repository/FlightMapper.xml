@@ -282,7 +282,7 @@
 
 
     <update id="updateAirportNameStartAndEnd"  parameterType="com.fly.sky.domain.Flight">
-    update Flight setfindFlightsGroupByFlightNameStart
+    update Flight set
     airport_name_start= #{airportNameStart},
     airport_name_end= #{airportNameEnd},
     status=1
