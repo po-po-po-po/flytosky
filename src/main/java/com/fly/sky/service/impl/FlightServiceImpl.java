@@ -53,6 +53,15 @@ public class FlightServiceImpl implements FlightService {
         if(null!=condition&& StringUtils.isNotEmpty(condition.getAirlinesSelectId())){
             condition.setAirlinesCode(AirlinesEnum.getAirlineCode(condition.getAirlinesSelectId()));
         }
+        //机场处理
+        if(StringUtils.isNotEmpty(condition.getFlightNameStart())){
+            condition.setAirportNameStart(condition.getFlightNameStart().replace("机场",""));
+        }
+        if(StringUtils.isNotEmpty(condition.getFlightNameEnd())){
+            condition.setAirportNameEnd(condition.getFlightNameEnd().replace("机场",""));
+        }
+        condition.setFlightNameStart(null);
+        condition.setFlightNameEnd(null);
         List<FlightDetail>  airportList=flightRepository.findFlightsDetail(condition);
 
         if(StringUtils.isNotEmpty(condition.getFlightDate())&&!"起飞时间".equals(condition.getFlightDate())){

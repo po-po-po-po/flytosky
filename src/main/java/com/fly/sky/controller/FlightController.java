@@ -80,8 +80,8 @@ public class FlightController {
             flightList.setAirlinesList(airlinesList);
         }
         AirwayCondition airwayCondition=new AirwayCondition();
-        airwayCondition.setAirwayNameStart(condition.getFlightNameStart());
-        airwayCondition.setAirwayNameEnd(condition.getFlightNameEnd());
+        airwayCondition.setAirwayNameStart(condition.getAirportNameStart());
+        airwayCondition.setAirwayNameEnd(condition.getAirportNameEnd());
         Airway airway=airwayService.findAirwaysByStartAndEnd(airwayCondition);
         flightList.setAirway(airway);
         responseResult.setData(flightList);

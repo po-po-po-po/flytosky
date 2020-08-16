@@ -25,7 +25,7 @@ public class HttpTest {
 
 
 
-    @Test
+   // @Test
     public void tesHttp() throws Exception {
       //  HttpRequestUtils.send("CA1225");
     }

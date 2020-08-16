@@ -52,7 +52,7 @@ public class FlightTest {
 
 
 
-    @Test
+   // @Test
     @Rollback(false)
     public void testFlightName() throws Exception {
         FlightCondition condition=new FlightCondition();

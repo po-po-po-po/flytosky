@@ -78,6 +78,12 @@
         <if test="flightNameStart != null  and flightNameStart != '' ">
             AND flight_name_start = #{flightNameStart,jdbcType=VARCHAR}
         </if>
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            AND airport_name_end = #{airportNameEnd,jdbcType=VARCHAR}
+        </if>
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            AND airport_name_start = #{airportNameStart,jdbcType=VARCHAR}
+        </if>
         <if test="flightNo != null  and flightNo != '' ">
             and  flight_no = #{flightNo,jdbcType=VARCHAR}
         </if>
@@ -93,7 +99,7 @@
             order  by flight.flight_date desc
         </if>
         <if test="sortId == null or sortId==0 ">
-            order  by flight.flight_date asc
+            order  by flight.sort asc
         </if>
 
     </select>

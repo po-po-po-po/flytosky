@@ -29,7 +29,7 @@ public class AirwayTest {
     @Autowired
     AirwayRepository airwayRepository;
 
-    @Test
+    //@Test
     @Rollback(false)
     public void testAirway() throws Exception {
         AirwayCondition condition=new AirwayCondition();
@@ -51,7 +51,7 @@ public class AirwayTest {
         }
     }
 
-    @Test
+    //@Test
     @Rollback(false)
     public void testRegex() throws Exception {
         String s="贵阳龙洞堡T2";
