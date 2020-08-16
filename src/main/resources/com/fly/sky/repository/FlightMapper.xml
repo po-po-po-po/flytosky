@@ -16,6 +16,7 @@
         <result column="flight_remark" jdbcType="VARCHAR" property="flightRemark" />
         <result column="airport_name_start" jdbcType="VARCHAR" property="airportNameStart" />
         <result column="airport_name_end" jdbcType="VARCHAR" property="airportNameEnd" />
+        <result column="sort" jdbcType="INTEGER" property="sort" />
     </resultMap>
 
     <select id="findFlightsByCondition"
@@ -195,7 +196,7 @@
         </if>
 
         <if test="sortId == null or sortId==0 ">
-            order  by flight.flight_date asc
+            order  by flight.sort asc
         </if>
 
       limit 200

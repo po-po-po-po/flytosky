@@ -44,4 +44,6 @@ public class Flight {
     private String airportNameStart;
     @ApiModelProperty("到达机场")
     private String airportNameEnd;
+    @ApiModelProperty("排序")
+    private Integer sort;
 }
