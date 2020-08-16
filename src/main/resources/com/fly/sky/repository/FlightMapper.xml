@@ -218,6 +218,8 @@
     flight_frequency=#{flightRequency},
     flight_date=#{flightDate},
     airlines_code=#{airlinesCode},
+    airport_name_start=#{airportNameStart},
+    airport_name_end=#{airportNameEnd},
     create_time=sysdate(),
     status=1
     where flight_no=#{flightNo}
@@ -225,9 +227,8 @@
 
     <update id="updateFlightFrequencyNotExist"  parameterType="com.fly.sky.domain.Flight">
     update Flight set
-    flight_frequency='航班不存在',
-    create_time=sysdate(),
-       status=1
+    flight_frequency='爬取不到数据稍后再爬',
+    create_time=sysdate()
     where flight_no=#{flightNo}
   </update>
 
@@ -268,10 +269,12 @@
 
     <insert id="insertFlight" parameterType="com.fly.sky.domain.Flight" >
        insert into flight(flight_no, flight_name_start,flight_name_end,
-        airlines_code,flight_date,flight_frequency,status,create_time)
+        airlines_code,flight_date,flight_frequency,status,create_time,
+         airport_name_start,airport_name_end)
         values(
         #{flightNo}, #{flightNameStart}, #{flightNameEnd},
         #{airlinesCode}, #{flightDate}, #{flightRequency},1,sysdate()
+        , #{airportNameStart},#{airportNameEnd}
         )
     </insert>
 

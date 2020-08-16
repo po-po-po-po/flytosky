@@ -24,5 +24,4 @@ public interface FlightService {
 
     void synchronizeFeiChangzhunFlight(FlightCondition condition) throws Exception;
 
-    void synchronizeQunaerFlight(FlightCondition condition) throws Exception;
 }

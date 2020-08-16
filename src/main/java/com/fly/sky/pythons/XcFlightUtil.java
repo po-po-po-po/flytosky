@@ -9,6 +9,7 @@ package com.fly.sky.pythons;
 
 import com.alibaba.fastjson.JSONObject;
 import com.fly.sky.domain.Flight;
+import com.fly.sky.util.RegexUtil;
 import org.apache.commons.lang.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -19,7 +20,7 @@ import java.util.*;
 
 
 /**
- * 携程 航班爬取数据工具类
+ * 飞常准 航班爬取数据工具类
  * @Description:
  * @author：wangzekun
  * @CreatTime：2020年8月15日
@@ -44,11 +45,8 @@ public class XcFlightUtil {
      */
     public static List<Flight> findFlightByFlightCode(String flightNumber, String nowDate ,String ip,Integer port) throws Exception {
         List<Flight> flightList=new ArrayList<>();
-       // String nowDate = new SimpleDateFormat("yyyyMMdd").format(new Date());
-        //直接访问
-        //Document doc = getDocument("http://www.variflight.com/flight/fnum/"+FlightNumber.trim()+".html?AE71649A58c77&fdate="+nowDate);
         //利用ip代理访问
-        String content=HttpRequestUtils.send(flightNumber,ip,port);
+        String content=HttpRequestUtils.sendGet(flightNumber,ip,port);
         if(StringUtils.isEmpty(content)){
             Flight flight = new Flight();
             flight.setFlightRequency("IP被封");
@@ -73,6 +71,9 @@ public class XcFlightUtil {
             flight1.setFlightRequency(doc.select("[class=\"list_share\"]").text());
             flight1.setFlightNameStart(detailfly.get(1).text());//北京首都T2
             flight1.setFlightNameEnd( detailfly.get(3).text());//上海虹桥T2
+            //简称
+            flight1.setAirportNameStart(RegexUtil.filterChinese(detailfly.get(1).text()));
+            flight1.setAirportNameEnd(RegexUtil.filterChinese(detailfly.get(3).text()));
             flight1.setFlightDate( detailfly.get(0).text()+"-"+detailfly.get(2).text());
             flight1.setFlightNo(flightNumber);
             flight1.setAirlinesCode(flightNumber.substring(0,2));
@@ -83,6 +84,9 @@ public class XcFlightUtil {
             flight2.setFlightRequency(doc.select("[class=\"list_share\"]").text());
             flight2.setFlightNameStart(detailfly.get(6).text());//北京首都T2
             flight2.setFlightNameEnd( detailfly.get(8).text());//上海虹桥T2
+            //简称
+            flight2.setAirportNameStart(RegexUtil.filterChinese(detailfly.get(6).text()));
+            flight2.setAirportNameEnd(RegexUtil.filterChinese(detailfly.get(8).text()));
             flight2.setFlightDate( detailfly.get(0).text()+"-"+detailfly.get(12).text());
             flight2.setFlightNo(flightNumber);
             flight2.setFlightRequency("(经停"+detailfly.get(3).text()+")");
@@ -94,6 +98,9 @@ public class XcFlightUtil {
             flight3.setFlightRequency(doc.select("[class=\"list_share\"]").text());
             flight3.setFlightNameStart(detailfly.get(11).text());//北京首都T2
             flight3.setFlightNameEnd( detailfly.get(13).text());//上海虹桥T2
+            //简称
+            flight2.setAirportNameStart(RegexUtil.filterChinese(detailfly.get(11).text()));
+            flight2.setAirportNameEnd(RegexUtil.filterChinese(detailfly.get(13).text()));
             flight3.setFlightDate( detailfly.get(10).text()+"-"+detailfly.get(12).text());
             flight3.setFlightNo(flightNumber);
             flight3.setAirlinesCode(flightNumber.substring(0,2));
@@ -104,6 +111,8 @@ public class XcFlightUtil {
             flight.setFlightRequency(doc.select("[class=\"list_share\"]").text());
             flight.setFlightNameStart(detailfly.get(1).text());//北京首都T2
             flight.setFlightNameEnd( detailfly.get(3).text());//上海虹桥T2
+            flight.setAirportNameStart(RegexUtil.filterChinese(detailfly.get(1).text()));//北京首都T2
+            flight.setAirportNameEnd(RegexUtil.filterChinese(detailfly.get(3).text()));//上海虹桥T2
             flight.setFlightDate( detailfly.get(0).text()+"-"+detailfly.get(2).text());
             flight.setFlightNo(flightNumber);
             flight.setAirlinesCode(flightNumber.substring(0,2));

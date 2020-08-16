@@ -1,16 +1,12 @@
 package com.fly.sky.service.impl;
 
 
-import com.fly.sky.condition.AirwayCondition;
 import com.fly.sky.condition.FlightCondition;
-import com.fly.sky.domain.Airway;
 import com.fly.sky.domain.Flight;
 import com.fly.sky.enums.AirlinesEnum;
-import com.fly.sky.pythons.GetUrlData;
+import com.fly.sky.pythons.IpPortUtil;
 import com.fly.sky.pythons.XcFlightUtil;
-import com.fly.sky.repository.AirwayRepository;
 import com.fly.sky.repository.FlightRepository;
-import com.fly.sky.service.AirwayService;
 import com.fly.sky.service.FlightService;
 import com.fly.sky.util.PagedList;
 import com.fly.sky.vo.FlightDetail;
@@ -91,15 +87,16 @@ public class FlightServiceImpl implements FlightService {
             List<Flight> flightList= flightRepository.findFlightsForSynchronize(condition);
             //获取代理信息  要放在循环的前面 这样才能不浪费资源
             //获取ip和端口
-            String url="http://http.9vps.com/getip.asp?username=13522715896&pwd=5fc61e8a197dfe289613f8d07fb1583f&geshi=1&fenge=1&fengefu=&getnum=1";
-            String po= GetUrlData.getHttpRequestData(url);
-            String[] split = po.split(":");
-            System.out.println("获取的代理IP："+split[0]+"，端口号："+split[1]);
+            String[] data= IpPortUtil.getIpAndPort();
             for (int i = 0; i < flightList.size(); i++) {
                 Flight flight= flightList.get(i);
                 //获取航班数据信息
-                List<Flight> flightLists= XcFlightUtil.findFlightByFlightCode(flight.getFlightNo(),"20201001",split[0], Integer.parseInt(split[1]));
-                System.out.println(flightLists);
+                List<Flight> flightLists= XcFlightUtil.findFlightByFlightCode(flight.getFlightNo(),"20201001",data[0], Integer.parseInt(data[1]));
+                if(null==flightLists){
+                    System.out.println("没有爬取到数据稍后再爬!!!!!!!!!!!");
+                }else{
+                    System.out.println("爬取数据是"+flightLists);
+                }
                 //如果flights的数据是空  那说明这个航班没有数据 那备注不存在
                 if(CollectionUtils.isEmpty(flightLists)){
                     flightRepository.updateFlightFrequencyNotExist(flight.getFlightNo());
@@ -139,75 +136,4 @@ public class FlightServiceImpl implements FlightService {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-    public void synchronizeQunaerFlight(FlightCondition condition) throws Exception {
-        boolean select = true;
-        //航班总数据
-        int pageindex = 1;
-        int pagesize =16;
-        while (select) {
-            int pageNo= (pageindex -1) * pagesize;
-            condition.setPageNo(pageNo);
-            condition.setPageSize(pagesize);
-            List<Flight> flightList= flightRepository.findFlightsForSynchronize(condition);
-            //获取代理信息  要放在循环的前面 这样才能不浪费资源
-            //获取ip和端口
-            String url="https://flight.qunar.com/site/oneway_list.htm?searchDepartureAirport=杭州&searchArrivalAirport=\n" +
-                    "成都&searchDepartureTime=2020-08-17&searchArrivalTime=2020-08-21&nextNDays=0\n" +
-                    "&startSearch=true&fromCode=HGH&toCode=CTU&from=flight_dom_search&lowestPrice=null";
-            String po= GetUrlData.getHttpRequestData(url);
-            System.out.println(po);
-            String[] split = po.split(":");
-            System.out.println("获取的代理IP："+split[0]+"，端口号："+split[1]);
-            for (int i = 0; i < flightList.size(); i++) {
-                Flight flight= flightList.get(i);
-                //获取航班数据信息
-                List<Flight> flightLists= XcFlightUtil.findFlightByFlightCode(flight.getFlightNo(),"20201001",split[0], Integer.parseInt(split[1]));
-                System.out.println(flightLists);
-                //如果flights的数据是空  那说明这个航班没有数据 那备注不存在
-                if(CollectionUtils.isEmpty(flightLists)){
-                    flightRepository.updateFlightFrequencyNotExist(flight.getFlightNo());
-                }else{
-                    //说明没有经停航班
-                    if(flightLists.size()==1){
-                        FlightCondition conditions=new FlightCondition();
-                        Flight flights=flightLists.get(0);
-                        if(null!=flights&&"共享航班".equals(flights.getFlightRequency())){
-                            //共享航班删除数据
-                            flightRepository.deleteFlightByFlightNo(flight.getFlightNo());
-                            //flightRepository.updateFlightFrequencyShareCode(flight.getFlightNo());
-                        }else if(null!=flights&&"IP被封".equals(flights.getFlightRequency())){
-                            //flightRepository.updateFlightFrequencyShareCode(flight.getFlightNo());
-                        }else{
-                            flightRepository.deleteFlightByFlightNo(flight.getFlightNo());
-                            // BeanUtils.copyProperties(flights,conditions);
-                            flightRepository.insertFlight(flights);
-                        }
-                    }else{
-                        //说明是经停航班
-                        flightRepository.deleteFlightByFlightNo(flight.getFlightNo());
-                        for (Flight flightsss : flightLists) {
-                            flightRepository.insertFlight(flightsss);
-                        }
-
-                    }
-
-                }
-            }
-
-            if (flightList.size() < 20) {
-                select = false;
-            }
-            pageindex++;
-        }
-    }
 }
