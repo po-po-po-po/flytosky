@@ -46,4 +46,8 @@ public class Flight {
     private String airportNameEnd;
     @ApiModelProperty("排序")
     private Integer sort;
+    @ApiModelProperty("出发机场code")
+    private String airportNameStartCode;
+    @ApiModelProperty("到达机场code")
+    private String airportNameEndCode;
 }

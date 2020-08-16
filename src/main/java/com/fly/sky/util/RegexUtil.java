@@ -45,4 +45,13 @@ public class RegexUtil {
         character = character.replaceAll("[^(a-zA-Z0-9\\u4e00-\\u9fa5)]", "");
         return character;
     }
+    /**
+     * @param character
+     * @return
+     * @Description : 过滤出字母、数字和中文
+     */
+    public static String filterAlphabetAndNumber(String character) {
+        character = character.replaceAll("[^(a-zA-Z0-9)]", "");
+        return character;
+    }
 }

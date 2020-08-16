@@ -1,5 +1,7 @@
 package com.fly.sky.pythons;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,6 +18,8 @@ import java.net.URL;
  * version: 1.0
  */
 
+
+@Slf4j
 public class IpPortUtil {
 
 
@@ -49,7 +53,7 @@ public class IpPortUtil {
             e.printStackTrace();
         }
         String[] split = returnString.split(":");
-        System.out.println("获取的代理IP："+split[0]+"，端口号："+split[1]);
+        log.info("获取的代理IP："+split[0]+"，端口号："+split[1]);
         return split;
     }
 

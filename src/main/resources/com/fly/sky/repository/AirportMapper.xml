@@ -22,7 +22,10 @@
     </select>
 
     <select id="findAirportByCode" resultType="com.fly.sky.domain.Airport">
-        select * from airport where airport_code = #{airportCode} limit 1
+          SELECT    airport_name as airportName , airport_code as airportCode ,
+           airport_location as airportLocation,airport_area as airportArea,
+          airport_abbreviate AS airportAbbreviate
+         from  airport where airport_code = #{airportCode} limit 1
     </select>
 
    <insert id="insertAirport" parameterType="com.fly.sky.domain.Airport">

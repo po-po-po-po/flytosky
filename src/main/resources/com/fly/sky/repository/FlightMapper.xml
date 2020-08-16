@@ -16,6 +16,8 @@
         <result column="flight_remark" jdbcType="VARCHAR" property="flightRemark" />
         <result column="airport_name_start" jdbcType="VARCHAR" property="airportNameStart" />
         <result column="airport_name_end" jdbcType="VARCHAR" property="airportNameEnd" />
+        <result column="airport_name_start_code" jdbcType="VARCHAR" property="airportNameStartCode" />
+        <result column="airport_name_end_code" jdbcType="VARCHAR" property="airportNameEndCode" />
         <result column="sort" jdbcType="INTEGER" property="sort" />
     </resultMap>
 
@@ -270,11 +272,11 @@
     <insert id="insertFlight" parameterType="com.fly.sky.domain.Flight" >
        insert into flight(flight_no, flight_name_start,flight_name_end,
         airlines_code,flight_date,flight_frequency,status,create_time,
-         airport_name_start,airport_name_end)
+         airport_name_start,airport_name_end,airport_name_start_code ,airport_name_end_code)
         values(
         #{flightNo}, #{flightNameStart}, #{flightNameEnd},
         #{airlinesCode}, #{flightDate}, #{flightRequency},1,sysdate()
-        , #{airportNameStart},#{airportNameEnd}
+        , #{airportNameStart},#{airportNameEnd}, #{airportNameStartCode},#{airportNameEndCode}
         )
     </insert>
 

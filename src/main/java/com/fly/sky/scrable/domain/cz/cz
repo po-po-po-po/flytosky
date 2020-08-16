@@ -1,0 +1,287 @@
+{
+    "success": true,
+    "data": [
+        {
+            "arr": "CTU",
+            "date": "2020-09-29",
+            "fRemainSeats": null,
+            "jPrice": 0,
+            "yRemainSeats": null,
+            "wRemainSeats": null,
+            "arrCity": "CTU",
+            "yPrice": 0,
+            "depCity": "BJS",
+            "channel": "B2CPC1",
+            "remainSeats": "7",
+            "fPrice": -1,
+            "dep": "PEK",
+            "regionCode": null,
+            "price": 1430,
+            "interval": "",
+            "displayTaxTotal": null,
+            "jRemainSeats": null,
+            "region": null,
+            "taxs": [
+                {
+                    "jcp": null,
+                    "gmp": null,
+                    "type": "airportTax",
+                    "adult": "50",
+                    "infant": null,
+                    "child": null
+                },
+                {
+                    "jcp": "0",
+                    "gmp": "0",
+                    "type": "yq",
+                    "adult": "0",
+                    "infant": null,
+                    "child": null
+                }
+            ],
+            "wPrice": 0
+        },
+        {
+            "arr": "CTU",
+            "date": "2020-09-28",
+            "fRemainSeats": null,
+            "jPrice": 0,
+            "yRemainSeats": null,
+            "wRemainSeats": null,
+            "arrCity": "CTU",
+            "yPrice": 0,
+            "depCity": "BJS",
+            "channel": "B2CPC1",
+            "remainSeats": "&gt;9",
+            "fPrice": -1,
+            "dep": "PEK",
+            "regionCode": null,
+            "price": 1430,
+            "interval": "",
+            "displayTaxTotal": null,
+            "jRemainSeats": null,
+            "region": null,
+            "taxs": [
+                {
+                    "jcp": null,
+                    "gmp": null,
+                    "type": "airportTax",
+                    "adult": "50",
+                    "infant": null,
+                    "child": null
+                },
+                {
+                    "jcp": "0",
+                    "gmp": "0",
+                    "type": "yq",
+                    "adult": "0",
+                    "infant": null,
+                    "child": null
+                }
+            ],
+            "wPrice": 0
+        },
+        {
+            "arr": "CTU",
+            "date": "2020-09-25",
+            "fRemainSeats": null,
+            "jPrice": 0,
+            "yRemainSeats": null,
+            "wRemainSeats": null,
+            "arrCity": "CTU",
+            "yPrice": 0,
+            "depCity": "BJS",
+            "channel": "B2CPC1",
+            "remainSeats": "&gt;9",
+            "fPrice": -1,
+            "dep": "PEK",
+            "regionCode": null,
+            "price": 1200,
+            "interval": "",
+            "displayTaxTotal": null,
+            "jRemainSeats": null,
+            "region": null,
+            "taxs": [
+                {
+                    "jcp": null,
+                    "gmp": null,
+                    "type": "airportTax",
+                    "adult": "50",
+                    "infant": null,
+                    "child": null
+                },
+                {
+                    "jcp": "0",
+                    "gmp": "0",
+                    "type": "yq",
+                    "adult": "0",
+                    "infant": null,
+                    "child": null
+                }
+            ],
+            "wPrice": 0
+        },
+        {
+            "arr": "CTU",
+            "date": "2020-09-24",
+            "fRemainSeats": null,
+            "jPrice": 0,
+            "yRemainSeats": null,
+            "wRemainSeats": null,
+            "arrCity": "CTU",
+            "yPrice": 0,
+            "depCity": "BJS",
+            "channel": "B2CPC1",
+            "remainSeats": "&gt;9",
+            "fPrice": -1,
+            "dep": "PEK",
+            "regionCode": null,
+            "price": 500,
+            "interval": "",
+            "displayTaxTotal": null,
+            "jRemainSeats": null,
+            "region": null,
+            "taxs": [
+                {
+                    "jcp": null,
+                    "gmp": null,
+                    "type": "airportTax",
+                    "adult": "50",
+                    "infant": null,
+                    "child": null
+                },
+                {
+                    "jcp": "0",
+                    "gmp": "0",
+                    "type": "yq",
+                    "adult": "0",
+                    "infant": null,
+                    "child": null
+                }
+            ],
+            "wPrice": 0
+        },
+        {
+            "arr": "CTU",
+            "date": "2020-09-23",
+            "fRemainSeats": null,
+            "jPrice": 0,
+            "yRemainSeats": null,
+            "wRemainSeats": null,
+            "arrCity": "CTU",
+            "yPrice": 0,
+            "depCity": "BJS",
+            "channel": "B2CPC1",
+            "remainSeats": "&gt;9",
+            "fPrice": -1,
+            "dep": "PEK",
+            "regionCode": null,
+            "price": 280,
+            "interval": "",
+            "displayTaxTotal": null,
+            "jRemainSeats": null,
+            "region": null,
+            "taxs": [
+                {
+                    "jcp": null,
+                    "gmp": null,
+                    "type": "airportTax",
+                    "adult": "50",
+                    "infant": null,
+                    "child": null
+                },
+                {
+                    "jcp": "0",
+                    "gmp": "0",
+                    "type": "yq",
+                    "adult": "0",
+                    "infant": null,
+                    "child": null
+                }
+            ],
+            "wPrice": 0
+        },
+        {
+            "arr": "CTU",
+            "date": "2020-09-26",
+            "fRemainSeats": null,
+            "jPrice": 0,
+            "yRemainSeats": null,
+            "wRemainSeats": null,
+            "arrCity": "CTU",
+            "yPrice": 0,
+            "depCity": "BJS",
+            "channel": "B2CPC1",
+            "remainSeats": "&gt;9",
+            "fPrice": -1,
+            "dep": "PEK",
+            "regionCode": null,
+            "price": 1090,
+            "interval": "",
+            "displayTaxTotal": null,
+            "jRemainSeats": null,
+            "region": null,
+            "taxs": [
+                {
+                    "jcp": null,
+                    "gmp": null,
+                    "type": "airportTax",
+                    "adult": "50",
+                    "infant": null,
+                    "child": null
+                },
+                {
+                    "jcp": "0",
+                    "gmp": "0",
+                    "type": "yq",
+                    "adult": "0",
+                    "infant": null,
+                    "child": null
+                }
+            ],
+            "wPrice": 0
+        },
+        {
+            "arr": "CTU",
+            "date": "2020-09-27",
+            "fRemainSeats": null,
+            "jPrice": 0,
+            "yRemainSeats": null,
+            "wRemainSeats": null,
+            "arrCity": "CTU",
+            "yPrice": 0,
+            "depCity": "BJS",
+            "channel": "B2CPC1",
+            "remainSeats": "&gt;9",
+            "fPrice": -1,
+            "dep": "PEK",
+            "regionCode": null,
+            "price": 1090,
+            "interval": "",
+            "displayTaxTotal": null,
+            "jRemainSeats": null,
+            "region": null,
+            "taxs": [
+                {
+                    "jcp": null,
+                    "gmp": null,
+                    "type": "airportTax",
+                    "adult": "50",
+                    "infant": null,
+                    "child": null
+                },
+                {
+                    "jcp": "0",
+                    "gmp": "0",
+                    "type": "yq",
+                    "adult": "0",
+                    "infant": null,
+                    "child": null
+                }
+            ],
+            "wPrice": 0
+        }
+    ],
+    "version": "",
+    "server": ""
+}
