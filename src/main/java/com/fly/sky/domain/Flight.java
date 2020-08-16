@@ -40,4 +40,8 @@ public class Flight {
     private Date createTime;
     @ApiModelProperty("航班状态:0有效 1 无效")
     private Integer status;
+    @ApiModelProperty("出发机场")
+    private String airportNameStart;
+    @ApiModelProperty("到达机场")
+    private String airportNameEnd;
 }

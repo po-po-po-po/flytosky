@@ -41,5 +41,9 @@ public class FlightCondition extends PagedCondition{
     private String airlinesSelectId;
     @ApiModelProperty("排序：1从早到晚 2从晚到早")
     private Integer sortId;
+    @ApiModelProperty("出发机场")
+    private String airportNameStart;
+    @ApiModelProperty("到达机场")
+    private String airportNameEnd;
 
 }

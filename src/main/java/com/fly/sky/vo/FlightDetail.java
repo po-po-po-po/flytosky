@@ -43,5 +43,8 @@ public class FlightDetail {
     private String airlinesImg;
     @ApiModelProperty("航空公司名称")
     private String airlinesAbbreviate;
-
+    @ApiModelProperty("出发机场")
+    private String airportNameStart;
+    @ApiModelProperty("到达机场")
+    private String airportNameEnd;
 }

@@ -32,4 +32,5 @@ public interface FlightRepository {
     void updateFlightFrequencyIp(String flightNo);
     void deleteFlightByFlightNo(String flightNo);
     void insertFlight(Flight flight);
+    void updateAirportNameStartAndEnd(Flight flight);
 }

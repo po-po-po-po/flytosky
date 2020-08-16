@@ -14,6 +14,8 @@
         <result column="status" jdbcType="INTEGER" property="status" />
         <result column="flight_frequency" jdbcType="VARCHAR" property="flightRequency" />
         <result column="flight_remark" jdbcType="VARCHAR" property="flightRemark" />
+        <result column="airport_name_start" jdbcType="VARCHAR" property="airportNameStart" />
+        <result column="airport_name_end" jdbcType="VARCHAR" property="airportNameEnd" />
     </resultMap>
 
     <select id="findFlightsByCondition"
@@ -255,12 +257,22 @@
   </delete>
 
     <insert id="insertFlight" parameterType="com.fly.sky.domain.Flight" >
-   insert into flight(flight_no, flight_name_start,flight_name_end,
-    airlines_code,flight_date,flight_frequency,status,create_time)
-    values(
-    #{flightNo}, #{flightNameStart}, #{flightNameEnd},
-    #{airlinesCode}, #{flightDate}, #{flightRequency},1,sysdate()
-    )
-</insert>
+       insert into flight(flight_no, flight_name_start,flight_name_end,
+        airlines_code,flight_date,flight_frequency,status,create_time)
+        values(
+        #{flightNo}, #{flightNameStart}, #{flightNameEnd},
+        #{airlinesCode}, #{flightDate}, #{flightRequency},1,sysdate()
+        )
+    </insert>
+
+
+    <update id="updateAirportNameStartAndEnd"  parameterType="com.fly.sky.domain.Flight">
+    update Flight set
+    airport_name_start= #{airportNameStart},
+    airport_name_end= #{airportNameEnd},
+    status=1
+    where
+    id=#{id}
+  </update>
 
 </mapper>
