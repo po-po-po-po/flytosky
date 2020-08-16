@@ -118,7 +118,7 @@
 
     <select id="findFlightsGroupByFlightNameStart"
             resultType="com.fly.sky.vo.AirportVo">
-      select  flight.flight_name_start as airportAbbreviate,
+      select  flight.airport_name_start as airportAbbreviate,
         count(*) as airportFlightNum
         from flight
         where flight.status=0
@@ -267,7 +267,7 @@
 
 
     <update id="updateAirportNameStartAndEnd"  parameterType="com.fly.sky.domain.Flight">
-    update Flight set
+    update Flight setfindFlightsGroupByFlightNameStart
     airport_name_start= #{airportNameStart},
     airport_name_end= #{airportNameEnd},
     status=1
