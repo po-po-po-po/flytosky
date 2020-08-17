@@ -13,6 +13,7 @@ import com.fly.sky.util.PagedList;
 import com.fly.sky.util.ResponseResult;
 import com.fly.sky.vo.AirlinesDetail;
 import com.fly.sky.vo.AirportDetail;
+import com.fly.sky.vo.WechaIndexAirlines;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -25,6 +26,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Auther wangzekun
@@ -40,6 +42,19 @@ public class AirlinesController {
 
     @Resource
     private AirlinesService airlinesService;
+
+
+    @PostMapping("wechatIndexAirlines")
+    @ApiOperation(value = "小程序首页航司信息列表 ", notes = "小程序首页航司信息列表")
+    public ResponseResult<Map<String, WechaIndexAirlines>> wechatIndexAirlines(@RequestBody AirlineCondition condition){
+        String logTitle = "=小程序首页航司信息列表=";
+        log.info("{} - 参数：wechatIndexAirlines={}", logTitle, JsonUtil.toJSONString(condition));
+        ResponseResult<Map<String, WechaIndexAirlines>> responseResult = new ResponseResult<>();
+        responseResult.setData(airlinesService.wechatIndexAirlines(condition));
+        return responseResult;
+    }
+
+
 
     @PostMapping("findAllAirlines")
     @ApiOperation(value = "查询航司列表", notes = "查询航司列表")
