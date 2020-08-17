@@ -7,11 +7,20 @@
         <result column="arr_code" jdbcType="VARCHAR" property="arrCode" />
         <result column="status" jdbcType="INTEGER" property="status" />
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="describle" jdbcType="VARCHAR" property="desc" />
     </resultMap>
 
-    <select id="findAirportCode" resultType="com.fly.sky.domain.AirportCode">
+    <select id="findAirportCode"  parameterType="com.fly.sky.domain.AirportCode" resultType="com.fly.sky.domain.AirportCode">
         select dept_code AS  deptCode ,arr_code AS arrCode,
         status,create_time AS createTime from airport_code where status=0
+
+        <if test="deptCode != null  and deptCode != '' ">
+            AND dept_code = #{deptCode,jdbcType=VARCHAR}
+        </if>
+
+        <if test="arrCode != null  and arrCode != '' ">
+            AND arr_code  = #{arrCode,jdbcType=VARCHAR}
+        </if>
     </select>
 
 
@@ -25,9 +34,10 @@
     <update id="updateAirportCode"  parameterType="com.fly.sky.domain.AirportCode">
     update airport_code set
     status=1,
-    create_time=sysdate()
+    create_time=sysdate(),
+    describle= #{desc,jdbcType=VARCHAR}
     where
-    dept_code= #{deptCode},
+    dept_code= #{deptCode} and
     arr_code= #{arrCode}
   </update>
 

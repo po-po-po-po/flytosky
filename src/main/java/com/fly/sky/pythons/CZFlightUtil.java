@@ -5,7 +5,9 @@ import com.alibaba.fastjson.JSONObject;
 import com.fly.sky.AirportApplication;
 import com.fly.sky.condition.AirportCondition;
 import com.fly.sky.domain.Airport;
+import com.fly.sky.domain.AirportCode;
 import com.fly.sky.domain.Flight;
+import com.fly.sky.repository.AirportCodeRepository;
 import com.fly.sky.repository.AirportRepository;
 import com.fly.sky.repository.FlightRepository;
 import com.fly.sky.scrable.domain.cz.CZData1;
@@ -17,6 +19,7 @@ import com.fly.sky.scrable.domain.cz.CZParam;
 import com.fly.sky.util.RegexUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.stereotype.Service;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -31,7 +34,7 @@ import java.util.List;
  *
  */
 
-//@Service
+@Service
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes={AirportApplication.class})// 指定启动类
 @Slf4j
@@ -43,34 +46,42 @@ public class CZFlightUtil {
 
     @Autowired
     private AirportRepository airportRepository;
-
+    @Autowired
+    private AirportCodeRepository airportCodeRepository;
 
     @Test
     @Rollback(false)
-    public  void  testScrableCZ() throws Exception {
+    public  void  scrableCZ() throws InterruptedException {
         //抓取CZ地址
         String url="https://b2c.csair.com/portal/flight/direct/query";
         //获取机场列表
-        List<Airport> airportsList1=airportRepository.findAirportsByCondition(new AirportCondition());
-        List<Airport> airportsList2=airportRepository.findAirportsByCondition(new AirportCondition());
-        for (Airport airport : airportsList1) {
-            for (Airport airport1 : airportsList2) {
-                if (!airport.getAirportCode().equals(airport1.getAirportCode())) {
+        AirportCode airportCode=new AirportCode();
+        //airportCode.setDeptCode("PEK");
+        List<AirportCode> airportsList=airportCodeRepository.findAirportCode(airportCode);
+            for (AirportCode airport1 : airportsList) {
+                //每请求一次休息5秒
+                    Thread.currentThread().sleep(5000);
                     //请求的参数是：
-                    CZParam CZParam = new CZParam(airport.getAirportCode(), airport1.getAirportCode(), "20201001");
+                    CZParam CZParam = new CZParam(airport1.getDeptCode(), airport1.getArrCode(), "20201001");
                     String jsonCZ = JSONObject.toJSONString(CZParam);
                     log.info("爬取南航网站请求的参数是：" + jsonCZ);
                     //利用ip代理访问 获取代理ip和端口
-                    String ipAndPort[] = IpPortUtil.getIpAndPort();
-                    String content = HttpRequestUtils.sendPost(ipAndPort[0], ipAndPort[1], url, jsonCZ);
+                   // String ipAndPort[] = IpPortUtil.getIpAndPort();
+                    String ipAndPort[] = {"49.232.228.221", "9998"};
+                    if(ipAndPort!=null){
+                    //String content = HttpRequestUtils.sendPost(ipAndPort[0], ipAndPort[1], url, jsonCZ,0);
+                      String content = HttpRequestUtils.sendPost(ipAndPort[0], ipAndPort[1],url, jsonCZ,1);
                     //解析爬取南航的数据
                     CZData1 cZData1 = new JSONObject().parseObject(content, CZData1.class);
                     System.out.println(cZData1);
                     if (null == cZData1.getData()) {
-                        log.info("从机场" + airport.getAirportCode()+"到机场" +airport1.getAirportCode()+"没有爬取到数据");
+                        airport1.setDesc("没有航班信息爬取不到数据");
+                        log.info("从机场三字码" + airport1.getDeptCode()+"到机场三字码" +airport1.getArrCode()+"没有爬取到数据");
                     } else {
+                        log.info("从机场三字码" + airport1.getDeptCode()+"到机场三字码" +airport1.getArrCode()+"成功爬取到数据");
                         List<CZData5> list = cZData1.getData().getSegment().get(0).getDateFlight().getFlight();
                         log.info("爬取到的南航数据是：" + list);
+                        airport1.setDesc("成功爬取到数据");
                         //进行组装数据
                         for (CZData5 czData5 : list) {
                             if (!czData5.isCodeShare()) {
@@ -86,8 +97,10 @@ public class CZFlightUtil {
                                 flight.setFlightDate(flightDate.toString());
                                 flight.setAirportNameStartCode(czData5.getDepPort());
                                 flight.setAirportNameEndCode(czData5.getArrPort());
-                                flight.setFlightRemark("(经停" + czData5.getStopNameZh().trim() + ")");
-                                flight.setFlightRequency("(经停" + czData5.getStopNameZh() + ")");
+                                if(!"无".equals(czData5.getStopNameZh().trim())){
+                                    flight.setFlightRemark("(经停" + czData5.getStopNameZh().trim() + ")");
+                                    flight.setFlightRequency("(经停" + czData5.getStopNameZh().trim() + ")");
+                                }
                                 //根据机场code查询机场数据
                                 Airport arr = airportRepository.findAirportByCode(czData5.getArrPort());
                                 Airport dep = airportRepository.findAirportByCode(czData5.getDepPort());
@@ -99,10 +112,14 @@ public class CZFlightUtil {
                                 flightRepository.insertFlight(flight);
                             }
                         }
+                      }
+                    }else{
+                        airport1.setDesc("端口链接失败没有爬取到数据");
                     }
-                }
+                    //爬取完数据 需要改变状态
+                log.info("爬取完数据 需要改变状态 改变的数据是：" + airport1);
+                airportCodeRepository.updateAirportCode(airport1);
             }
-        }
     }
 
 

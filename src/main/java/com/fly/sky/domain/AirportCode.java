@@ -25,4 +25,6 @@ public class AirportCode {
     private String status;
     @ApiModelProperty("创建时间")
     private Date  createTime;
+    @ApiModelProperty("说明")
+    private String desc;
 }

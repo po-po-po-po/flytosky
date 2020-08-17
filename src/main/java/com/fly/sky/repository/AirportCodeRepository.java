@@ -17,7 +17,8 @@ import java.util.List;
 
 public interface AirportCodeRepository {
 
-    List<AirportCode> findAirportCode(String deptCode,String arrCode);
+    List<AirportCode> findAirportCode(AirportCode airportCode);
+
 
     void insertAirportCode(AirportCode airportCode);
 

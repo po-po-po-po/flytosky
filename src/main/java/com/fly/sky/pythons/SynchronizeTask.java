@@ -25,8 +25,8 @@ public class SynchronizeTask{
     @Autowired
     FlightService flightService;
 
-   // @Autowired
-   // CZFlightUtil cZFlightUtil;
+    @Autowired
+    CZFlightUtil cZFlightUtil;
 
     //3.添加定时任务
     @Scheduled(cron = "0/15 * * * * ?")
@@ -36,7 +36,7 @@ public class SynchronizeTask{
         FlightCondition condition=new FlightCondition();
         try {
             //flightService.synchronizeFeiChangzhunFlight(condition);
-            //cZFlightUtil.scrableCZ();
+            cZFlightUtil.scrableCZ();
         } catch (Exception e) {
             e.printStackTrace();
         }

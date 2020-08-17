@@ -7,6 +7,7 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.util.EntityUtils;
 
 import java.io.BufferedReader;
@@ -23,6 +24,8 @@ import java.net.URLConnection;
  * version: 1.0
  */
 public class HttpRequestUtils {
+
+
 
     public static String sendGet(String flightNumber,String ip,Integer port)throws Exception{
         String content="";
@@ -57,10 +60,12 @@ public class HttpRequestUtils {
      *            请求参数，请求参数应该是 name1=value1&name2=value2 的形式。
      * @return 所代表远程资源的响应结果
      */
-    public static String sendPost(String ip,String port,String url, String param) {
-        //设置代理
-        System.getProperties().setProperty("http.proxyHost", ip);
-        System.getProperties().setProperty("http.proxyPort", port);
+    public static String sendPost(String ip,String port,String url, String param,Integer flag) {
+        if(flag==0){
+            //设置代理
+            System.getProperties().setProperty("http.proxyHost", ip);
+            System.getProperties().setProperty("http.proxyPort", port);
+        }
         PrintWriter out = null;
         BufferedReader in = null;
         String result = "";
@@ -127,4 +132,8 @@ public class HttpRequestUtils {
         httpGet.setConfig(requestConfig);
         return httpClient;
     }
+
+
+
+
 }

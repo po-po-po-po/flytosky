@@ -52,9 +52,14 @@ public class IpPortUtil {
         }catch(Exception e){
             e.printStackTrace();
         }
-        String[] split = returnString.split(":");
-        log.info("获取的代理IP："+split[0]+"，端口号："+split[1]);
-        return split;
+        log.info("获取的代理初始："+returnString);
+        if(returnString.contains(":")){
+            String[] split = returnString.split(":");
+            log.info("获取的代理IP："+split[0]+"，端口号："+split[1]);
+            return split;
+        }else{
+            return null;
+        }
     }
 
 
