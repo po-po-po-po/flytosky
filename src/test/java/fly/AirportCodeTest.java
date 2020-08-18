@@ -49,11 +49,16 @@ public class AirportCodeTest {
         List<Airport> airportsList2=airportRepository.findAirportsByCondition(new AirportCondition());
         for (Airport airport : airportsList1) {
             for (Airport airport1 : airportsList2) {
-                AirportCode airportCode=new AirportCode();
-                airportCode.setDeptCode(airport.getAirportCode());
-                airportCode.setArrCode(airport1.getAirportCode());
-                log.info("插入机场code："+airportCode);
-                airportCodeRepository.insertAirportCode(airportCode);
+                if(null!=airport.getAirportCode()&&
+                        null!=airport1.getAirportCode()&&
+                        !airport.getAirportCode().equals(airport1.getAirportCode())){
+                    AirportCode airportCode=new AirportCode();
+                    airportCode.setDeptCode(airport.getAirportCode());
+                    airportCode.setArrCode(airport1.getAirportCode());
+                    log.info("插入机场code："+airportCode);
+                    airportCodeRepository.insertAirportCode(airportCode);
+                }
+
             }
         }
         //List<AirportCode> LIST= airportCodeRepository.findAirportCode("SA","SA");
