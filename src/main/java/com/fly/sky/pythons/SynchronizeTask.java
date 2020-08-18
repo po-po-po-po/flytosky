@@ -28,6 +28,9 @@ public class SynchronizeTask{
     @Autowired
     CZFlightUtil cZFlightUtil;
 
+    @Autowired
+    HOFlightUtil hOFlightUtil;
+
     //3.添加定时任务
     @Scheduled(cron = "0/15 * * * * ?")
     //或直接指定时间间隔，例如：40秒
@@ -36,7 +39,8 @@ public class SynchronizeTask{
         FlightCondition condition=new FlightCondition();
         try {
             //flightService.synchronizeFeiChangzhunFlight(condition);
-            cZFlightUtil.scrableCZ();
+            //CZFlightUtil.scrableCZ();
+            hOFlightUtil.scrableHO();
         } catch (Exception e) {
             e.printStackTrace();
         }

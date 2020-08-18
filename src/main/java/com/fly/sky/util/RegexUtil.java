@@ -1,5 +1,8 @@
 package com.fly.sky.util;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * description: RegexUtil
  * date: 2020/8/16 9:28
@@ -53,5 +56,36 @@ public class RegexUtil {
     public static String filterAlphabetAndNumber(String character) {
         character = character.replaceAll("[^(a-zA-Z0-9)]", "");
         return character;
+    }
+
+
+    /**
+     * 判断是否乱码
+     * @param strName
+     * @return
+     */
+    public static boolean isMessyCode(String strName) {
+        try {
+            Pattern p = Pattern.compile("\\s*|\t*|\r*|\n*");
+            Matcher m = p.matcher(strName);
+            String after = m.replaceAll("");
+            String temp = after.replaceAll("\\p{P}", "");
+            char[] ch = temp.trim().toCharArray();
+
+            int length = (ch != null) ? ch.length : 0;
+            for (int i = 0; i < length; i++) {
+                char c = ch[i];
+                if (!Character.isLetterOrDigit(c)) {
+                    String str = "" + ch[i];
+                    if (!str.matches("[\u4e00-\u9fa5]+")) {
+                        return true;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return false;
     }
 }

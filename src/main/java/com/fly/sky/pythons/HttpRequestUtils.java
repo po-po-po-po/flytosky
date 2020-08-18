@@ -9,6 +9,7 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.util.EntityUtils;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,7 +24,13 @@ import java.net.URLConnection;
  * author: wangzekun
  * version: 1.0
  */
+
+@Component
 public class HttpRequestUtils {
+
+
+    private PoolingHttpClientConnectionManager poolingHttpClientConnectionManager;
+
 
 
 
@@ -47,6 +54,32 @@ public class HttpRequestUtils {
         response.close();
         //关闭httpClient
         client.close();
+        return content;
+    }
+
+
+    public String sendGetNoProxy(String ip, String port, String url)throws Exception{
+        //获取httpclient对象
+        CloseableHttpClient closeableHttpClient = HttpClients.custom().setConnectionManager(this.poolingHttpClientConnectionManager).build();
+        //创建http get请求对象 设置url地址
+        HttpGet httpGet=new HttpGet(url);
+        //发起请求 获取响应
+        CloseableHttpResponse response =null;
+        //设置请求头消息
+        httpGet.setHeader("User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36");
+        response = closeableHttpClient.execute(httpGet);
+        String content = "";
+        // 获取返回实体
+        if (response != null){
+            HttpEntity entity = response.getEntity();
+            if (entity != null){
+                content= EntityUtils.toString(entity,"utf-8");
+            }
+        }
+        //关闭response
+        response.close();
+        //关闭httpClient
+        closeableHttpClient.close();
         return content;
     }
 
