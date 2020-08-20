@@ -60,7 +60,7 @@ public class HOFlightUtil {
     @Rollback(false)
     public  void  scrableHO() throws InterruptedException {
         //抓取HO地址
-        StringBuffer url=new StringBuffer("http://www.juneyaoair.com/UnitOrderWebAPI/Book/QueryFlightFareNew?flightType=OW&tripType=D&directType=D&departureDate=2020-09-09");
+        StringBuffer url=new StringBuffer("http://www.juneyaoair.com/UnitOrderWebAPI/Book/QueryFlightFareNew?flightType=OW&tripType=D&directType=D&departureDate=2020-09-13");
         //获取机场列表
         AirportCode airportCode=new AirportCode();
         List<AirportCode> airportsList=airportCodeRepository.findAirportCode(airportCode);
