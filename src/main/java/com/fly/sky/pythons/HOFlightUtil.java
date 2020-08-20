@@ -58,7 +58,7 @@ public class HOFlightUtil {
 
     @Test
     @Rollback(false)
-    public  void  scrableHO() {
+    public  void  scrableHO() throws InterruptedException {
         //抓取HO地址
         StringBuffer url=new StringBuffer("http://www.juneyaoair.com/UnitOrderWebAPI/Book/QueryFlightFareNew?flightType=OW&tripType=D&directType=D&departureDate=2020-09-09");
         //获取机场列表
@@ -66,6 +66,7 @@ public class HOFlightUtil {
         List<AirportCode> airportsList=airportCodeRepository.findAirportCode(airportCode);
             for (AirportCode airport1 : airportsList) {
                 //每请求一次休息5秒
+                Thread.currentThread().sleep(5000);
                     //请求的参数是：
                     //HOParam hoParam = new HOParam(airport1.getDeptCode(), airport1.getArrCode(), "2020-10-01");
                     //String jsonHO = JSONObject.toJSONString(hoParam);
