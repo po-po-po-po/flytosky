@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     password: 123456
-    url: jdbc:mysql://49.232.228.221:3306/dev?serverTimezone=GMT&useSSL=false
+    url: jdbc:mysql://49.232.228.221:3306/po_flysky?serverTimezone=GMT&useSSL=false
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 

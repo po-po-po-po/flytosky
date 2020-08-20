@@ -64,7 +64,7 @@ public class AirwayUtil {
                 airwayRepository.insertAirway(airway1y);
                 log.info("。。。。。。。。。。插入航线。。。。。。。。。。。。。"+airway1y);
             }
-            log.info("。。。。。。。。。。有此航线不需要插入数据。。。。。。。。。。。。。");
+            //log.info("。。。。。。。。。。有此航线不需要插入数据。。。。。。。。。。。。。");
         }
         //flightList
 
