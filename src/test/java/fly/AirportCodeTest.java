@@ -46,6 +46,25 @@ public class AirportCodeTest {
     public void test() throws Exception {
         //获取机场列表
         List<Airport> airportsList1=airportRepository.findAirportsByCondition(new AirportCondition());
+        for (Airport airport : airportsList1) {
+                if(null!=airport.getAirportCode()&&
+                        !"XIA".equals(airport.getAirportCode())){
+                    AirportCode airportCode=new AirportCode();
+                    airportCode.setArrCode("XIA");
+                    airportCode.setDeptCode(airport.getAirportCode());
+                    log.info("插入机场code："+airportCode);
+                    airportCodeRepository.insertAirportCode(airportCode);
+
+            }
+        }
+    }
+
+
+    @Test
+    @Rollback(false)
+    public void test1() throws Exception {
+        //获取机场列表
+        List<Airport> airportsList1=airportRepository.findAirportsByCondition(new AirportCondition());
         List<Airport> airportsList2=airportRepository.findAirportsByCondition(new AirportCondition());
         for (Airport airport : airportsList1) {
             for (Airport airport1 : airportsList2) {
