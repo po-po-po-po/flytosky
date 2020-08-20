@@ -19,8 +19,8 @@ import java.util.TimerTask;
  * author: wangzekun
  * version: 1.0
  */
-//@Configuration      //1.主要用于标记配置类，兼备Component的效果。
-//@EnableScheduling   // 2.开启定时任务
+@Configuration      //1.主要用于标记配置类，兼备Component的效果。
+@EnableScheduling   // 2.开启定时任务
 public class SynchronizeTask{
     @Autowired
     FlightService flightService;
@@ -31,6 +31,9 @@ public class SynchronizeTask{
     @Autowired
     HOFlightUtil hOFlightUtil;
 
+    @Autowired
+    MUFlightUtil muFlightUtil;
+
 
 
     //3.添加定时任务
@@ -38,11 +41,13 @@ public class SynchronizeTask{
     //或直接指定时间间隔，例如：40秒
     private void configureTasks() {
         System.err.println("执行静态定时任务时间: " + LocalDateTime.now());
-        FlightCondition condition=new FlightCondition();
+
         try {
+            // FlightCondition condition=new FlightCondition();
             //flightService.synchronizeFeiChangzhunFlight(condition);
-            cZFlightUtil.scrableCZ();
+            //cZFlightUtil.scrableCZ();
             //hOFlightUtil.scrableHO();
+            muFlightUtil.scrableMU();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -5,18 +5,29 @@ import org.apache.http.HttpHost;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.config.Registry;
+import org.apache.http.config.RegistryBuilder;
+import org.apache.http.conn.socket.ConnectionSocketFactory;
+import org.apache.http.conn.socket.PlainConnectionSocketFactory;
+import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.util.EntityUtils;
 import org.springframework.stereotype.Component;
 
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.X509TrustManager;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.net.URLConnection;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.CertificateException;
 
 /**
  * description: HttpRequestUtils
@@ -66,7 +77,7 @@ public class HttpRequestUtils {
         //发起请求 获取响应
         CloseableHttpResponse response =null;
         //设置请求头消息
-        httpGet.setHeader("User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36");
+        httpGet.setHeader("User-Agent","Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4168.2 Safari/537.36");
         response = closeableHttpClient.execute(httpGet);
         String content = "";
         // 获取返回实体
@@ -148,6 +159,45 @@ public class HttpRequestUtils {
         return result;
     }
 
+
+    public String sendGetNoProxyNoSSL(String ip, String port, String url)throws Exception {
+        String body = "";
+        //采用绕过验证的方式处理https请求
+        SSLContext sslcontext = createIgnoreVerifySSL();
+        //设置协议http和https对应的处理socket链接工厂的对象
+        Registry<ConnectionSocketFactory> socketFactoryRegistry = RegistryBuilder.<ConnectionSocketFactory>create()
+                .register("http", PlainConnectionSocketFactory.INSTANCE)
+                .register("https", new SSLConnectionSocketFactory(sslcontext))
+                .build();
+        PoolingHttpClientConnectionManager connManager = new PoolingHttpClientConnectionManager(socketFactoryRegistry);
+        HttpClients.custom().setConnectionManager(connManager);
+        //创建自定义的httpclient对象
+        CloseableHttpClient client = HttpClients.custom().setConnectionManager(connManager).build();
+        try {
+            //创建get方式请求对象
+            HttpGet get = new HttpGet(url);
+            //指定报文头Content-type、User-Agent
+            get.setHeader("Content-type", "application/x-www-form-urlencoded");
+            get.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 6.1; rv:6.0.2) Gecko/20100101 Firefox/6.0.2");
+            //执行请求操作，并拿到结果（同步阻塞）
+            CloseableHttpResponse response = client.execute(get);
+            //获取结果实体
+            HttpEntity entity = response.getEntity();
+            if (entity != null) {
+                //按指定编码转换结果实体为String类型
+                body = EntityUtils.toString(entity, "UTF-8");
+            }
+
+            EntityUtils.consume(entity);
+            //释放链接
+            response.close();
+            System.out.println("body:" + body);
+        } finally {
+            client.close();
+        }
+        return body;
+    }
+
     /**
      * 设置代理get
      * @param httpGet
@@ -167,6 +217,32 @@ public class HttpRequestUtils {
     }
 
 
-
+    /**
+     * 绕过SSL验证
+     *
+     * @return
+     */
+    public  SSLContext createIgnoreVerifySSL() throws NoSuchAlgorithmException, KeyManagementException {
+        SSLContext sc = SSLContext.getInstance("SSLv3");
+        // 实现一个X509TrustManager接口，用于绕过验证，不用修改里面的方法
+        X509TrustManager trustManager = new X509TrustManager() {
+            @Override
+            public void checkClientTrusted(
+                    java.security.cert.X509Certificate[] paramArrayOfX509Certificate,
+                    String paramString) throws CertificateException {
+            }
+            @Override
+            public void checkServerTrusted(
+                    java.security.cert.X509Certificate[] paramArrayOfX509Certificate,
+                    String paramString) throws CertificateException {
+            }
+            @Override
+            public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                return null;
+            }
+        };
+        sc.init(null, new TrustManager[] { trustManager }, null);
+        return sc;
+    }
 
 }
