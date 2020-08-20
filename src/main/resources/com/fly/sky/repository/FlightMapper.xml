@@ -290,4 +290,13 @@
     id=#{id}
   </update>
 
+
+    <select id="findFlightsGroupByAirportNameAndAirportNameEnd"
+            resultType="com.fly.sky.domain.Flight">
+      select airport_name_start as airportNameStart, airport_name_end as airportNameEnd
+      from flight
+      group by airport_name_start, airport_name_end
+     </select>
+
+
 </mapper>

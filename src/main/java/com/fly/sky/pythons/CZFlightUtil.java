@@ -62,7 +62,7 @@ public class CZFlightUtil {
                 //每请求一次休息5秒
                     Thread.currentThread().sleep(5000);
                     //请求的参数是：
-                    CZParam CZParam = new CZParam(airport1.getDeptCode(), airport1.getArrCode(), "20201001");
+                    CZParam CZParam = new CZParam(airport1.getDeptCode(), airport1.getArrCode(), "20200911");
                     String jsonCZ = JSONObject.toJSONString(CZParam);
                     log.info("爬取南航网站请求的参数是：" + jsonCZ);
                     //利用ip代理访问 获取代理ip和端口
@@ -81,7 +81,7 @@ public class CZFlightUtil {
                         log.info("从机场三字码" + airport1.getDeptCode()+"到机场三字码" +airport1.getArrCode()+"成功爬取到数据");
                         List<CZData5> list = cZData1.getData().getSegment().get(0).getDateFlight().getFlight();
                         log.info("爬取到的南航数据是：" + list);
-                        airport1.setDesc("成功爬取到数据");
+                        airport1.setDesc("再次成功爬取到数据");
                         //进行组装数据
                         for (CZData5 czData5 : list) {
                             if (!czData5.isCodeShare()) {

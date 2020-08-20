@@ -25,4 +25,6 @@ public interface AirwayRepository {
     List<Airway> findAirwaysForAirwayName(AirwayCondition condition);
 
     void updateAirwayForAirwayName(AirwayCondition condition);
+    void insertAirway(Airway airway);
+
 }
