@@ -36,7 +36,6 @@ import java.util.List;
  *
  */
 
-@Service
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes={AirportApplication.class})// 指定启动类
 @Slf4j
