@@ -33,7 +33,7 @@
 
     <update id="updateAirportCode"  parameterType="com.fly.sky.domain.AirportCode">
     update airport_code set
-    status=1,
+    status=#{status,jdbcType=VARCHAR},
     create_time=sysdate(),
     describle= #{desc,jdbcType=VARCHAR}
     where

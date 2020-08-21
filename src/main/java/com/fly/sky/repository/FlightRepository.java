@@ -34,4 +34,5 @@ public interface FlightRepository {
     void insertFlight(Flight flight);
     void updateAirportNameStartAndEnd(Flight flight);
     List<Flight> findFlightsGroupByAirportNameAndAirportNameEnd();
+    int findFlightNoRepeat(String flightNo);
 }

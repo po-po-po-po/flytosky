@@ -48,10 +48,12 @@ public class AirportCodeTest {
         List<Airport> airportsList1=airportRepository.findAirportsByCondition(new AirportCondition());
         for (Airport airport : airportsList1) {
                 if(null!=airport.getAirportCode()&&
-                        !"XIA".equals(airport.getAirportCode())){
+                        !"PVG".equals(airport.getAirportCode())){
                     AirportCode airportCode=new AirportCode();
-                    airportCode.setArrCode("XIA");
-                    airportCode.setDeptCode(airport.getAirportCode());
+                    //airportCode.setArrCode("SHA");
+                    //airportCode.setDeptCode(airport.getAirportCode());
+                    airportCode.setDeptCode("PVG");
+                    airportCode.setArrCode(airport.getAirportCode());
                     log.info("插入机场code："+airportCode);
                     airportCodeRepository.insertAirportCode(airportCode);
 

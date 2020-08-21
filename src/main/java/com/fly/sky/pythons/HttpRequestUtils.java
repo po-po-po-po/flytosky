@@ -69,6 +69,30 @@ public class HttpRequestUtils {
     }
 
 
+
+    public static String sendGetProxy(String url,String ip,String port)throws Exception{
+        String content="";
+        // 创建httpget实例
+        HttpGet httpGet = new HttpGet(url);
+        CloseableHttpClient client = setProxy(httpGet, ip, Integer.parseInt(port));
+        //设置请求头消息
+        httpGet.setHeader("User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36");
+        // 执行http get请求  也可以使用psot
+        CloseableHttpResponse response=client.execute(httpGet);
+        // 获取返回实体
+        if (response != null){
+            HttpEntity entity = response.getEntity();
+            if (entity != null){
+                content= EntityUtils.toString(entity,"utf-8");
+            }
+        }
+        //关闭response
+        response.close();
+        //关闭httpClient
+        client.close();
+        return content;
+    }
+
     public String sendGetNoProxy(String ip, String port, String url)throws Exception{
         //获取httpclient对象
         CloseableHttpClient closeableHttpClient = HttpClients.custom().setConnectionManager(this.poolingHttpClientConnectionManager).build();

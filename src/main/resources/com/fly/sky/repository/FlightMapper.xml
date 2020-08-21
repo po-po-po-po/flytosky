@@ -134,6 +134,13 @@
         group by airportAbbreviate
      </select>
 
+    <select id="findFlightNoRepeat">
+      select
+        count(*)
+        from flight
+        where flight.flight_no=#{flightNo,jdbcType=VARCHAR}
+     </select>
+
 
     <select id="findFlightsGroupByFlightNameStartByAirlinesCode"
             resultType="com.fly.sky.domain.Airport">
