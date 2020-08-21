@@ -73,7 +73,7 @@ public class MUFlightUtil {
                 String url="http://www.ceair.com/addservice/flightStatusList.shtml?qType=1&flightTime=2020-09-12&departPort="+airport1.getDeptCode()+"&arrivalPot="+airport1.getArrCode()+"&_="+System.currentTimeMillis();
                     log.info("爬取东航网站请求的地址是：" + url);
                     //需要使用代理
-                //String content =httpRequestUtils.sendGetProxy(url,ipAndPort[0], ipAndPort[1]);
+                // String content =httpRequestUtils.sendGetProxy(url,ipAndPort[0], ipAndPort[1]);
                 String content =httpRequestUtils.sendGetNoProxy("","",url);
                 System.out.println(content);
                 try{
