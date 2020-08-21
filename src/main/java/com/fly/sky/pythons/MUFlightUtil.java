@@ -25,6 +25,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -63,6 +64,7 @@ public class MUFlightUtil {
         //抓取CZ地址
         //获取机场列表
         AirportCode airportCode=new AirportCode();
+        airportCode.setStatus("0");
         List<AirportCode> airportsList=airportCodeRepository.findAirportCode(airportCode);
             for (AirportCode airport1 : airportsList) {
                 //每请求一次休息5秒
@@ -75,38 +77,47 @@ public class MUFlightUtil {
                 String content =httpRequestUtils.sendGetNoProxy("","",url);
                 System.out.println(content);
                 try{
-                    //解析爬取南航的数据
+                    //解析爬取东航的数据
                     MUData1 mUData1 = new JSONObject().parseObject(content, MUData1.class);
-                    if(null!=mUData1.getAocFlightInfo()&&!CollectionUtils.isEmpty(mUData1.getAocFlightInfo().getFlightInfo())){
-                        List<MUData3> mUData3List= mUData1.getAocFlightInfo().getFlightInfo();
-                        for (MUData3 muData3 : mUData3List) {
-                            Flight flight = new Flight();
-                            //根据机场code查询机场数据
-                            Airport dept = airportRepository.findAirportByCode(muData3.getDeptAirport());
-                            Airport arr = airportRepository.findAirportByCode(muData3.getArrAirport());
-                            flight.setAirlinesCode(muData3.getCarrier());
-                            flight.setFlightNo(muData3.getCarrier()+muData3.getFlightNo());
-                            flight.setFlightDate(muData3.getPlanDeptTime().substring(11,16)+"-"+muData3.getPlanArrTime().substring(11,16));
-                            flight.setAirportNameStartCode(muData3.getDeptAirport());
-                            flight.setAirportNameEndCode(muData3.getArrAirport());
-                            flight.setFlightNameEnd(arr.getAirportAbbreviate()+muData3.getARR_TERMINAL());
-                            flight.setFlightNameStart(dept.getAirportAbbreviate()+muData3.getDEPT_TERMINAL());
-                            flight.setAirportNameStart(dept.getAirportAbbreviate());
-                            flight.setAirportNameEnd(arr.getAirportAbbreviate());
-                            log.info("入库数据是：" + flight);
-                            if(flightRepository.findFlightNoRepeat(flight.getFlightNo())>0){
-                                log.info("航班号重复不能入库：" + flight);
-                            }else{
-                                flightRepository.insertFlight(flight);
-                            }
-                        }
-                        airport1.setStatus("1");
-                        log.info("爬取数据成功。。。。。。。：" + airport1);
-                        airport1.setDesc("爬取数据成功");
+                    if(!StringUtils.isEmpty(mUData1.getErrorMsg())){
+                            airport1.setStatus("1");
+                            airport1.setDesc("东航该航线没有航班");
+                            log.info("东航该航线没有航班。。。。。。。：" + airport1);
                     }else{
-                        airport1.setStatus("1");
-                        airport1.setDesc("没有爬取到数据");
-                        log.info("没有爬取到数据。。。。。。。：" + airport1);
+                        if(null!=mUData1.getAocFlightInfo()&&!CollectionUtils.isEmpty(mUData1.getAocFlightInfo().getFlightInfo())){
+                            List<MUData3> mUData3List= mUData1.getAocFlightInfo().getFlightInfo();
+                            for (MUData3 muData3 : mUData3List) {
+                                Flight flight = new Flight();
+                                //根据机场code查询机场数据
+                                Airport dept = airportRepository.findAirportByCode(muData3.getDeptAirport());
+                                Airport arr = airportRepository.findAirportByCode(muData3.getArrAirport());
+                                flight.setAirlinesCode(muData3.getCarrier());
+                                flight.setFlightNo(muData3.getCarrier()+muData3.getFlightNo());
+                                flight.setFlightDate(muData3.getPlanDeptTime().substring(11,16)+"-"+muData3.getPlanArrTime().substring(11,16));
+                                flight.setAirportNameStartCode(muData3.getDeptAirport());
+                                flight.setAirportNameEndCode(muData3.getArrAirport());
+                                flight.setFlightNameEnd(arr.getAirportAbbreviate()+muData3.getARR_TERMINAL());
+                                flight.setFlightNameStart(dept.getAirportAbbreviate()+muData3.getDEPT_TERMINAL());
+                                flight.setAirportNameStart(dept.getAirportAbbreviate());
+                                flight.setAirportNameEnd(arr.getAirportAbbreviate());
+                                log.info("入库数据是：" + flight);
+                              if(muData3.getFlightNo().length()>4) {
+                                  log.info("是空铁联运，不能入库：" + flight);
+                              }else{
+                                  if(null!=flightRepository.findFlightNoRepeat(flight.getFlightNo(),flight.getAirportNameStartCode(),flight.getAirportNameEndCode())){
+                                      log.info("航班号重复不能入库：" + flight);
+                                  } else{
+                                      flightRepository.insertFlight(flight);
+                                  }
+                              }
+                            }
+                            airport1.setStatus("1");
+                            log.info("爬取数据成功。。。。。。。：" + airport1);
+                            airport1.setDesc("爬取数据成功");
+                        }else{
+                            airport1.setDesc("网络错误");
+                            log.info("网络错误需要属刷新验证码没有爬取到数据。。。。。。。：" + airport1);
+                        }
                     }
                 }catch (Exception e){
                     airport1.setDesc("爬取数据失败，继续爬取。。。。。");

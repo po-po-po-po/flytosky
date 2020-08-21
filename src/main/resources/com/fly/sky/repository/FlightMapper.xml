@@ -134,11 +134,15 @@
         group by airportAbbreviate
      </select>
 
-    <select id="findFlightNoRepeat">
+    <select id="findFlightNoRepeat"  resultType="com.fly.sky.domain.Flight">
       select
-        count(*)
+       flight.airport_name_start as flightNameStart ,
+        flight.airport_name_end as flightNameEnd,
+        flight.airlines_code as airlinesCode
         from flight
         where flight.flight_no=#{flightNo,jdbcType=VARCHAR}
+        and flight.airport_name_start_code=#{airportNameStartCode,jdbcType=VARCHAR}
+        AND flight.airport_name_end_code=#{airportNameEndCode,jdbcType=VARCHAR}
      </select>
 
 

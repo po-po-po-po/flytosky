@@ -12,7 +12,11 @@
 
     <select id="findAirportCode"  parameterType="com.fly.sky.domain.AirportCode" resultType="com.fly.sky.domain.AirportCode">
         select dept_code AS  deptCode ,arr_code AS arrCode,
-        status,create_time AS createTime from airport_code where status=0
+        status,create_time AS createTime from airport_code where 1=1
+
+        <if test="status != null  and status != ''  ">
+            AND status = #{status,jdbcType=VARCHAR}
+        </if>
 
         <if test="deptCode != null  and deptCode != '' ">
             AND dept_code = #{deptCode,jdbcType=VARCHAR}

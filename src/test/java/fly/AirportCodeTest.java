@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 
@@ -48,15 +49,18 @@ public class AirportCodeTest {
         List<Airport> airportsList1=airportRepository.findAirportsByCondition(new AirportCondition());
         for (Airport airport : airportsList1) {
                 if(null!=airport.getAirportCode()&&
-                        !"PVG".equals(airport.getAirportCode())){
+                        !"SHA".equals(airport.getAirportCode())){
                     AirportCode airportCode=new AirportCode();
-                    //airportCode.setArrCode("SHA");
-                    //airportCode.setDeptCode(airport.getAirportCode());
-                    airportCode.setDeptCode("PVG");
-                    airportCode.setArrCode(airport.getAirportCode());
+                    airportCode.setArrCode("SHA");
+                    airportCode.setDeptCode(airport.getAirportCode());
+                    //airportCode.setDeptCode("SHA");
+                    //airportCode.setArrCode(airport.getAirportCode());
                     log.info("插入机场code："+airportCode);
-                    airportCodeRepository.insertAirportCode(airportCode);
-
+                    airportCode.setStatus(null);
+                    List<AirportCode> airportCodesList= airportCodeRepository.findAirportCode(airportCode);
+                    if(CollectionUtils.isEmpty(airportCodesList)){
+                        airportCodeRepository.insertAirportCode(airportCode);
+                    }
             }
         }
     }
