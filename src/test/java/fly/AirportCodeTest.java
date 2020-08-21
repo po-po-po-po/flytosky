@@ -49,12 +49,12 @@ public class AirportCodeTest {
         List<Airport> airportsList1=airportRepository.findAirportsByCondition(new AirportCondition());
         for (Airport airport : airportsList1) {
                 if(null!=airport.getAirportCode()&&
-                        !"SHA".equals(airport.getAirportCode())){
+                        !"PEK".equals(airport.getAirportCode())){
                     AirportCode airportCode=new AirportCode();
-                    airportCode.setArrCode("SHA");
-                    airportCode.setDeptCode(airport.getAirportCode());
-                    //airportCode.setDeptCode("SHA");
-                    //airportCode.setArrCode(airport.getAirportCode());
+                    //airportCode.setArrCode("NKG");
+                    //airportCode.setDeptCode(airport.getAirportCode());
+                    airportCode.setDeptCode("PEK");
+                    airportCode.setArrCode(airport.getAirportCode());
                     log.info("插入机场code："+airportCode);
                     airportCode.setStatus(null);
                     List<AirportCode> airportCodesList= airportCodeRepository.findAirportCode(airportCode);
@@ -78,10 +78,15 @@ public class AirportCodeTest {
                         null!=airport1.getAirportCode()&&
                         !airport.getAirportCode().equals(airport1.getAirportCode())){
                     AirportCode airportCode=new AirportCode();
-                    airportCode.setDeptCode(airport.getAirportCode());
-                    airportCode.setArrCode(airport1.getAirportCode());
-                    log.info("插入机场code："+airportCode);
-                    airportCodeRepository.insertAirportCode(airportCode);
+                    airportCode.setDeptCode(airport.getAirportCode().trim());
+                    airportCode.setArrCode(airport1.getAirportCode().trim());
+                    airportCode.setStatus(null);
+                    List<AirportCode> airportCodesList= airportCodeRepository.findAirportCode(airportCode);
+                    if(CollectionUtils.isEmpty(airportCodesList)){
+                        log.info("插入机场code："+airportCode);
+                        airportCodeRepository.insertAirportCode(airportCode);
+                    }
+
                 }
 
             }

@@ -88,22 +88,23 @@ public class MUFlightUtil {
                             List<MUData3> mUData3List= mUData1.getAocFlightInfo().getFlightInfo();
                             for (MUData3 muData3 : mUData3List) {
                                 Flight flight = new Flight();
-                                //根据机场code查询机场数据
-                                Airport dept = airportRepository.findAirportByCode(muData3.getDeptAirport());
-                                Airport arr = airportRepository.findAirportByCode(muData3.getArrAirport());
-                                flight.setAirlinesCode(muData3.getCarrier());
-                                flight.setFlightNo(muData3.getCarrier()+muData3.getFlightNo());
-                                flight.setFlightDate(muData3.getPlanDeptTime().substring(11,16)+"-"+muData3.getPlanArrTime().substring(11,16));
-                                flight.setAirportNameStartCode(muData3.getDeptAirport());
-                                flight.setAirportNameEndCode(muData3.getArrAirport());
-                                flight.setFlightNameEnd(arr.getAirportAbbreviate()+muData3.getARR_TERMINAL());
-                                flight.setFlightNameStart(dept.getAirportAbbreviate()+muData3.getDEPT_TERMINAL());
-                                flight.setAirportNameStart(dept.getAirportAbbreviate());
-                                flight.setAirportNameEnd(arr.getAirportAbbreviate());
-                                log.info("入库数据是：" + flight);
                               if(muData3.getFlightNo().length()>4) {
+                                  airport1.setDesc("东航空铁联运");
                                   log.info("是空铁联运，不能入库：" + flight);
                               }else{
+                                  //根据机场code查询机场数据
+                                  Airport dept = airportRepository.findAirportByCode(muData3.getDeptAirport());
+                                  Airport arr = airportRepository.findAirportByCode(muData3.getArrAirport());
+                                  flight.setAirlinesCode(muData3.getCarrier());
+                                  flight.setFlightNo(muData3.getCarrier()+muData3.getFlightNo());
+                                  flight.setFlightDate(muData3.getPlanDeptTime().substring(11,16)+"-"+muData3.getPlanArrTime().substring(11,16));
+                                  flight.setAirportNameStartCode(muData3.getDeptAirport());
+                                  flight.setAirportNameEndCode(muData3.getArrAirport());
+                                  flight.setFlightNameEnd(arr.getAirportAbbreviate()+muData3.getARR_TERMINAL());
+                                  flight.setFlightNameStart(dept.getAirportAbbreviate()+muData3.getDEPT_TERMINAL());
+                                  flight.setAirportNameStart(dept.getAirportAbbreviate());
+                                  flight.setAirportNameEnd(arr.getAirportAbbreviate());
+                                  log.info("入库数据是：" + flight);
                                   if(null!=flightRepository.findFlightNoRepeat(flight.getFlightNo(),flight.getAirportNameStartCode(),flight.getAirportNameEndCode())){
                                       log.info("航班号重复不能入库：" + flight);
                                   } else{
