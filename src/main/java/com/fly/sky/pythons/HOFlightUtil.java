@@ -63,6 +63,7 @@ public class HOFlightUtil {
         StringBuffer url=new StringBuffer("http://www.juneyaoair.com/UnitOrderWebAPI/Book/QueryFlightFareNew?flightType=OW&tripType=D&directType=D&departureDate=2020-09-13");
         //获取机场列表
         AirportCode airportCode=new AirportCode();
+        airportCode.setStatus("0");
         List<AirportCode> airportsList=airportCodeRepository.findAirportCode(airportCode);
             for (AirportCode airport1 : airportsList) {
                 //每请求一次休息5秒
@@ -130,6 +131,7 @@ public class HOFlightUtil {
                         airport1.setDesc("端口链接失败没有爬取到数据");
                     }
                     //爬取完数据 需要改变状态
+                airport1.setStatus("1");
                 log.info("爬取完数据 需要改变状态 改变的数据是：" + airport1);
                 airportCodeRepository.updateAirportCode(airport1);
             }
