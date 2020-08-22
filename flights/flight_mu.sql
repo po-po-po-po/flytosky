@@ -42,6 +42,17 @@ CREATE TABLE `flight_mu` (
 -- ----------------------------
 -- Records of flight_mu
 -- ----------------------------
+
+INSERT INTO `flight_mu`  VALUES ('1', 'MU9712', '北京大兴', '昆明长水', 'MU', '08:15-11:55', NULL, NULL, '', '2020-08-22 17:51:56', '1', '北京大兴', '昆明长水', NULL, 'PKX', 'KMG');
+INSERT INTO `flight_mu`  VALUES ('2', 'MU9718', '北京大兴', '昆明长水', 'MU', '09:05-12:35', NULL, NULL, '', '2020-08-22 17:51:56', '1', '北京大兴', '昆明长水', NULL, 'PKX', 'KMG');
+INSERT INTO `flight_mu`  VALUES ('3', 'MU9702', '北京大兴', '昆明长水', 'MU', '10:00-13:25', NULL, NULL, '', '2020-08-22 17:51:57', '1', '北京大兴', '昆明长水', NULL, 'PKX', 'KMG');
+INSERT INTO `flight_mu`  VALUES ('4', 'MU5292', '北京大兴', '昆明长水', 'MU', '10:00-15:15', NULL, NULL, '', '2020-08-22 17:51:57', '1', '北京大兴', '昆明长水', NULL, 'PKX', 'KMG');
+INSERT INTO `flight_mu`  VALUES ('5', 'MU9710', '北京大兴', '昆明长水', 'MU', '12:05-17:25', NULL, NULL, '', '2020-08-22 17:51:57', '1', '北京大兴', '昆明长水', NULL, 'PKX', 'KMG');
+INSERT INTO `flight_mu`  VALUES ('6', 'MU5702', '北京大兴', '昆明长水', 'MU', '12:55-16:45', NULL, NULL, '', '2020-08-22 17:51:58', '1', '北京大兴', '昆明长水', NULL, 'PKX', 'KMG');
+INSERT INTO `flight_mu`  VALUES ('7', 'KN5255', '北京大兴', '昆明长水', 'KN', '14:50-20:35', NULL, NULL, '', '2020-08-22 17:51:58', '1', '北京大兴', '昆明长水', NULL, 'PKX', 'KMG');
+INSERT INTO `flight_mu`  VALUES ('8', 'MU5718', '北京大兴', '昆明长水', 'MU', '17:00-20:35', NULL, NULL, '', '2020-08-22 17:51:58', '1', '北京大兴', '昆明长水', NULL, 'PKX', 'KMG');
+INSERT INTO `flight_mu`  VALUES ('9', 'MU5708', '北京大兴', '昆明长水', 'MU', '18:55-22:45', NULL, NULL, '', '2020-08-22 17:51:59', '1', '北京大兴', '昆明长水', NULL, 'PKX', 'KMG');
+INSERT INTO `flight_mu`  VALUES ('10', 'MU9706', '北京大兴', '昆明长水', 'MU', '19:40-01:05', NULL, NULL, '', '2020-08-22 17:51:59', '1', '北京大兴', '昆明长水', NULL, 'PKX', 'KMG');
 INSERT INTO `flight_mu` VALUES ('4328', 'MU5302', '广州白云T1', '上海虹桥T2', 'MU', '08:30-10:45', null, null, '', '2020-08-21 13:40:18', '0', '广州白云', '上海虹桥', null, 'CAN', 'SHA');
 INSERT INTO `flight_mu` VALUES ('4329', 'MU5304', '广州白云T1', '上海虹桥T2', 'MU', '09:30-11:50', null, null, '', '2020-08-21 13:40:18', '0', '广州白云', '上海虹桥', null, 'CAN', 'SHA');
 INSERT INTO `flight_mu` VALUES ('4330', 'FM9304', '广州白云T1', '上海虹桥T2', 'FM', '09:50-12:10', null, null, '', '2020-08-21 13:40:18', '0', '广州白云', '上海虹桥', null, 'CAN', 'SHA');
