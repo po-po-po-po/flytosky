@@ -58,37 +58,36 @@ public class HOFlightUtil {
 
     @Test
     @Rollback(false)
-    public  void  scrableHO() throws InterruptedException {
-        //抓取HO地址
-        StringBuffer url=new StringBuffer("http://www.juneyaoair.com/UnitOrderWebAPI/Book/QueryFlightFareNew?flightType=OW&tripType=D&directType=D&departureDate=2020-09-13");
-        //获取机场列表
+    public  void  scrableHO() throws Exception {
+
         AirportCode airportCode=new AirportCode();
         airportCode.setStatus("0");
         List<AirportCode> airportsList=airportCodeRepository.findAirportCode(airportCode);
             for (AirportCode airport1 : airportsList) {
+                //抓取HO地址
+                StringBuffer url=new StringBuffer("http://www.juneyaoair.com/UnitOrderWebAPI/Book/QueryFlightFareNew?flightType=OW&tripType=D&directType=D&departureDate=2020-09-13");
+                //获取机场列表
                 //每请求一次休息5秒
                 Thread.currentThread().sleep(5000);
                     //请求的参数是：
                     //HOParam hoParam = new HOParam(airport1.getDeptCode(), airport1.getArrCode(), "2020-10-01");
                     //String jsonHO = JSONObject.toJSONString(hoParam);
                     url.append("&sendCode="+airport1.getDeptCode()+"&arrCode="+ airport1.getArrCode()+"&returnDate=");
-                    log.info("爬取吉祥航空网站请求的参数是：" + url.toString());
+                    log.info("爬取吉祥航空网站请求的URL是：" + url.toString());
                     //利用ip代理访问 获取代理ip和端口
                    // String ipAndPort[] = IpPortUtil.getIpAndPort();
                     String ipAndPort[] = {"49.232.228.221", "9998"};
                     if(ipAndPort!=null){
                         String content = null;
                         //解析爬取南航的数据
-                        HOData1 hoData1 =null;
-                        try{
+                        HOData1 hoData1 =new HOData1();
                             content = httpRequestUtils.sendGetNoProxy(ipAndPort[0], ipAndPort[1],url.toString());
+                            log.info("爬取吉祥航空网站f返回内容是：" +content);
+                            if(content.contains("服务不可用")){
+                                airport1.setDesc("服务不可用");
+                            }else{
                             //解析爬取吉祥的数据
                             hoData1 = new JSONObject().parseObject(content, HOData1.class);
-                        } catch (Exception e) {
-                            airport1.setDesc("请求数据失败没有爬取到数据");
-                            airportCodeRepository.updateAirportCode(airport1);
-                            log.info("从机场三字码" + airport1.getDeptCode()+"到机场三字码" +airport1.getArrCode()+"没有爬取到数据");
-                            return ;
                         }
                     System.out.println(hoData1);
                     if (CollectionUtils.isEmpty(hoData1.getFlightInfoList())){
