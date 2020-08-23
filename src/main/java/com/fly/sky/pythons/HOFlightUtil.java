@@ -104,21 +104,25 @@ public class HOFlightUtil {
                             if (hoData2.getFlightNo().startsWith("HO")) {
                                 Flight flight = new Flight();
                                 flight.setFlightNo(hoData2.getFlightNo());
-                                flight.setFlightNameStart(hoData2.getDepCityName()+hoData2.getDepAirportName()+hoData2.getDepTerm());
-                                flight.setFlightNameEnd(hoData2.getArrCityName()+hoData2.getArrAirportName()+hoData2.getArrTerm());
+
                                 flight.setAirlinesCode("HO");
                                 String depeTime=hoData2.getDepDateTime().substring(hoData2.getDepDateTime().length()-5);
                                 String arrTime=hoData2.getArrDateTime().substring(hoData2.getArrDateTime().length()-5);
                                 flight.setFlightDate(depeTime+"-"+arrTime);
-                                flight.setAirportNameStart(hoData2.getDepCityName()+hoData2.getDepAirportName());
-                                flight.setAirportNameEnd(hoData2.getArrCityName()+hoData2.getArrAirportName());
                                 flight.setAirportNameStartCode(hoData2.getDepAirport());
                                 flight.setAirportNameEndCode(hoData2.getArrAirport());
+                                //根据机场code查询机场数据
+                                Airport dept = airportRepository.findAirportByCode(hoData2.getDepAirport());
+                                Airport arr = airportRepository.findAirportByCode(hoData2.getArrAirport());
+                                flight.setFlightNameStart(dept.getAirportAbbreviate()+hoData2.getDepTerm());
+                                flight.setFlightNameEnd(arr.getAirportAbbreviate()+hoData2.getArrTerm());
+                                flight.setAirportNameStart(dept.getAirportAbbreviate());
+                                flight.setAirportNameEnd(arr.getAirportAbbreviate());
                                 //处理经停航班
                                 if(null!=hoData2.getStopAirport()){
                                     //根据机场code查询机场数据
-                                    Airport arr = airportRepository.findAirportByCode(hoData2.getStopAirport());
-                                    flight.setFlightRequency("(经停"+arr.getAirportAbbreviate()+")");
+                                    Airport stop = airportRepository.findAirportByCode(hoData2.getStopAirport());
+                                    flight.setFlightRequency("(经停"+stop.getAirportAbbreviate()+")");
                                 }
                                 log.info("入库数据是：" + flight);
                                 flightRepository.insertFlight(flight);
