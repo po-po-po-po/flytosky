@@ -81,7 +81,7 @@
     <insert id="insertAirway" parameterType="com.fly.sky.domain.Airway" >
        insert into airway(airway_name_start, airway_name_end,status,create_time)
         values(
-        #{airwayNameStart}, #{airwayNameEnd}, 12,sysdate()
+        #{airwayNameStart}, #{airwayNameEnd}, 0,sysdate()
         )
     </insert>
 
