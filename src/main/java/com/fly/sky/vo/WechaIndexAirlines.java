@@ -22,10 +22,13 @@ public class WechaIndexAirlines {
     private String airlinesIcon;
     @ApiModelProperty("航司名称")
     private String airlinesName;
+    @ApiModelProperty("航司名称")
+    private String airlinesAbbreviate;
 
-    public WechaIndexAirlines(String airlinesName,String navigatorUrl, String airlinesIcon) {
+    public WechaIndexAirlines(String airlinesName,String navigatorUrl, String airlinesIcon,String airlinesAbbreviate) {
         this.navigatorUrl = navigatorUrl;
         this.airlinesIcon = airlinesIcon;
         this.airlinesName = airlinesName;
+        this.airlinesAbbreviate = airlinesAbbreviate;
     }
 }
