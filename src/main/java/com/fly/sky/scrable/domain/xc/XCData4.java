@@ -14,11 +14,12 @@ import java.util.List;
 @Setter
 @Getter
 public class XCData4 {
+    private String sharedFlightNumber;
     private String flightNumber;
     private String airlineCode;
     private String departureDate;
     private String arrivalDate;
     private XCData5 departureAirportInfo;
     private XCData5 arrivalAirportInfo;
-    private List<XCData6> stopInfo;
+    private List<XCData7> stopInfo;
 }

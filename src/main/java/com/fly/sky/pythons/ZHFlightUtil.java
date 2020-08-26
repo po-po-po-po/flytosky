@@ -23,6 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -77,7 +78,7 @@ public class ZHFlightUtil {
                 xCParam1.setCt("1598410060180");
                 xCParam1.setArmy(false);
                 xCParam1.setSelectedInfos(null);
-                xCParam1.setToken("80df1cf0b4d45dd4674d73e7de72710e");
+                xCParam1.setToken("357fbb8b37ebcce0ea8983d12971b2c0");
                 XCParam2 xCParam2 = new XCParam2();
                 xCParam2.setDate("2020-10-03");
                 xCParam2.setDcity(airport1.getDeptCode());//bjs
@@ -113,26 +114,34 @@ public class ZHFlightUtil {
                                 for (XCData3 xCData3 : legsList) {
                                     List<XCData4> flightList = xCData3.getFlight();
                                     for (XCData4 xCData4 : flightList) {
-                                        Flight flight = new Flight();
-                                        flight.setFlightNo(xCData4.getFlightNumber());
-                                        flight.setAirlinesCode(xCData4.getAirlineCode());
-                                        String depTime = xCData4.getDepartureDate().substring(xCData4.getDepartureDate().length() - 5);
-                                        String arrTime = xCData4.getArrivalDate().substring(xCData4.getArrivalDate().length() - 5);
-                                        flight.setFlightDate(depTime + "-" + arrTime);
-                                        XCData5 departureAirportInfo = xCData4.getDepartureAirportInfo();
-                                        XCData5 arrivalAirportInfo = xCData4.getArrivalAirportInfo();
-                                        flight.setAirportNameStartCode(departureAirportInfo.getAirportTlc());
-                                        flight.setAirportNameEndCode(arrivalAirportInfo.getAirportTlc());
-                                        //根据机场code查询机场数据
-                                        Airport dept = airportRepository.findAirportByCode(departureAirportInfo.getAirportTlc());
-                                        Airport arr = airportRepository.findAirportByCode(arrivalAirportInfo.getAirportTlc());
-                                        flight.setFlightNameStart(dept.getAirportAbbreviate() + departureAirportInfo.getTerminal().getName());
-                                        flight.setFlightNameEnd(arr.getAirportAbbreviate() + departureAirportInfo.getTerminal().getName());
-                                        flight.setAirportNameStart(dept.getAirportAbbreviate());
-                                        flight.setAirportNameEnd(arr.getAirportAbbreviate());
-                                        //处理经停航班
-                                        log.info("入库数据是：" + flight);
-                                        flightRepository.insertFlight(flight);
+                                        //过滤共享航班
+                                        if(StringUtils.isEmpty(xCData4.getSharedFlightNumber())){
+                                            Flight flight = new Flight();
+                                            flight.setFlightNo(xCData4.getFlightNumber());
+                                            flight.setAirlinesCode(xCData4.getAirlineCode());
+                                            String depTime = xCData4.getDepartureDate().substring(xCData4.getDepartureDate().length() - 8,xCData4.getDepartureDate().length() - 3);
+                                            String arrTime = xCData4.getArrivalDate().substring(xCData4.getArrivalDate().length() - 8,xCData4.getDepartureDate().length() - 3);
+                                            flight.setFlightDate(depTime + "-" + arrTime);
+                                            XCData5 departureAirportInfo = xCData4.getDepartureAirportInfo();
+                                            XCData5 arrivalAirportInfo = xCData4.getArrivalAirportInfo();
+                                            flight.setAirportNameStartCode(departureAirportInfo.getAirportTlc());
+                                            flight.setAirportNameEndCode(arrivalAirportInfo.getAirportTlc());
+                                            //根据机场code查询机场数据
+                                            Airport dept = airportRepository.findAirportByCode(departureAirportInfo.getAirportTlc());
+                                            Airport arr = airportRepository.findAirportByCode(arrivalAirportInfo.getAirportTlc());
+                                            flight.setFlightNameStart(dept.getAirportAbbreviate() + departureAirportInfo.getTerminal().getName());
+                                            flight.setFlightNameEnd(arr.getAirportAbbreviate() + arrivalAirportInfo.getTerminal().getName());
+                                            flight.setAirportNameStart(dept.getAirportAbbreviate());
+                                            flight.setAirportNameEnd(arr.getAirportAbbreviate());
+                                            //处理经停航班
+                                            if(!CollectionUtils.isEmpty(xCData4.getStopInfo())){
+                                               String airportCodes= xCData4.getStopInfo().get(0).getAirportCode();
+                                                Airport stop = airportRepository.findAirportByCode(airportCodes);
+                                                flight.setFlightRemark("(经停"+stop.getAirportAbbreviate()+xCData4.getStopInfo().get(0).getBuildingName()+")");
+                                            }
+                                            log.info("入库数据是：" + flight);
+                                            flightRepository.insertFlight(flight);
+                                        }
                                     }
                                 }
                             }
