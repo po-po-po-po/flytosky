@@ -11,10 +11,7 @@ import com.fly.sky.repository.AirportRepository;
 import com.fly.sky.repository.FlightRepository;
 import com.fly.sky.scrable.domain.ho.HOData1;
 import com.fly.sky.scrable.domain.ho.HOData2;
-import com.fly.sky.scrable.domain.xc.XCData0;
-import com.fly.sky.scrable.domain.xc.XCData1;
-import com.fly.sky.scrable.domain.xc.XCParam1;
-import com.fly.sky.scrable.domain.xc.XCParam2;
+import com.fly.sky.scrable.domain.xc.*;
 import com.fly.sky.scrable.domain.zh.Condition;
 import com.fly.sky.scrable.domain.zh.ZHParam;
 import lombok.extern.slf4j.Slf4j;
@@ -73,21 +70,18 @@ public class ZHFlightUtil {
                 //请求的参数是：
                 XCParam1 xCParam1 = new XCParam1();
                 xCParam1.setFlightWay("Oneway");
-                xCParam1.setArmy(false);
                 xCParam1.setClassType("ALL");
-                xCParam1.setCt("1598410060180");
-                xCParam1.setHasBaby(false);
                 xCParam1.setHasChild(false);
+                xCParam1.setHasBaby(false);
                 xCParam1.setSearchIndex(1);
+                xCParam1.setCt("1598410060180");
+                xCParam1.setArmy(false);
                 xCParam1.setSelectedInfos(null);
-                xCParam1.setToken("60d12131612cbba2613c4378e49d9a38");
+                xCParam1.setToken("80df1cf0b4d45dd4674d73e7de72710e");
                 XCParam2 xCParam2 = new XCParam2();
-                //xCParam2.setAcityname("信阳");
                 xCParam2.setDate("2020-10-03");
-                xCParam2.setDcity("bjs");
-                xCParam2.setDport("pek");
-                //xCParam2.setDcityname("北京");
-                xCParam2.setAcity("xai");
+                xCParam2.setDcity(airport1.getDeptCode());//bjs
+                xCParam2.setAcity(airport1.getArrCode());
                 List<XCParam2> list=new ArrayList<XCParam2>();
                 list.add(xCParam2);
                 xCParam1.setAirportParams(list);
@@ -95,7 +89,6 @@ public class ZHFlightUtil {
                 log.info("爬取携程网站请求的URL是：" + url+"请求的参数是:"+xcParam);
                 String ipAndPort[] = {"49.232.228.221", "9998"};
                     if(ipAndPort!=null){
-                        //解析爬取南航的数据
                         XCData0 xCData0 =new XCData0();
                         String content = HttpRequestUtils.sendPost(ipAndPort[0], ipAndPort[1],url, xcParam,1);
                             if(content.contains("服务不可用")){
@@ -105,49 +98,48 @@ public class ZHFlightUtil {
                                 xCData0 = new JSONObject().parseObject(content, XCData0.class);
                         }
                     System.out.println("解析结果：：：：："+JSONObject.toJSONString(xCData0));
-                    if (false){
-                        airport1.setDesc("没有航班信息");
+                    if (CollectionUtils.isEmpty(xCData0.getData().getRouteList())){
+                        airport1.setDesc("没有查询到航班信息");
                         log.info("从机场三字码" + airport1.getDeptCode()+"到机场三字码" +airport1.getArrCode()+"没有爬取到数据");
                     } else {
-                        log.info("从机场三字码" + airport1.getDeptCode()+"到机场三字码" +airport1.getArrCode()+"成功爬取到数据");
-                        List<HOData2> FlightInfoList = null;
+                        log.info("从机场三字码" + airport1.getDeptCode() + "到机场三字码" + airport1.getArrCode() + "成功爬取到数据");
+                        List<XCData2> routeList = xCData0.getData().getRouteList();
                         airport1.setDesc("成功爬取到数据");
                         //进行组装数据
-                        for (HOData2 hoData2 : FlightInfoList) {
-                            //过滤共享航班
-                            if (hoData2.getFlightNo().startsWith("HO")) {
-                                Flight flight = new Flight();
-                                flight.setFlightNo(hoData2.getFlightNo());
-
-                                flight.setAirlinesCode("HO");
-                                String depeTime=hoData2.getDepDateTime().substring(hoData2.getDepDateTime().length()-5);
-                                String arrTime=hoData2.getArrDateTime().substring(hoData2.getArrDateTime().length()-5);
-                                flight.setFlightDate(depeTime+"-"+arrTime);
-                                flight.setAirportNameStartCode(hoData2.getDepAirport());
-                                flight.setAirportNameEndCode(hoData2.getArrAirport());
-                                //根据机场code查询机场数据
-                                Airport dept = airportRepository.findAirportByCode(hoData2.getDepAirport());
-                                Airport arr = airportRepository.findAirportByCode(hoData2.getArrAirport());
-                                flight.setFlightNameStart(dept.getAirportAbbreviate()+hoData2.getDepTerm());
-                                flight.setFlightNameEnd(arr.getAirportAbbreviate()+hoData2.getArrTerm());
-                                flight.setAirportNameStart(dept.getAirportAbbreviate());
-                                flight.setAirportNameEnd(arr.getAirportAbbreviate());
-                                //处理经停航班
-                                if(null!=hoData2.getStopAirport()){
-                                    //根据机场code查询机场数据
-                                    Airport stop = airportRepository.findAirportByCode(hoData2.getStopAirport());
-                                    flight.setFlightRequency("(经停"+stop.getAirportAbbreviate()+")");
+                        for (XCData2 xCData2 : routeList) {
+                            //说明是直达航班 不是中转航班
+                            if ("Flight".equals(xCData2.getRouteType())) {
+                                List<XCData3> legsList = xCData2.getLegs();
+                                for (XCData3 xCData3 : legsList) {
+                                    List<XCData4> flightList = xCData3.getFlight();
+                                    for (XCData4 xCData4 : flightList) {
+                                        Flight flight = new Flight();
+                                        flight.setFlightNo(xCData4.getFlightNumber());
+                                        flight.setAirlinesCode(xCData4.getAirlineCode());
+                                        String depTime = xCData4.getDepartureDate().substring(xCData4.getDepartureDate().length() - 5);
+                                        String arrTime = xCData4.getArrivalDate().substring(xCData4.getArrivalDate().length() - 5);
+                                        flight.setFlightDate(depTime + "-" + arrTime);
+                                        XCData5 departureAirportInfo = xCData4.getDepartureAirportInfo();
+                                        XCData5 arrivalAirportInfo = xCData4.getArrivalAirportInfo();
+                                        flight.setAirportNameStartCode(departureAirportInfo.getAirportTlc());
+                                        flight.setAirportNameEndCode(arrivalAirportInfo.getAirportTlc());
+                                        //根据机场code查询机场数据
+                                        Airport dept = airportRepository.findAirportByCode(departureAirportInfo.getAirportTlc());
+                                        Airport arr = airportRepository.findAirportByCode(arrivalAirportInfo.getAirportTlc());
+                                        flight.setFlightNameStart(dept.getAirportAbbreviate() + departureAirportInfo.getTerminal().getName());
+                                        flight.setFlightNameEnd(arr.getAirportAbbreviate() + departureAirportInfo.getTerminal().getName());
+                                        flight.setAirportNameStart(dept.getAirportAbbreviate());
+                                        flight.setAirportNameEnd(arr.getAirportAbbreviate());
+                                        //处理经停航班
+                                        log.info("入库数据是：" + flight);
+                                        flightRepository.insertFlight(flight);
+                                    }
                                 }
-                                log.info("入库数据是：" + flight);
-                                flightRepository.insertFlight(flight);
                             }
-                            }
-
-                      }
-                    }else{
-                        airport1.setDesc("端口链接失败没有爬取到数据");
+                        }
                     }
-                    //爬取完数据 需要改变状态
+                 }
+                //爬取完数据 需要改变状态
                 airport1.setStatus("1");
                 log.info("爬取完数据 需要改变状态 改变的数据是：" + airport1);
                 airportCodeRepository.updateAirportCode(airport1);

@@ -18,7 +18,7 @@ public class XCData4 {
     private String airlineCode;
     private String departureDate;
     private String arrivalDate;
-    private List<XCData5> departureAirportInfo;
-    private List<XCData5> arrivalAirportInfo;
+    private XCData5 departureAirportInfo;
+    private XCData5 arrivalAirportInfo;
     private List<XCData6> stopInfo;
 }

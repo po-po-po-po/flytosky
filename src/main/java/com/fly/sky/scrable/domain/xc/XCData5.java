@@ -13,6 +13,5 @@ import lombok.Setter;
 @Getter
 public class XCData5 {
     private String airportTlc;
-    private String airlineCode;
-    private String flightNumber;
+    private XCData6 terminal;
 }
