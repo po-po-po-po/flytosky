@@ -11,6 +11,8 @@ import com.fly.sky.repository.AirportRepository;
 import com.fly.sky.repository.FlightRepository;
 import com.fly.sky.scrable.domain.ho.HOData1;
 import com.fly.sky.scrable.domain.ho.HOData2;
+import com.fly.sky.scrable.domain.xc.XCParam1;
+import com.fly.sky.scrable.domain.xc.XCParam2;
 import com.fly.sky.scrable.domain.zh.Condition;
 import com.fly.sky.scrable.domain.zh.ZHParam;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +25,7 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.util.CollectionUtils;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,23 +64,39 @@ public class ZHFlightUtil {
         List<AirportCode> airportsList=airportCodeRepository.findAirportCode(airportCode);
             for (AirportCode airport1 : airportsList) {
                 //抓取ZH地址
-                String url=new String("http://www.shenzhenair.com/szair_B2C/flightSearch.action");
+                String url=new String("https://flights.ctrip.com/itinerary/api/12808/products");
                 //获取机场列表
                 //每请求一次休息5秒
                 Thread.currentThread().sleep(5000);
-                //Condition condition=new Condition(airport1.getDeptCode(), airport1.getArrCode(),"DC","2020-10-01","2020-10-02");
-                //Condition condition=new Condition("PEK", "WUX","DC","2020-10-01","2020-10-02");
                 //请求的参数是：
-                //ZHParam zHParam = new ZHParam();
-                String zhParam="condition.orgCityCode=PEK&condition.dstCityCode=WUX&condition.hcType=DC&condition.orgDate=2020-08-29&condition.dstDate=2020-08-30";
-                log.info("爬取深圳航空航空网站请求的URL是：" + url+"请求的参数是:"+zhParam);
+                XCParam1 xCParam1 = new XCParam1();
+                xCParam1.setFlightWay("Oneway");
+                xCParam1.setArmy(false);
+                xCParam1.setClassType("ALL");
+                xCParam1.setCt("1598410060180");
+                xCParam1.setHasBaby(false);
+                xCParam1.setHasChild(false);
+                xCParam1.setSearchIndex(1);
+                xCParam1.setSelectedInfos(null);
+                xCParam1.setToken("60d12131612cbba2613c4378e49d9a38");
+                XCParam2 xCParam2 = new XCParam2();
+                xCParam2.setAcityname("信阳");
+                xCParam2.setDate("2020-10-03");
+                xCParam2.setDcity("bjs");
+                xCParam2.setDcityname("北京");
+                xCParam2.setAcity("xai");
+                List<XCParam2> list=new ArrayList<XCParam2>();
+                list.add(xCParam2);
+                xCParam1.setAirportParams(list);
+                String xcParam = JSONObject.toJSONString(xCParam1);;
+                log.info("爬取携程网站请求的URL是：" + url+"请求的参数是:"+xcParam);
                 String ipAndPort[] = {"49.232.228.221", "9998"};
                     if(ipAndPort!=null){
                         String content = null;
                         //解析爬取南航的数据
                         HOData1 hoData1 =new HOData1();
-                            content = HttpRequestUtils.sendPost(ipAndPort[0], ipAndPort[1],url, zhParam,1);
-                            log.info("爬取深圳航空网站返回内容是：" +content);
+                        content = httpRequestUtils.sendGetNoProxy(ipAndPort[0], ipAndPort[1],url);
+                            log.info("爬取携程网站返回内容是：" +content);
                             if(content.contains("服务不可用")){
                                 airport1.setDesc("服务不可用");
                             }else{
