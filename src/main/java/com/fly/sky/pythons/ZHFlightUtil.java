@@ -92,10 +92,9 @@ public class ZHFlightUtil {
                 log.info("爬取携程网站请求的URL是：" + url+"请求的参数是:"+xcParam);
                 String ipAndPort[] = {"49.232.228.221", "9998"};
                     if(ipAndPort!=null){
-                        String content = null;
                         //解析爬取南航的数据
                         HOData1 hoData1 =new HOData1();
-                        content = httpRequestUtils.sendGetNoProxy(ipAndPort[0], ipAndPort[1],url);
+                        String content = HttpRequestUtils.sendPost(ipAndPort[0], ipAndPort[1],url, xcParam,1);
                             log.info("爬取携程网站返回内容是：" +content);
                             if(content.contains("服务不可用")){
                                 airport1.setDesc("服务不可用");
