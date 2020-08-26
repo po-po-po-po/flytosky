@@ -11,12 +11,13 @@ import lombok.Setter;
 @Setter
 @Getter
 public class XCParam2 {
-    private String dcity;
-    private String xai;
+    private String routeList;
+    private String msg;
     private String dcityname;
     private String acityname;
     private String date; //2020-10-03
     private String acity; //xai
     private String dport; //pek
+    private String dcity; //xai
 
 }

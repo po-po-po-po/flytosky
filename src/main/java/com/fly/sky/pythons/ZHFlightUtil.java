@@ -11,6 +11,8 @@ import com.fly.sky.repository.AirportRepository;
 import com.fly.sky.repository.FlightRepository;
 import com.fly.sky.scrable.domain.ho.HOData1;
 import com.fly.sky.scrable.domain.ho.HOData2;
+import com.fly.sky.scrable.domain.xc.XCData0;
+import com.fly.sky.scrable.domain.xc.XCData1;
 import com.fly.sky.scrable.domain.xc.XCParam1;
 import com.fly.sky.scrable.domain.xc.XCParam2;
 import com.fly.sky.scrable.domain.zh.Condition;
@@ -80,11 +82,11 @@ public class ZHFlightUtil {
                 xCParam1.setSelectedInfos(null);
                 xCParam1.setToken("60d12131612cbba2613c4378e49d9a38");
                 XCParam2 xCParam2 = new XCParam2();
-                xCParam2.setAcityname("信阳");
+                //xCParam2.setAcityname("信阳");
                 xCParam2.setDate("2020-10-03");
                 xCParam2.setDcity("bjs");
                 xCParam2.setDport("pek");
-                xCParam2.setDcityname("北京");
+                //xCParam2.setDcityname("北京");
                 xCParam2.setAcity("xai");
                 List<XCParam2> list=new ArrayList<XCParam2>();
                 list.add(xCParam2);
@@ -94,23 +96,21 @@ public class ZHFlightUtil {
                 String ipAndPort[] = {"49.232.228.221", "9998"};
                     if(ipAndPort!=null){
                         //解析爬取南航的数据
-                        HOData1 hoData1 =new HOData1();
+                        XCData0 xCData0 =new XCData0();
                         String content = HttpRequestUtils.sendPost(ipAndPort[0], ipAndPort[1],url, xcParam,1);
-                            log.info("爬取携程网站返回内容是：" +content);
                             if(content.contains("服务不可用")){
                                 airport1.setDesc("服务不可用");
                             }else{
-                            //解析爬取吉祥的数据
-                            hoData1 = new JSONObject().parseObject(content, HOData1.class);
+                            //解析爬取携程网站的数据
+                                xCData0 = new JSONObject().parseObject(content, XCData0.class);
                         }
-                    System.out.println(hoData1);
-                    if (CollectionUtils.isEmpty(hoData1.getFlightInfoList())){
+                    System.out.println("解析结果：：：：："+JSONObject.toJSONString(xCData0));
+                    if (false){
                         airport1.setDesc("没有航班信息");
                         log.info("从机场三字码" + airport1.getDeptCode()+"到机场三字码" +airport1.getArrCode()+"没有爬取到数据");
                     } else {
                         log.info("从机场三字码" + airport1.getDeptCode()+"到机场三字码" +airport1.getArrCode()+"成功爬取到数据");
-                        List<HOData2> FlightInfoList = hoData1.getFlightInfoList();
-                        log.info("爬取到的吉祥航空航班数据是：" + FlightInfoList);
+                        List<HOData2> FlightInfoList = null;
                         airport1.setDesc("成功爬取到数据");
                         //进行组装数据
                         for (HOData2 hoData2 : FlightInfoList) {
