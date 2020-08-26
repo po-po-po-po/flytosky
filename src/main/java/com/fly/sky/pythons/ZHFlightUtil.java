@@ -83,6 +83,7 @@ public class ZHFlightUtil {
                 xCParam2.setAcityname("信阳");
                 xCParam2.setDate("2020-10-03");
                 xCParam2.setDcity("bjs");
+                xCParam2.setDport("pek");
                 xCParam2.setDcityname("北京");
                 xCParam2.setAcity("xai");
                 List<XCParam2> list=new ArrayList<XCParam2>();

@@ -16,5 +16,7 @@ public class XCParam2 {
     private String dcityname;
     private String acityname;
     private String date; //2020-10-03
-    private String acity;
+    private String acity; //xai
+    private String dport; //pek
+
 }
