@@ -8,10 +8,13 @@
         <result column="status" jdbcType="INTEGER" property="status" />
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
         <result column="describle" jdbcType="VARCHAR" property="desc" />
+        <result column="dept_name" jdbcType="VARCHAR" property="deptName" />
+        <result column="arr_name" jdbcType="VARCHAR" property="arrName" />
     </resultMap>
 
     <select id="findAirportCode"  parameterType="com.fly.sky.domain.AirportCode" resultType="com.fly.sky.domain.AirportCode">
         select dept_code AS  deptCode ,arr_code AS arrCode,
+        dept_name AS  deptName ,arr_name AS arrName,
         status,create_time AS createTime from airport_code where 1=1
 
         <if test="status != null  and status != ''  ">
@@ -31,9 +34,9 @@
 
 
    <insert id="insertAirportCode" parameterType="com.fly.sky.domain.AirportCode">
-        insert into airport_code (dept_code, arr_code,status,create_time)
+        insert into airport_code (dept_code, arr_code,status,create_time, dept_name ,arr_name )
         values (#{deptCode,jdbcType=VARCHAR}, #{arrCode,jdbcType=VARCHAR},
-              0,sysdate())
+              0,sysdate(), #{deptName,jdbcType=VARCHAR}, #{arrName,jdbcType=VARCHAR})
     </insert>
 
     <update id="updateAirportCode"  parameterType="com.fly.sky.domain.AirportCode">

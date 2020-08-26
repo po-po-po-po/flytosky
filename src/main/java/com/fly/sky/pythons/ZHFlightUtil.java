@@ -78,9 +78,11 @@ public class ZHFlightUtil {
                 xCParam1.setCt("1598410060180");
                 xCParam1.setArmy(false);
                 xCParam1.setSelectedInfos(null);
-                xCParam1.setToken("357fbb8b37ebcce0ea8983d12971b2c0");
+                xCParam1.setToken("80df1cf0b4d45dd4674d73e7de72710e");
                 XCParam2 xCParam2 = new XCParam2();
-                xCParam2.setDate("2020-10-03");
+                xCParam2.setDate("2020-09-21");
+                xCParam2.setDcityname(airport1.getDeptName());
+                xCParam2.setAcityname(airport1.getArrName());
                 xCParam2.setDcity(airport1.getDeptCode());//bjs
                 xCParam2.setAcity(airport1.getArrCode());
                 List<XCParam2> list=new ArrayList<XCParam2>();
@@ -137,7 +139,11 @@ public class ZHFlightUtil {
                                             if(!CollectionUtils.isEmpty(xCData4.getStopInfo())){
                                                String airportCodes= xCData4.getStopInfo().get(0).getAirportCode();
                                                 Airport stop = airportRepository.findAirportByCode(airportCodes);
-                                                flight.setFlightRemark("(经停"+stop.getAirportAbbreviate()+xCData4.getStopInfo().get(0).getBuildingName()+")");
+                                                String stopTerminal=xCData4.getStopInfo().get(0).getBuildingName();
+                                                if(null==stopTerminal){
+                                                    stopTerminal="";
+                                                }
+                                                flight.setFlightRemark("(经停"+stop.getAirportAbbreviate()+stopTerminal+")");
                                             }
                                             log.info("入库数据是：" + flight);
                                             flightRepository.insertFlight(flight);

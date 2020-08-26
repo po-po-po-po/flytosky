@@ -21,6 +21,10 @@ public class AirportCode {
     private String deptCode;
     @ApiModelProperty("到达机场编码")
     private String arrCode;
+    @ApiModelProperty("出发机场名称")
+    private String deptName;
+    @ApiModelProperty("到达机场名称")
+    private String arrName;
     @ApiModelProperty("状态0 有效 1 无效")
     private String status;
     @ApiModelProperty("创建时间")
