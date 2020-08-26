@@ -1,0 +1,21 @@
+select * from flight where flight_name_start like '北京%' and flight_name_end like '深圳%'
+and (airlines_code='KN' OR airlines_code='MU' OR airlines_code='CZ')
+
+delete from flight where flight_name_start like '北京%' and flight_name_end like '深圳%'
+and (airlines_code='KN' OR airlines_code='MU' OR airlines_code='CZ')
+
+UPDATE flight set flight_remark ='' where flight_remark is null
+
+
+INSERT INTO `po_flysky`.`flight`
+(`flight_no`, `flight_name_start`, `flight_name_end`, `airlines_code`, `flight_date`, `flight_frequency`,
+`airway_id`, `flight_remark`, `create_time`, `status`, `airport_name_start`, `airport_name_end`,
+`sort`, `airport_name_start_code`, `airport_name_end_code`) SELECT
+`flight_no`, `flight_name_start`, `flight_name_end`, `airlines_code`, `flight_date`, `flight_frequency`,
+`airway_id`, `flight_remark`, `create_time`, `status`, `airport_name_start`, `airport_name_end`,
+`sort`, `airport_name_start_code`, `airport_name_end_code`
+FROM flight_COPY
+
+
+UPDATE flight set flight_remark ='' where flight_remark is null
+
