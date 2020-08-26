@@ -69,21 +69,14 @@ public class ZHFlightUtil {
                 //Condition condition=new Condition("PEK", "WUX","DC","2020-10-01","2020-10-02");
                 //请求的参数是：
                 //ZHParam zHParam = new ZHParam();
-                Map map=new HashMap<>();
-                map.put("condition.orgCityCode","PEK");
-                map.put("condition.dstCityCode","WUX");
-                map.put("condition.hcType","DC");
-                map.put("condition.orgDate","2020-08-29");
-                map.put("condition.dstDate","2020-08-30");
-               // zHParam.setCondition(condition);
-                String jsonZH = JSONObject.toJSONString(map);
-                log.info("爬取深圳航空航空网站请求的URL是：" + url+"请求的参数是:"+jsonZH);
+                String zhParam="condition.orgCityCode=PEK&condition.dstCityCode=WUX&condition.hcType=DC&condition.orgDate=2020-08-29&condition.dstDate=2020-08-30";
+                log.info("爬取深圳航空航空网站请求的URL是：" + url+"请求的参数是:"+zhParam);
                 String ipAndPort[] = {"49.232.228.221", "9998"};
                     if(ipAndPort!=null){
                         String content = null;
                         //解析爬取南航的数据
                         HOData1 hoData1 =new HOData1();
-                            content = HttpRequestUtils.sendPost(ipAndPort[0], ipAndPort[1],url, jsonZH,1);
+                            content = HttpRequestUtils.sendPost(ipAndPort[0], ipAndPort[1],url, zhParam,1);
                             log.info("爬取深圳航空网站返回内容是：" +content);
                             if(content.contains("服务不可用")){
                                 airport1.setDesc("服务不可用");

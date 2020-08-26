@@ -34,20 +34,21 @@ public class SynchronizeTask{
     @Autowired
     MUFlightUtil muFlightUtil;
 
-
+    @Autowired
+    ZHFlightUtil zHFlightUtil;
 
     //3.添加定时任务
     @Scheduled(cron = "0/15 * * * * ?")
     //或直接指定时间间隔，例如：40秒
     private void configureTasks() {
         System.err.println("执行静态定时任务时间: " + LocalDateTime.now());
-
         try {
             // FlightCondition condition=new FlightCondition();
             //flightService.synchronizeFeiChangzhunFlight(condition);
             //cZFlightUtil.scrableCZ();
             //hOFlightUtil.scrableHO();
-            muFlightUtil.scrableMU();
+            //muFlightUtil.scrableMU();
+            zHFlightUtil.scrableZH();
         } catch (Exception e) {
             e.printStackTrace();
         }
