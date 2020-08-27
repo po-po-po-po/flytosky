@@ -17,7 +17,7 @@
 
 
    <insert id="insertWxUser" parameterType="com.fly.sky.condition.WxUserCondition">
-        insert into wx_user (id, avatar_url, city,country,gender, nick_name,province,create_time,open_id)
+        insert into users (id, avatar_url, city,country,gender, nick_name,province,create_time,open_id)
         values (#{id,jdbcType=INTEGER}, #{avatarUrl,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}
         , #{country,jdbcType=VARCHAR}, #{gender,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR},
          #{province,jdbcType=VARCHAR}, sysdate(), #{openId,jdbcType=VARCHAR})
@@ -28,7 +28,7 @@
             resultType="com.fly.sky.domain.WxUser">
         select id as id,avatar_url as avatarUrl , city as city ,country as country,
         gender as gender,nick_name as nickName,province as province,create_time as createTime,
-        update_time as updateTime from wx_user WHERE
+        update_time as updateTime from users WHERE
         open_id = #{openId,jdbcType=VARCHAR}
         limit 1
     </select>

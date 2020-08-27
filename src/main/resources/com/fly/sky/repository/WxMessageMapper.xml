@@ -14,7 +14,7 @@
 
 
    <insert id="insertWxMessage" parameterType="com.fly.sky.domain.WxUser">
-        insert into wx_message (id, content, open_id,reply,status,create_time, reply_time)
+        insert into messages (id, content, open_id,reply,status,create_time, reply_time)
         values (#{id,jdbcType=INTEGER}, #{content,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}
         , #{reply,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER},
          sysdate(), #{replyTime,jdbcType=DATE})
@@ -22,7 +22,7 @@
 
     <select id="findWxMessageByCondition" resultType="com.fly.sky.domain.WxMessage">
         select id as id,content as content , open_id as openId ,reply as reply,
-        status as status,create_time as createTime,reply_time as replyTime from wx_message
+        status as status,create_time as createTime,reply_time as replyTime from messages
         where user_id = #{userId}
     </select>
 
