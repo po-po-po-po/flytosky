@@ -61,6 +61,8 @@ public class AirwayUtil {
                 Airway airway1y=new Airway();
                 airway1y.setAirwayNameStart(flight.getAirportNameStart());
                 airway1y.setAirwayNameEnd(flight.getAirportNameEnd());
+                airway1y.setAirwayNameStartCode(flight.getAirportNameStartCode());
+                airway1y.setAirwayNameEndCode(flight.getAirportNameEndCode());
                 airwayRepository.insertAirway(airway1y);
                 log.info("。。。。。。。。。。插入航线。。。。。。。。。。。。。"+airway1y);
             }

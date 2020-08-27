@@ -6,6 +6,8 @@
         <result column="id" jdbcType="INTEGER" property="id" />
         <result column="airway_name_start" jdbcType="VARCHAR" property="airwayNameStart" />
         <result column="airway_name_end" jdbcType="VARCHAR" property="airwayNameEnd" />
+        <result column="airway_name_start_code" jdbcType="VARCHAR" property="airwayNameStartCode" />
+        <result column="airway_name_end_code" jdbcType="VARCHAR" property="airwayNameEndCode" />
         <result column="airway_description" jdbcType="VARCHAR" property="airwayDescription" />
         <result column="airway_rate" jdbcType="INTEGER" property="airwayRate" />
         <result column="flight_num" jdbcType="INTEGER" property="flightNum" />
@@ -79,9 +81,10 @@
 
 
     <insert id="insertAirway" parameterType="com.fly.sky.domain.Airway" >
-       insert into airway(airway_name_start, airway_name_end,status,create_time)
+       insert into airway(airway_name_start, airway_name_end,status,create_time
+       ,airway_name_start_code,airway_name_end_code)
         values(
-        #{airwayNameStart}, #{airwayNameEnd}, 0,sysdate()
+        #{airwayNameStart}, #{airwayNameEnd}, 0,sysdate(),#{airwayNameStartCode},#{airwayNameEndCode}
         )
     </insert>
 
