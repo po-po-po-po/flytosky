@@ -217,6 +217,10 @@
             order  by flight.flight_name_start asc
         </if>
 
+        <if test="sortId != null  and sortId ==4 ">
+            order  by flight.flight_name_end asc
+        </if>
+
         <if test="sortId == null or sortId==0 ">
             order  by flight.sort asc
         </if>
