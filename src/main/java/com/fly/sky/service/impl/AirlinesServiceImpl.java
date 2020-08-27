@@ -124,6 +124,10 @@ public class AirlinesServiceImpl implements AirlinesService {
         WechaIndexAirlines A22=new WechaIndexAirlines("TV","../airlinesflights/airlinesflights?airline_id=tv","https://www.potucs.com/wechat/airline/tv.png","西藏航空");
         WechaIndexAirlines A23=new WechaIndexAirlines("PN","../airlinesflights/airlinesflights?airline_id=pn","https://www.potucs.com/wechat/airline/pn.png","西部航空");
         WechaIndexAirlines A24=new WechaIndexAirlines("KY","../airlinesflights/airlinesflights?airline_id=ky","https://www.potucs.com/wechat/airline/ky.png","昆明航空");
+        WechaIndexAirlines A25=new WechaIndexAirlines("G5","../airlinesflights/airlinesflights?airline_id=g5","https://www.potucs.com/wechat/airline/g5.png","华夏航空");
+        WechaIndexAirlines A26=new WechaIndexAirlines("Y8","../airlinesflights/airlinesflights?airline_id=y8","https://www.potucs.com/wechat/airline/y8.png","金鹏航空");
+        WechaIndexAirlines A27=new WechaIndexAirlines("AQ","../airlinesflights/airlinesflights?airline_id=aq","https://www.potucs.com/wechat/airline/aq.png","九元航空");
+        WechaIndexAirlines A28=new WechaIndexAirlines("FU","../airlinesflights/airlinesflights?airline_id=fu","https://www.potucs.com/wechat/airline/fu.png","福州航空");
         map.put("A1",A1);
         map.put("A2",A2);
         map.put("A3",A3);
@@ -148,6 +152,10 @@ public class AirlinesServiceImpl implements AirlinesService {
         map.put("A22",A22);
         map.put("A23",A23);
         map.put("A24",A24);
+        map.put("A25",A25);
+        map.put("A26",A26);
+        map.put("A27",A27);
+        map.put("A28",A28);
         return map;
     }
 }
