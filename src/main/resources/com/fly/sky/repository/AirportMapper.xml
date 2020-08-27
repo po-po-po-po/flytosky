@@ -29,10 +29,10 @@
     </select>
 
    <insert id="insertAirport" parameterType="com.fly.sky.domain.Airport">
-        insert into airport (id, airport_name, airport_code,airport_location,airport_area, create_time)
+        insert into airport (id, airport_name, airport_code,airport_location,airport_area, create_time,airport_abbreviate)
         values (#{id,jdbcType=INTEGER}, #{airportName,jdbcType=VARCHAR}, #{airportCode,jdbcType=VARCHAR}
         , #{airportLocation,jdbcType=VARCHAR}, #{airportArea,jdbcType=VARCHAR},
-        #{createTime,jdbcType=DATE})
+        #{createTime,jdbcType=DATE}, #{airportAbbreviate,jdbcType=VARCHAR})
     </insert>
 
 

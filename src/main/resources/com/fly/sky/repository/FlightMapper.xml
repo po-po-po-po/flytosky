@@ -310,4 +310,14 @@
      </select>
 
 
+
+    <select id="findFlightsGroupByAirportCode"
+            resultType="com.fly.sky.domain.Airport">
+      select airport_name_start_code as airportCode,
+      airport_name_start as airportName
+      from flight
+      group by airport_name_start_code,airport_name_start
+     </select>
+
+
 </mapper>
