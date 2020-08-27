@@ -42,4 +42,6 @@ public class Airport {
     private String airportDescription;
     @ApiModelProperty("机场简称")
     private String airportAbbreviate;
+    @ApiModelProperty("是否显示")
+    private Integer status;
 }

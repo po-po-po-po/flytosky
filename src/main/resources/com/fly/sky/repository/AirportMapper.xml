@@ -15,6 +15,7 @@
         <result column="city_url" jdbcType="VARCHAR" property="cityUrl" />
         <result column="airport_description" jdbcType="VARCHAR" property="airportDescription" />
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="status" jdbcType="INTEGER" property="status" />
     </resultMap>
 
     <select id="findAirportByName" resultType="com.fly.sky.domain.Airport">
@@ -41,7 +42,7 @@
             resultType="com.fly.sky.domain.Airport">
         select id as id,airport_name as airportName , airport_code as airportCode ,airport_description as airportDescription,
         airport_location as airportLocation,airport_area as airportArea,is_hot as isHot,city_url as cityUrl,airport_abbreviate AS airportAbbreviate,
-        airport_url as airportUrl,airport_rank as airportRank,create_time as createTime from airport WHERE 1=1
+        airport_url as airportUrl,airport_rank as airportRank,create_time as createTime from airport WHERE 1=1 and status=0
         <if test="id != null">
             and  id = #{id,jdbcType=BIGINT}
         </if>
