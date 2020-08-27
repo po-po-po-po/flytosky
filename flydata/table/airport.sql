@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2020-08-27 21:48:47
+Date: 2020-08-27 21:57:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -39,10 +39,10 @@ CREATE TABLE `airport` (
 -- ----------------------------
 -- Records of airport
 -- ----------------------------
-INSERT INTO `airport` VALUES ('1', '北京首都国际机场', 'PEK', '北京首都', '北京', '北京', '000000000000', 'https://www.potucs.com/wechat/airport/pek.png', null, null, null, null, '2020-08-27 14:11:25');
-INSERT INTO `airport` VALUES ('2', '北京大兴国际机场', 'PKX', '北京大兴', '北京', '北京', '000000000000', 'https://www.potucs.com/wechat/airport/pkx.png', null, null, null, null, null);
-INSERT INTO `airport` VALUES ('3', '上海浦东国际机场', 'PVG', '上海浦东', '上海', '上海', '000000000000', 'https://www.potucs.com/wechat/airport/pvg.png', null, null, null, null, null);
-INSERT INTO `airport` VALUES ('4', '上海虹桥国际机场', 'SHA', '上海虹桥', '上海', '上海', '000000000000', 'https://www.potucs.com/wechat/airport/sha.png', null, null, null, null, null);
+INSERT INTO `airport` VALUES ('1', '北京首都国际机场', 'PEK', '北京首都', '北京首都', '北京', '000000000000', 'https://www.potucs.com/wechat/airport/pek.png', null, null, null, null, '2020-08-27 14:11:25');
+INSERT INTO `airport` VALUES ('2', '北京大兴国际机场', 'PKX', '北京大兴', '北京大兴', '北京', '000000000000', 'https://www.potucs.com/wechat/airport/pkx.png', null, null, null, null, null);
+INSERT INTO `airport` VALUES ('3', '上海浦东国际机场', 'PVG', '上海浦东', '上海浦东', '上海', '000000000000', 'https://www.potucs.com/wechat/airport/pvg.png', null, null, null, null, null);
+INSERT INTO `airport` VALUES ('4', '上海虹桥国际机场', 'SHA', '上海虹桥', '上海虹桥', '上海', '000000000000', 'https://www.potucs.com/wechat/airport/sha.png', null, null, null, null, null);
 INSERT INTO `airport` VALUES ('5', '广州白云国际机场', 'CAN', '广州白云', '广州', '广东', '000000000000', 'https://www.potucs.com/wechat/airport/can.png', null, null, null, null, null);
 INSERT INTO `airport` VALUES ('6', '深圳宝安国际机场', 'SZX', '深圳宝安', '深圳', '广东', '000000000000', 'https://www.potucs.com/wechat/airport/szx.png', null, null, null, null, null);
 INSERT INTO `airport` VALUES ('7', '成都双流国际机场', 'CTU', '成都双流', '成都', '四川', '000000000000', 'https://www.potucs.com/wechat/airport/ctu.png', null, null, null, null, null);
