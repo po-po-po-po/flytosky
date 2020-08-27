@@ -24,6 +24,7 @@ import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -73,6 +74,8 @@ public class AirportServiceImpl implements AirportService {
             }
             airportNewList.add(vo);
         }
+        //按照航班数量进行排序 倒序排列
+        List<AirportVo> studentsSortName = airportNewList.stream().sorted(Comparator.comparing(AirportVo::getAirportFlightNum).reversed()).collect(Collectors.toList());
         PageInfo pageInfo = new PageInfo(airportNewList);
         listPagedList.setPageNo(condition.getPageNo());
         listPagedList.setPageSize(condition.getPageSize());
