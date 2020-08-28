@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : 127.0.0.1
-Source Server Version : 50717
-Source Host           : localhost:3306
+Source Server Version : 50719
+Source Host           : 127.0.0.1:3306
 Source Database       : fly
 
 Target Server Type    : MYSQL
-Target Server Version : 50717
+Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2020-08-27 18:53:37
+Date: 2020-08-28 09:34:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,7 +29,7 @@ CREATE TABLE `airlines` (
   `airlines_abbreviate` varchar(255) DEFAULT NULL,
   `airlines_rank` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of airlines
@@ -56,8 +56,10 @@ INSERT INTO `airlines` VALUES ('19', '金鹏航空', 'Y8', null, 'https://www.po
 INSERT INTO `airlines` VALUES ('20', '昆明航空', 'KY', null, 'https://www.potucs.com/wechat/airline/ky.png', null, '昆明航空', null);
 INSERT INTO `airlines` VALUES ('21', '祥鹏航空', '8L', null, 'https://www.potucs.com/wechat/airline/8l.png', null, '祥鹏航空', null);
 INSERT INTO `airlines` VALUES ('22', '瑞丽航空', 'DR', null, 'https://www.potucs.com/wechat/airline/dr.png', null, '昆明航空', null);
-INSERT INTO `airlines` VALUES ('23', '青岛航空', 'AQ', null, 'https://www.potucs.com/wechat/airline/aq.png', null, '青岛航空', null);
+INSERT INTO `airlines` VALUES ('23', '青岛航空', 'QW', null, 'https://www.potucs.com/wechat/airline/aq.png', null, '青岛航空', null);
 INSERT INTO `airlines` VALUES ('24', '奥凯航空', 'BK', null, 'https://www.potucs.com/wechat/airline/bk.png', null, '奥凯航空', null);
 INSERT INTO `airlines` VALUES ('25', '华夏航空', 'G5', null, 'https://www.potucs.com/wechat/airline/g5.png', null, '华夏航空', null);
 INSERT INTO `airlines` VALUES ('26', '西部航空', 'PN', null, 'https://www.potucs.com/wechat/airline/pn.png', null, '西部航空', null);
 INSERT INTO `airlines` VALUES ('27', '山东航空', 'SC', null, 'https://www.potucs.com/wechat/airline/sc.png', null, '山东航空', null);
+INSERT INTO `airlines` VALUES ('28', '九元航空', 'AQ', null, 'https://www.potucs.com/wechat/airline/aq.png', null, '九元航空', null);
+INSERT INTO `airlines` VALUES ('29', '福州航空', 'FU', null, 'https://www.potucs.com/wechat/airline/fu.png', null, '福州航空', null);
