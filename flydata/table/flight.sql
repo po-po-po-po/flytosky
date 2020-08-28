@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2020-08-28 15:10:06
+Date: 2020-08-28 17:46:43
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -37,7 +37,7 @@ CREATE TABLE `flight` (
   `airport_name_start_code` varchar(32) DEFAULT NULL,
   `airport_name_end_code` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2587 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2728 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of flight
@@ -2543,3 +2543,144 @@ INSERT INTO `flight` VALUES ('2583', 'ZH9585', '南京禄口T2', '长沙黄花T1
 INSERT INTO `flight` VALUES ('2584', 'MU2829', '南京禄口T2', '长沙黄花T2', 'MU', '19:55-21:30', null, null, null, '2020-08-28 15:07:06', '0', '南京禄口', '长沙黄花', null, 'NKG', 'CSX');
 INSERT INTO `flight` VALUES ('2585', 'MU2753', '南京禄口T2', '长沙黄花T2', 'MU', '06:55-08:45', null, null, null, '2020-08-28 15:07:06', '0', '南京禄口', '长沙黄花', null, 'NKG', 'CSX');
 INSERT INTO `flight` VALUES ('2586', 'MU2795', '南京禄口T2', '长沙黄花T2', 'MU', '13:50-15:25', null, null, null, '2020-08-28 15:07:06', '0', '南京禄口', '长沙黄花', null, 'NKG', 'CSX');
+INSERT INTO `flight` VALUES ('2587', 'CA1505', '北京首都T3', '福州长乐', 'CA', '07:25-10:15', null, null, null, '2020-08-28 16:59:55', '0', '北京首都', '福州长乐', null, 'PEK', 'FOC');
+INSERT INTO `flight` VALUES ('2588', 'HU7695', '北京首都T2', '福州长乐', 'HU', '08:55-12:05', null, null, null, '2020-08-28 16:59:55', '0', '北京首都', '福州长乐', null, 'PEK', 'FOC');
+INSERT INTO `flight` VALUES ('2589', 'MF8116', '北京大兴', '福州长乐', 'MF', '12:00-14:50', null, null, null, '2020-08-28 16:59:55', '0', '北京大兴', '福州长乐', null, 'PKX', 'FOC');
+INSERT INTO `flight` VALUES ('2590', 'SC4758', '北京首都T3', '福州长乐', 'SC', '13:45-16:45', null, null, null, '2020-08-28 16:59:55', '0', '北京首都', '福州长乐', null, 'PEK', 'FOC');
+INSERT INTO `flight` VALUES ('2591', 'MF8166', '北京大兴', '福州长乐', 'MF', '14:15-17:15', null, null, null, '2020-08-28 16:59:55', '0', '北京大兴', '福州长乐', null, 'PKX', 'FOC');
+INSERT INTO `flight` VALUES ('2592', 'CA1807', '北京首都T3', '福州长乐', 'CA', '17:25-20:20', null, null, null, '2020-08-28 16:59:55', '0', '北京首都', '福州长乐', null, 'PEK', 'FOC');
+INSERT INTO `flight` VALUES ('2593', 'MF8108', '北京大兴', '福州长乐', 'MF', '17:40-20:35', null, null, null, '2020-08-28 16:59:55', '0', '北京大兴', '福州长乐', null, 'PKX', 'FOC');
+INSERT INTO `flight` VALUES ('2594', 'MF8120', '北京大兴', '福州长乐', 'MF', '20:15-23:10', null, null, null, '2020-08-28 16:59:55', '0', '北京大兴', '福州长乐', null, 'PKX', 'FOC');
+INSERT INTO `flight` VALUES ('2595', 'KN5775', '北京大兴', '福州长乐', 'KN', '20:30-23:25', null, null, null, '2020-08-28 16:59:55', '0', '北京大兴', '福州长乐', null, 'PKX', 'FOC');
+INSERT INTO `flight` VALUES ('2596', 'CA1821', '北京首都T3', '福州长乐', 'CA', '20:35-23:35', null, null, null, '2020-08-28 16:59:55', '0', '北京首都', '福州长乐', null, 'PEK', 'FOC');
+INSERT INTO `flight` VALUES ('2597', 'HU7196', '福州长乐', '北京首都T2', 'HU', '07:00-10:00', null, null, null, '2020-08-28 17:01:52', '0', '福州长乐', '北京首都', null, 'FOC', 'PEK');
+INSERT INTO `flight` VALUES ('2598', 'CA1822', '福州长乐', '北京首都T3', 'CA', '07:20-10:05', null, null, null, '2020-08-28 17:01:52', '0', '福州长乐', '北京首都', null, 'FOC', 'PEK');
+INSERT INTO `flight` VALUES ('2599', 'MF8115', '福州长乐', '北京大兴', 'MF', '08:00-10:45', null, null, null, '2020-08-28 17:01:52', '0', '福州长乐', '北京大兴', null, 'FOC', 'PKX');
+INSERT INTO `flight` VALUES ('2600', 'KN5776', '福州长乐', '北京大兴', 'KN', '08:00-10:45', null, null, null, '2020-08-28 17:01:52', '0', '福州长乐', '北京大兴', null, 'FOC', 'PKX');
+INSERT INTO `flight` VALUES ('2601', 'CA1808', '福州长乐', '北京首都T3', 'CA', '08:35-11:25', null, null, null, '2020-08-28 17:01:52', '0', '福州长乐', '北京首都', null, 'FOC', 'PEK');
+INSERT INTO `flight` VALUES ('2602', 'MF8165', '福州长乐', '北京大兴', 'MF', '10:00-13:00', null, null, null, '2020-08-28 17:01:52', '0', '福州长乐', '北京大兴', null, 'FOC', 'PKX');
+INSERT INTO `flight` VALUES ('2603', 'CA1506', '福州长乐', '北京首都T3', 'CA', '11:55-14:50', null, null, null, '2020-08-28 17:01:52', '0', '福州长乐', '北京首都', null, 'FOC', 'PEK');
+INSERT INTO `flight` VALUES ('2604', 'MF8107', '福州长乐', '北京大兴', 'MF', '12:00-15:00', null, null, null, '2020-08-28 17:01:52', '0', '福州长乐', '北京大兴', null, 'FOC', 'PKX');
+INSERT INTO `flight` VALUES ('2605', 'HU7696', '福州长乐', '北京首都T2', 'HU', '13:05-16:00', null, null, null, '2020-08-28 17:01:52', '0', '福州长乐', '北京首都', null, 'FOC', 'PEK');
+INSERT INTO `flight` VALUES ('2606', 'MF8119', '福州长乐', '北京大兴', 'MF', '16:00-18:45', null, null, null, '2020-08-28 17:01:52', '0', '福州长乐', '北京大兴', null, 'FOC', 'PKX');
+INSERT INTO `flight` VALUES ('2607', 'SC4757', '福州长乐', '北京首都T3', 'SC', '17:40-20:35', null, null, null, '2020-08-28 17:01:52', '0', '福州长乐', '北京首都', null, 'FOC', 'PEK');
+INSERT INTO `flight` VALUES ('2608', 'MU5579', '上海虹桥T2', '福州长乐', 'MU', '19:05-20:30', null, null, null, '2020-08-28 17:05:37', '0', '上海虹桥', '福州长乐', null, 'SHA', 'FOC');
+INSERT INTO `flight` VALUES ('2609', 'MU6331', '上海浦东T1', '福州长乐', 'MU', '20:25-22:10', null, null, null, '2020-08-28 17:05:37', '0', '上海浦东', '福州长乐', null, 'PVG', 'FOC');
+INSERT INTO `flight` VALUES ('2610', 'MU5631', '上海浦东T1', '福州长乐', 'MU', '16:30-18:20', null, null, null, '2020-08-28 17:05:37', '0', '上海浦东', '福州长乐', null, 'PVG', 'FOC');
+INSERT INTO `flight` VALUES ('2611', 'MU5505', '上海浦东T1', '福州长乐', 'MU', '08:45-10:30', null, null, null, '2020-08-28 17:05:37', '0', '上海浦东', '福州长乐', null, 'PVG', 'FOC');
+INSERT INTO `flight` VALUES ('2612', 'MU5662', '上海浦东T1', '福州长乐', 'MU', '10:40-12:25', null, null, null, '2020-08-28 17:05:37', '0', '上海浦东', '福州长乐', null, 'PVG', 'FOC');
+INSERT INTO `flight` VALUES ('2613', 'FM9205', '上海虹桥T2', '福州长乐', 'FM', '06:55-08:25', null, null, null, '2020-08-28 17:05:37', '0', '上海虹桥', '福州长乐', null, 'SHA', 'FOC');
+INSERT INTO `flight` VALUES ('2614', 'FU6520', '上海浦东T2', '福州长乐', 'FU', '11:15-13:00', null, null, null, '2020-08-28 17:05:37', '0', '上海浦东', '福州长乐', null, 'PVG', 'FOC');
+INSERT INTO `flight` VALUES ('2615', 'MF8548', '上海虹桥T1', '福州长乐', 'MF', '21:00-22:30', null, null, null, '2020-08-28 17:05:37', '0', '上海虹桥', '福州长乐', null, 'SHA', 'FOC');
+INSERT INTO `flight` VALUES ('2616', 'MF8542', '上海虹桥T1', '福州长乐', 'MF', '15:05-16:35', null, null, null, '2020-08-28 17:05:37', '0', '上海虹桥', '福州长乐', null, 'SHA', 'FOC');
+INSERT INTO `flight` VALUES ('2617', 'MF8586', '上海虹桥T1', '福州长乐', 'MF', '18:00-19:30', null, null, null, '2020-08-28 17:05:37', '0', '上海虹桥', '福州长乐', null, 'SHA', 'FOC');
+INSERT INTO `flight` VALUES ('2618', 'MF8574', '上海虹桥T1', '福州长乐', 'MF', '09:40-11:05', null, null, null, '2020-08-28 17:05:38', '0', '上海虹桥', '福州长乐', null, 'SHA', 'FOC');
+INSERT INTO `flight` VALUES ('2619', 'MF8547', '福州长乐', '上海虹桥T1', 'MF', '20:00-21:35', null, null, null, '2020-08-28 17:06:36', '0', '福州长乐', '上海虹桥', null, 'FOC', 'SHA');
+INSERT INTO `flight` VALUES ('2620', 'MF8541', '福州长乐', '上海虹桥T1', 'MF', '11:30-12:55', null, null, null, '2020-08-28 17:06:36', '0', '福州长乐', '上海虹桥', null, 'FOC', 'SHA');
+INSERT INTO `flight` VALUES ('2621', 'MF8585', '福州长乐', '上海虹桥T1', 'MF', '16:00-17:25', null, null, null, '2020-08-28 17:06:37', '0', '福州长乐', '上海虹桥', null, 'FOC', 'SHA');
+INSERT INTO `flight` VALUES ('2622', 'MF8573', '福州长乐', '上海虹桥T1', 'MF', '08:00-09:25', null, null, null, '2020-08-28 17:06:37', '0', '福州长乐', '上海虹桥', null, 'FOC', 'SHA');
+INSERT INTO `flight` VALUES ('2623', 'MU5661', '福州长乐', '上海浦东T1', 'MU', '19:25-21:05', null, null, null, '2020-08-28 17:06:37', '0', '福州长乐', '上海浦东', null, 'FOC', 'PVG');
+INSERT INTO `flight` VALUES ('2624', 'MU5588', '福州长乐', '上海浦东T1', 'MU', '20:05-21:40', null, null, null, '2020-08-28 17:06:37', '0', '福州长乐', '上海浦东', null, 'FOC', 'PVG');
+INSERT INTO `flight` VALUES ('2625', 'MU5580', '福州长乐', '上海虹桥T2', 'MU', '21:25-22:50', null, null, null, '2020-08-28 17:06:37', '0', '福州长乐', '上海虹桥', null, 'FOC', 'SHA');
+INSERT INTO `flight` VALUES ('2626', 'MU6332', '福州长乐', '上海浦东T1', 'MU', '23:10-00:45', null, null, null, '2020-08-28 17:06:37', '0', '福州长乐', '上海浦东', null, 'FOC', 'PVG');
+INSERT INTO `flight` VALUES ('2627', 'MU5600', '福州长乐', '上海浦东T1', 'MU', '13:15-14:50', null, null, null, '2020-08-28 17:06:37', '0', '福州长乐', '上海浦东', null, 'FOC', 'PVG');
+INSERT INTO `flight` VALUES ('2628', 'FU6519', '福州长乐', '上海浦东T2', 'FU', '08:25-10:05', null, null, null, '2020-08-28 17:06:37', '0', '福州长乐', '上海浦东', null, 'FOC', 'PVG');
+INSERT INTO `flight` VALUES ('2629', 'FM9206', '福州长乐', '上海虹桥T2', 'FM', '09:30-10:55', null, null, null, '2020-08-28 17:06:37', '0', '福州长乐', '上海虹桥', null, 'FOC', 'SHA');
+INSERT INTO `flight` VALUES ('2630', 'MF8078', '福州长乐', '深圳宝安T3', 'MF', '19:55-21:25', null, null, null, '2020-08-28 17:08:21', '0', '福州长乐', '深圳宝安', null, 'FOC', 'SZX');
+INSERT INTO `flight` VALUES ('2631', 'MF8077', '深圳宝安T3', '福州长乐', 'MF', '10:20-11:45', null, null, null, '2020-08-28 17:10:36', '0', '深圳宝安', '福州长乐', null, 'SZX', 'FOC');
+INSERT INTO `flight` VALUES ('2632', 'MF8323', '福州长乐', '广州白云T2', 'MF', '08:05-09:45', null, null, null, '2020-08-28 17:13:36', '0', '福州长乐', '广州白云', null, 'FOC', 'CAN');
+INSERT INTO `flight` VALUES ('2633', 'CZ3506', '福州长乐', '广州白云T2', 'CZ', '10:35-12:20', null, null, null, '2020-08-28 17:13:36', '0', '福州长乐', '广州白云', null, 'FOC', 'CAN');
+INSERT INTO `flight` VALUES ('2634', 'MF8347', '福州长乐', '广州白云T2', 'MF', '15:00-16:40', null, null, null, '2020-08-28 17:13:36', '0', '福州长乐', '广州白云', null, 'FOC', 'CAN');
+INSERT INTO `flight` VALUES ('2635', 'CZ3878', '福州长乐', '广州白云T2', 'CZ', '16:10-18:00', null, null, null, '2020-08-28 17:13:36', '0', '福州长乐', '广州白云', null, 'FOC', 'CAN');
+INSERT INTO `flight` VALUES ('2636', 'MF8325', '福州长乐', '广州白云T2', 'MF', '18:00-19:40', null, null, null, '2020-08-28 17:13:36', '0', '福州长乐', '广州白云', null, 'FOC', 'CAN');
+INSERT INTO `flight` VALUES ('2637', 'CZ3648', '福州长乐', '广州白云T2', 'CZ', '22:05-23:45', null, null, null, '2020-08-28 17:13:36', '0', '福州长乐', '广州白云', null, 'FOC', 'CAN');
+INSERT INTO `flight` VALUES ('2638', 'CZ3505', '广州白云T2', '福州长乐', 'CZ', '07:45-09:35', null, null, null, '2020-08-28 17:15:06', '0', '广州白云', '福州长乐', null, 'CAN', 'FOC');
+INSERT INTO `flight` VALUES ('2639', 'MF8324', '广州白云T2', '福州长乐', 'MF', '10:55-12:35', null, null, null, '2020-08-28 17:15:06', '0', '广州白云', '福州长乐', null, 'CAN', 'FOC');
+INSERT INTO `flight` VALUES ('2640', 'CZ3877', '广州白云T2', '福州长乐', 'CZ', '13:30-15:15', null, null, null, '2020-08-28 17:15:06', '0', '广州白云', '福州长乐', null, 'CAN', 'FOC');
+INSERT INTO `flight` VALUES ('2641', 'MF8348', '广州白云T2', '福州长乐', 'MF', '17:55-19:50', null, null, null, '2020-08-28 17:15:06', '0', '广州白云', '福州长乐', null, 'CAN', 'FOC');
+INSERT INTO `flight` VALUES ('2642', 'CZ3647', '广州白云T2', '福州长乐', 'CZ', '19:35-21:15', null, null, null, '2020-08-28 17:15:06', '0', '广州白云', '福州长乐', null, 'CAN', 'FOC');
+INSERT INTO `flight` VALUES ('2643', 'MF8326', '广州白云T2', '福州长乐', 'MF', '22:00-23:55', null, null, null, '2020-08-28 17:15:06', '0', '广州白云', '福州长乐', null, 'CAN', 'FOC');
+INSERT INTO `flight` VALUES ('2644', 'MU7637', '昆明长水', '福州长乐', 'MU', '06:55-10:00', null, null, null, '2020-08-28 17:16:21', '0', '昆明长水', '福州长乐', null, 'KMG', 'FOC');
+INSERT INTO `flight` VALUES ('2645', '8L9879', '昆明长水', '福州长乐', '8L', '11:10-13:50', null, null, null, '2020-08-28 17:16:21', '0', '昆明长水', '福州长乐', null, 'KMG', 'FOC');
+INSERT INTO `flight` VALUES ('2646', 'KY3071', '昆明长水', '福州长乐', 'KY', '12:15-14:55', null, null, null, '2020-08-28 17:16:21', '0', '昆明长水', '福州长乐', null, 'KMG', 'FOC');
+INSERT INTO `flight` VALUES ('2647', 'MF8428', '昆明长水', '福州长乐', 'MF', '12:15-15:10', null, null, null, '2020-08-28 17:16:21', '0', '昆明长水', '福州长乐', null, 'KMG', 'FOC');
+INSERT INTO `flight` VALUES ('2648', 'MU5588', '昆明长水', '福州长乐', 'MU', '16:05-18:55', null, null, null, '2020-08-28 17:16:21', '0', '昆明长水', '福州长乐', null, 'KMG', 'FOC');
+INSERT INTO `flight` VALUES ('2649', 'MF8480', '昆明长水', '福州长乐', 'MF', '17:40-20:25', null, null, null, '2020-08-28 17:16:21', '0', '昆明长水', '福州长乐', null, 'KMG', 'FOC');
+INSERT INTO `flight` VALUES ('2650', 'FU6510', '昆明长水', '福州长乐', 'FU', '22:25-01:15', null, null, null, '2020-08-28 17:16:21', '0', '昆明长水', '福州长乐', null, 'KMG', 'FOC');
+INSERT INTO `flight` VALUES ('2651', 'MF8427', '福州长乐', '昆明长水', 'MF', '08:10-11:10', null, null, null, '2020-08-28 17:17:21', '0', '福州长乐', '昆明长水', null, 'FOC', 'KMG');
+INSERT INTO `flight` VALUES ('2652', 'MU7638', '福州长乐', '昆明长水', 'MU', '11:10-14:20', null, null, null, '2020-08-28 17:17:21', '0', '福州长乐', '昆明长水', null, 'FOC', 'KMG');
+INSERT INTO `flight` VALUES ('2653', 'MU5505', '福州长乐', '昆明长水', 'MU', '11:50-15:00', null, null, null, '2020-08-28 17:17:22', '0', '福州长乐', '昆明长水', null, 'FOC', 'KMG');
+INSERT INTO `flight` VALUES ('2654', 'MF8479', '福州长乐', '昆明长水', 'MF', '13:30-16:35', null, null, null, '2020-08-28 17:17:22', '0', '福州长乐', '昆明长水', null, 'FOC', 'KMG');
+INSERT INTO `flight` VALUES ('2655', '8L9880', '福州长乐', '昆明长水', '8L', '14:50-18:00', null, null, null, '2020-08-28 17:17:22', '0', '福州长乐', '昆明长水', null, 'FOC', 'KMG');
+INSERT INTO `flight` VALUES ('2656', 'KY3072', '福州长乐', '昆明长水', 'KY', '15:50-19:05', null, null, null, '2020-08-28 17:17:22', '0', '福州长乐', '昆明长水', null, 'FOC', 'KMG');
+INSERT INTO `flight` VALUES ('2657', 'FU6509', '福州长乐', '昆明长水', 'FU', '17:55-21:20', null, null, null, '2020-08-28 17:17:22', '0', '福州长乐', '昆明长水', null, 'FOC', 'KMG');
+INSERT INTO `flight` VALUES ('2658', 'EU2240', '福州长乐', '成都双流T2', 'EU', '12:30-17:20', null, null, '(经停遵义茅台)', '2020-08-28 17:20:52', '0', '福州长乐', '成都双流', null, 'FOC', 'CTU');
+INSERT INTO `flight` VALUES ('2659', 'EU2800', '福州长乐', '成都双流T2', 'EU', '15:45-21:00', null, null, '(经停梧州西江)', '2020-08-28 17:20:52', '0', '福州长乐', '成都双流', null, 'FOC', 'CTU');
+INSERT INTO `flight` VALUES ('2660', 'MF8435', '福州长乐', '成都双流T2', 'MF', '07:55-10:55', null, null, null, '2020-08-28 17:20:52', '0', '福州长乐', '成都双流', null, 'FOC', 'CTU');
+INSERT INTO `flight` VALUES ('2661', 'MF8451', '福州长乐', '成都双流T2', 'MF', '15:50-19:00', null, null, null, '2020-08-28 17:20:52', '0', '福州长乐', '成都双流', null, 'FOC', 'CTU');
+INSERT INTO `flight` VALUES ('2662', 'CA4230', '福州长乐', '成都双流T2', 'CA', '19:50-23:05', null, null, null, '2020-08-28 17:20:52', '0', '福州长乐', '成都双流', null, 'FOC', 'CTU');
+INSERT INTO `flight` VALUES ('2663', 'CA4236', '福州长乐', '成都双流T2', 'CA', '12:55-15:55', null, null, null, '2020-08-28 17:20:52', '0', '福州长乐', '成都双流', null, 'FOC', 'CTU');
+INSERT INTO `flight` VALUES ('2664', '3U8356', '福州长乐', '成都双流T1', '3U', '22:10-01:15', null, null, null, '2020-08-28 17:20:52', '0', '福州长乐', '成都双流', null, 'FOC', 'CTU');
+INSERT INTO `flight` VALUES ('2665', '3U8998', '福州长乐', '成都双流T1', '3U', '12:15-16:50', null, null, '(经停长沙黄花T1)', '2020-08-28 17:20:52', '0', '福州长乐', '成都双流', null, 'FOC', 'CTU');
+INSERT INTO `flight` VALUES ('2666', 'CA4235', '成都双流T2', '福州长乐', 'CA', '08:00-10:50', null, null, null, '2020-08-28 17:22:56', '0', '成都双流', '福州长乐', null, 'CTU', 'FOC');
+INSERT INTO `flight` VALUES ('2667', 'MF8436', '成都双流T2', '福州长乐', 'MF', '12:10-14:55', null, null, null, '2020-08-28 17:22:56', '0', '成都双流', '福州长乐', null, 'CTU', 'FOC');
+INSERT INTO `flight` VALUES ('2668', 'CA4229', '成都双流T2', '福州长乐', 'CA', '16:05-18:45', null, null, null, '2020-08-28 17:22:56', '0', '成都双流', '福州长乐', null, 'CTU', 'FOC');
+INSERT INTO `flight` VALUES ('2669', '3U8355', '成都双流T1', '福州长乐', '3U', '17:30-20:15', null, null, null, '2020-08-28 17:22:56', '0', '成都双流', '福州长乐', null, 'CTU', 'FOC');
+INSERT INTO `flight` VALUES ('2670', 'MF8452', '成都双流T2', '福州长乐', 'MF', '20:15-22:50', null, null, null, '2020-08-28 17:22:56', '0', '成都双流', '福州长乐', null, 'CTU', 'FOC');
+INSERT INTO `flight` VALUES ('2671', '3U8997', '成都双流T1', '福州长乐', '3U', '07:05-11:25', null, null, '(经停长沙黄花T1)', '2020-08-28 17:22:56', '0', '成都双流', '福州长乐', null, 'CTU', 'FOC');
+INSERT INTO `flight` VALUES ('2672', 'EU2799', '成都双流T2', '福州长乐', 'EU', '15:05-19:55', null, null, '(经停梧州西江)', '2020-08-28 17:22:57', '0', '成都双流', '福州长乐', null, 'CTU', 'FOC');
+INSERT INTO `flight` VALUES ('2673', 'EU2239', '成都双流T2', '福州长乐', 'EU', '18:25-22:50', null, null, '(经停遵义茅台)', '2020-08-28 17:22:57', '0', '成都双流', '福州长乐', null, 'CTU', 'FOC');
+INSERT INTO `flight` VALUES ('2674', 'PN6323', '重庆江北T2', '福州长乐', 'PN', '07:50-10:10', null, null, null, '2020-08-28 17:24:07', '0', '重庆江北', '福州长乐', null, 'CKG', 'FOC');
+INSERT INTO `flight` VALUES ('2675', '3U8505', '重庆江北T2', '福州长乐', '3U', '07:55-10:20', null, null, null, '2020-08-28 17:24:07', '0', '重庆江北', '福州长乐', null, 'CKG', 'FOC');
+INSERT INTO `flight` VALUES ('2676', 'HU7405', '重庆江北T3', '福州长乐', 'HU', '08:50-11:10', null, null, null, '2020-08-28 17:24:07', '0', '重庆江北', '福州长乐', null, 'CKG', 'FOC');
+INSERT INTO `flight` VALUES ('2677', 'MF8446', '重庆江北T3', '福州长乐', 'MF', '12:25-14:40', null, null, null, '2020-08-28 17:24:07', '0', '重庆江北', '福州长乐', null, 'CKG', 'FOC');
+INSERT INTO `flight` VALUES ('2678', 'CA4569', '重庆江北T3', '福州长乐', 'CA', '17:00-19:35', null, null, null, '2020-08-28 17:24:07', '0', '重庆江北', '福州长乐', null, 'CKG', 'FOC');
+INSERT INTO `flight` VALUES ('2679', 'MF8412', '重庆江北T3', '福州长乐', 'MF', '18:15-20:45', null, null, null, '2020-08-28 17:24:07', '0', '重庆江北', '福州长乐', null, 'CKG', 'FOC');
+INSERT INTO `flight` VALUES ('2680', 'MF8616', '重庆江北T3', '福州长乐', 'MF', '19:45-22:00', null, null, null, '2020-08-28 17:24:07', '0', '重庆江北', '福州长乐', null, 'CKG', 'FOC');
+INSERT INTO `flight` VALUES ('2681', 'FU6508', '重庆江北T3', '福州长乐', 'FU', '20:50-23:10', null, null, null, '2020-08-28 17:24:07', '0', '重庆江北', '福州长乐', null, 'CKG', 'FOC');
+INSERT INTO `flight` VALUES ('2682', 'MF8634', '重庆江北T3', '福州长乐', 'MF', '16:40-20:30', null, null, '(经停井冈山)', '2020-08-28 17:24:07', '0', '重庆江北', '福州长乐', null, 'CKG', 'FOC');
+INSERT INTO `flight` VALUES ('2683', 'MF8445', '福州长乐', '重庆江北T3', 'MF', '08:30-11:10', null, null, null, '2020-08-28 17:25:07', '0', '福州长乐', '重庆江北', null, 'FOC', 'CKG');
+INSERT INTO `flight` VALUES ('2684', '3U8506', '福州长乐', '重庆江北T2', '3U', '11:20-13:50', null, null, null, '2020-08-28 17:25:07', '0', '福州长乐', '重庆江北', null, 'FOC', 'CKG');
+INSERT INTO `flight` VALUES ('2685', 'HU7406', '福州长乐', '重庆江北T3', 'HU', '12:40-15:30', null, null, null, '2020-08-28 17:25:07', '0', '福州长乐', '重庆江北', null, 'FOC', 'CKG');
+INSERT INTO `flight` VALUES ('2686', 'PN6324', '福州长乐', '重庆江北T2', 'PN', '12:50-15:35', null, null, null, '2020-08-28 17:25:07', '0', '福州长乐', '重庆江北', null, 'FOC', 'CKG');
+INSERT INTO `flight` VALUES ('2687', 'FU6507', '福州长乐', '重庆江北T3', 'FU', '17:05-19:40', null, null, null, '2020-08-28 17:25:07', '0', '福州长乐', '重庆江北', null, 'FOC', 'CKG');
+INSERT INTO `flight` VALUES ('2688', 'MF8615', '福州长乐', '重庆江北T3', 'MF', '17:25-20:10', null, null, null, '2020-08-28 17:25:07', '0', '福州长乐', '重庆江北', null, 'FOC', 'CKG');
+INSERT INTO `flight` VALUES ('2689', 'CA4570', '福州长乐', '重庆江北T3', 'CA', '20:25-23:00', null, null, null, '2020-08-28 17:25:07', '0', '福州长乐', '重庆江北', null, 'FOC', 'CKG');
+INSERT INTO `flight` VALUES ('2690', 'MF8633', '福州长乐', '重庆江北T3', 'MF', '11:25-15:35', null, null, '(经停井冈山)', '2020-08-28 17:25:07', '0', '福州长乐', '重庆江北', null, 'FOC', 'CKG');
+INSERT INTO `flight` VALUES ('2691', 'MF8263', '福州长乐', '西安咸阳T3', 'MF', '07:50-10:25', null, null, null, '2020-08-28 17:29:06', '0', '福州长乐', '西安咸阳', null, 'FOC', 'XIY');
+INSERT INTO `flight` VALUES ('2692', 'MF8269', '福州长乐', '西安咸阳T3', 'MF', '10:05-12:50', null, null, null, '2020-08-28 17:29:06', '0', '福州长乐', '西安咸阳', null, 'FOC', 'XIY');
+INSERT INTO `flight` VALUES ('2693', 'MU2138', '福州长乐', '西安咸阳T3', 'MU', '15:50-18:45', null, null, null, '2020-08-28 17:29:06', '0', '福州长乐', '西安咸阳', null, 'FOC', 'XIY');
+INSERT INTO `flight` VALUES ('2694', 'MF8271', '福州长乐', '西安咸阳T3', 'MF', '16:15-19:05', null, null, null, '2020-08-28 17:29:06', '0', '福州长乐', '西安咸阳', null, 'FOC', 'XIY');
+INSERT INTO `flight` VALUES ('2695', 'FU6523', '福州长乐', '西安咸阳T2', 'FU', '16:05-20:05', null, null, '(经停襄阳刘集)', '2020-08-28 17:29:06', '0', '福州长乐', '西安咸阳', null, 'FOC', 'XIY');
+INSERT INTO `flight` VALUES ('2696', 'HU7510', '福州长乐', '西安咸阳T2', 'HU', '18:40-21:30', null, null, null, '2020-08-28 17:29:06', '0', '福州长乐', '西安咸阳', null, 'FOC', 'XIY');
+INSERT INTO `flight` VALUES ('2697', 'MU2137', '西安咸阳T3', '福州长乐', 'MU', '12:10-15:00', null, null, null, '2020-08-28 17:31:21', '0', '西安咸阳', '福州长乐', null, 'XIY', 'FOC');
+INSERT INTO `flight` VALUES ('2698', 'MF8270', '西安咸阳T3', '福州长乐', 'MF', '14:10-17:05', null, null, null, '2020-08-28 17:31:21', '0', '西安咸阳', '福州长乐', null, 'XIY', 'FOC');
+INSERT INTO `flight` VALUES ('2699', 'MF8264', '西安咸阳T3', '福州长乐', 'MF', '16:20-19:00', null, null, null, '2020-08-28 17:31:21', '0', '西安咸阳', '福州长乐', null, 'XIY', 'FOC');
+INSERT INTO `flight` VALUES ('2700', 'MF8272', '西安咸阳T3', '福州长乐', 'MF', '20:15-22:55', null, null, null, '2020-08-28 17:31:21', '0', '西安咸阳', '福州长乐', null, 'XIY', 'FOC');
+INSERT INTO `flight` VALUES ('2701', 'FU6524', '西安咸阳T2', '福州长乐', 'FU', '21:20-01:15', null, null, '(经停襄阳刘集)', '2020-08-28 17:31:22', '0', '西安咸阳', '福州长乐', null, 'XIY', 'FOC');
+INSERT INTO `flight` VALUES ('2702', 'MF8327', '青岛流亭T1', '福州长乐', 'MF', '11:35-13:45', null, null, null, '2020-08-28 17:34:36', '0', '青岛流亭', '福州长乐', null, 'TAO', 'FOC');
+INSERT INTO `flight` VALUES ('2703', 'SC8841', '青岛流亭T1', '福州长乐', 'SC', '13:35-15:45', null, null, null, '2020-08-28 17:34:36', '0', '青岛流亭', '福州长乐', null, 'TAO', 'FOC');
+INSERT INTO `flight` VALUES ('2704', 'QW6107', '青岛流亭T1', '福州长乐', 'QW', '14:10-16:20', null, null, null, '2020-08-28 17:34:36', '0', '青岛流亭', '福州长乐', null, 'TAO', 'FOC');
+INSERT INTO `flight` VALUES ('2705', 'MF8030', '青岛流亭T1', '福州长乐', 'MF', '20:05-22:05', null, null, null, '2020-08-28 17:34:36', '0', '青岛流亭', '福州长乐', null, 'TAO', 'FOC');
+INSERT INTO `flight` VALUES ('2706', 'MF8029', '福州长乐', '青岛流亭T1', 'MF', '09:10-11:30', null, null, null, '2020-08-28 17:35:51', '0', '福州长乐', '青岛流亭', null, 'FOC', 'TAO');
+INSERT INTO `flight` VALUES ('2707', 'QW6108', '福州长乐', '青岛流亭T1', 'QW', '17:10-19:25', null, null, null, '2020-08-28 17:35:51', '0', '福州长乐', '青岛流亭', null, 'FOC', 'TAO');
+INSERT INTO `flight` VALUES ('2708', 'MF8328', '福州长乐', '青岛流亭T1', 'MF', '20:40-22:50', null, null, null, '2020-08-28 17:35:51', '0', '福州长乐', '青岛流亭', null, 'FOC', 'TAO');
+INSERT INTO `flight` VALUES ('2709', 'SC8842', '福州长乐', '青岛流亭T1', 'SC', '21:30-23:45', null, null, null, '2020-08-28 17:35:51', '0', '福州长乐', '青岛流亭', null, 'FOC', 'TAO');
+INSERT INTO `flight` VALUES ('2710', 'MU9782', '福州长乐', '南京禄口T2', 'MU', '10:20-11:45', null, null, null, '2020-08-28 17:37:21', '0', '福州长乐', '南京禄口', null, 'FOC', 'NKG');
+INSERT INTO `flight` VALUES ('2711', 'MF8055', '福州长乐', '南京禄口T1', 'MF', '18:25-19:55', null, null, null, '2020-08-28 17:37:21', '0', '福州长乐', '南京禄口', null, 'FOC', 'NKG');
+INSERT INTO `flight` VALUES ('2712', 'MF8189', '福州长乐', '南京禄口T1', 'MF', '07:30-09:00', null, null, null, '2020-08-28 17:37:21', '0', '福州长乐', '南京禄口', null, 'FOC', 'NKG');
+INSERT INTO `flight` VALUES ('2713', 'MF8245', '福州长乐', '南京禄口T1', 'MF', '12:50-14:15', null, null, null, '2020-08-28 17:37:21', '0', '福州长乐', '南京禄口', null, 'FOC', 'NKG');
+INSERT INTO `flight` VALUES ('2714', 'NS3244', '福州长乐', '南京禄口T1', 'NS', '19:30-21:10', null, null, null, '2020-08-28 17:37:21', '0', '福州长乐', '南京禄口', null, 'FOC', 'NKG');
+INSERT INTO `flight` VALUES ('2715', 'MU9781', '南京禄口T2', '福州长乐', 'MU', '08:10-09:30', null, null, null, '2020-08-28 17:38:06', '0', '南京禄口', '福州长乐', null, 'NKG', 'FOC');
+INSERT INTO `flight` VALUES ('2716', 'MF8056', '南京禄口T1', '福州长乐', 'MF', '11:45-13:10', null, null, null, '2020-08-28 17:38:06', '0', '南京禄口', '福州长乐', null, 'NKG', 'FOC');
+INSERT INTO `flight` VALUES ('2717', 'MF8190', '南京禄口T1', '福州长乐', 'MF', '15:25-17:00', null, null, null, '2020-08-28 17:38:06', '0', '南京禄口', '福州长乐', null, 'NKG', 'FOC');
+INSERT INTO `flight` VALUES ('2718', 'NS3243', '南京禄口T1', '福州长乐', 'NS', '16:20-17:50', null, null, null, '2020-08-28 17:38:06', '0', '南京禄口', '福州长乐', null, 'NKG', 'FOC');
+INSERT INTO `flight` VALUES ('2719', 'MF8246', '南京禄口T1', '福州长乐', 'MF', '22:30-23:50', null, null, null, '2020-08-28 17:38:06', '0', '南京禄口', '福州长乐', null, 'NKG', 'FOC');
+INSERT INTO `flight` VALUES ('2720', 'MF8433', '福州长乐', '长沙黄花T2', 'MF', '07:20-08:55', null, null, null, '2020-08-28 17:43:51', '0', '福州长乐', '长沙黄花', null, 'FOC', 'CSX');
+INSERT INTO `flight` VALUES ('2721', 'MF8235', '福州长乐', '长沙黄花T2', 'MF', '09:55-11:35', null, null, null, '2020-08-28 17:43:52', '0', '福州长乐', '长沙黄花', null, 'FOC', 'CSX');
+INSERT INTO `flight` VALUES ('2722', '3U8998', '福州长乐', '长沙黄花T1', '3U', '12:15-13:45', null, null, null, '2020-08-28 17:43:52', '0', '福州长乐', '长沙黄花', null, 'FOC', 'CSX');
+INSERT INTO `flight` VALUES ('2723', 'EU1866', '福州长乐', '长沙黄花T1', 'EU', '21:00-22:30', null, null, null, '2020-08-28 17:43:52', '0', '福州长乐', '长沙黄花', null, 'FOC', 'CSX');
+INSERT INTO `flight` VALUES ('2724', '3U8997', '长沙黄花T1', '福州长乐', '3U', '09:55-11:25', null, null, null, '2020-08-28 17:45:36', '0', '长沙黄花', '福州长乐', null, 'CSX', 'FOC');
+INSERT INTO `flight` VALUES ('2725', 'MF8434', '长沙黄花T2', '福州长乐', 'MF', '16:00-17:30', null, null, null, '2020-08-28 17:45:36', '0', '长沙黄花', '福州长乐', null, 'CSX', 'FOC');
+INSERT INTO `flight` VALUES ('2726', 'MF8236', '长沙黄花T2', '福州长乐', 'MF', '19:45-21:15', null, null, null, '2020-08-28 17:45:36', '0', '长沙黄花', '福州长乐', null, 'CSX', 'FOC');
+INSERT INTO `flight` VALUES ('2727', 'EU1865', '长沙黄花T1', '福州长乐', 'EU', '21:10-22:40', null, null, null, '2020-08-28 17:45:36', '0', '长沙黄花', '福州长乐', null, 'CSX', 'FOC');
