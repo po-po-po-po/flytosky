@@ -63,6 +63,15 @@ public class WxMessageController {
         return responseResult;
     }
 
+    @PostMapping(value="info")
+    @ApiOperation(value = "更新说明", notes = "info")
+    public ResponseResult<String> info()  {
+        String logTitle = "=更新说明=";
+        log.info("{} - 参数：saveWxMessage={}", logTitle);
+        ResponseResult<String> responseResult = new ResponseResult<>();
+        responseResult.setData("2020.08.28更新排名前11的机场数据。。。。。。");
+        return responseResult;
+    }
 
 
 }
