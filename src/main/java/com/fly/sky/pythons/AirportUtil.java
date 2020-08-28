@@ -4,8 +4,10 @@ package com.fly.sky.pythons;
 import com.fly.sky.AirportApplication;
 import com.fly.sky.condition.AirwayCondition;
 import com.fly.sky.domain.Airport;
+import com.fly.sky.domain.AirportCode;
 import com.fly.sky.domain.Airway;
 import com.fly.sky.domain.Flight;
+import com.fly.sky.repository.AirportCodeRepository;
 import com.fly.sky.repository.AirportRepository;
 import com.fly.sky.repository.AirwayRepository;
 import com.fly.sky.repository.FlightRepository;
@@ -40,6 +42,10 @@ public class AirportUtil {
     private AirportRepository airportRepository;
 
 
+    @Autowired
+    private AirportCodeRepository airportCodeRepository;
+
+
     @Test
     @Rollback(false)
     public  void  scrableAirport() {
@@ -53,5 +59,37 @@ public class AirportUtil {
 
     }
 
+
+    @Test
+    @Rollback(false)
+    public  void  scrableCode() {
+        List<AirportCode> codelist= airportCodeRepository.distinctdeptCode();
+        for (AirportCode code : codelist) {
+            AirportCode airportCode=new AirportCode();
+            airportCode.setDeptCode("cgo");
+            airportCode.setDeptName("郑州");
+            airportCode.setArrCode(code.getDeptCode());
+            airportCode.setArrName(code.getDeptName());
+            airportCodeRepository.insertAirportCode(airportCode);
+        }
+        //flightList
+
+    }
+
+    @Test
+    @Rollback(false)
+    public  void  scrableCode1() {
+        List<AirportCode> codelist= airportCodeRepository.distinctdeptCode();
+        for (AirportCode code : codelist) {
+            AirportCode airportCode=new AirportCode();
+            airportCode.setDeptCode(code.getDeptCode());
+            airportCode.setDeptName(code.getDeptName());
+            airportCode.setArrCode("cgo");
+            airportCode.setArrName("郑州");
+            airportCodeRepository.insertAirportCode(airportCode);
+        }
+        //flightList
+
+    }
 
 }

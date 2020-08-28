@@ -24,4 +24,6 @@ public interface AirportCodeRepository {
 
     void updateAirportCode(AirportCode airportCode);
 
+    List<AirportCode> distinctdeptCode();
+
 }

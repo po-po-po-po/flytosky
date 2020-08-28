@@ -49,4 +49,8 @@
     arr_code= #{arrCode}
   </update>
 
+    <select id="distinctdeptCode" resultType="com.fly.sky.domain.AirportCode">
+      select distinct dept_code as deptCode ,dept_name as deptName
+      from airport_code
+     </select>
 </mapper>
