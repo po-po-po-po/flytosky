@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : 127.0.0.1
-Source Server Version : 50717
-Source Host           : localhost:3306
+Source Server Version : 50719
+Source Host           : 127.0.0.1:3306
 Source Database       : fly
 
 Target Server Type    : MYSQL
-Target Server Version : 50717
+Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2020-08-28 17:46:33
+Date: 2020-08-28 22:59:28
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -177,3 +177,49 @@ INSERT INTO `airport_code` VALUES ('141', 'foc', 'nkg', '福州', '南京', '1',
 INSERT INTO `airport_code` VALUES ('142', 'nkg', 'foc', '南京', '福州', '1', '2020-08-28 17:38:06', '成功爬取到数据');
 INSERT INTO `airport_code` VALUES ('143', 'csx', 'foc', '长沙', '福州', '1', '2020-08-28 17:45:36', '成功爬取到数据');
 INSERT INTO `airport_code` VALUES ('144', 'foc', 'csx', '福州', '长沙', '1', '2020-08-28 17:43:52', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('145', 'tsn', 'sha', '天津', '上海', '1', '2020-08-28 21:48:52', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('146', 'sha', 'tsn', '上海', '天津', '1', '2020-08-28 21:51:37', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('147', 'can', 'tsn', '广州', '天津', '1', '2020-08-28 21:53:07', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('148', 'tsn', 'can', '天津', '广州', '1', '2020-08-28 21:54:37', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('149', 'tsn', 'szx', '天津', '深圳', '1', '2020-08-28 21:59:22', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('150', 'szx', 'tsn', '深圳', '天津', '1', '2020-08-28 21:59:36', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('151', 'ctu', 'tsn', '成都', '天津', '1', '2020-08-28 22:01:21', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('152', 'tsn', 'ctu', '天津', '成都', '1', '2020-08-28 22:02:37', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('153', 'tsn', 'ckg', '天津', '重庆', '1', '2020-08-28 22:03:51', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('154', 'ckg', 'tsn', '重庆', '天津', '1', '2020-08-28 22:04:06', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('155', 'tsn', 'kmg', '天津', '昆明', '1', '2020-08-28 22:11:37', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('156', 'kmg', 'tsn', '昆明', '天津', '1', '2020-08-28 22:11:55', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('157', 'tsn', 'sia', '天津', '西安', '1', '2020-08-28 22:18:21', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('158', 'sia', 'tsn', '西安', '天津', '1', '2020-08-28 22:18:44', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('159', 'tsn', 'hgh', '天津', '杭州', '1', '2020-08-28 22:18:27', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('160', 'hgh', 'tsn', '杭州', '天津', '1', '2020-08-28 22:18:50', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('161', 'tsn', 'tao', '天津', '青岛', '1', '2020-08-28 22:18:32', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('162', 'tao', 'tsn', '青岛', '天津', '1', '2020-08-28 22:18:38', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('163', 'tsn', 'csx', '天津', '长沙', '1', '2020-08-28 22:11:43', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('164', 'csx', 'tsn', '长沙', '天津', '1', '2020-08-28 22:12:07', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('165', 'tsn', 'foc', '天津', '福州', '1', '2020-08-28 22:11:49', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('166', 'foc', 'tsn', '福州', '天津', '1', '2020-08-28 22:12:01', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('167', 'xmn', 'bjs', '厦门', '北京', '1', '2020-08-28 22:40:52', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('168', 'bjs', 'xmn', '北京', '厦门', '1', '2020-08-28 22:55:07', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('169', 'xmn', 'sha', '厦门', '上海', '1', '2020-08-28 22:41:00', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('170', 'sha', 'xmn', '上海', '厦门', '1', '2020-08-28 22:42:26', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('171', 'can', 'xmn', '广州', '厦门', '1', '2020-08-28 22:55:35', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('172', 'xmn', 'can', '厦门', '广州', '1', '2020-08-28 22:41:06', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('173', 'ctu', 'xmn', '成都', '厦门', '1', '2020-08-28 22:44:51', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('174', 'xmn', 'ctu', '厦门', '成都', '1', '2020-08-28 22:41:13', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('175', 'xmn', 'ckg', '厦门', '重庆', '1', '2020-08-28 22:41:19', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('176', 'ckg', 'xmn', '重庆', '厦门', '1', '2020-08-28 22:44:42', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('177', 'xmn', 'kmg', '厦门', '昆明', '1', '2020-08-28 22:41:25', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('178', 'kmg', 'xmn', '昆明', '厦门', '1', '2020-08-28 22:42:39', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('179', 'xmn', 'sia', '厦门', '西安', '1', '2020-08-28 22:41:31', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('180', 'sia', 'xmn', '西安', '厦门', '1', '2020-08-28 22:42:19', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('181', 'xmn', 'hgh', '厦门', '杭州', '1', '2020-08-28 22:41:37', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('182', 'hgh', 'xmn', '杭州', '厦门', '1', '2020-08-28 22:42:44', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('183', 'xmn', 'nkg', '厦门', '南京', '1', '2020-08-28 22:41:44', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('184', 'nkg', 'xmn', '南京', '厦门', '1', '2020-08-28 22:42:32', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('185', 'xmn', 'csx', '厦门', '长沙', '1', '2020-08-28 22:41:49', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('186', 'csx', 'xmn', '长沙', '厦门', '1', '2020-08-28 22:44:35', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('187', 'xmn', 'tao', '厦门', '青岛', '1', '2020-08-28 22:41:55', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('188', 'tao', 'xmn', '青岛', '厦门', '1', '2020-08-28 22:42:13', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('189', 'xmn', 'tsn', '厦门', '天津', '1', '2020-08-28 22:42:01', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('190', 'tsn', 'xmn', '天津', '厦门', '1', '2020-08-28 22:42:07', '成功爬取到数据');
