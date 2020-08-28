@@ -75,7 +75,7 @@ public class ZHFlightUtil {
                 xCParam1.setHasChild(false);
                 xCParam1.setHasBaby(false);
                 xCParam1.setSearchIndex(1);
-                xCParam1.setCt("bad1ff2948cbd8b4c6fafb42d4849091");
+                xCParam1.setCt("1598410060180");
                 xCParam1.setArmy(false);
                 xCParam1.setSelectedInfos(null);
                 xCParam1.setToken("bad1ff2948cbd8b4c6fafb42d4849091");
