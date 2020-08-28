@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2020-08-27 18:31:29
+Date: 2020-08-28 11:50:29
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -99,3 +99,21 @@ INSERT INTO `airport_code` VALUES ('63', 'ckg', 'szx', '重庆', '深圳', '1', 
 INSERT INTO `airport_code` VALUES ('64', 'szx', 'ckg', '深圳', '重庆', '1', '2020-08-27 18:25:55', '成功爬取到数据');
 INSERT INTO `airport_code` VALUES ('65', 'ckg', 'can', '重庆', '广州', '1', '2020-08-27 18:27:09', '成功爬取到数据');
 INSERT INTO `airport_code` VALUES ('66', 'can', 'ckg', '广州', '重庆', '1', '2020-08-27 18:28:08', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('67', 'tao', 'bjs', '青岛', '北京', '1', '2020-08-28 11:11:24', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('68', 'bjs', 'tao', '北京', '青岛', '1', '2020-08-28 11:12:53', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('69', 'sha', 'tao', '上海', '青岛', '1', '2020-08-28 11:14:09', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('70', 'tao', 'sha', '青岛', '上海', '1', '2020-08-28 11:15:25', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('71', 'tao', 'can', '青岛', '广州', '1', '2020-08-28 11:17:38', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('72', 'can', 'tao', '广州', '青岛', '1', '2020-08-28 11:19:22', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('73', 'szx', 'tao', '深圳', '青岛', '1', '2020-08-28 11:27:53', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('74', 'tao', 'szx', '青岛', '深圳', '1', '2020-08-28 11:29:08', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('75', 'ctu', 'tao', '成都', '青岛', '1', '2020-08-28 11:34:23', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('76', 'tao', 'ctu', '青岛', '成都', '1', '2020-08-28 11:32:21', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('77', 'ckg', 'tao', '重庆', '青岛', '1', '2020-08-28 11:35:27', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('78', 'tao', 'ckg', '青岛', '重庆', '1', '2020-08-28 11:36:22', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('79', 'tao', 'kmg', '青岛', '昆明', '1', '2020-08-28 11:41:22', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('80', 'kmg', 'tao', '昆明', '青岛', '1', '2020-08-28 11:43:51', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('81', 'tao', 'sia', '青岛', '西安', '1', '2020-08-28 11:46:52', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('82', 'sia', 'tao', '西安', '青岛', '1', '2020-08-28 11:46:07', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('83', 'tao', 'hgh', '青岛', '杭州', '1', '2020-08-28 11:47:52', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('84', 'hgh', 'tao', '杭州', '青岛', '1', '2020-08-28 11:48:52', '成功爬取到数据');
