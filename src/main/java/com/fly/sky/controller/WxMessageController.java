@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -65,11 +66,14 @@ public class WxMessageController {
 
     @PostMapping(value="info")
     @ApiOperation(value = "更新说明", notes = "info")
-    public ResponseResult<String> info()  {
+    public ResponseResult<List<String>> info()  {
         String logTitle = "=更新说明=";
         log.info("{} - 参数：saveWxMessage={}", logTitle);
-        ResponseResult<String> responseResult = new ResponseResult<>();
-        responseResult.setData("2020.08.28更新排名前11的机场数据。。。。。。");
+        ResponseResult<List<String>> responseResult = new ResponseResult<>();
+        List list=new ArrayList();
+        list.add("2020.08.27更新北京首都,北京大兴,上海虹桥,上海浦东,广州，深圳,昆明,成都,重庆,西安,杭州以上11座机场之间互飞航班的数据.");
+        list.add("2020.08.28计划更新郑州,青岛,厦门,福州,南京,拉萨,大理,丽江,长沙,天津这10座机场之间加昨天的11座机场互飞的航班数据.");
+        responseResult.setData(list);
         return responseResult;
     }
 
