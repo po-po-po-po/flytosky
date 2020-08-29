@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 127.0.0.1
-Source Server Version : 50717
-Source Host           : localhost:3306
+Source Server         : 49.232.228.221
+Source Server Version : 50649
+Source Host           : 49.232.228.221:3306
 Source Database       : fly
 
 Target Server Type    : MYSQL
-Target Server Version : 50717
+Target Server Version : 50649
 File Encoding         : 65001
 
-Date: 2020-08-28 15:35:08
+Date: 2020-08-29 14:19:05
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,7 +29,7 @@ CREATE TABLE `airlines` (
   `airlines_abbreviate` varchar(255) DEFAULT NULL,
   `airlines_rank` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of airlines
@@ -61,6 +61,7 @@ INSERT INTO `airlines` VALUES ('24', '奥凯航空', 'BK', null, 'https://www.po
 INSERT INTO `airlines` VALUES ('25', '华夏航空', 'G5', null, 'https://www.potucs.com/wechat/airline/g5.png', null, '华夏航空', null);
 INSERT INTO `airlines` VALUES ('26', '西部航空', 'PN', null, 'https://www.potucs.com/wechat/airline/pn.png', null, '西部航空', null);
 INSERT INTO `airlines` VALUES ('27', '山东航空', 'SC', null, 'https://www.potucs.com/wechat/airline/sc.png', null, '山东航空', null);
-INSERT INTO `airlines` VALUES ('28', '红土航空', 'A6', null, null, null, '红土航空', null);
-INSERT INTO `airlines` VALUES ('29', '九元航空', 'AQ', null, 'https://www.potucs.com/wechat/airline/aq.png', null, null, null);
-INSERT INTO `airlines` VALUES ('30', '福州航空', 'FU', null, 'https://www.potucs.com/wechat/airline/fu.png', null, null, null);
+INSERT INTO `airlines` VALUES ('28', '红土航空', 'A6', null, 'https://www.potucs.com/wechat/airline/a6.png', null, '红土航空', null);
+INSERT INTO `airlines` VALUES ('29', '九元航空', 'AQ', null, 'https://www.potucs.com/wechat/airline/aq.png', null, '九元航空', null);
+INSERT INTO `airlines` VALUES ('30', '福州航空', 'FU', null, 'https://www.potucs.com/wechat/airline/fu.png', null, '福州航空', null);
+INSERT INTO `airlines` VALUES ('31', '桂林航空', 'GT', null, 'https://www.potucs.com/wechat/airline/gt.png', null, '桂林航空', null);
