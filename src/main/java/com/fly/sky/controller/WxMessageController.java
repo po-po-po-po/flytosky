@@ -71,8 +71,10 @@ public class WxMessageController {
         log.info("{} - 参数：saveWxMessage={}", logTitle);
         ResponseResult<List<String>> responseResult = new ResponseResult<>();
         List list=new ArrayList();
-        list.add("2020.08.27更新北京首都,北京大兴,上海虹桥,上海浦东,广州，深圳,昆明,成都,重庆,西安,杭州以上11座机场之间互飞航班的数据.");
-        list.add("2020.08.28计划更新郑州,青岛,厦门,福州,南京,拉萨,大理,丽江,长沙,天津这10座机场之间加昨天的11座机场互飞的航班数据.");
+        list.add("你所能看到的机场列表，只要任一机场和机场之间有航班，现在都有航班数据可以查询到.");
+        list.add("2020.08.27更新北京首都,北京大兴,上海虹桥,上海浦东,广州，深圳,昆明,成都,重庆,西安,杭州.");
+        list.add("2020.08.28更新郑州,青岛,厦门,福州,南京,拉萨,大理,丽江,长沙,天津.");
+        list.add("2020.08.29更新南宁.");
         responseResult.setData(list);
         return responseResult;
     }

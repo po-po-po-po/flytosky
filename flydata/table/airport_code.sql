@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2020-08-29 11:51:18
+Date: 2020-08-29 14:03:04
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,7 +29,7 @@ CREATE TABLE `airport_code` (
   `create_time` datetime DEFAULT NULL,
   `describle` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=532 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=571 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of airport_code
@@ -351,3 +351,41 @@ INSERT INTO `airport_code` VALUES ('526', 'tsn', 'dlu', '天津', '大理', '1',
 INSERT INTO `airport_code` VALUES ('527', 'xmn', 'dlu', '厦门', '大理', '1', '2020-08-29 11:40:20', '成功爬取到数据');
 INSERT INTO `airport_code` VALUES ('528', 'cgo', 'dlu', '郑州', '大理', '1', '2020-08-29 11:38:28', '成功爬取到数据');
 INSERT INTO `airport_code` VALUES ('529', 'lxa', 'dlu', '拉萨', '大理', '1', '2020-08-29 11:34:51', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('532', 'nng', 'bjs', '南宁', '北京', '1', '2020-08-29 13:34:06', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('533', 'nng', 'can', '南宁', '广州', '1', '2020-08-29 13:34:12', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('534', 'nng', 'hgh', '南宁', '杭州', '1', '2020-08-29 13:34:18', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('535', 'nng', 'sha', '南宁', '上海', '1', '2020-08-29 13:34:24', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('536', 'nng', 'ctu', '南宁', '成都', '1', '2020-08-29 13:34:30', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('537', 'nng', 'szx', '南宁', '深圳', '1', '2020-08-29 13:34:36', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('538', 'nng', 'kmg', '南宁', '昆明', '1', '2020-08-29 13:59:20', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('539', 'nng', 'sia', '南宁', '西安', '1', '2020-08-29 13:55:21', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('540', 'nng', 'ckg', '南宁', '重庆', '1', '2020-08-29 13:56:21', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('541', 'nng', 'tao', '南宁', '青岛', '1', '2020-08-29 13:45:06', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('542', 'nng', 'nkg', '南宁', '南京', '1', '2020-08-29 13:45:12', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('543', 'nng', 'csx', '南宁', '长沙', '1', '2020-08-29 13:45:18', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('544', 'nng', 'foc', '南宁', '福州', '1', '2020-08-29 13:45:23', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('545', 'nng', 'tsn', '南宁', '天津', '1', '2020-08-29 13:45:29', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('546', 'nng', 'xmn', '南宁', '厦门', '1', '2020-08-29 13:45:35', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('547', 'nng', 'cgo', '南宁', '郑州', '1', '2020-08-29 13:45:41', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('548', 'nng', 'lxa', '南宁', '拉萨', '1', '2020-08-29 13:45:50', '没有查询到航班信息');
+INSERT INTO `airport_code` VALUES ('549', 'nng', 'ljg', '南宁', '丽江', '1', '2020-08-29 13:56:35', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('550', 'nng', 'dlu', '南宁', '大理', '1', '2020-08-29 13:56:40', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('551', 'bjs', 'nng', '北京', '南宁', '1', '2020-08-29 13:56:47', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('552', 'can', 'nng', '广州', '南宁', '1', '2020-08-29 13:56:52', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('553', 'hgh', 'nng', '杭州', '南宁', '1', '2020-08-29 13:56:58', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('554', 'sha', 'nng', '上海', '南宁', '1', '2020-08-29 13:57:06', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('555', 'ctu', 'nng', '成都', '南宁', '1', '2020-08-29 13:41:06', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('556', 'szx', 'nng', '深圳', '南宁', '1', '2020-08-29 13:41:12', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('557', 'kmg', 'nng', '昆明', '南宁', '1', '2020-08-29 13:41:17', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('558', 'sia', 'nng', '西安', '南宁', '1', '2020-08-29 13:41:23', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('559', 'ckg', 'nng', '重庆', '南宁', '1', '2020-08-29 13:57:21', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('560', 'tao', 'nng', '青岛', '南宁', '1', '2020-08-29 13:57:26', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('561', 'nkg', 'nng', '南京', '南宁', '1', '2020-08-29 13:57:33', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('562', 'csx', 'nng', '长沙', '南宁', '1', '2020-08-29 13:55:12', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('563', 'foc', 'nng', '福州', '南宁', '1', '2020-08-29 13:57:50', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('564', 'tsn', 'nng', '天津', '南宁', '1', '2020-08-29 13:57:56', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('565', 'xmn', 'nng', '厦门', '南宁', '1', '2020-08-29 13:58:02', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('566', 'cgo', 'nng', '郑州', '南宁', '1', '2020-08-29 13:58:21', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('567', 'lxa', 'nng', '拉萨', '南宁', '1', '2020-08-29 13:43:31', '没有查询到航班信息');
+INSERT INTO `airport_code` VALUES ('568', 'ljg', 'nng', '丽江', '南宁', '1', '2020-08-29 13:58:26', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('569', 'dlu', 'nng', '大理', '南宁', '1', '2020-08-29 13:58:32', '成功爬取到数据');
