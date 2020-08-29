@@ -28,7 +28,7 @@
         <if test="arrCode != null  and arrCode != '' ">
             AND arr_code  = #{arrCode,jdbcType=VARCHAR}
         </if>
-        order by dept_code desc;
+        order by ID ASC;
     </select>
 
 

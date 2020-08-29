@@ -78,7 +78,7 @@ public class ZHFlightUtil {
                 xCParam1.setCt("1598410060180");
                 xCParam1.setArmy(false);
                 xCParam1.setSelectedInfos(null);
-                xCParam1.setToken("bad1ff2948cbd8b4c6fafb42d4849091");
+                xCParam1.setToken("45a2fd7d9f30d263d346435c2bcff514");
                 XCParam2 xCParam2 = new XCParam2();
                 xCParam2.setDate("2020-09-21");
                 xCParam2.setDcityname(airport1.getDeptName());
@@ -146,7 +146,7 @@ public class ZHFlightUtil {
                                                 if(null!=stop){
                                                     flight.setFlightRemark("(经停"+stop.getAirportAbbreviate()+stopTerminal+")");
                                                 }else{
-                                                    flight.setFlightRemark("经停没有查到"+airportCodes);
+                                                    flight.setFlightRemark("(经停没有查到"+airportCodes+")");
                                                 }
 
                                             }
