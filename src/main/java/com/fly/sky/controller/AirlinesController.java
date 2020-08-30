@@ -83,9 +83,6 @@ public class AirlinesController {
         String logTitle = "=查询航司能飞往的机场列表和航班信息=";
         log.info("{} - 参数：findFlightsAndAirportsByAirlines={}", logTitle, JsonUtil.toJSONString(condition));
         //处理天津航空问题
-        if(null!=condition&&condition.getAirlinesCode().equals("GX")){
-            condition.setAirlinesCode("GS");
-        }
         ResponseResult<AirlinesDetail> responseResult = new ResponseResult<>();
         responseResult.setData(airlinesService.findFlightsAndAirportsByAirlines(condition));
         return responseResult;
