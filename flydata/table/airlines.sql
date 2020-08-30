@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50649
 File Encoding         : 65001
 
-Date: 2020-08-30 16:36:54
+Date: 2020-08-30 16:39:47
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,7 +29,7 @@ CREATE TABLE `airlines` (
   `airlines_abbreviate` varchar(255) DEFAULT NULL,
   `airlines_rank` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of airlines
@@ -67,3 +67,4 @@ INSERT INTO `airlines` VALUES ('30', '福州航空', 'FU', null, 'https://www.po
 INSERT INTO `airlines` VALUES ('31', '桂林航空', 'GT', null, 'https://www.potucs.com/wechat/airline/gt.png', null, '桂林航空', null);
 INSERT INTO `airlines` VALUES ('32', '大新华航空', 'CN', null, 'https://www.potucs.com/wechat/airline/hu.png', null, '大新华航空', null);
 INSERT INTO `airlines` VALUES ('33', '龙江航空', 'LT', null, 'https://www.potucs.com/wechat/airline/lt.png', null, '龙江航空', null);
+INSERT INTO `airlines` VALUES ('34', '幸福航空', 'JR', null, 'https://www.potucs.com/wechat/airline/jr.png', null, '幸福航空', null);
