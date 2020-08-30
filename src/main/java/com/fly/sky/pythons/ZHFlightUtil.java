@@ -78,7 +78,7 @@ public class ZHFlightUtil {
                 xCParam1.setCt("1598410060180");
                 xCParam1.setArmy(false);
                 xCParam1.setSelectedInfos(null);
-                xCParam1.setToken("e656fc47c5e34a2ae77a1da66319f076");
+                xCParam1.setToken("62bdf8e41b785dd2f0bc1dd26335443e");
                 XCParam2 xCParam2 = new XCParam2();
                 xCParam2.setDate("2020-09-21");
                 xCParam2.setDcityname(airport1.getDeptName());
