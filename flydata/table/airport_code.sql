@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2020-08-29 14:03:04
+Date: 2020-08-30 16:16:17
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,7 +29,7 @@ CREATE TABLE `airport_code` (
   `create_time` datetime DEFAULT NULL,
   `describle` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=571 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=612 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of airport_code
@@ -389,3 +389,43 @@ INSERT INTO `airport_code` VALUES ('566', 'cgo', 'nng', '郑州', '南宁', '1',
 INSERT INTO `airport_code` VALUES ('567', 'lxa', 'nng', '拉萨', '南宁', '1', '2020-08-29 13:43:31', '没有查询到航班信息');
 INSERT INTO `airport_code` VALUES ('568', 'ljg', 'nng', '丽江', '南宁', '1', '2020-08-29 13:58:26', '成功爬取到数据');
 INSERT INTO `airport_code` VALUES ('569', 'dlu', 'nng', '大理', '南宁', '1', '2020-08-29 13:58:32', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('571', 'hrb', 'bjs', '哈尔滨', '北京', '1', '2020-08-30 15:33:37', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('572', 'hrb', 'can', '哈尔滨', '广州', '1', '2020-08-30 15:33:44', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('573', 'hrb', 'hgh', '哈尔滨', '杭州', '1', '2020-08-30 15:33:51', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('574', 'hrb', 'sha', '哈尔滨', '上海', '1', '2020-08-30 15:33:58', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('575', 'hrb', 'ctu', '哈尔滨', '成都', '1', '2020-08-30 15:34:05', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('576', 'hrb', 'szx', '哈尔滨', '深圳', '1', '2020-08-30 15:34:12', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('577', 'hrb', 'kmg', '哈尔滨', '昆明', '1', '2020-08-30 15:34:18', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('578', 'hrb', 'sia', '哈尔滨', '西安', '1', '2020-08-30 15:34:24', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('579', 'hrb', 'ckg', '哈尔滨', '重庆', '1', '2020-08-30 15:34:31', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('580', 'hrb', 'tao', '哈尔滨', '青岛', '1', '2020-08-30 15:34:38', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('581', 'hrb', 'nkg', '哈尔滨', '南京', '1', '2020-08-30 15:34:44', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('582', 'hrb', 'csx', '哈尔滨', '长沙', '1', '2020-08-30 15:34:50', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('583', 'hrb', 'foc', '哈尔滨', '福州', '1', '2020-08-30 15:34:57', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('584', 'hrb', 'tsn', '哈尔滨', '天津', '1', '2020-08-30 15:35:03', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('585', 'hrb', 'xmn', '哈尔滨', '厦门', '1', '2020-08-30 15:35:09', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('586', 'hrb', 'cgo', '哈尔滨', '郑州', '1', '2020-08-30 15:35:15', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('587', 'hrb', 'lxa', '哈尔滨', '拉萨', '1', '2020-08-30 15:35:21', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('588', 'hrb', 'ljg', '哈尔滨', '丽江', '1', '2020-08-30 15:35:27', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('589', 'hrb', 'dlu', '哈尔滨', '大理', '1', '2020-08-30 15:35:33', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('590', 'hrb', 'nng', '哈尔滨', '南宁', '1', '2020-08-30 15:35:39', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('591', 'bjs', 'hrb', '北京', '哈尔滨', '1', '2020-08-30 15:35:45', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('592', 'can', 'hrb', '广州', '哈尔滨', '1', '2020-08-30 15:35:52', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('593', 'hgh', 'hrb', '杭州', '哈尔滨', '1', '2020-08-30 15:35:59', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('594', 'sha', 'hrb', '上海', '哈尔滨', '1', '2020-08-30 15:58:22', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('595', 'ctu', 'hrb', '成都', '哈尔滨', '1', '2020-08-30 15:58:28', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('596', 'szx', 'hrb', '深圳', '哈尔滨', '1', '2020-08-30 15:58:34', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('597', 'kmg', 'hrb', '昆明', '哈尔滨', '1', '2020-08-30 15:58:40', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('598', 'sia', 'hrb', '西安', '哈尔滨', '1', '2020-08-30 15:58:46', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('599', 'ckg', 'hrb', '重庆', '哈尔滨', '1', '2020-08-30 15:58:52', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('600', 'tao', 'hrb', '青岛', '哈尔滨', '1', '2020-08-30 16:00:37', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('601', 'nkg', 'hrb', '南京', '哈尔滨', '1', '2020-08-30 16:00:43', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('602', 'csx', 'hrb', '长沙', '哈尔滨', '1', '2020-08-30 16:00:49', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('603', 'foc', 'hrb', '福州', '哈尔滨', '1', '2020-08-30 16:00:55', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('604', 'tsn', 'hrb', '天津', '哈尔滨', '1', '2020-08-30 16:01:00', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('605', 'xmn', 'hrb', '厦门', '哈尔滨', '1', '2020-08-30 16:12:36', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('606', 'cgo', 'hrb', '郑州', '哈尔滨', '1', '2020-08-30 16:12:06', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('607', 'lxa', 'hrb', '拉萨', '哈尔滨', '1', '2020-08-30 16:12:50', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('608', 'ljg', 'hrb', '丽江', '哈尔滨', '1', '2020-08-30 16:12:12', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('609', 'dlu', 'hrb', '大理', '哈尔滨', '1', '2020-08-30 16:12:56', '成功爬取到数据');
+INSERT INTO `airport_code` VALUES ('610', 'nng', 'hrb', '南宁', '哈尔滨', '1', '2020-08-30 16:12:20', '成功爬取到数据');
