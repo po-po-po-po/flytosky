@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : 127.0.0.1
-Source Server Version : 50719
-Source Host           : 127.0.0.1:3306
+Source Server Version : 50717
+Source Host           : localhost:3306
 Source Database       : fly
 
 Target Server Type    : MYSQL
-Target Server Version : 50719
+Target Server Version : 50717
 File Encoding         : 65001
 
-Date: 2020-08-30 21:49:55
+Date: 2020-08-31 11:45:41
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -37,7 +37,7 @@ CREATE TABLE `flight` (
   `airport_name_start_code` varchar(32) DEFAULT NULL,
   `airport_name_end_code` varchar(32) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6004 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6052 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of flight
@@ -5960,3 +5960,51 @@ INSERT INTO `flight` VALUES ('6000', 'CZ6951', '乌鲁木齐地窝堡T3', '西�
 INSERT INTO `flight` VALUES ('6001', 'CZ3630', '乌鲁木齐地窝堡T3', '西宁曹家堡T2', 'CZ', '18:00-20:35', null, null, null, '2020-08-30 21:48:39', '0', '乌鲁木齐地窝堡', '西宁曹家堡', null, 'URC', 'XNN');
 INSERT INTO `flight` VALUES ('6002', 'UQ2513', '乌鲁木齐地窝堡T3', '海口美兰', 'UQ', '10:00-16:45', null, null, '(经停绵阳南郊)', '2020-08-30 21:48:44', '0', '乌鲁木齐地窝堡', '海口美兰', null, 'URC', 'HAK');
 INSERT INTO `flight` VALUES ('6003', 'CZ6676', '乌鲁木齐地窝堡T3', '海口美兰', 'CZ', '17:25-00:10', null, null, '(经停兰州中川T2)', '2020-08-30 21:48:44', '0', '乌鲁木齐地窝堡', '海口美兰', null, 'URC', 'HAK');
+INSERT INTO `flight` VALUES ('6004', 'CA1551', '北京首都T3', '黄山屯溪', 'CA', '18:20-20:35', null, null, null, '2020-08-31 09:56:18', '0', '北京首都', '黄山屯溪', null, 'PEK', 'TXN');
+INSERT INTO `flight` VALUES ('6005', 'MU9751', '昆明长水', '黄山屯溪', 'MU', '08:35-11:05', null, null, null, '2020-08-31 10:32:33', '0', '昆明长水', '黄山屯溪', null, 'KMG', 'TXN');
+INSERT INTO `flight` VALUES ('6006', 'CZ3627', '广州白云T2', '黄山屯溪', 'CZ', '19:35-21:25', null, null, null, '2020-08-31 10:35:18', '0', '广州白云', '黄山屯溪', null, 'CAN', 'TXN');
+INSERT INTO `flight` VALUES ('6007', 'MU2643', '成都双流T2', '黄山屯溪', 'MU', '12:05-15:35', null, null, '(经停宜昌三峡)', '2020-08-31 10:39:37', '0', '成都双流', '黄山屯溪', null, 'CTU', 'TXN');
+INSERT INTO `flight` VALUES ('6008', 'CZ6847', '深圳宝安T3', '黄山屯溪', 'CZ', '22:10-23:55', null, null, null, '2020-08-31 10:41:36', '0', '深圳宝安', '黄山屯溪', null, 'SZX', 'TXN');
+INSERT INTO `flight` VALUES ('6009', 'MU5365', '重庆江北T3', '黄山屯溪', 'MU', '11:40-13:45', null, null, null, '2020-08-31 10:42:56', '0', '重庆江北', '黄山屯溪', null, 'CKG', 'TXN');
+INSERT INTO `flight` VALUES ('6010', 'QW9839', '青岛流亭T1', '黄山屯溪', 'QW', '13:10-15:05', null, null, null, '2020-08-31 10:45:26', '0', '青岛流亭', '黄山屯溪', null, 'TAO', 'TXN');
+INSERT INTO `flight` VALUES ('6011', 'QW9840', '南宁吴圩T2', '黄山屯溪', 'QW', '19:00-21:20', null, null, null, '2020-08-31 10:48:06', '0', '南宁吴圩', '黄山屯溪', null, 'NNG', 'TXN');
+INSERT INTO `flight` VALUES ('6012', 'CA1552', '黄山屯溪', '北京首都T3', 'CA', '21:20-23:30', null, null, null, '2020-08-31 10:49:26', '0', '黄山屯溪', '北京首都', null, 'TXN', 'PEK');
+INSERT INTO `flight` VALUES ('6013', 'CZ3628', '黄山屯溪', '广州白云T2', 'CZ', '22:15-00:10', null, null, null, '2020-08-31 10:50:45', '0', '黄山屯溪', '广州白云', null, 'TXN', 'CAN');
+INSERT INTO `flight` VALUES ('6014', 'MU9752', '黄山屯溪', '昆明长水', 'MU', '18:20-20:55', null, null, null, '2020-08-31 10:51:56', '0', '黄山屯溪', '昆明长水', null, 'TXN', 'KMG');
+INSERT INTO `flight` VALUES ('6015', 'MU2644', '黄山屯溪', '成都双流T2', 'MU', '17:10-21:00', null, null, '(经停宜昌三峡)', '2020-08-31 10:52:46', '0', '黄山屯溪', '成都双流', null, 'TXN', 'CTU');
+INSERT INTO `flight` VALUES ('6016', 'CZ6848', '黄山屯溪', '深圳宝安T3', 'CZ', '06:55-08:50', null, null, null, '2020-08-31 10:53:56', '0', '黄山屯溪', '深圳宝安', null, 'TXN', 'SZX');
+INSERT INTO `flight` VALUES ('6017', 'MU5366', '黄山屯溪', '重庆江北T3', 'MU', '14:45-16:50', null, null, null, '2020-08-31 10:55:06', '0', '黄山屯溪', '重庆江北', null, 'TXN', 'CKG');
+INSERT INTO `flight` VALUES ('6018', 'QW9840', '黄山屯溪', '青岛流亭T1', 'QW', '22:05-23:55', null, null, null, '2020-08-31 10:56:06', '0', '黄山屯溪', '青岛流亭', null, 'TXN', 'TAO');
+INSERT INTO `flight` VALUES ('6019', 'QW9839', '黄山屯溪', '南宁吴圩T2', 'QW', '15:50-18:10', null, null, null, '2020-08-31 10:56:56', '0', '黄山屯溪', '南宁吴圩', null, 'TXN', 'NNG');
+INSERT INTO `flight` VALUES ('6020', 'MU2453', '恩施许家坪', '北京大兴', 'MU', '13:30-17:45', null, null, '(经停武汉天河T3)', '2020-08-31 11:02:06', '0', '恩施许家坪', '北京大兴', null, 'ENH', 'PKX');
+INSERT INTO `flight` VALUES ('6021', 'CZ6590', '恩施许家坪', '广州白云T2', 'CZ', '17:45-21:35', null, null, '(经停武汉天河T3)', '2020-08-31 11:03:06', '0', '恩施许家坪', '广州白云', null, 'ENH', 'CAN');
+INSERT INTO `flight` VALUES ('6022', 'CZ3841', '恩施许家坪', '武汉天河T3', 'CZ', '07:25-08:30', null, null, null, '2020-08-31 11:11:26', '0', '恩施许家坪', '武汉天河', null, 'ENH', 'WUH');
+INSERT INTO `flight` VALUES ('6023', 'MU2453', '恩施许家坪', '武汉天河T3', 'MU', '13:30-14:40', null, null, null, '2020-08-31 11:11:26', '0', '恩施许家坪', '武汉天河', null, 'ENH', 'WUH');
+INSERT INTO `flight` VALUES ('6024', 'MU2604', '恩施许家坪', '武汉天河T3', 'MU', '15:15-16:30', null, null, null, '2020-08-31 11:11:26', '0', '恩施许家坪', '武汉天河', null, 'ENH', 'WUH');
+INSERT INTO `flight` VALUES ('6025', 'JD5721', '恩施许家坪', '武汉天河T3', 'JD', '17:00-18:15', null, null, null, '2020-08-31 11:11:26', '0', '恩施许家坪', '武汉天河', null, 'ENH', 'WUH');
+INSERT INTO `flight` VALUES ('6026', 'CZ6590', '恩施许家坪', '武汉天河T3', 'CZ', '17:45-18:55', null, null, null, '2020-08-31 11:11:26', '0', '恩施许家坪', '武汉天河', null, 'ENH', 'WUH');
+INSERT INTO `flight` VALUES ('6027', 'MU2470', '恩施许家坪', '武汉天河T3', 'MU', '18:15-19:25', null, null, null, '2020-08-31 11:11:26', '0', '恩施许家坪', '武汉天河', null, 'ENH', 'WUH');
+INSERT INTO `flight` VALUES ('6028', 'MU2603', '恩施许家坪', '贵阳龙洞堡T2', 'MU', '10:50-12:10', null, null, null, '2020-08-31 11:18:16', '0', '恩施许家坪', '贵阳龙洞堡', null, 'ENH', 'KWE');
+INSERT INTO `flight` VALUES ('6029', 'MU2470', '恩施许家坪', '上海虹桥T2', 'MU', '18:15-22:10', null, null, '(经停武汉天河T3)', '2020-08-31 11:19:16', '0', '恩施许家坪', '上海虹桥', null, 'ENH', 'SHA');
+INSERT INTO `flight` VALUES ('6030', '9C8524', '恩施许家坪', '上海浦东T2', '9C', '10:45-12:55', null, null, null, '2020-08-31 11:19:16', '0', '恩施许家坪', '上海浦东', null, 'ENH', 'PVG');
+INSERT INTO `flight` VALUES ('6031', 'GJ8658', '恩施许家坪', '杭州萧山T3', 'GJ', '22:30-00:25', null, null, null, '2020-08-31 11:20:26', '0', '恩施许家坪', '杭州萧山', null, 'ENH', 'HGH');
+INSERT INTO `flight` VALUES ('6032', 'GJ8657', '恩施许家坪', '西安咸阳T3', 'GJ', '18:00-19:25', null, null, null, '2020-08-31 11:21:16', '0', '恩施许家坪', '西安咸阳', null, 'ENH', 'XIY');
+INSERT INTO `flight` VALUES ('6033', 'JD5762', '恩施许家坪', '南京禄口T1', 'JD', '21:25-23:30', null, null, null, '2020-08-31 11:22:16', '0', '恩施许家坪', '南京禄口', null, 'ENH', 'NKG');
+INSERT INTO `flight` VALUES ('6034', 'MU2603', '武汉天河T3', '恩施许家坪', 'MU', '08:55-10:05', null, null, null, '2020-08-31 11:23:16', '0', '武汉天河', '恩施许家坪', null, 'WUH', 'ENH');
+INSERT INTO `flight` VALUES ('6035', 'MU2460', '武汉天河T3', '恩施许家坪', 'MU', '11:35-12:40', null, null, null, '2020-08-31 11:23:16', '0', '武汉天河', '恩施许家坪', null, 'WUH', 'ENH');
+INSERT INTO `flight` VALUES ('6036', 'CZ3842', '武汉天河T3', '恩施许家坪', 'CZ', '15:50-16:55', null, null, null, '2020-08-31 11:23:16', '0', '武汉天河', '恩施许家坪', null, 'WUH', 'ENH');
+INSERT INTO `flight` VALUES ('6037', 'MU2469', '武汉天河T3', '恩施许家坪', 'MU', '16:15-17:25', null, null, null, '2020-08-31 11:23:16', '0', '武汉天河', '恩施许家坪', null, 'WUH', 'ENH');
+INSERT INTO `flight` VALUES ('6038', 'JD5722', '武汉天河T3', '恩施许家坪', 'JD', '19:15-20:25', null, null, null, '2020-08-31 11:23:17', '0', '武汉天河', '恩施许家坪', null, 'WUH', 'ENH');
+INSERT INTO `flight` VALUES ('6039', 'CZ6589', '武汉天河T3', '恩施许家坪', 'CZ', '21:25-22:40', null, null, null, '2020-08-31 11:23:17', '0', '武汉天河', '恩施许家坪', null, 'WUH', 'ENH');
+INSERT INTO `flight` VALUES ('6040', 'CZ3841', '恩施许家坪', '厦门高崎T3', 'CZ', '07:25-11:20', null, null, '(经停武汉天河T3)', '2020-08-31 11:24:26', '0', '恩施许家坪', '厦门高崎', null, 'ENH', 'XMN');
+INSERT INTO `flight` VALUES ('6041', 'DR6543', '恩施许家坪', '天津滨海T2', 'DR', '09:40-11:55', null, null, null, '2020-08-31 11:25:16', '0', '恩施许家坪', '天津滨海', null, 'ENH', 'TSN');
+INSERT INTO `flight` VALUES ('6042', 'MU2460', '北京大兴', '恩施许家坪', 'MU', '06:55-12:40', null, null, '(经停武汉天河T3)', '2020-08-31 11:26:16', '0', '北京大兴', '恩施许家坪', null, 'PKX', 'ENH');
+INSERT INTO `flight` VALUES ('6043', 'MU2469', '上海虹桥T2', '恩施许家坪', 'MU', '13:10-17:25', null, null, '(经停武汉天河T3)', '2020-08-31 11:28:06', '0', '上海虹桥', '恩施许家坪', null, 'SHA', 'ENH');
+INSERT INTO `flight` VALUES ('6044', '9C8523', '上海浦东T2', '恩施许家坪', '9C', '07:35-09:55', null, null, null, '2020-08-31 11:28:06', '0', '上海浦东', '恩施许家坪', null, 'PVG', 'ENH');
+INSERT INTO `flight` VALUES ('6045', 'CZ6589', '广州白云T2', '恩施许家坪', 'CZ', '18:30-22:40', null, null, '(经停武汉天河T3)', '2020-08-31 11:28:46', '0', '广州白云', '恩施许家坪', null, 'CAN', 'ENH');
+INSERT INTO `flight` VALUES ('6046', 'GJ8657', '杭州萧山T3', '恩施许家坪', 'GJ', '15:00-17:15', null, null, null, '2020-08-31 11:29:46', '0', '杭州萧山', '恩施许家坪', null, 'HGH', 'ENH');
+INSERT INTO `flight` VALUES ('6047', 'MU2604', '贵阳龙洞堡T2', '恩施许家坪', 'MU', '13:10-14:25', null, null, null, '2020-08-31 11:30:46', '0', '贵阳龙洞堡', '恩施许家坪', null, 'KWE', 'ENH');
+INSERT INTO `flight` VALUES ('6048', 'GJ8658', '西安咸阳T3', '恩施许家坪', 'GJ', '20:35-21:45', null, null, null, '2020-08-31 11:31:46', '0', '西安咸阳', '恩施许家坪', null, 'XIY', 'ENH');
+INSERT INTO `flight` VALUES ('6049', 'JD5761', '南京禄口T1', '恩施许家坪', 'JD', '13:50-16:05', null, null, null, '2020-08-31 11:32:46', '0', '南京禄口', '恩施许家坪', null, 'NKG', 'ENH');
+INSERT INTO `flight` VALUES ('6050', 'CZ3842', '厦门高崎T3', '恩施许家坪', 'CZ', '13:00-16:55', null, null, '(经停武汉天河T3)', '2020-08-31 11:33:26', '0', '厦门高崎', '恩施许家坪', null, 'XMN', 'ENH');
+INSERT INTO `flight` VALUES ('6051', 'DR6544', '天津滨海T2', '恩施许家坪', 'DR', '20:00-22:20', null, null, null, '2020-08-31 11:34:46', '0', '天津滨海', '恩施许家坪', null, 'TSN', 'ENH');

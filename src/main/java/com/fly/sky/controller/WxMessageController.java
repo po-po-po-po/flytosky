@@ -76,6 +76,7 @@ public class WxMessageController {
         list.add("2020.08.28更新郑州.青岛.厦门.福州.南京.拉萨.大理.丽江.长沙.天津.");
         list.add("2020.08.29更新南宁.");
         list.add("2020.08.30更新哈尔滨.宁波.合肥.贵阳.武汉.西宁.海口.乌鲁木齐");
+        list.add("2020.08.31更新黄山.恩施");
         responseResult.setData(list);
         return responseResult;
     }
