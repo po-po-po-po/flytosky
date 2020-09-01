@@ -102,6 +102,7 @@ public class HttpRequestUtils {
         CloseableHttpResponse response =null;
         //设置请求头消息
         httpGet.setHeader("User-Agent","Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4168.2 Safari/537.36");
+        httpGet.setHeader("Referer","https://tool.133.cn/flight/");
         response = closeableHttpClient.execute(httpGet);
         String content = "";
         // 获取返回实体

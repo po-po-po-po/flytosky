@@ -66,8 +66,8 @@ public class AirportUtil {
         List<AirportCode> codelist= airportCodeRepository.distinctdeptCode();
         for (AirportCode code : codelist) {
             AirportCode airportCode=new AirportCode();
-            airportCode.setDeptCode("enh");
-            airportCode.setDeptName("恩施");
+            airportCode.setDeptCode("she");
+            airportCode.setDeptName("沈阳");
             airportCode.setArrCode(code.getDeptCode());
             airportCode.setArrName(code.getDeptName());
             airportCodeRepository.insertAirportCode(airportCode);
@@ -84,8 +84,8 @@ public class AirportUtil {
             AirportCode airportCode=new AirportCode();
             airportCode.setDeptCode(code.getDeptCode());
             airportCode.setDeptName(code.getDeptName());
-            airportCode.setArrCode("enh");
-            airportCode.setArrName("恩施");
+            airportCode.setArrCode("she");
+            airportCode.setArrName("沈阳");
             airportCodeRepository.insertAirportCode(airportCode);
         }
         //flightList

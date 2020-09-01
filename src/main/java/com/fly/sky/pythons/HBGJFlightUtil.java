@@ -60,7 +60,7 @@ public class HBGJFlightUtil {
         List<AirportCode> airportsList=airportCodeRepository.findAirportCode(airportCode);
             for (AirportCode airport1 : airportsList) {
                 //抓取ZH地址
-                String url=new String("https://api.133.cn/third/flight?d=2020-09-21&dc=TYN&ac=CKG");
+                String url="https://api.133.cn/third/flight?d=2020-09-21&dc="+airport1.getDeptCode()+"&ac="+airport1.getArrCode();
                 //获取机场列表
                 //每请求一次休息5秒
                 Thread.currentThread().sleep(5000);
@@ -68,28 +68,37 @@ public class HBGJFlightUtil {
                 DATA data = new JSONObject().parseObject(content, DATA.class);
                 if(null!=data){
                     List<HBGJ> data1 = data.getData();
-                    for (HBGJ hbgj : data1) {
-                        if("0".equals(hbgj.getShareFlag())){
-                            Flight flight = new Flight();
-                            flight.setFlightNo(hbgj.getFlightNo());
-                            flight.setAirlinesCode(hbgj.getFlightNo().substring(0,2));
-                            flight.setFlightDate(hbgj.getDepPlanTime() + "-" + hbgj.getArrPlanTime());
-                            flight.setAirportNameStartCode(hbgj.getDepCode());
-                            flight.setAirportNameEndCode(hbgj.getArrCode());
-                            //根据机场code查询机场数据
-                            Airport dept = airportRepository.findAirportByCode(hbgj.getDepCode());
-                            Airport arr = airportRepository.findAirportByCode(hbgj.getArrCode());
-                            flight.setFlightNameStart(dept.getAirportAbbreviate() + hbgj.getDepTerminal());
-                            flight.setFlightNameEnd(arr.getAirportAbbreviate() + hbgj.getArrTerminal());
-                            flight.setAirportNameStart(dept.getAirportAbbreviate());
-                            flight.setAirportNameEnd(arr.getAirportAbbreviate());
-                            log.info("入库数据是：" + flight);
-                            flightRepository.insertFlight(flight);
-                        }
-                        
-                    }
-                }
+                    if(!CollectionUtils.isEmpty(data1)){
+                        for (HBGJ hbgj : data1) {
+                            if("0".equals(hbgj.getShareFlag())){
+                                Flight flight = new Flight();
+                                flight.setFlightNo(hbgj.getFlightNo());
+                                flight.setAirlinesCode(hbgj.getFlightNo().substring(0,2));
+                                flight.setFlightDate(hbgj.getDepPlanTime() + "-" + hbgj.getArrPlanTime());
+                                flight.setAirportNameStartCode(hbgj.getDepCode());
+                                flight.setAirportNameEndCode(hbgj.getArrCode());
+                                //根据机场code查询机场数据
+                                Airport dept = airportRepository.findAirportByCode(hbgj.getDepCode());
+                                Airport arr = airportRepository.findAirportByCode(hbgj.getArrCode());
+                                flight.setFlightNameStart(dept.getAirportAbbreviate() + hbgj.getDepTerminal());
+                                flight.setFlightNameEnd(arr.getAirportAbbreviate() + hbgj.getArrTerminal());
+                                flight.setAirportNameStart(dept.getAirportAbbreviate());
+                                flight.setAirportNameEnd(arr.getAirportAbbreviate());
+                                log.info("入库数据是：" + flight);
+                                airport1.setDesc("爬取成功");
+                                flightRepository.insertFlight(flight);
+                            }
 
+                        }
+                    }else {
+                        airport1.setDesc("没有航班信息");
+                    }
+
+                }
+                //爬取完数据 需要改变状态
+                airport1.setStatus("1");
+                log.info("爬取完数据 需要改变状态 改变的数据是：" + airport1);
+                airportCodeRepository.updateAirportCode(airport1);
                  }
 
             }
