@@ -72,7 +72,7 @@ public class WxMessageController {
         ResponseResult<List<String>> responseResult = new ResponseResult<>();
         List list=new ArrayList();
         list.add("你所能看到的机场列表，只要任一机场和机场之间有航班，现在都有航班数据可以查询到.");
-        list.add("2020.08.31更新沈阳.");
+        list.add("2020.09.01更新沈阳.太原.银川.呼和浩特.桂林.兰州.大连.西双版纳");
         list.add("2020.08.31更新黄山.恩施");
         list.add("2020.08.30更新哈尔滨.宁波.合肥.贵阳.武汉.西宁.海口.乌鲁木齐");
         list.add("2020.08.29更新南宁.");
