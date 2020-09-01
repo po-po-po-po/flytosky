@@ -77,6 +77,7 @@ public class HttpRequestUtils {
         CloseableHttpClient client = setProxy(httpGet, ip, Integer.parseInt(port));
         //设置请求头消息
         httpGet.setHeader("User-Agent","Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36");
+        httpGet.setHeader("Referer","https://tool.133.cn/flight/");
         // 执行http get请求  也可以使用psot
         CloseableHttpResponse response=client.execute(httpGet);
         // 获取返回实体
