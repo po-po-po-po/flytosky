@@ -47,4 +47,6 @@ public class FlightDetail {
     private String airportNameStart;
     @ApiModelProperty("到达机场")
     private String airportNameEnd;
+    @ApiModelProperty("航班数量")
+    private String flightNumber;
 }

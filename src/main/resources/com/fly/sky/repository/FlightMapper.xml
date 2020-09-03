@@ -325,4 +325,32 @@
      </select>
 
 
+    <select id="findFlightsAirwayNumberByAirlinesCode"
+            parameterType="com.fly.sky.condition.FlightCondition"
+            resultType="com.fly.sky.vo.FlightDetail">
+         select airport_name_start as airportNameStart ,airport_name_end as airportNameEnd,
+         count(*) AS flightNumber from flight
+         where 1=1
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            AND airport_name_end = #{airportNameEnd,jdbcType=VARCHAR}
+        </if>
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            AND airport_name_start = #{airportNameStart,jdbcType=VARCHAR}
+        </if>
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode=='MU'">
+            and  ( flight.airlines_code = 'MU' OR   flight.airlines_code = 'FM')
+        </if>
+
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode=='HU'">
+            and  ( flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN')
+        </if>
+
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode!='MU'  and airlinesCode!='HU'">
+            and   flight.airlines_code = #{airlinesCode,jdbcType=VARCHAR}
+        </if>
+        group by airport_name_start,airport_name_end
+        ORDER BY flightNumber DESC
+     </select>
+
+
 </mapper>
