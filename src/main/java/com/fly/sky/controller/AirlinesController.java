@@ -12,6 +12,7 @@ import com.fly.sky.util.JsonUtil;
 import com.fly.sky.util.PagedList;
 import com.fly.sky.util.ResponseResult;
 import com.fly.sky.vo.AirlinesDetail;
+import com.fly.sky.vo.AirlinesVo;
 import com.fly.sky.vo.AirportDetail;
 import com.fly.sky.vo.WechaIndexAirlines;
 import io.swagger.annotations.Api;
@@ -66,7 +67,15 @@ public class AirlinesController {
         return responseResult;
     }
 
-
+    @PostMapping("findAirlinesIndex")
+    @ApiOperation(value = "查询航司列表", notes = "查询航司列表")
+    public ResponseResult<List<AirlinesVo>> findAirlinesIndex(@RequestBody AirlineCondition condition){
+        String logTitle = "=查询航司列表=";
+        log.info("{} - 参数：findAllAirlines={}", logTitle, JsonUtil.toJSONString(condition));
+        ResponseResult<List<AirlinesVo>> responseResult = new ResponseResult<>();
+        responseResult.setData(airlinesService.findAirlinesIndex(condition));
+        return responseResult;
+    }
 
     @PostMapping("findAirlinesById/{id}")
     @ApiOperation(value = "根据主键查询航司信息", notes = "根据主键查询航司信息")

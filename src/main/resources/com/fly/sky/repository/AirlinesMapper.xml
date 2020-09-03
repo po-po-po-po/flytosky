@@ -66,4 +66,17 @@
          from airlines  where airlines_code = #{airlinesCode} LIMIT 1
     </select>
 
+
+    <select id="findAirlinesIndex"
+            parameterType="com.fly.sky.condition.AirlineCondition"
+            resultType="com.fly.sky.vo.AirlinesVo">
+    select b.flightNumber,id as id,airlines_name as airlinesName , airlines.airlines_code as airlinesCode ,
+        airlines_description as airlinesDescription,airlines_abbreviate AS airlinesAbbreviate,
+        airlines_img as airlinesImg,airlines_alliance as airlinesAlliance
+        from airlines left join (
+select COUNT(*) AS flightNumber,airlines_code from flight GROUP BY airlines_code
+) as b on airlines.airlines_code=b.airlines_code
+order by b.flightNumber desc
+    </select>
+
 </mapper>

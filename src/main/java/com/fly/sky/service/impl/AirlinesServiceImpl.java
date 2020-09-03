@@ -16,6 +16,7 @@ import com.fly.sky.service.AirlinesService;
 import com.fly.sky.service.AirportService;
 import com.fly.sky.util.PagedList;
 import com.fly.sky.vo.AirlinesDetail;
+import com.fly.sky.vo.AirlinesVo;
 import com.fly.sky.vo.FlightDetail;
 import com.fly.sky.vo.WechaIndexAirlines;
 import com.github.pagehelper.PageHelper;
@@ -43,7 +44,10 @@ public class AirlinesServiceImpl implements AirlinesService {
     FlightRepository flightRepository;
 
 
-
+    public List<AirlinesVo> findAirlinesIndex(AirlineCondition condition){
+        List<AirlinesVo>  airlinesList=airlinesRepository.findAirlinesIndex(condition);
+        return airlinesList;
+    };
 
     public List<Airlines> findAllAirlines(AirlineCondition condition) {
         List<Airlines>  airlinesList=airlinesRepository.findAirlinesByCondition(condition);

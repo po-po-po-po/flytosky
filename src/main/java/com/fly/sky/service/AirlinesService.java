@@ -6,6 +6,7 @@ import com.fly.sky.condition.FlightCondition;
 import com.fly.sky.domain.Airlines;
 import com.fly.sky.domain.Airport;
 import com.fly.sky.vo.AirlinesDetail;
+import com.fly.sky.vo.AirlinesVo;
 import com.fly.sky.vo.WechaIndexAirlines;
 
 import java.util.List;
@@ -22,6 +23,8 @@ public interface AirlinesService {
 
 
     List<Airlines> findAllAirlines(AirlineCondition condition);
+
+    List<AirlinesVo> findAirlinesIndex(AirlineCondition condition);
 
     Map<String, WechaIndexAirlines> wechatIndexAirlines(AirlineCondition condition);
 
