@@ -335,7 +335,7 @@
             AND SUBSTR( flight_date,1 , 5 )>= #{flightDateStart,jdbcType=VARCHAR}
         </if>
         <if test="flightDateEnd != null  and flightDateEnd != '' ">
-            AND #{flightDateEnd,jdbcType=VARCHAR}>=SUBSTR( flight_date, 7, 11)
+            AND #{flightDateEnd,jdbcType=VARCHAR}>=SUBSTR( flight_date, 1, 5)
         </if>
         <if test="airportNameEnd != null  and airportNameEnd != '' ">
             AND airport_name_end = #{airportNameEnd,jdbcType=VARCHAR}
