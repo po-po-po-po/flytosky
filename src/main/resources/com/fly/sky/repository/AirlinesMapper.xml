@@ -70,12 +70,18 @@
     <select id="findAirlinesIndex"
             parameterType="com.fly.sky.condition.AirlineCondition"
             resultType="com.fly.sky.vo.AirlinesVo">
-    select b.flightNumber,id as id,airlines_name as airlinesName , airlines.airlines_code as airlinesCode ,
+    select c.airwayNumber ,b.flightNumber,id as id,airlines_name as airlinesName , airlines.airlines_code as airlinesCode ,
         airlines_description as airlinesDescription,airlines_abbreviate AS airlinesAbbreviate,
         airlines_img as airlinesImg,airlines_alliance as airlinesAlliance
         from airlines left join (
 select COUNT(*) AS flightNumber,airlines_code from flight GROUP BY airlines_code
 ) as b on airlines.airlines_code=b.airlines_code
+left join (
+select airway.airlines_code ,count(*) as  airwayNumber from (
+select airlines_code,airport_name_start_code,airport_name_end_code from flight
+GROUP BY airlines_code,airport_name_start_code,airport_name_end_code) as airway
+group by airlines_code
+) as c on airlines.airlines_code=c.airlines_code
 order by b.flightNumber desc
     </select>
 
