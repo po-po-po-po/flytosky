@@ -176,13 +176,7 @@
             and  flight.id = #{id,jdbcType=BIGINT}
         </if>
 
-        <if test="flightNameEnd != null  and flightNameEnd != '' ">
-            AND  flight.flight_name_end = #{flightNameEnd,jdbcType=VARCHAR}
-        </if>
 
-        <if test="flightNameStart != null  and flightNameStart != '' ">
-            AND  flight.flight_name_start = #{flightNameStart,jdbcType=VARCHAR}
-        </if>
         <if test="airportNameEnd != null  and airportNameEnd != '' ">
             AND airport_name_end = #{airportNameEnd,jdbcType=VARCHAR}
         </if>

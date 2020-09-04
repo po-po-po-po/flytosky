@@ -73,8 +73,6 @@ public class AirlinesServiceImpl implements AirlinesService {
         if(StringUtils.isNotEmpty(condition.getFlightNameEnd())){
             condition.setAirportNameEnd(condition.getFlightNameEnd().replace("机场",""));
         }
-        condition.setFlightNameStart(null);
-        condition.setFlightNameEnd(null);
         //查询航司能飞往的航班列表
         List<FlightDetail> flightList=flightRepository.findFlightsAndAirlinesByCondition(condition);
         detail.setFlightList(flightList);
