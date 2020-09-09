@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fly.sky.repository.ActivityRepository">
+
+    <resultMap id="BaseResultMap" type="com.fly.sky.domain.Activity">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="banner_img_url" jdbcType="VARCHAR" property="bannerImgUrl" />
+        <result column="airlines_code" jdbcType="VARCHAR" property="airlinesCode" />
+        <result column="title" jdbcType="VARCHAR" property="title" />
+        <result column="content" jdbcType="VARCHAR" property="content" />
+        <result column="status" jdbcType="VARCHAR" property="status" />
+        <result column="sort" jdbcType="VARCHAR" property="sort" />
+        <result column="brief" jdbcType="INTEGER" property="brief" />
+    </resultMap>
+
+    <select id="findActivityByCondition"
+            parameterType="com.fly.sky.condition.ActivityCondition"
+            resultType="com.fly.sky.domain.Activity">
+        select id as id,airlines_code as airlinesCode ,
+        banner_img_url as bannerImgUrl,title ,
+        content ,status ,sort,brief
+         from activity WHERE 1=1
+        <if test="id != null">
+            and  id = #{id,jdbcType=BIGINT}
+        </if>
+        <if test="airlinesCode != null  and airlinesCode != '' ">
+            and  airlines_code = #{airlinesCode,jdbcType=VARCHAR}
+        </if>
+       order by sort asc
+    </select>
+
+
+
+</mapper>
