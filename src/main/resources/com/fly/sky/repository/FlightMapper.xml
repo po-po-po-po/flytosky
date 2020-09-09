@@ -96,6 +96,9 @@
         <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode=='HU'">
             and  ( flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN')
         </if>
+        <if test="airlinesCode != null  and airlinesCode != '' ">
+            and   flight.airlines_code = #{airlinesCode,jdbcType=VARCHAR}
+        </if>
 
         <if test="sortId != null  and sortId == 1 ">
             order  by flight.flight_date asc
