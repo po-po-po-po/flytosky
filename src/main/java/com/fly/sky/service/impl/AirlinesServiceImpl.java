@@ -78,13 +78,21 @@ public class AirlinesServiceImpl implements AirlinesService {
         detail.setFlightList(flightList);
         //对起飞时间做处理
         if(StringUtils.isNotEmpty(condition.getFlightDate())&&!"起飞时间".equals(condition.getFlightDate())){
-            String[] split =  condition.getFlightDate().split("-");
-            String flightDateStart=split[0];
-            String flightDateEnd=split[1];
-            flightList = flightList.stream().filter(
-                    flight ->
-                            flight.getFlightDate().split("-")[0].compareTo(flightDateStart)>=0&&flight.getFlightDate().split("-")[0].compareTo(flightDateEnd)<=0).collect(
-                    Collectors.toList());
+            if(condition.getFlightDate().contains("早")){
+                flightList = flightList.stream().filter(
+                        flight ->
+                                flight.getFlightDate().split("-")[0].compareTo("08:00")<=0&&flight.getFlightDate().split("-")[0].compareTo("20:00")>=0).collect(
+                        Collectors.toList());
+            }else{
+                String[] split =  condition.getFlightDate().split("-");
+                String flightDateStart=split[0];
+                String flightDateEnd=split[1];
+                flightList = flightList.stream().filter(
+                        flight ->
+                                flight.getFlightDate().split("-")[0].compareTo(flightDateStart)>=0&&flight.getFlightDate().split("-")[0].compareTo(flightDateEnd)<=0).collect(
+                        Collectors.toList());
+            }
+
         }
         detail.setFlightList(flightList);
         //查询航司能飞往的出发机场列表
