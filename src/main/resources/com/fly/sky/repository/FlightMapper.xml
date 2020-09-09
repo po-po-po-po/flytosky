@@ -100,11 +100,11 @@
             and   flight.airlines_code = #{airlinesCode,jdbcType=VARCHAR}
         </if>
 
-        <if test="sortId != null  and sortId == 1 ">
-            order  by flight.flight_date asc
+        <if test="sortId != null  and sortId == 3 ">
+            order  by flight.airport_name_start asc
         </if>
-        <if test="sortId != null  and sortId ==2 ">
-            order  by flight.flight_date desc
+        <if test="sortId != null  and sortId == 4 ">
+            order  by flight.airport_name_end asc
         </if>
         <if test="sortId == null or sortId==0 ">
             order  by flight.sort asc
