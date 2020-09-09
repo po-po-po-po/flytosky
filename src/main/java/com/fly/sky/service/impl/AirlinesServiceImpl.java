@@ -81,7 +81,7 @@ public class AirlinesServiceImpl implements AirlinesService {
             if(condition.getFlightDate().contains("早")){
                 flightList = flightList.stream().filter(
                         flight ->
-                                flight.getFlightDate().split("-")[0].compareTo("08:00")<=0&&flight.getFlightDate().split("-")[0].compareTo("20:00")>=0).collect(
+                                flight.getFlightDate().split("-")[0].compareTo("08:00")<=0||flight.getFlightDate().split("-")[0].compareTo("20:00")>=0).collect(
                         Collectors.toList());
             }else{
                 String[] split =  condition.getFlightDate().split("-");
