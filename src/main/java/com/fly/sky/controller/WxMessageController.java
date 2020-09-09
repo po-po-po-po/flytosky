@@ -72,13 +72,8 @@ public class WxMessageController {
         ResponseResult<List<String>> responseResult = new ResponseResult<>();
         List list=new ArrayList();
         list.add("你所能看到的机场列表，只要任一机场和机场之间有航班，现在都有航班数据可以查询到.");
-        list.add("2020.09.02更新南昌.三亚.济南.珠海.揭阳.长春.温州.石家庄.烟台.泉州.无锡.鄂尔多斯.常州.遵义茅台.张家界.盐城.迪庆.遵义新舟.威海.南通.徐州.淮安.扬州.绵阳.稻城.天水.信阳.昭通.泸州.十堰");
-        list.add("2020.09.01更新沈阳.太原.银川.呼和浩特.桂林.兰州.大连.西双版纳");
-        list.add("2020.08.31更新黄山.恩施");
-        list.add("2020.08.30更新哈尔滨.宁波.合肥.贵阳.武汉.西宁.海口.乌鲁木齐");
-        list.add("2020.08.29更新南宁.");
-        list.add("2020.08.28更新郑州.青岛.厦门.福州.南京.拉萨.大理.丽江.长沙.天津.");
-        list.add("2020.08.27更新北京首都.北京大兴.上海虹桥.上海浦东.广州.深圳.昆明.成都.重庆.西安.杭州.");
+        list.add("数据最新更新于2020.09.04号");
+        list.add("页面样式最新更新于2020.09.08号");
         responseResult.setData(list);
         return responseResult;
     }
