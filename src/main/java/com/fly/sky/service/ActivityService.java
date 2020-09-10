@@ -16,4 +16,7 @@ public interface ActivityService {
 
     List<Activity> findActivityList(ActivityCondition condition);
 
+    Activity findActivityDetail(ActivityCondition condition);
+
+
 }

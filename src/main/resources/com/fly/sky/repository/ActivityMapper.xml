@@ -31,4 +31,13 @@
 
 
 
+    <select id="findActivityDetailById"
+
+            resultType="com.fly.sky.domain.Activity">
+        select id as id,airlines_code as airlinesCode ,
+        banner_img_url as bannerImgUrl,title ,
+        content ,status ,sort,brief
+        from activity  where id = #{id}
+    </select>
+
 </mapper>

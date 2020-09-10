@@ -50,4 +50,15 @@ public class ActivityController {
     }
 
 
+    @PostMapping("activityDetail")
+    @ApiOperation(value = "航司活动接口详情 ", notes = "航司活动接口详情")
+    public ResponseResult<Activity> activityDetail(@RequestBody ActivityCondition condition){
+        String logTitle = "=航司活动接口详情=";
+        log.info("{} - 参数：activityDetail={}", logTitle, JsonUtil.toJSONString(condition));
+        ResponseResult<Activity> responseResult = new ResponseResult<>();
+        responseResult.setData(activityService.findActivityDetail(condition));
+        return responseResult;
+    }
+
+
 }

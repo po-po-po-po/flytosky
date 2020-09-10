@@ -16,4 +16,6 @@ public interface ActivityRepository {
 
     List<Activity> findActivityByCondition(ActivityCondition condition);
 
+    Activity findActivityDetailById(Integer id);
+
 }
