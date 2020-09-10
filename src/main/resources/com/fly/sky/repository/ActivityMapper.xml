@@ -8,9 +8,9 @@
         <result column="airlines_code" jdbcType="VARCHAR" property="airlinesCode" />
         <result column="title" jdbcType="VARCHAR" property="title" />
         <result column="content" jdbcType="VARCHAR" property="content" />
-        <result column="status" jdbcType="VARCHAR" property="status" />
-        <result column="sort" jdbcType="VARCHAR" property="sort" />
-        <result column="brief" jdbcType="INTEGER" property="brief" />
+        <result column="status" jdbcType="INTEGER" property="status" />
+        <result column="sort" jdbcType="INTEGER" property="sort" />
+        <result column="brief" jdbcType="VARCHAR" property="brief" />
     </resultMap>
 
     <select id="findActivityByCondition"
