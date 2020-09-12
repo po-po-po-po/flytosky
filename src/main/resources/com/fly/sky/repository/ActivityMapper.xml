@@ -19,7 +19,7 @@
         select id as id,airlines_code as airlinesCode ,
         banner_img_url as bannerImgUrl,title ,
         content ,status ,sort,brief
-         from activity WHERE 1=1
+         from activity WHERE 1=1 and status!=3
         <if test="id != null">
             and  id = #{id,jdbcType=BIGINT}
         </if>
