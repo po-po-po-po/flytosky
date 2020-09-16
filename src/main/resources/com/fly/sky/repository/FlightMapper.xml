@@ -96,7 +96,7 @@
         <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode=='HU'">
             and  ( flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN')
         </if>
-        <if test="airlinesCode != null  and airlinesCode != '' ">
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode!='MU' and airlinesCode!='HU'">
             and   flight.airlines_code = #{airlinesCode,jdbcType=VARCHAR}
         </if>
 
