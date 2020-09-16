@@ -65,6 +65,12 @@ public class AirlinesServiceImpl implements AirlinesService {
 
 
     public AirlinesDetail findFlightsAndAirportsByAirlines(FlightCondition condition){
+        if("不限".equals(condition.getFlightNameStart())){
+            condition.setFlightNameStart("");
+        }
+        if("不限".equals(condition.getFlightNameEnd())){
+            condition.setFlightNameEnd("");
+        }
         AirlinesDetail detail=new AirlinesDetail();
         //机场处理
         if(StringUtils.isNotEmpty(condition.getFlightNameStart())){
