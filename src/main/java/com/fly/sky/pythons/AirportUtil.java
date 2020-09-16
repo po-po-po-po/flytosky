@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.fly.sky.AirportApplication;
+import com.fly.sky.condition.AirportCondition;
 import com.fly.sky.condition.AirwayCondition;
 import com.fly.sky.domain.Airport;
 import com.fly.sky.domain.AirportCode;
@@ -101,6 +102,20 @@ public class AirportUtil {
 
     }
 
+    @Test
+    @Rollback(false)
+    public  void  scrableCode3 () {
+        List<Airport> codelist= airportRepository.findAirportsByCondition(new AirportCondition());
+
+        //citys[109] = new Array('NNY','南阳','NANYANG','NY');
+        for (int i = 0; i < codelist.size(); i++) {
+            System.out.println("citys["+i+"] = "+"new Array('"+codelist.get(i).getAirportCode()+"','"+codelist.get(i).getAirportAbbreviate()+"','"+codelist.get(i).getAirportLocation()+"','"+codelist.get(i).getAirportArea()+"');");
+            
+        }
+        //flightList
+
+    }
+
 
     @Test
     @Rollback(false)
@@ -108,7 +123,7 @@ public class AirportUtil {
         System.out.println("eee"+"dddd");
         String jsonStr = "";
 
-            File file = new File("D:\\po\\software\\github\\workspaces\\flytosky\\src\\main\\resources\\airport.json");
+            File file = new File("E:\\software-po\\github\\flytosky\\src\\main\\resources\\airport.json");
             FileReader fileReader = new FileReader(file);
             Reader reader = new InputStreamReader(new FileInputStream(file),"Utf-8");
             int ch = 0;
