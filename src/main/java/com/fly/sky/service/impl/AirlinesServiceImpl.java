@@ -71,7 +71,7 @@ public class AirlinesServiceImpl implements AirlinesService {
         if("不限".equals(condition.getFlightNameEnd())){
             condition.setFlightNameEnd("");
         }
-        if("不限".equals(condition.getAirlinesCode())){
+        if("1".equals(condition.getAirlinesCode())){
             condition.setAirlinesCode("");
         }
         AirlinesDetail detail=new AirlinesDetail();
