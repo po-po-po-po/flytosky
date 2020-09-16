@@ -1,5 +1,6 @@
 package com.fly.sky.vo;
 
+import com.fly.sky.condition.FlightCondition;
 import com.fly.sky.domain.Airlines;
 import com.fly.sky.domain.Airport;
 import com.fly.sky.domain.Flight;
@@ -35,5 +36,9 @@ public class AirlinesDetail {
 
     @ApiModelProperty("航司信息")
     Airlines airlines;
+
+    @ApiModelProperty("航司信息")
+    FlightCondition flightCondition;
+
 
 }

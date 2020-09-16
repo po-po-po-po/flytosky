@@ -71,6 +71,9 @@ public class AirlinesServiceImpl implements AirlinesService {
         if("不限".equals(condition.getFlightNameEnd())){
             condition.setFlightNameEnd("");
         }
+        if("不限".equals(condition.getAirlinesCode())){
+            condition.setAirlinesCode("");
+        }
         AirlinesDetail detail=new AirlinesDetail();
         //机场处理
         if(StringUtils.isNotEmpty(condition.getFlightNameStart())){
@@ -127,6 +130,7 @@ public class AirlinesServiceImpl implements AirlinesService {
         }
         List<FlightDetail> airwayList=flightRepository.findFlightsAirwayNumberByAirlinesCode(condition);
         detail.setAirwayList(airwayList);
+        detail.setFlightCondition(condition);
         return detail;
     };
 
