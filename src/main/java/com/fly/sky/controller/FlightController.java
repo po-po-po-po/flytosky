@@ -17,6 +17,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -69,6 +70,15 @@ public class FlightController {
     public ResponseResult<FlightList> findAllFlightsByAirline(@RequestBody FlightCondition condition){
         String logTitle = "=根据航线查询航班信息=";
         log.info("{} - 参数：findAllFlightsByAirline={}", logTitle, JsonUtil.toJSONString(condition));
+       //处理敦煌
+        if(!StringUtils.isEmpty(condition.getFlightNameStart())&&"敦煌".equals(condition.getFlightNameStart())){
+            condition.setFlightNameStart("敦煌莫高");
+            log.info("{} - 处理后的参数：findAllFlightsByAirline={}", logTitle, JsonUtil.toJSONString(condition));
+        }
+        if(!StringUtils.isEmpty(condition.getFlightNameEnd())&&"敦煌".equals(condition.getFlightNameEnd())){
+            condition.setFlightNameEnd("敦煌莫高");
+            log.info("{} - 处理后的参数：findAllFlightsByAirline={}", logTitle, JsonUtil.toJSONString(condition));
+        }
         ResponseResult<FlightList> responseResult = new ResponseResult<>();
         FlightList flightList=new FlightList();
         List<FlightDetail> flightDetailList=flightService.findAllFlightsByAirline(condition);
