@@ -20,9 +20,9 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.MediaType;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -91,6 +91,15 @@ public class AirlinesController {
     public ResponseResult<AirlinesDetail> findFlightsAndAirportsByAirlines(@RequestBody FlightCondition condition){
         String logTitle = "=查询航司能飞往的机场列表和航班信息=";
         log.info("{} - 参数：findFlightsAndAirportsByAirlines={}", logTitle, JsonUtil.toJSONString(condition));
+        //处理敦煌
+        if(!org.springframework.util.StringUtils.isEmpty(condition.getFlightNameStart())&&"敦煌".equals(condition.getFlightNameStart())){
+            condition.setFlightNameStart("敦煌莫高");
+            log.info("{} - 处理后的参数：findAllFlightsByAirline={}", logTitle, JsonUtil.toJSONString(condition));
+        }
+        if(!StringUtils.isEmpty(condition.getFlightNameEnd())&&"敦煌".equals(condition.getFlightNameEnd())){
+            condition.setFlightNameEnd("敦煌莫高");
+            log.info("{} - 处理后的参数：findAllFlightsByAirline={}", logTitle, JsonUtil.toJSONString(condition));
+        }
         //处理天津航空问题
         ResponseResult<AirlinesDetail> responseResult = new ResponseResult<>();
         responseResult.setData(airlinesService.findFlightsAndAirportsByAirlines(condition));
