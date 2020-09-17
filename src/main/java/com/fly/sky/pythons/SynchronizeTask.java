@@ -50,8 +50,8 @@ public class SynchronizeTask{
             //cZFlightUtil.scrableCZ();
             //hOFlightUtil.scrableHO();
             //muFlightUtil.scrableMU();
-            zHFlightUtil.scrableZH();
-            //hBGJFlightUtil.scrableHBGJ();
+            //zHFlightUtil.scrableZH();
+            hBGJFlightUtil.scrableHBGJ();
         } catch (Exception e) {
             e.printStackTrace();
         }
