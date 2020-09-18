@@ -64,17 +64,18 @@ public class AirportServiceImpl implements AirportService {
             BeanUtils.copyProperties(airport,vo);
             for (AirportVo airway : airways) {
                 if(airport.getAirportAbbreviate().equals(airway.getAirportAbbreviate())){
-                    vo.setAirportAirwaysNum(airway.getAirportAirwaysNum());
+                    vo.setAirportAirwaysNum(airway.getAirportAirwaysNum()==null?0:airway.getAirportAirwaysNum());
                 }
             }
             for (AirportVo flight : flights) {
                 if(airport.getAirportAbbreviate().equals(flight.getAirportAbbreviate())){
-                    vo.setAirportFlightNum(flight.getAirportFlightNum());
+                    vo.setAirportFlightNum(flight.getAirportFlightNum()==null?0:flight.getAirportFlightNum());
                 }
             }
             airportNewList.add(vo);
         }
         //按照航班数量进行排序 倒序排列
+        //非空判断
         airportNewList = airportNewList.stream().sorted(Comparator.comparing(AirportVo::getAirportFlightNum).reversed()).collect(Collectors.toList());
         PageInfo pageInfo = new PageInfo(airportNewList);
         listPagedList.setPageNo(condition.getPageNo());
