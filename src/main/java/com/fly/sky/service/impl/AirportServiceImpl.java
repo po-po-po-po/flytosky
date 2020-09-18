@@ -64,12 +64,12 @@ public class AirportServiceImpl implements AirportService {
             BeanUtils.copyProperties(airport,vo);
             for (AirportVo airway : airways) {
                 if(airport.getAirportAbbreviate().equals(airway.getAirportAbbreviate())){
-                    vo.setAirportAirwaysNum(airway.getAirportAirwaysNum()==null?0:airway.getAirportAirwaysNum());
+                    vo.setAirportAirwaysNum(null==airway.getAirportAirwaysNum()?0:airway.getAirportAirwaysNum());
                 }
             }
             for (AirportVo flight : flights) {
                 if(airport.getAirportAbbreviate().equals(flight.getAirportAbbreviate())){
-                    vo.setAirportFlightNum(flight.getAirportFlightNum()==null?0:flight.getAirportFlightNum());
+                    vo.setAirportFlightNum(null==flight.getAirportFlightNum()?0:flight.getAirportFlightNum());
                 }
             }
             airportNewList.add(vo);
