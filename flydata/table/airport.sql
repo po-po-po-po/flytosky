@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50649
 File Encoding         : 65001
 
-Date: 2020-09-17 15:04:41
+Date: 2020-09-18 16:07:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -218,7 +218,7 @@ INSERT INTO `airport` VALUES ('175', '嘉峪关机场', 'JGN', '嘉峪关', '嘉
 INSERT INTO `airport` VALUES ('176', '普洱思茅机场', 'SYM', '普洱思茅', '普洱', '云南', '000000000000', 'https://www.potucs.com/wechat/airport/sym.png', null, null, null, null, '2020-09-17 00:00:00');
 INSERT INTO `airport` VALUES ('177', '克拉玛依机场', 'KRY', '克拉玛依', '克拉玛依', '新疆', '000000000000', 'https://www.potucs.com/wechat/airport/kry.png', null, null, null, null, '2020-09-17 00:00:00');
 INSERT INTO `airport` VALUES ('178', '金昌金川机场', 'JIC', '金昌金川', '金昌', '甘肃', '000000000000', 'https://www.potucs.com/wechat/airport/jic.png', null, null, null, null, '2020-09-17 00:00:00');
-INSERT INTO `airport` VALUES ('179', '九江庐山机场', 'JIU', '九江庐山', '九江', '江西', '000000000001', 'https://www.potucs.com/wechat/airport/jiu.png', null, null, null, null, '2020-09-17 00:00:00');
+INSERT INTO `airport` VALUES ('179', '九江庐山机场', 'JIU', '九江庐山', '九江', '江西', '000000000000', 'https://www.potucs.com/wechat/airport/jgd.png', null, null, null, null, '2020-09-17 00:00:00');
 INSERT INTO `airport` VALUES ('180', '凯里黄平机场', 'KJH', '凯里黄平', '凯里', '贵州', '000000000000', 'https://www.potucs.com/wechat/airport/kjh.png', null, null, null, null, '2020-09-17 00:00:00');
 INSERT INTO `airport` VALUES ('181', '宁蒗泸沽湖机场', 'NLH', '宁蒗泸沽湖', '宁蒗', '四川', '000000000000', 'https://www.potucs.com/wechat/airport/nlh.png', null, null, null, null, '2020-09-17 00:00:00');
 INSERT INTO `airport` VALUES ('182', '库车龟兹机场', 'KCA', '库车龟兹', '库车', '新疆', '000000000000', 'https://www.potucs.com/wechat/airport/kca.png', null, null, null, null, '2020-09-17 00:00:00');
@@ -230,7 +230,7 @@ INSERT INTO `airport` VALUES ('187', '陇南成县机场', 'LNL', '陇南成县'
 INSERT INTO `airport` VALUES ('188', '满洲里西郊国际机场', 'NZH', '满洲里西郊', '满洲里', '内蒙古', '000000000000', 'https://www.potucs.com/wechat/airport/nzh.png', null, null, null, null, '2020-09-17 00:00:00');
 INSERT INTO `airport` VALUES ('189', '漠河古莲机场', 'OHE', '漠河古莲', '漠河', '黑龙江', '000000000000', 'https://www.potucs.com/wechat/airport/ohe.png', null, null, null, null, '2020-09-17 00:00:00');
 INSERT INTO `airport` VALUES ('190', '牡丹江海浪国际机场', 'MDG', '牡丹江海浪', '牡丹江', '黑龙江', '000000000000', 'https://www.potucs.com/wechat/airport/mdg.png', null, null, null, null, '2020-09-17 00:00:00');
-INSERT INTO `airport` VALUES ('191', '台州路桥机场', 'HYN', '台州路桥机场', '台州', '浙江', '000000000000', 'https://www.potucs.com/wechat/airport/hyn.png', null, null, null, null, '2020-09-17 00:00:00');
+INSERT INTO `airport` VALUES ('191', '台州路桥机场', 'HYN', '台州路桥', '台州', '浙江', '000000000000', 'https://www.potucs.com/wechat/airport/hyn.png', null, null, null, null, '2020-09-17 00:00:00');
 INSERT INTO `airport` VALUES ('192', '攀枝花保安营机场', 'PZI', '攀枝花保安营', '攀枝花', '四川', '000000000000', 'https://www.potucs.com/wechat/airport/pzi.png', null, null, null, null, '2020-09-17 00:00:00');
 INSERT INTO `airport` VALUES ('193', '海北祁连机场', 'HBQ', '海北祁连', '祁连', '青海', '000000000000', 'https://www.potucs.com/wechat/airport/hbq.png', null, null, null, null, '2020-09-17 00:00:00');
 INSERT INTO `airport` VALUES ('194', '齐齐哈尔三家子机场', 'NDG', '齐齐哈尔三家子', '齐齐哈尔', '黑龙江', '000000000000', 'https://www.potucs.com/wechat/airport/ndg.png', null, null, null, null, '2020-09-17 00:00:00');
@@ -253,7 +253,7 @@ INSERT INTO `airport` VALUES ('211', '锡林浩特机场', 'XIL', '锡林浩特'
 INSERT INTO `airport` VALUES ('212', '伊春林都机场', 'LDS', '伊春林都', '伊春', '黑龙江', '000000000000', 'https://www.potucs.com/wechat/airport/lds.png', null, null, null, null, '2020-09-17 00:00:00');
 INSERT INTO `airport` VALUES ('213', '延安南泥湾机场', 'ENY', '延安南泥湾', '延安', '陕西', '000000000000', 'https://www.potucs.com/wechat/airport/eny.png', null, null, null, null, '2020-09-17 00:00:00');
 INSERT INTO `airport` VALUES ('214', '营口兰旗机场', 'YKH', '营口兰旗', '营口', '辽宁', '000000000000', 'https://www.potucs.com/wechat/airport/ykh.png', null, null, null, null, '2020-09-17 00:00:00');
-INSERT INTO `airport` VALUES ('215', '永州零陵机场', 'LLF', '永州零陵', '永州', '湖南', '000000000001', 'https://www.potucs.com/wechat/airport/llf.png', null, null, null, null, '2020-09-17 00:00:00');
+INSERT INTO `airport` VALUES ('215', '永州零陵机场', 'LLF', '永州零陵', '永州', '湖南', '000000000000', 'https://www.potucs.com/wechat/airport/tcz.png', null, null, null, null, '2020-09-17 00:00:00');
 INSERT INTO `airport` VALUES ('216', '张掖甘州机场', 'YZY', '张掖甘州', '张掖', '甘肃', '000000000000', 'https://www.potucs.com/wechat/airport/yzy.png', null, null, null, null, '2020-09-17 00:00:00');
 INSERT INTO `airport` VALUES ('218', '中卫沙坡头机场', 'ZHY', '中卫沙坡头', '中卫', '宁夏', '000000000000', 'https://www.potucs.com/wechat/airport/zhy.png', null, null, null, null, '2020-09-17 00:00:00');
 INSERT INTO `airport` VALUES ('219', '大庆萨尔图机场', 'DQA', '大庆萨尔图', '大庆', '黑龙江', '000000000000', 'https://www.potucs.com/wechat/airport/dqa.png', null, null, null, null, '2020-09-17 00:00:00');
