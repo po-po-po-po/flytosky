@@ -31,4 +31,6 @@ public class Activity {
     private Integer sort;
     @ApiModelProperty("简介")
     private String brief;
+    @ApiModelProperty("航司code")
+    private String airportCode;
 }

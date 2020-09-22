@@ -45,6 +45,11 @@ public class ActivityServiceImpl implements ActivityService {
     public Activity findActivityDetail(ActivityCondition condition){
         Activity  activity=activityRepository.findActivityDetailById(condition.getId());
         return activity;
-    };
+    }
+
+    public Activity findActivityAirportCode(ActivityCondition condition){
+        Activity  activity=activityRepository.findActivityAirportCode(condition.getAirportCode());
+        return activity;
+    }
 
 }

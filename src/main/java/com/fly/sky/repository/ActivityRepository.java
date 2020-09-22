@@ -18,4 +18,6 @@ public interface ActivityRepository {
 
     Activity findActivityDetailById(Integer id);
 
+    Activity findActivityAirportCode(String airportCode);
+
 }
