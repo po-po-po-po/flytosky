@@ -25,4 +25,8 @@ public interface AirlinesRepository {
     List<AirlinesVo> findAirlinesIndex(AirlineCondition condition);
 
     Airlines findAirlinesByAirlinesCode(String airlinesCode);
+
+    AirlinesVo findAirlinesHNAFLIGHTNO(AirlineCondition condition);
+
+    AirlinesVo findAirlinesHNAAIRWAYNO(AirlineCondition condition);
 }

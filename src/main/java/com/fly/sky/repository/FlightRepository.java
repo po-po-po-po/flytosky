@@ -7,6 +7,7 @@ import com.fly.sky.domain.Airport;
 import com.fly.sky.domain.Flight;
 import com.fly.sky.vo.AirportVo;
 import com.fly.sky.vo.FlightDetail;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -22,8 +23,8 @@ public interface FlightRepository {
     List<FlightDetail> findFlightsDetail(FlightCondition condition);
     List<Flight> findFlightsGroupByAirlineCode(AirportCondition condition);
     List<AirportVo> findFlightsGroupByFlightNameStart();
-    List<Airport> findFlightsGroupByFlightNameStartByAirlinesCode(String airlinesCode);
-    List<Airport> findFlightsGroupByFlightNameEndByAirlinesCode(String airlinesCode);
+    List<Airport> findFlightsGroupByFlightNameStartByAirlinesCode(@Param(value="airlinesCode") String airlinesCode);
+    List<Airport> findFlightsGroupByFlightNameEndByAirlinesCode(@Param(value="airlinesCode") String airlinesCode);
     List<FlightDetail> findFlightsAndAirlinesByCondition(FlightCondition condition);
     void updateFlightByCondition(FlightCondition condition);
     List<Flight> findFlightsForSynchronize(FlightCondition condition);

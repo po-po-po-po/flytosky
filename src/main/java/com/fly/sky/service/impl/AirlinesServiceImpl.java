@@ -15,10 +15,7 @@ import com.fly.sky.repository.FlightRepository;
 import com.fly.sky.service.AirlinesService;
 import com.fly.sky.service.AirportService;
 import com.fly.sky.util.PagedList;
-import com.fly.sky.vo.AirlinesDetail;
-import com.fly.sky.vo.AirlinesVo;
-import com.fly.sky.vo.FlightDetail;
-import com.fly.sky.vo.WechaIndexAirlines;
+import com.fly.sky.vo.*;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
@@ -46,6 +43,15 @@ public class AirlinesServiceImpl implements AirlinesService {
 
     public List<AirlinesVo> findAirlinesIndex(AirlineCondition condition){
         List<AirlinesVo>  airlinesList=airlinesRepository.findAirlinesIndex(condition);
+        //处理海南航空问题
+        for (AirlinesVo airlines : airlinesList) {
+            if("HNA".equals(airlines.getAirlinesCode())){
+                airlines.setAirwayNumber(airlinesRepository.findAirlinesHNAAIRWAYNO(condition).getAirwayNumber());
+                airlines.setFlightNumber(airlinesRepository.findAirlinesHNAFLIGHTNO(condition).getFlightNumber());
+            }
+        }
+        airlinesList = airlinesList.stream().sorted(Comparator.comparing(AirlinesVo::getFlightNumber).reversed()).collect(Collectors.toList());
+
         return airlinesList;
     };
 

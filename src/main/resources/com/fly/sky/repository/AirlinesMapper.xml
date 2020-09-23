@@ -85,4 +85,30 @@ group by airlines_code
 order by b.flightNumber desc
     </select>
 
+
+    <select id="findAirlinesHNAFLIGHTNO"
+            parameterType="com.fly.sky.condition.AirlineCondition"
+            resultType="com.fly.sky.vo.AirlinesVo">
+   SELECT COUNT(*) AS flightNumber FROM flight
+WHERE    flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN' OR   flight.airlines_code = 'UQ'
+            OR   flight.airlines_code = 'Y8' OR   flight.airlines_code = 'GT' OR   flight.airlines_code = '9H'
+            OR   flight.airlines_code = 'FU' OR   flight.airlines_code = 'GX' OR   flight.airlines_code = 'PN'
+            OR   flight.airlines_code = '8L'
+    </select>
+
+
+    <select id="findAirlinesHNAAIRWAYNO"
+            parameterType="com.fly.sky.condition.AirlineCondition"
+            resultType="com.fly.sky.vo.AirlinesVo">
+select count(*) as airwayNumber from (
+select COUNT(*) AS airwayNumber,F.airport_name_start_code,F.airport_name_end_code from (
+SELECT * FROM flight
+WHERE    flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN' OR   flight.airlines_code = 'UQ'
+            OR   flight.airlines_code = 'Y8' OR   flight.airlines_code = 'GT' OR   flight.airlines_code = '9H'
+            OR   flight.airlines_code = 'FU' OR   flight.airlines_code = 'GX' OR   flight.airlines_code = 'PN'
+            OR   flight.airlines_code = '8L' ) AS F
+
+GROUP BY F.airport_name_start_code,F.airport_name_end_code) c
+    </select>
+
 </mapper>

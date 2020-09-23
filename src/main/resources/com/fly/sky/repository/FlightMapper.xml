@@ -96,7 +96,13 @@
         <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode=='HU'">
             and  ( flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN')
         </if>
-        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode!='MU' and airlinesCode!='HU'">
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode=='HNA'">
+            and  ( flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN' OR   flight.airlines_code = 'UQ'
+            OR   flight.airlines_code = 'Y8' OR   flight.airlines_code = 'GT' OR   flight.airlines_code = '9H'
+            OR   flight.airlines_code = 'FU' OR   flight.airlines_code = 'GX' OR   flight.airlines_code = 'PN'
+            OR   flight.airlines_code = '8L' )
+        </if>
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode!='MU' and airlinesCode!='HU'  and airlinesCode!='HNA'">
             and   flight.airlines_code = #{airlinesCode,jdbcType=VARCHAR}
         </if>
 
@@ -156,7 +162,18 @@
             resultType="com.fly.sky.domain.Airport">
 
                 select  flight.airport_name_start as airportAbbreviate,COUNT(*) AS sort
-                from flight  where flight.status=0 and airlines_code=#{airlinesCode,jdbcType=VARCHAR}
+                from flight  where flight.status=0
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode=='HNA'">
+            and  ( flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN' OR   flight.airlines_code = 'UQ'
+            OR   flight.airlines_code = 'Y8' OR   flight.airlines_code = 'GT' OR   flight.airlines_code = '9H'
+            OR   flight.airlines_code = 'FU' OR   flight.airlines_code = 'GX' OR   flight.airlines_code = 'PN'
+            OR   flight.airlines_code = '8L' )
+        </if>
+
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode!='HNA'">
+            and airlines_code=#{airlinesCode,jdbcType=VARCHAR}
+        </if>
+
                 group by airportAbbreviate order by sort desc
 
      </select>
@@ -164,7 +181,17 @@
     <select id="findFlightsGroupByFlightNameEndByAirlinesCode"
             resultType="com.fly.sky.domain.Airport">
        select  flight.airport_name_end as airportAbbreviate,COUNT(*) AS sort
-        from flight  where  flight.status=0  and airlines_code=#{airlinesCode,jdbcType=VARCHAR}
+        from flight  where  flight.status=0
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode=='HNA'">
+            and  ( flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN' OR   flight.airlines_code = 'UQ'
+            OR   flight.airlines_code = 'Y8' OR   flight.airlines_code = 'GT' OR   flight.airlines_code = '9H'
+            OR   flight.airlines_code = 'FU' OR   flight.airlines_code = 'GX' OR   flight.airlines_code = 'PN'
+            OR   flight.airlines_code = '8L' )
+        </if>
+
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode!='HNA'">
+            and airlines_code=#{airlinesCode,jdbcType=VARCHAR}
+        </if>
         group by airportAbbreviate order by sort desc
      </select>
 
@@ -201,7 +228,14 @@
             and  ( flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN')
         </if>
 
-        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode!='MU'  and airlinesCode!='HU'">
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode=='HNA'">
+            and  ( flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN' OR   flight.airlines_code = 'UQ'
+            OR   flight.airlines_code = 'Y8' OR   flight.airlines_code = 'GT' OR   flight.airlines_code = '9H'
+            OR   flight.airlines_code = 'FU' OR   flight.airlines_code = 'GX' OR   flight.airlines_code = 'PN'
+            OR   flight.airlines_code = '8L' )
+        </if>
+
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode!='MU'  and airlinesCode!='HU' and airlinesCode!='HNA'">
             and   flight.airlines_code = #{airlinesCode,jdbcType=VARCHAR}
         </if>
 
@@ -351,7 +385,14 @@
             and  ( flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN')
         </if>
 
-        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode!='MU'  and airlinesCode!='HU'">
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode=='HNA'">
+            and  ( flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN' OR   flight.airlines_code = 'UQ'
+            OR   flight.airlines_code = 'Y8' OR   flight.airlines_code = 'GT' OR   flight.airlines_code = '9H'
+            OR   flight.airlines_code = 'FU' OR   flight.airlines_code = 'GX' OR   flight.airlines_code = 'PN'
+            OR   flight.airlines_code = '8L' )
+        </if>
+
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode!='MU'  and airlinesCode!='HU' and airlinesCode!='HNA'">
             and   flight.airlines_code = #{airlinesCode,jdbcType=VARCHAR}
         </if>
         group by airport_name_start,airport_name_end
