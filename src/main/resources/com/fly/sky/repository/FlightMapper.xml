@@ -100,7 +100,7 @@
             and  ( flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN' OR   flight.airlines_code = 'UQ'
             OR   flight.airlines_code = 'Y8' OR   flight.airlines_code = 'GT' OR   flight.airlines_code = '9H'
             OR   flight.airlines_code = 'FU' OR   flight.airlines_code = 'GX' OR   flight.airlines_code = 'PN'
-            OR   flight.airlines_code = '8L' )
+            OR   flight.airlines_code = '8L' OR   flight.airlines_code = 'JD')
         </if>
         <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode!='MU' and airlinesCode!='HU'  and airlinesCode!='HNA'">
             and   flight.airlines_code = #{airlinesCode,jdbcType=VARCHAR}
@@ -167,7 +167,7 @@
             and  ( flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN' OR   flight.airlines_code = 'UQ'
             OR   flight.airlines_code = 'Y8' OR   flight.airlines_code = 'GT' OR   flight.airlines_code = '9H'
             OR   flight.airlines_code = 'FU' OR   flight.airlines_code = 'GX' OR   flight.airlines_code = 'PN'
-            OR   flight.airlines_code = '8L' )
+            OR   flight.airlines_code = '8L' OR   flight.airlines_code = 'JD')
         </if>
 
         <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode!='HNA'">
@@ -186,7 +186,7 @@
             and  ( flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN' OR   flight.airlines_code = 'UQ'
             OR   flight.airlines_code = 'Y8' OR   flight.airlines_code = 'GT' OR   flight.airlines_code = '9H'
             OR   flight.airlines_code = 'FU' OR   flight.airlines_code = 'GX' OR   flight.airlines_code = 'PN'
-            OR   flight.airlines_code = '8L' )
+            OR   flight.airlines_code = '8L' OR   flight.airlines_code = 'JD')
         </if>
 
         <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode!='HNA'">
@@ -232,7 +232,7 @@
             and  ( flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN' OR   flight.airlines_code = 'UQ'
             OR   flight.airlines_code = 'Y8' OR   flight.airlines_code = 'GT' OR   flight.airlines_code = '9H'
             OR   flight.airlines_code = 'FU' OR   flight.airlines_code = 'GX' OR   flight.airlines_code = 'PN'
-            OR   flight.airlines_code = '8L' )
+            OR   flight.airlines_code = '8L' OR   flight.airlines_code = 'JD')
         </if>
 
         <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode!='MU'  and airlinesCode!='HU' and airlinesCode!='HNA'">
@@ -389,7 +389,7 @@
             and  ( flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN' OR   flight.airlines_code = 'UQ'
             OR   flight.airlines_code = 'Y8' OR   flight.airlines_code = 'GT' OR   flight.airlines_code = '9H'
             OR   flight.airlines_code = 'FU' OR   flight.airlines_code = 'GX' OR   flight.airlines_code = 'PN'
-            OR   flight.airlines_code = '8L' )
+            OR   flight.airlines_code = '8L'  OR   flight.airlines_code = 'JD')
         </if>
 
         <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode!='MU'  and airlinesCode!='HU' and airlinesCode!='HNA'">

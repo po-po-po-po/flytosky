@@ -93,7 +93,7 @@ order by b.flightNumber desc
 WHERE    flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN' OR   flight.airlines_code = 'UQ'
             OR   flight.airlines_code = 'Y8' OR   flight.airlines_code = 'GT' OR   flight.airlines_code = '9H'
             OR   flight.airlines_code = 'FU' OR   flight.airlines_code = 'GX' OR   flight.airlines_code = 'PN'
-            OR   flight.airlines_code = '8L'
+            OR   flight.airlines_code = '8L' OR   flight.airlines_code = 'JD'
     </select>
 
 
@@ -106,7 +106,7 @@ SELECT * FROM flight
 WHERE    flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN' OR   flight.airlines_code = 'UQ'
             OR   flight.airlines_code = 'Y8' OR   flight.airlines_code = 'GT' OR   flight.airlines_code = '9H'
             OR   flight.airlines_code = 'FU' OR   flight.airlines_code = 'GX' OR   flight.airlines_code = 'PN'
-            OR   flight.airlines_code = '8L' ) AS F
+            OR   flight.airlines_code = '8L' OR   flight.airlines_code = 'JD') AS F
 
 GROUP BY F.airport_name_start_code,F.airport_name_end_code) c
     </select>
