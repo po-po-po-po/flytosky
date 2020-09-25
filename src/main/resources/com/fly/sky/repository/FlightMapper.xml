@@ -160,7 +160,9 @@
 
     <select id="findFlightsGroupByFlightNameStartByAirlinesCode"
             resultType="com.fly.sky.domain.Airport">
+        SELECT a.airportAbbreviate ,a.sort,airport.airport_location AS airportLocation FROM airport
 
+        right join (
                 select  flight.airport_name_start as airportAbbreviate,COUNT(*) AS sort
                 from flight  where flight.status=0
         <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode=='HNA'">
@@ -174,12 +176,18 @@
             and airlines_code=#{airlinesCode,jdbcType=VARCHAR}
         </if>
 
-                group by airportAbbreviate order by sort desc
+                group by airportAbbreviate ) a
+        on airport.airport_abbreviate=a.airportAbbreviate
+
+        order by a.sort desc
 
      </select>
 
     <select id="findFlightsGroupByFlightNameEndByAirlinesCode"
             resultType="com.fly.sky.domain.Airport">
+        SELECT a.airportAbbreviate ,a.sort,airport.airport_location AS airportLocation FROM airport
+
+        right join (
        select  flight.airport_name_end as airportAbbreviate,COUNT(*) AS sort
         from flight  where  flight.status=0
         <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode=='HNA'">
@@ -192,8 +200,12 @@
         <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode!='HNA'">
             and airlines_code=#{airlinesCode,jdbcType=VARCHAR}
         </if>
-        group by airportAbbreviate order by sort desc
-     </select>
+        group by airportAbbreviate  ) a
+        on airport.airport_abbreviate=a.airportAbbreviate
+
+        order by a.sort desc
+
+    </select>
 
 
 
