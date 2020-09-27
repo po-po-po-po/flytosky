@@ -33,6 +33,10 @@ public class WxUserServiceImpl implements WxUserService {
         wxUserRepository.insertWxUser(wxUser);
     }
 
+    public void updateWxUserTime(String openId){
+        wxUserRepository.updateWxUserTime(openId);
+    }
+
     public WxUser selectUserByOpenId(String openId){
         return wxUserRepository.selectUserByOpenId(openId);
     };

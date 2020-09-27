@@ -48,9 +48,8 @@ public class WxUserController {
                 wxUserService.saveWxUser(condition);
             }else{
                 //修改时间
+                wxUserService.updateWxUserTime(openId);
             }
         }
-
     }
-
 }

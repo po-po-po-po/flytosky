@@ -49,10 +49,10 @@ public class AirportCodeTest {
         List<Airport> airportsList1=airportRepository.findAirportsByCondition(new AirportCondition());
         for (Airport airport : airportsList1) {
                     AirportCode airportCode=new AirportCode();
-                    airportCode.setDeptCode("KRY");
+                    airportCode.setDeptCode("SHA");
                     airportCode.setArrCode(airport.getAirportCode());
                     airportCode.setStatus("0");
-                    airportCode.setDeptName("克拉玛依");
+                    airportCode.setDeptName("上海虹桥");
                     airportCode.setArrName(airport.getAirportLocation());
                     log.info("插入机场code："+airportCode);
                     airportCode.setStatus(null);
@@ -72,10 +72,10 @@ public class AirportCodeTest {
             for (Airport airport : airportsList2) {
                 AirportCode airportCode=new AirportCode();
                 airportCode.setDeptCode(airport.getAirportCode());
-                airportCode.setArrCode("KRY");
+                airportCode.setArrCode("SHA");
                 airportCode.setStatus("0");
                 airportCode.setDeptName(airport.getAirportLocation());
-                airportCode.setArrName("克拉玛依");
+                airportCode.setArrName("上海虹桥");
                 log.info("插入机场code："+airportCode);
                 airportCode.setStatus(null);
                 List<AirportCode> airportCodesList= airportCodeRepository.findAirportCode(airportCode);

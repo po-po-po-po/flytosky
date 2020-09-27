@@ -14,6 +14,7 @@ import com.fly.sky.domain.WxUser;
 
 public interface WxUserService {
 
+    void updateWxUserTime(String openId);
 
     void saveWxUser(WxUserCondition wxUser);
 

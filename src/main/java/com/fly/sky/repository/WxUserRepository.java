@@ -17,8 +17,10 @@ import java.util.List;
 public interface WxUserRepository {
 
 
-    void insertWxUser(WxUserCondition wxUser);
+    void updateWxUserTime(String openId);
 
     WxUser selectUserByOpenId(String openId);
+
+    void insertWxUser(WxUserCondition wxUser);
 
 }

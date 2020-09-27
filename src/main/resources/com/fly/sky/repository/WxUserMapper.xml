@@ -23,6 +23,13 @@
          #{province,jdbcType=VARCHAR}, sysdate(), #{openId,jdbcType=VARCHAR})
     </insert>
 
+    <insert id="updateWxUserTime" >
+        update users
+        set update_time=sysdate()
+        WHERE
+        open_id = #{openId,jdbcType=VARCHAR}
+    </insert>
+
 
     <select id="selectUserByOpenId"
             resultType="com.fly.sky.domain.WxUser">
