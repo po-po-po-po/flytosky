@@ -4,6 +4,8 @@ import com.fly.sky.condition.UserFlightCondition;
 import com.fly.sky.condition.WxUserCondition;
 import com.fly.sky.domain.UserFlight;
 import com.fly.sky.domain.WxUser;
+import com.fly.sky.repository.AirlinesRepository;
+import com.fly.sky.service.AirlinesService;
 import com.fly.sky.service.UserFlightService;
 import com.fly.sky.service.WxUserService;
 import com.fly.sky.util.JsonUtil;
@@ -11,10 +13,12 @@ import com.fly.sky.util.OpenidUtil;
 import com.fly.sky.util.ResponseResult;
 import com.fly.sky.vo.FlightList;
 import com.fly.sky.vo.UserFlightDetail;
+import com.fly.sky.vo.UserFlightVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,6 +44,10 @@ public class UserFlightController {
 
     @Resource
     private WxUserService wxUserService;
+
+
+    @Resource
+    private AirlinesService airlinesService;
 
     @PostMapping(value="saveUserflight")
     @ApiOperation(value = "保存用户航班信息", notes = "保存用户航班信息")
@@ -109,11 +117,18 @@ public class UserFlightController {
 
     @PostMapping(value="findUserFlightById")
     @ApiOperation(value = "获取用户航班信息", notes = "获取用户航班信息")
-    public ResponseResult<UserFlight> findUserFlightById(@RequestBody UserFlightCondition condition) throws Exception {
+    public ResponseResult<UserFlightVo> findUserFlightById(@RequestBody UserFlightCondition condition) throws Exception {
         String logTitle = "=获取用户航班信息=";
-        ResponseResult<UserFlight> responseResult = new ResponseResult<>();
+        ResponseResult<UserFlightVo> responseResult = new ResponseResult<>();
         log.info("{} - 参数：findUserFlightById={}", logTitle, JsonUtil.toJSONString(condition));
-        responseResult.setData( userFlightService.findUserFlightById(condition));
+        UserFlightVo vo=userFlightService.findUserFlightById(condition);
+        //根据openid获取用户信息
+        WxUser user=  wxUserService.selectUserByOpenId(vo.getOpenid());
+        if(null!=user){
+            vo.setAvatarUrl(user.getAvatarUrl());
+            vo.setNickName(user.getNickName());
+        }
+        responseResult.setData(vo);
         return responseResult;
     }
 }

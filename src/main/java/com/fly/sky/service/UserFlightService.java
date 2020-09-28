@@ -8,6 +8,7 @@ import com.fly.sky.domain.UserFlight;
 import com.fly.sky.util.PagedList;
 import com.fly.sky.vo.FlightDetail;
 import com.fly.sky.vo.UserFlightDetail;
+import com.fly.sky.vo.UserFlightVo;
 
 import java.util.List;
 
@@ -26,5 +27,5 @@ public interface UserFlightService {
 
     void deleteUserflight(UserFlightCondition condition);
 
-    UserFlight findUserFlightById(UserFlightCondition condition);
+    UserFlightVo findUserFlightById(UserFlightCondition condition);
 }

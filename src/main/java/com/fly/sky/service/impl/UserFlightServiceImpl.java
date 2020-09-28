@@ -83,7 +83,7 @@ public class UserFlightServiceImpl implements UserFlightService {
     }
 
     @Override
-    public UserFlight findUserFlightById(UserFlightCondition condition){
+    public UserFlightVo findUserFlightById(UserFlightCondition condition){
        return  userFlightRepository.findUserFlightById(condition);
 
     }

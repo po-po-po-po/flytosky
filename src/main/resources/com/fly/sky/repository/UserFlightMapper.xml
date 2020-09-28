@@ -78,15 +78,17 @@
         )
     </insert>
 
-    <select id="findUserFlightById"  resultType="com.fly.sky.domain.UserFlight"  parameterType="com.fly.sky.condition.UserFlightCondition">
-        select userflight.id as id,flight_no as flightNo , flight_name_start as flightNameStart ,
+    <select id="findUserFlightById"  resultType="com.fly.sky.vo.UserFlightVo"  parameterType="com.fly.sky.condition.UserFlightCondition">
+        select airlines.airlines_img as airlinesImg,airlines.airlines_abbreviate as airlinesName,
+        userflight.id as id,flight_no as flightNo , flight_name_start as flightNameStart ,
         flight_name_end as flightNameEnd,userflight.airlines_code as airlinesCode,
         flight_date as flightDate, flight_start_time as flightStartTime ,
         flight_end_time as flightEndTime ,create_time as createTime,
+        openid,
         userplan as userplan
-         from userflight
+         from userflight   left join airlines on  airlines.airlines_code=userflight.airlines_code
         WHERE 1=1
-            and  id = #{id,jdbcType=INTEGER}
+            and  userflight.id = #{id,jdbcType=INTEGER}
 
      </select>
 

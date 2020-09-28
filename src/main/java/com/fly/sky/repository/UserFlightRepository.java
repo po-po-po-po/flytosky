@@ -28,6 +28,6 @@ public interface UserFlightRepository {
 
     void deleteUserflightByID(UserFlightCondition condition);
 
-    UserFlight findUserFlightById(UserFlightCondition condition);
+    UserFlightVo findUserFlightById(UserFlightCondition condition);
 
 }
