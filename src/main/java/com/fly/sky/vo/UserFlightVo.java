@@ -1,4 +1,4 @@
-package com.fly.sky.condition;
+package com.fly.sky.vo;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
@@ -16,8 +16,9 @@ import java.util.Date;
 @Setter
 @Getter
 @ToString
-public class UserFlightCondition extends PagedCondition{
-
+public class UserFlightVo {
+    @ApiModelProperty("主键")
+    private Integer id;
     @ApiModelProperty("航班号")
     private String flightNo;
     @ApiModelProperty("出发机场")
@@ -38,19 +39,7 @@ public class UserFlightCondition extends PagedCondition{
     private String flightStartTime;
     @ApiModelProperty("结束时间")
     private String flightEndTime;
-    @ApiModelProperty("code")
-    private String code;
-    @ApiModelProperty("头像地址")
-    private String avatarUrl;
-    @ApiModelProperty("所在城市")
-    private String city;
-    @ApiModelProperty("所在国家")
-    private String country;
-    @ApiModelProperty("性别")
-    private String gender;
-    @ApiModelProperty("昵称")
-    private String nickName;
-    @ApiModelProperty("所在省份")
-    private String province;
+    @ApiModelProperty("航空公司")
+    private String airlinesName;
 
 }

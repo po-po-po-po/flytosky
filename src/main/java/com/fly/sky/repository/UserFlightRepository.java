@@ -4,6 +4,7 @@ package com.fly.sky.repository;
 import com.fly.sky.condition.FlightCondition;
 import com.fly.sky.condition.UserFlightCondition;
 import com.fly.sky.domain.UserFlight;
+import com.fly.sky.vo.UserFlightVo;
 
 
 import java.util.List;
@@ -15,7 +16,12 @@ import java.util.List;
  */
 
 public interface UserFlightRepository {
-    List<UserFlight> findUserFlightsByCondition(UserFlightCondition condition);
+    List<UserFlightVo> findUserFlightsByCondition(UserFlightCondition condition);
+
     void insertUserFlights(UserFlightCondition condition);
+
+    int flightsNo(UserFlightCondition condition);
+
+    int citiesNo(UserFlightCondition condition);
 
 }

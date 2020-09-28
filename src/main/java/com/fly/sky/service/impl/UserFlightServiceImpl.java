@@ -5,15 +5,21 @@ import com.fly.sky.condition.FlightCondition;
 import com.fly.sky.condition.UserFlightCondition;
 import com.fly.sky.domain.Flight;
 import com.fly.sky.domain.UserFlight;
+import com.fly.sky.domain.WxUser;
 import com.fly.sky.enums.AirlinesEnum;
 import com.fly.sky.pythons.IpPortUtil;
 import com.fly.sky.pythons.XcFlightUtil;
 import com.fly.sky.repository.FlightRepository;
 import com.fly.sky.repository.UserFlightRepository;
+import com.fly.sky.repository.WxUserRepository;
 import com.fly.sky.service.FlightService;
 import com.fly.sky.service.UserFlightService;
+import com.fly.sky.service.WxUserService;
+import com.fly.sky.util.OpenidUtil;
 import com.fly.sky.util.PagedList;
 import com.fly.sky.vo.FlightDetail;
+import com.fly.sky.vo.UserFlightDetail;
+import com.fly.sky.vo.UserFlightVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
@@ -33,11 +39,19 @@ public class UserFlightServiceImpl implements UserFlightService {
     UserFlightRepository userFlightRepository;
     @Resource
     FlightRepository flightRepository;
-
+    @Resource
+    WxUserRepository wxUserRepository;
 
     @Override
-    public List<UserFlight> findUserFlightsByCondition(UserFlightCondition condition) {
-        return userFlightRepository.findUserFlightsByCondition(condition);
+    public UserFlightDetail findUserFlightsByCondition(UserFlightCondition condition) {
+        UserFlightDetail userFlightDetail=new  UserFlightDetail();
+        List<UserFlightVo> userFlightVoList=userFlightRepository.findUserFlightsByCondition(condition);
+        userFlightDetail.setUserFlightVoList(userFlightVoList);
+        userFlightDetail.setCitiesNo(userFlightRepository.citiesNo(condition));
+        userFlightDetail.setFlightsNo(userFlightRepository.flightsNo(condition));
+        WxUser user= wxUserRepository.selectUserByOpenId(condition.getOpenid());
+        userFlightDetail.setWxUser(user);
+        return userFlightDetail;
     }
 
     @Override

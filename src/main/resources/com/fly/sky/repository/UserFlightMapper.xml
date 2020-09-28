@@ -18,13 +18,40 @@
 
     <select id="findUserFlightsByCondition"
             parameterType="com.fly.sky.condition.UserFlightCondition"
-            resultType="com.fly.sky.domain.UserFlight">
-        select id as id,flight_no as flightNo , flight_name_start as flightNameStart ,airlines_code as airlinesCode,
-        flight_date as flightDate, flight_start_time as flightStartTime , flight_end_time as flightEndTime ,create_time as createTime from userflight WHERE 1=1 and status=0
+            resultType="com.fly.sky.vo.UserFlightVo">
+        select airlines.airlines_name as airlinesName,userflight.id as id,flight_no as flightNo , flight_name_start as flightNameStart ,flight_name_end as flightNameEnd,userflight.airlines_code as airlinesCode,
+        flight_date as flightDate, flight_start_time as flightStartTime , flight_end_time as flightEndTime ,create_time as createTime from userflight
+        left join airlines on  airlines.airlines_code=userflight.airlines_code
+        WHERE 1=1 and status=0
         <if test="openid != null and openid != '' ">
             and  openid = #{openid,jdbcType=VARCHAR}
         </if>
+        order by userflight.flight_date desc,userflight.flight_start_time desc
     </select>
+
+
+    <select id="flightsNo"
+            parameterType="com.fly.sky.condition.UserFlightCondition"
+            resultType="com.fly.sky.vo.UserFlightVo">
+        select count(*) as flightsNo from  userflight
+        WHERE 1=1 and status=0
+        <if test="openid != null and openid != '' ">
+            and  openid = #{openid,jdbcType=VARCHAR}
+        </if>
+
+    </select>
+
+
+    <select id="citiesNo"
+            parameterType="com.fly.sky.condition.UserFlightCondition"
+            resultType="com.fly.sky.vo.UserFlightVo">
+      select count(*) as citiesNo from
+        (
+        select distinct flight_name_end from userflight
+        ) as a
+    </select>
+
+
 
 
 

@@ -7,6 +7,7 @@ import com.fly.sky.domain.Flight;
 import com.fly.sky.domain.UserFlight;
 import com.fly.sky.util.PagedList;
 import com.fly.sky.vo.FlightDetail;
+import com.fly.sky.vo.UserFlightDetail;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ import java.util.List;
 
 public interface UserFlightService {
 
-    List<UserFlight> findUserFlightsByCondition(UserFlightCondition condition);
+    UserFlightDetail findUserFlightsByCondition(UserFlightCondition condition);
 
     void insertUserFlights(UserFlightCondition condition);
 
