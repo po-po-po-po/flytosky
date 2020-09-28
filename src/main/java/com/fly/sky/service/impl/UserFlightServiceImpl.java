@@ -51,7 +51,7 @@ public class UserFlightServiceImpl implements UserFlightService {
                 condition.setFlightEndTime("24:00");
             }else{
                 condition.setFlightStartTime(flight.getFlightDate().substring(0,5));
-                condition.setFlightEndTime(flight.getFlightDate().substring(7,12));
+                condition.setFlightEndTime(flight.getFlightDate().substring(6));
             }
         }
          userFlightRepository.insertUserFlights(condition);
