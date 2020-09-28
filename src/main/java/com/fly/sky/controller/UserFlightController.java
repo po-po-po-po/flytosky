@@ -76,6 +76,7 @@ public class UserFlightController {
         wxUserCondition.setProvince(condition.getProvince());
         //首先添加用户信息
         if(StringUtils.isEmpty(openId)){
+            wxUserCondition.setOpenId(openId);
             wxUserService.saveWxUser(wxUserCondition);
         }else{
             WxUser wxUser=wxUserService.selectUserByOpenId(openId);
