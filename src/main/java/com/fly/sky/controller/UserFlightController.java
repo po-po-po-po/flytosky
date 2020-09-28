@@ -68,19 +68,25 @@ public class UserFlightController {
                 null);
         condition.setOpenid(openId);
         WxUserCondition wxUserCondition=new WxUserCondition();
-        wxUserCondition.setAvatarUrl(condition.getAvatarUrl());
-        wxUserCondition.setCity(condition.getCity());
-        wxUserCondition.setCountry(condition.getCountry());
-        wxUserCondition.setNickName(condition.getNickName());
-        wxUserCondition.setGender(condition.getGender());
-        wxUserCondition.setProvince(condition.getProvince());
         //首先添加用户信息
         if(StringUtils.isEmpty(openId)){
+            wxUserCondition.setAvatarUrl(condition.getAvatarUrl());
+            wxUserCondition.setCity(condition.getCity());
+            wxUserCondition.setCountry(condition.getCountry());
+            wxUserCondition.setNickName(condition.getNickName());
+            wxUserCondition.setGender(condition.getGender());
+            wxUserCondition.setProvince(condition.getProvince());
             wxUserCondition.setOpenId(openId);
             wxUserService.saveWxUser(wxUserCondition);
         }else{
             WxUser wxUser=wxUserService.selectUserByOpenId(openId);
             if(null==wxUser){
+                wxUserCondition.setAvatarUrl(condition.getAvatarUrl());
+                wxUserCondition.setCity(condition.getCity());
+                wxUserCondition.setCountry(condition.getCountry());
+                wxUserCondition.setNickName(condition.getNickName());
+                wxUserCondition.setGender(condition.getGender());
+                wxUserCondition.setProvince(condition.getProvince());
                 wxUserService.saveWxUser(wxUserCondition);
             }else{
                 //修改时间
