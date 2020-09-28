@@ -76,7 +76,6 @@ public class UserFlightController {
             wxUserCondition.setNickName(condition.getNickName());
             wxUserCondition.setGender(condition.getGender());
             wxUserCondition.setProvince(condition.getProvince());
-            wxUserCondition.setOpenId(openId);
             wxUserService.saveWxUser(wxUserCondition);
         }else{
             WxUser wxUser=wxUserService.selectUserByOpenId(openId);
@@ -87,6 +86,7 @@ public class UserFlightController {
                 wxUserCondition.setNickName(condition.getNickName());
                 wxUserCondition.setGender(condition.getGender());
                 wxUserCondition.setProvince(condition.getProvince());
+                wxUserCondition.setOpenId(openId);
                 wxUserService.saveWxUser(wxUserCondition);
             }else{
                 //修改时间
