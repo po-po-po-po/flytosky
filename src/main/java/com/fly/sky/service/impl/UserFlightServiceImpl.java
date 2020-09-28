@@ -76,4 +76,10 @@ public class UserFlightServiceImpl implements UserFlightService {
         }
          userFlightRepository.insertUserFlights(condition);
     }
+
+    @Override
+    public void deleteUserflight(UserFlightCondition condition){
+        userFlightRepository.deleteUserflightByID(condition);
+
+    }
 }

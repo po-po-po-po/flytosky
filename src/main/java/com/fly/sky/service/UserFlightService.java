@@ -24,4 +24,6 @@ public interface UserFlightService {
 
     void insertUserFlights(UserFlightCondition condition);
 
+    void deleteUserflight(UserFlightCondition condition);
+
 }

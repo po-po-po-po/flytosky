@@ -96,4 +96,13 @@ public class UserFlightController {
         responseResult.setData(userFlightService.findUserFlightsByCondition(condition));
         return responseResult;
     }
+
+
+    @PostMapping(value="deleteUserflight")
+    @ApiOperation(value = "删除用户航班信息", notes = "删除用户航班信息")
+    public void deleteUserflight(@RequestBody UserFlightCondition condition) throws Exception {
+        String logTitle = "=删除用户航班信息=";
+        log.info("{} - 参数：deleteUserflight={}", logTitle, JsonUtil.toJSONString(condition));
+        userFlightService.deleteUserflight(condition);
+    }
 }

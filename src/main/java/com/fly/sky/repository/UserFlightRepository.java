@@ -25,4 +25,6 @@ public interface UserFlightRepository {
 
     UserFlightDetail citiesNo(UserFlightCondition condition);
 
+    void deleteUserflightByID(UserFlightCondition condition);
+
 }

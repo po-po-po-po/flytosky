@@ -17,7 +17,8 @@ import java.util.Date;
 @Getter
 @ToString
 public class UserFlightCondition extends PagedCondition{
-
+    @ApiModelProperty("主键id")
+    private String id;
     @ApiModelProperty("航班号")
     private String flightNo;
     @ApiModelProperty("出发机场")
