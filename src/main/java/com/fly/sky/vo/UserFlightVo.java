@@ -41,5 +41,7 @@ public class UserFlightVo {
     private String flightEndTime;
     @ApiModelProperty("航空公司")
     private String airlinesName;
+    @ApiModelProperty("航空公司")
+    private String airlinesImg;
 
 }
