@@ -19,7 +19,7 @@
     <select id="findUserFlightsByCondition"
             parameterType="com.fly.sky.condition.UserFlightCondition"
             resultType="com.fly.sky.vo.UserFlightVo">
-        select airlines.airlines_img as airlinesImg,airlines.airlines_name as airlinesName,userflight.id as id,flight_no as flightNo , flight_name_start as flightNameStart ,flight_name_end as flightNameEnd,userflight.airlines_code as airlinesCode,
+        select airlines.airlines_img as airlinesImg,airlines.airlines_abbreviate as airlinesName,userflight.id as id,flight_no as flightNo , flight_name_start as flightNameStart ,flight_name_end as flightNameEnd,userflight.airlines_code as airlinesCode,
         flight_date as flightDate, flight_start_time as flightStartTime , flight_end_time as flightEndTime ,create_time as createTime from userflight
         left join airlines on  airlines.airlines_code=userflight.airlines_code
         WHERE 1=1 and status=0
