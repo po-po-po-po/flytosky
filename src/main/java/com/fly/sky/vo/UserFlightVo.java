@@ -33,6 +33,8 @@ public class UserFlightVo {
     private String openid;
     @ApiModelProperty("创建时间")
     private Date createTime;
+    @ApiModelProperty("创建时间")
+    private String createTimes;
     @ApiModelProperty("航班状态:0有效 1 无效")
     private Integer status;
     @ApiModelProperty("开始时间")

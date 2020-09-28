@@ -25,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 /**
@@ -128,6 +129,9 @@ public class UserFlightController {
             vo.setAvatarUrl(user.getAvatarUrl());
             vo.setNickName(user.getNickName());
         }
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateString = formatter.format(vo.getCreateTime());
+        vo.setCreateTimes(dateString);
         responseResult.setData(vo);
         return responseResult;
     }
