@@ -161,7 +161,8 @@
       select
        flight.airport_name_start as flightNameStart ,
         flight.airport_name_end as flightNameEnd,
-        flight.airlines_code as airlinesCode
+        flight.airlines_code as airlinesCode,
+        flight.flight_date as flightDate
         from flight
         where flight.flight_no=#{flightNo,jdbcType=VARCHAR}
         and flight.airport_name_start=#{airportNameStart,jdbcType=VARCHAR}
