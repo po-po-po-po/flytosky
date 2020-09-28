@@ -47,7 +47,7 @@ public class UserFlightController {
                 condition.getCode(),
                 null,
                 null);
-        condition.setOpenId(openId);
+        condition.setOpenid(openId);
         userFlightService.insertUserFlights(condition);
     }
 

@@ -40,7 +40,5 @@ public class UserFlightCondition extends PagedCondition{
     private String flightEndTime;
     @ApiModelProperty("code")
     private String code;
-    @ApiModelProperty("openId")
-    private String openId;
 
 }
