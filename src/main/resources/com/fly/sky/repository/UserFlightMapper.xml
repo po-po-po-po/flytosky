@@ -50,6 +50,11 @@
       select count(*) as citiesNo from
         (
         select distinct flight_name_end from userflight
+        WHERE 1=1 and status=0
+        <if test="openid != null and openid != '' ">
+            and  openid = #{openid,jdbcType=VARCHAR}
+        </if>
+
         ) as a
     </select>
 
