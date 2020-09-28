@@ -39,5 +39,7 @@ public class UserFlight {
     private String flightStartTime;
     @ApiModelProperty("结束时间")
     private String flightEndTime;
+    @ApiModelProperty("计划")
+    private String userplan;
 
 }

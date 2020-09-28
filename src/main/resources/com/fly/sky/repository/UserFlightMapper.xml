@@ -5,6 +5,7 @@
     <resultMap id="BaseResultMap" type="com.fly.sky.domain.UserFlight">
         <result column="id" jdbcType="INTEGER" property="id" />
         <result column="flight_no" jdbcType="VARCHAR" property="flightNo" />
+        <result column="userplan" jdbcType="VARCHAR" property="userplan" />
         <result column="flight_name_start" jdbcType="VARCHAR" property="flightNameStart" />
         <result column="flight_name_end" jdbcType="VARCHAR" property="flightNameEnd" />
         <result column="flight_start_time" jdbcType="VARCHAR" property="flightStartTime" />

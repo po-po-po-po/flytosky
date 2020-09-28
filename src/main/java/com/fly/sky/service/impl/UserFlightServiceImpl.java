@@ -47,7 +47,6 @@ public class UserFlightServiceImpl implements UserFlightService {
         UserFlightDetail userFlightDetail=new  UserFlightDetail();
         List<UserFlightVo> userFlightVoList=userFlightRepository.findUserFlightsByCondition(condition);
         userFlightDetail.setUserFlightVoList(userFlightVoList);
-        UserFlightDetail detail=new UserFlightDetail();
         if(null==userFlightRepository.citiesNo(condition)){
             userFlightDetail.setCitiesNo(0);
             userFlightDetail.setFlightsNo(0);

@@ -53,5 +53,8 @@ public class UserFlightCondition extends PagedCondition{
     private String nickName;
     @ApiModelProperty("所在省份")
     private String province;
+    @ApiModelProperty("计划")
+    private String userplan;
+
 
 }

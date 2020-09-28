@@ -43,5 +43,7 @@ public class UserFlightVo {
     private String airlinesName;
     @ApiModelProperty("航空公司")
     private String airlinesImg;
+    @ApiModelProperty("计划")
+    private String userplan;
 
 }
