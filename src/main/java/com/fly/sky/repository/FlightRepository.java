@@ -36,6 +36,7 @@ public interface FlightRepository {
     void updateAirportNameStartAndEnd(Flight flight);
     List<Flight> findFlightsGroupByAirportNameAndAirportNameEnd();
     Flight findFlightNoRepeat(String flightNo,String airportNameStartCode,String airportNameEndCode);
+    Flight findFlightOne(String flightNo,String airportNameStart,String airportNameEnd);
     List<Airport> findFlightsGroupByAirportCode();
     List<FlightDetail> findFlightsAirwayNumberByAirlinesCode(FlightCondition flightCondition);
 }

@@ -7,6 +7,8 @@
         <result column="flight_no" jdbcType="VARCHAR" property="flightNo" />
         <result column="flight_name_start" jdbcType="VARCHAR" property="flightNameStart" />
         <result column="flight_name_end" jdbcType="VARCHAR" property="flightNameEnd" />
+        <result column="flight_start_time" jdbcType="VARCHAR" property="flightStartTime" />
+        <result column="flight_end_time" jdbcType="VARCHAR" property="flightEndTime" />
         <result column="flight_date" jdbcType="VARCHAR" property="flightDate" />
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
         <result column="openid" jdbcType="VARCHAR" property="openid" />
@@ -18,7 +20,7 @@
             parameterType="com.fly.sky.condition.UserFlightCondition"
             resultType="com.fly.sky.domain.UserFlight">
         select id as id,flight_no as flightNo , flight_name_start as flightNameStart ,airlines_code as airlinesCode,
-        flight_date as flightDate,create_time as createTime from userflight WHERE 1=1 and status=0
+        flight_date as flightDate, flight_start_time as flightStartTime , flight_end_time as flightEndTime ,create_time as createTime from userflight WHERE 1=1 and status=0
         <if test="openid != null and openid != '' ">
             and  openid = #{openid,jdbcType=VARCHAR}
         </if>
@@ -28,10 +30,10 @@
 
     <insert id="insertUserFlights" parameterType="com.fly.sky.condition.UserFlightCondition" >
        insert into userflight(flight_no, flight_name_start,flight_name_end,
-        airlines_code,flight_date,status,create_time,openid )
+        airlines_code,flight_date,status,create_time,openid ,flight_start_time,flight_end_time)
         values(
         #{flightNo}, #{flightNameStart}, #{flightNameEnd},
-        #{airlinesCode}, #{flightDate} ,0,sysdate(),#{openid}
+        #{airlinesCode}, #{flightDate} ,0,sysdate(),#{openid}, #{flightStartTime}, #{flightEndTime}
         )
     </insert>
 

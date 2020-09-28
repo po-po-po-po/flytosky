@@ -35,5 +35,9 @@ public class UserFlight {
     private Date createTime;
     @ApiModelProperty("航班状态:0有效 1 无效")
     private Integer status;
+    @ApiModelProperty("开始时间")
+    private String flightStartTime;
+    @ApiModelProperty("结束时间")
+    private String flightEndTime;
 
 }

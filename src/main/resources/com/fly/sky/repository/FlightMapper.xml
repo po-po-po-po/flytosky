@@ -157,6 +157,17 @@
         AND flight.airport_name_end_code=#{airportNameEndCode,jdbcType=VARCHAR}
      </select>
 
+    <select id="findFlightOne"  resultType="com.fly.sky.domain.Flight">
+      select
+       flight.airport_name_start as flightNameStart ,
+        flight.airport_name_end as flightNameEnd,
+        flight.airlines_code as airlinesCode
+        from flight
+        where flight.flight_no=#{flightNo,jdbcType=VARCHAR}
+        and flight.airport_name_start=#{airportNameStart,jdbcType=VARCHAR}
+        AND flight.airport_name_end=#{airportNameEnd,jdbcType=VARCHAR}
+     </select>
+
 
     <select id="findFlightsGroupByFlightNameStartByAirlinesCode"
             resultType="com.fly.sky.domain.Airport">

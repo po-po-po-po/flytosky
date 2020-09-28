@@ -31,6 +31,8 @@ public class UserFlightServiceImpl implements UserFlightService {
 
     @Resource
     UserFlightRepository userFlightRepository;
+    @Resource
+    FlightRepository flightRepository;
 
 
     @Override
@@ -40,6 +42,18 @@ public class UserFlightServiceImpl implements UserFlightService {
 
     @Override
     public void insertUserFlights(UserFlightCondition condition) {
+        if(StringUtils.isNotEmpty(condition.getFlightNo())){
+            condition.setFlightNo(condition.getFlightNo().toUpperCase());
+            //根据航班号查询航班起飞时间和到达时间
+            Flight flight= flightRepository.findFlightOne(condition.getFlightNo(),condition.getFlightNameStart(),condition.getFlightNameEnd());
+            if(null==flight){
+                condition.setFlightStartTime("00:00");
+                condition.setFlightEndTime("24:00");
+            }else{
+                condition.setFlightStartTime(flight.getFlightDate().substring(0,5));
+                condition.setFlightEndTime(flight.getFlightDate().substring(7,12));
+            }
+        }
          userFlightRepository.insertUserFlights(condition);
     }
 }
