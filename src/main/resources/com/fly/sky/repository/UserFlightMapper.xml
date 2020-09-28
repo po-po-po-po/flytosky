@@ -32,7 +32,7 @@
 
     <select id="flightsNo"
             parameterType="com.fly.sky.condition.UserFlightCondition"
-            resultType="java.lang.Integer"
+            resultType="com.fly.sky.vo.UserFlightDetail"
            >
         select count(*) as flightsNo from  userflight
         WHERE 1=1 and status=0
@@ -45,7 +45,7 @@
 
     <select id="citiesNo"
             parameterType="com.fly.sky.condition.UserFlightCondition"
-            resultType="java.lang.Integer"
+            resultType="com.fly.sky.vo.UserFlightDetail"
            >
       select count(*) as citiesNo from
         (

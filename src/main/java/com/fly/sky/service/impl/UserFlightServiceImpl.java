@@ -47,8 +47,14 @@ public class UserFlightServiceImpl implements UserFlightService {
         UserFlightDetail userFlightDetail=new  UserFlightDetail();
         List<UserFlightVo> userFlightVoList=userFlightRepository.findUserFlightsByCondition(condition);
         userFlightDetail.setUserFlightVoList(userFlightVoList);
-        userFlightDetail.setCitiesNo(userFlightRepository.citiesNo(condition));
-        userFlightDetail.setFlightsNo(userFlightRepository.flightsNo(condition));
+        UserFlightDetail detail=new UserFlightDetail();
+        if(null==userFlightRepository.citiesNo(condition)){
+            userFlightDetail.setCitiesNo(0);
+            userFlightDetail.setFlightsNo(0);
+        }else{
+            userFlightDetail.setCitiesNo(userFlightRepository.citiesNo(condition).getCitiesNo());
+            userFlightDetail.setFlightsNo(userFlightRepository.flightsNo(condition).getFlightsNo());
+        }
         WxUser user= wxUserRepository.selectUserByOpenId(condition.getOpenid());
         userFlightDetail.setWxUser(user);
         return userFlightDetail;
