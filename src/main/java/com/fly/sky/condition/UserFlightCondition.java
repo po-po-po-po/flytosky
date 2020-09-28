@@ -38,5 +38,9 @@ public class UserFlightCondition extends PagedCondition{
     private String flightStartTime;
     @ApiModelProperty("结束时间")
     private String flightEndTime;
+    @ApiModelProperty("code")
+    private String code;
+    @ApiModelProperty("openId")
+    private String openId;
 
 }

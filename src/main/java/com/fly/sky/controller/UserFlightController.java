@@ -39,9 +39,15 @@ public class UserFlightController {
 
     @PostMapping(value="saveUserflight")
     @ApiOperation(value = "保存用户航班信息", notes = "保存用户航班信息")
-    public void saveUserflight(@RequestBody UserFlightCondition condition)  {
+    public void saveUserflight(@RequestBody UserFlightCondition condition) throws Exception {
         String logTitle = "=保存用户航班信息=";
         log.info("{} - 参数：saveUserflight={}", logTitle, JsonUtil.toJSONString(condition));
+        //获取openid
+        String openId= OpenidUtil.getOpenid(
+                condition.getCode(),
+                null,
+                null);
+        condition.setOpenId(openId);
         userFlightService.insertUserFlights(condition);
     }
 
