@@ -3,6 +3,7 @@ package com.fly.sky.repository;
 
 import com.fly.sky.condition.FlightCondition;
 import com.fly.sky.condition.UserFlightCondition;
+import com.fly.sky.domain.Flight;
 import com.fly.sky.domain.UserFlight;
 import com.fly.sky.vo.UserFlightDetail;
 import com.fly.sky.vo.UserFlightVo;
@@ -26,5 +27,7 @@ public interface UserFlightRepository {
     UserFlightDetail citiesNo(UserFlightCondition condition);
 
     void deleteUserflightByID(UserFlightCondition condition);
+
+    UserFlight findUserFlightById(UserFlightCondition condition);
 
 }

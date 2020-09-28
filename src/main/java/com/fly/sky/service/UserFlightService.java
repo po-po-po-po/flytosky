@@ -26,4 +26,5 @@ public interface UserFlightService {
 
     void deleteUserflight(UserFlightCondition condition);
 
+    UserFlight findUserFlightById(UserFlightCondition condition);
 }

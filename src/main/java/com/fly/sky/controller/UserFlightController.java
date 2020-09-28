@@ -105,4 +105,15 @@ public class UserFlightController {
         log.info("{} - 参数：deleteUserflight={}", logTitle, JsonUtil.toJSONString(condition));
         userFlightService.deleteUserflight(condition);
     }
+
+
+    @PostMapping(value="findUserFlightById")
+    @ApiOperation(value = "获取用户航班信息", notes = "获取用户航班信息")
+    public ResponseResult<UserFlight> findUserFlightById(@RequestBody UserFlightCondition condition) throws Exception {
+        String logTitle = "=获取用户航班信息=";
+        ResponseResult<UserFlight> responseResult = new ResponseResult<>();
+        log.info("{} - 参数：findUserFlightById={}", logTitle, JsonUtil.toJSONString(condition));
+        responseResult.setData( userFlightService.findUserFlightById(condition));
+        return responseResult;
+    }
 }

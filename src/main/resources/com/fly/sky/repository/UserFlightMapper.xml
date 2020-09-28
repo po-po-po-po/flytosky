@@ -71,13 +71,23 @@
 
     <insert id="insertUserFlights" parameterType="com.fly.sky.condition.UserFlightCondition" >
        insert into userflight(flight_no, flight_name_start,flight_name_end,
-        airlines_code,flight_date,status,create_time,openid ,flight_start_time,flight_end_time)
+        airlines_code,flight_date,status,create_time,openid ,flight_start_time,flight_end_time,userplan)
         values(
         #{flightNo}, #{flightNameStart}, #{flightNameEnd},
-        #{airlinesCode}, #{flightDate} ,0,sysdate(),#{openid}, #{flightStartTime}, #{flightEndTime}
+        #{airlinesCode}, #{flightDate} ,0,sysdate(),#{openid}, #{flightStartTime}, #{flightEndTime},#{userplan}
         )
     </insert>
 
+    <select id="findUserFlightById"  resultType="com.fly.sky.domain.UserFlight"  parameterType="com.fly.sky.condition.UserFlightCondition">
+        select userflight.id as id,flight_no as flightNo , flight_name_start as flightNameStart ,
+        flight_name_end as flightNameEnd,userflight.airlines_code as airlinesCode,
+        flight_date as flightDate, flight_start_time as flightStartTime ,
+        flight_end_time as flightEndTime ,create_time as createTime,
+        userplan as userplan
+         from userflight
+        WHERE 1=1
+            and  id = #{id,jdbcType=INTEGER}
 
+     </select>
 
 </mapper>

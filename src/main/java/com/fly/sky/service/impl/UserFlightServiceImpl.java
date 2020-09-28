@@ -81,4 +81,10 @@ public class UserFlightServiceImpl implements UserFlightService {
         userFlightRepository.deleteUserflightByID(condition);
 
     }
+
+    @Override
+    public UserFlight findUserFlightById(UserFlightCondition condition){
+       return  userFlightRepository.findUserFlightById(condition);
+
+    }
 }
