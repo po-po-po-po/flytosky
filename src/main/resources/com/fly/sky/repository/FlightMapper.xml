@@ -157,7 +157,7 @@
         AND flight.airport_name_end_code=#{airportNameEndCode,jdbcType=VARCHAR}
      </select>
 
-    <select id="findFlightOne"  resultType="com.fly.sky.domain.Flight">
+    <select id="findFlightOne"  resultType="com.fly.sky.domain.Flight"  parameterType="com.fly.sky.condition.UserFlightCondition">
       select
        flight.airport_name_start as flightNameStart ,
         flight.airport_name_end as flightNameEnd,
@@ -165,8 +165,8 @@
         flight.flight_date as flightDate
         from flight
         where flight.flight_no=#{flightNo,jdbcType=VARCHAR}
-        and flight.airport_name_start=#{airportNameStart,jdbcType=VARCHAR}
-        AND flight.airport_name_end=#{airportNameEnd,jdbcType=VARCHAR}
+        and flight.airport_name_start=#{flightNameStart,jdbcType=VARCHAR}
+        AND flight.airport_name_end=#{flightNameEnd,jdbcType=VARCHAR}
      </select>
 
 

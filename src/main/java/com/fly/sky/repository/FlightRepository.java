@@ -3,6 +3,7 @@ package com.fly.sky.repository;
 
 import com.fly.sky.condition.AirportCondition;
 import com.fly.sky.condition.FlightCondition;
+import com.fly.sky.condition.UserFlightCondition;
 import com.fly.sky.domain.Airport;
 import com.fly.sky.domain.Flight;
 import com.fly.sky.vo.AirportVo;
@@ -36,7 +37,7 @@ public interface FlightRepository {
     void updateAirportNameStartAndEnd(Flight flight);
     List<Flight> findFlightsGroupByAirportNameAndAirportNameEnd();
     Flight findFlightNoRepeat(String flightNo,String airportNameStartCode,String airportNameEndCode);
-    Flight findFlightOne(String flightNo,String airportNameStart,String airportNameEnd);
+    Flight findFlightOne(UserFlightCondition condition);
     List<Airport> findFlightsGroupByAirportCode();
     List<FlightDetail> findFlightsAirwayNumberByAirlinesCode(FlightCondition flightCondition);
 }

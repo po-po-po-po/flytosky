@@ -45,7 +45,7 @@ public class UserFlightServiceImpl implements UserFlightService {
         if(StringUtils.isNotEmpty(condition.getFlightNo())){
             condition.setFlightNo(condition.getFlightNo().toUpperCase());
             //根据航班号查询航班起飞时间和到达时间
-            Flight flight= flightRepository.findFlightOne(condition.getFlightNo(),condition.getFlightNameStart(),condition.getFlightNameEnd());
+            Flight flight= flightRepository.findFlightOne(condition);
             if(null==flight){
                 condition.setFlightStartTime("00:00");
                 condition.setFlightEndTime("24:00");
