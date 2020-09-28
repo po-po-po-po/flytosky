@@ -32,7 +32,7 @@
 
     <select id="flightsNo"
             parameterType="com.fly.sky.condition.UserFlightCondition"
-            resultType="com.fly.sky.vo.UserFlightVo">
+           >
         select count(*) as flightsNo from  userflight
         WHERE 1=1 and status=0
         <if test="openid != null and openid != '' ">
@@ -44,7 +44,7 @@
 
     <select id="citiesNo"
             parameterType="com.fly.sky.condition.UserFlightCondition"
-            resultType="com.fly.sky.vo.UserFlightVo">
+           >
       select count(*) as citiesNo from
         (
         select distinct flight_name_end from userflight
