@@ -27,6 +27,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,7 +47,7 @@ public class UserFlightServiceImpl implements UserFlightService {
     WxUserRepository wxUserRepository;
 
     @Override
-    public UserFlightDetail findUserFlightsByCondition(UserFlightCondition condition) {
+    public UserFlightDetail findUserFlightsByCondition(UserFlightCondition condition) throws ParseException {
         UserFlightDetail userFlightDetail=new  UserFlightDetail();
         List<UserFlightVo> userFlightVoList=userFlightRepository.findUserFlightsByCondition(condition);
         userFlightDetail.setUserFlightVoList(userFlightVoList);
@@ -54,6 +58,24 @@ public class UserFlightServiceImpl implements UserFlightService {
             userFlightDetail.setCitiesNo(userFlightRepository.citiesNo(condition).getCitiesNo());
             userFlightDetail.setFlightsNo(userFlightRepository.flightsNo(condition).getFlightsNo());
         }
+        //对用户航班信息进行处理
+        for (UserFlightVo userFlightVo : userFlightVoList) {
+            userFlightVo.setFlightDateArrive(userFlightVo.getFlightDate());
+            if(userFlightVo.getFlightEndTime().startsWith("00")||userFlightVo.getFlightEndTime().startsWith("01")){
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                Date sDate = sdf.parse(userFlightVo.getFlightDate());
+                Calendar c = Calendar.getInstance();
+                c.setTime(sDate);
+                c.add(Calendar.DAY_OF_MONTH, 1);
+                sDate = c.getTime();
+                SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+                String endDate = sdf1.format(sDate);
+                userFlightVo.setFlightDateArrive(endDate);
+            }
+
+            
+        }
+        userFlightDetail.setUserFlightVoList(userFlightVoList);
         WxUser user= wxUserRepository.selectUserByOpenId(condition.getOpenid());
         userFlightDetail.setWxUser(user);
         return userFlightDetail;

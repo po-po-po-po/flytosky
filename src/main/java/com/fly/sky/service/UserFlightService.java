@@ -10,6 +10,7 @@ import com.fly.sky.vo.FlightDetail;
 import com.fly.sky.vo.UserFlightDetail;
 import com.fly.sky.vo.UserFlightVo;
 
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -21,7 +22,7 @@ import java.util.List;
 
 public interface UserFlightService {
 
-    UserFlightDetail findUserFlightsByCondition(UserFlightCondition condition);
+    UserFlightDetail findUserFlightsByCondition(UserFlightCondition condition) throws ParseException;
 
     void insertUserFlights(UserFlightCondition condition);
 

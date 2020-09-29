@@ -27,6 +27,8 @@ public class UserFlightVo {
     private String flightNameEnd;
     @ApiModelProperty("航班日期")
     private String flightDate;
+    @ApiModelProperty("航班日期")
+    private String flightDateArrive;
     @ApiModelProperty("航空公司代码")
     private String airlinesCode;
     @ApiModelProperty("航班频率")
