@@ -71,9 +71,15 @@ public class WxMessageController {
         log.info("{} - 参数：saveWxMessage={}", logTitle);
         ResponseResult<List<String>> responseResult = new ResponseResult<>();
         List list=new ArrayList();
-        list.add("你所能看到的机场列表，只要任一机场和机场之间有航班，现在都有航班数据可以查询到.");
-        list.add("数据最新更新于2020.09.04号");
-        list.add("页面样式最新更新于2020.09.08号");
+        list.add("<h3>\n" +
+                "\t<span style=\"color:#000000;font-size:18px;\"><strong>航班数据最新更新于</strong></span><span style=\"color:#000000;font-size:18px;\"><strong>2020.09.04</strong></span><span style=\"color:#000000;font-size:18px;\"><strong>号&nbsp;</strong></span>\n" +
+                "</h3>\n" +
+                "<h3>\n" +
+                "\t<span style=\"color:#000000;font-size:18px;\"><strong>换季后的航班数据国庆以后会重新更新</strong></span>\n" +
+                "</h3>\n" +
+                "<p>\n" +
+                "\t<strong>请随时关注</strong>\n" +
+                "</p>");
         responseResult.setData(list);
         return responseResult;
     }
