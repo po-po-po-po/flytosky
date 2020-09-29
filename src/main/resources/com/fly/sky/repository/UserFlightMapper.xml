@@ -92,4 +92,19 @@
 
      </select>
 
+
+    <select id="userRoutes"
+            parameterType="com.fly.sky.condition.UserFlightCondition"
+            resultType="com.fly.sky.vo.UserFlightRoute">
+        select a.destination,a.openid,airport.longitude,airport.latitude from airport
+        right join (
+        select distinct flight_name_end as destination,openid from userflight
+        WHERE 1=1 and status=0
+        <if test="openid != null and openid != '' ">
+            and  openid = #{openid,jdbcType=VARCHAR}
+        </if>
+        ) as a
+        on airport.airport_abbreviate=a.destination
+    </select>
+
 </mapper>

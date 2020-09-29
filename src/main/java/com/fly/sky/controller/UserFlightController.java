@@ -13,6 +13,7 @@ import com.fly.sky.util.OpenidUtil;
 import com.fly.sky.util.ResponseResult;
 import com.fly.sky.vo.FlightList;
 import com.fly.sky.vo.UserFlightDetail;
+import com.fly.sky.vo.UserFlightRoute;
 import com.fly.sky.vo.UserFlightVo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -132,6 +133,25 @@ public class UserFlightController {
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String dateString = formatter.format(vo.getCreateTime());
         vo.setCreateTimes(dateString);
+        responseResult.setData(vo);
+        return responseResult;
+    }
+
+
+
+    @PostMapping(value="findUseRoutes")
+    @ApiOperation(value = "获取用户足迹信息", notes = "获取用户足迹信息")
+    public ResponseResult<UserFlightRoute> findUseRoutes(@RequestBody UserFlightCondition condition) throws Exception {
+        String logTitle = "=获取用户足迹信息=";
+        ResponseResult<UserFlightRoute> responseResult = new ResponseResult<>();
+        log.info("{} - 参数：findUseRoutes={}", logTitle, JsonUtil.toJSONString(condition));
+        UserFlightRoute vo=userFlightService.userRoutes(condition);
+        //根据openid获取用户信息
+        WxUser user=  wxUserService.selectUserByOpenId(vo.getOpenid());
+        if(null!=user){
+            vo.setAvatarUrl(user.getAvatarUrl());
+            vo.setNickName(user.getNickName());
+        }
         responseResult.setData(vo);
         return responseResult;
     }

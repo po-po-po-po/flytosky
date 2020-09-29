@@ -19,6 +19,7 @@ import com.fly.sky.util.OpenidUtil;
 import com.fly.sky.util.PagedList;
 import com.fly.sky.vo.FlightDetail;
 import com.fly.sky.vo.UserFlightDetail;
+import com.fly.sky.vo.UserFlightRoute;
 import com.fly.sky.vo.UserFlightVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -108,5 +109,10 @@ public class UserFlightServiceImpl implements UserFlightService {
     public UserFlightVo findUserFlightById(UserFlightCondition condition){
        return  userFlightRepository.findUserFlightById(condition);
 
+    }
+
+    @Override
+    public UserFlightRoute userRoutes(UserFlightCondition condition) {
+        return  userFlightRepository.userRoutes(condition);
     }
 }

@@ -6,6 +6,7 @@ import com.fly.sky.condition.UserFlightCondition;
 import com.fly.sky.domain.Flight;
 import com.fly.sky.domain.UserFlight;
 import com.fly.sky.vo.UserFlightDetail;
+import com.fly.sky.vo.UserFlightRoute;
 import com.fly.sky.vo.UserFlightVo;
 
 
@@ -29,5 +30,8 @@ public interface UserFlightRepository {
     void deleteUserflightByID(UserFlightCondition condition);
 
     UserFlightVo findUserFlightById(UserFlightCondition condition);
+
+
+    UserFlightRoute userRoutes(UserFlightCondition condition);
 
 }
