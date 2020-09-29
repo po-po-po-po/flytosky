@@ -32,6 +32,6 @@ public interface UserFlightRepository {
     UserFlightVo findUserFlightById(UserFlightCondition condition);
 
 
-    UserFlightRoute userRoutes(UserFlightCondition condition);
+    List<UserFlightRoute>  userRoutes(UserFlightCondition condition);
 
 }

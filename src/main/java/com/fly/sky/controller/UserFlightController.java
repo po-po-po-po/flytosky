@@ -11,10 +11,7 @@ import com.fly.sky.service.WxUserService;
 import com.fly.sky.util.JsonUtil;
 import com.fly.sky.util.OpenidUtil;
 import com.fly.sky.util.ResponseResult;
-import com.fly.sky.vo.FlightList;
-import com.fly.sky.vo.UserFlightDetail;
-import com.fly.sky.vo.UserFlightRoute;
-import com.fly.sky.vo.UserFlightVo;
+import com.fly.sky.vo.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -141,18 +138,26 @@ public class UserFlightController {
 
     @PostMapping(value="findUseRoutes")
     @ApiOperation(value = "获取用户足迹信息", notes = "获取用户足迹信息")
-    public ResponseResult<UserFlightRoute> findUseRoutes(@RequestBody UserFlightCondition condition) throws Exception {
+    public ResponseResult<UserFlightRouteDetail> findUseRoutes(@RequestBody UserFlightCondition condition) throws Exception {
         String logTitle = "=获取用户足迹信息=";
-        ResponseResult<UserFlightRoute> responseResult = new ResponseResult<>();
+        UserFlightRouteDetail detail=new UserFlightRouteDetail();
+        ResponseResult<UserFlightRouteDetail> responseResult = new ResponseResult<>();
         log.info("{} - 参数：findUseRoutes={}", logTitle, JsonUtil.toJSONString(condition));
-        UserFlightRoute vo=userFlightService.userRoutes(condition);
+        //获取openid
+        String openId= OpenidUtil.getOpenid(
+                condition.getCode(),
+                null,
+                null);
+        condition.setOpenid(openId);
+        List<UserFlightRoute> userFlightRouteList=userFlightService.userRoutes(condition);
+        detail.setUserFlightRouteListserFlightRoute(userFlightRouteList);
         //根据openid获取用户信息
-        WxUser user=  wxUserService.selectUserByOpenId(vo.getOpenid());
+        WxUser user=  wxUserService.selectUserByOpenId(openId);
         if(null!=user){
-            vo.setAvatarUrl(user.getAvatarUrl());
-            vo.setNickName(user.getNickName());
+            detail.setAvatarUrl(user.getAvatarUrl());
+            detail.setNickName(user.getNickName());
         }
-        responseResult.setData(vo);
+        responseResult.setData(detail);
         return responseResult;
     }
 }

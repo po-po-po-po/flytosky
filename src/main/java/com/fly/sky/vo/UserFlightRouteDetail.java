@@ -1,6 +1,5 @@
 package com.fly.sky.vo;
 
-import com.fly.sky.domain.WxUser;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,15 +16,13 @@ import java.util.List;
 @Setter
 @Getter
 @ToString
-public class UserFlightRoute {
+public class UserFlightRouteDetail {
 
     @ApiModelProperty("目的地")
-    private String destination;
-    @ApiModelProperty("经度")
-    private String longitude;
-    @ApiModelProperty("纬度")
-    private String latitude;
-    @ApiModelProperty("openid")
-    private String openid;
+    private List<UserFlightRoute> userFlightRouteListserFlightRoute;
+    @ApiModelProperty("头像地址")
+    private String avatarUrl;
+    @ApiModelProperty("昵称")
+    private String nickName;
 
 }

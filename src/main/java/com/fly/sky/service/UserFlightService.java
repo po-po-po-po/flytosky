@@ -31,5 +31,5 @@ public interface UserFlightService {
 
     UserFlightVo findUserFlightById(UserFlightCondition condition);
 
-    UserFlightRoute userRoutes(UserFlightCondition condition);
+    List<UserFlightRoute> userRoutes(UserFlightCondition condition);
 }

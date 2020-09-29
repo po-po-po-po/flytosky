@@ -112,7 +112,7 @@ public class UserFlightServiceImpl implements UserFlightService {
     }
 
     @Override
-    public UserFlightRoute userRoutes(UserFlightCondition condition) {
+    public List<UserFlightRoute> userRoutes(UserFlightCondition condition) {
         return  userFlightRepository.userRoutes(condition);
     }
 }
