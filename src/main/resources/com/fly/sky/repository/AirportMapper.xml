@@ -16,6 +16,8 @@
         <result column="airport_description" jdbcType="VARCHAR" property="airportDescription" />
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
         <result column="status" jdbcType="INTEGER" property="status" />
+        <result column="longitude" jdbcType="VARCHAR" property="longitude" />
+        <result column="latitude" jdbcType="VARCHAR" property="latitude" />
     </resultMap>
 
     <select id="findAirportByName" resultType="com.fly.sky.domain.Airport">

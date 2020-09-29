@@ -44,4 +44,8 @@ public class Airport {
     private String airportAbbreviate;
     @ApiModelProperty("是否显示")
     private Integer status;
+    @ApiModelProperty("经度")
+    private String longitude;
+    @ApiModelProperty("纬度")
+    private String latitude;
 }
