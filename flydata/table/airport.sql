@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50649
 File Encoding         : 65001
 
-Date: 2020-09-30 11:59:55
+Date: 2020-09-30 18:20:12
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -275,4 +275,4 @@ INSERT INTO `airport` VALUES ('232', '建三江湿地机场', 'JSJ', '132.66', '
 INSERT INTO `airport` VALUES ('233', '且末玉都机场', 'IQM', '85.53', '38.13', '且末', '巴音郭楞', '新疆', '000000000000', 'https://www.potucs.com/wechat/airline/muyou.png', '', null, null, null, null);
 INSERT INTO `airport` VALUES ('234', '霍林郭勒霍林河机场', 'HUO', '119.42', '45.48', '霍林郭勒霍林河', '霍林郭勒', '内蒙古', '000000000000', 'https://www.potucs.com/wechat/airline/muyou.png', '', null, null, null, null);
 INSERT INTO `airport` VALUES ('235', '河池金城江机场', 'HCJ', '107.7', '24.78', '河池金城江', '河池', '广西', '000000000000', 'https://www.potucs.com/wechat/airline/muyou.png', '', null, null, null, null);
-INSERT INTO `airport` VALUES ('236', '塔城机场', 'TCG', null, null, '塔城', '塔城', '新疆', '000000000000', 'https://www.potucs.com/wechat/airline/muyou.png', '', null, null, null, null);
+INSERT INTO `airport` VALUES ('236', '塔城机场', 'TCG', '46.67', '83.34', '塔城', '塔城', '新疆', '000000000000', 'https://www.potucs.com/wechat/airline/muyou.png', '', null, null, null, null);
