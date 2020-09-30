@@ -125,7 +125,10 @@ public class AirlinesServiceImpl implements AirlinesService {
         //查询航司信息
         Airlines airlines=airlinesRepository.findAirlinesByAirlinesCode(condition.getAirlinesCode());
         detail.setAirlines(airlines);
-        condition.setAirlinesCode(condition.getAirlinesCode().toUpperCase());
+        //航司处理code
+        if(null!=condition.getAirlinesCode()){
+            condition.setAirlinesCode(condition.getAirlinesCode().toUpperCase());
+        }
         //对起飞时间做处理
         if(StringUtils.isNotEmpty(condition.getFlightDate())&&!"起飞时间".equals(condition.getFlightDate())) {
             String[] split = condition.getFlightDate().split("-");
