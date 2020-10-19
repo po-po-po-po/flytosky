@@ -11,6 +11,7 @@ import com.fly.sky.repository.AirportRepository;
 import com.fly.sky.repository.FlightRepository;
 import com.fly.sky.scrable.domain.hbgj.DATA;
 import com.fly.sky.scrable.domain.hbgj.HBGJ;
+import com.fly.sky.scrable.domain.hbgj.StopCity;
 import com.fly.sky.scrable.domain.xc.*;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -87,6 +88,12 @@ public class HBGJFlightUtil {
                                 flight.setFlightNameEnd(arr.getAirportAbbreviate() + hbgj.getArrTerminal());
                                 flight.setAirportNameStart(dept.getAirportAbbreviate());
                                 flight.setAirportNameEnd(arr.getAirportAbbreviate());
+                                //判断是否是经停航班
+                                if(!CollectionUtils.isEmpty(hbgj.getSections())){
+                                    StopCity city=hbgj.getSections().get(0);
+                                    Airport aiop = airportRepository.findAirportByCode(city.getAirportCode());
+                                    flight.setFlightRemark(aiop.getAirportAbbreviate());
+                                }
                                 log.info("入库数据是：" + flight);
                                 airport1.setDesc("爬取成功");
                                 flightRepository.insertFlight(flight);

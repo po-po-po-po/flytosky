@@ -3,6 +3,8 @@ package com.fly.sky.scrable.domain.hbgj;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 /**
  * @Auther wangzekun
  * @Date 2020/9/1 11:47
@@ -20,5 +22,6 @@ public class HBGJ {
     private String arrPlanTime;
     private String depTerminal;
     private String arrTerminal;
+    private List<StopCity> sections;
 
 }
