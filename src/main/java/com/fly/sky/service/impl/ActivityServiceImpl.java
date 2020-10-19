@@ -52,8 +52,10 @@ public class ActivityServiceImpl implements ActivityService {
         return activity;
     }
 
-    public Activity findActivityAirportCode(ActivityCondition condition){
+    public Activity findActivityAirportCode(ActivityCondition condition) throws ClassNotFoundException, IllegalAccessException, InstantiationException {
         Activity  activity=new Activity();
+        Class<?> activity1= Class.forName("com.fly.sky.domain.Activity");
+        Activity activity2=(Activity)activity1.newInstance();
         if(StringUtils.isNotEmpty(condition.getAirportCode())){
             activity=activityRepository.findActivityAirportCode(condition.getAirportCode());
         }else if(null!=condition.getId()){

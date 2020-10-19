@@ -153,7 +153,7 @@ public class AirportUtil {
                     airport.setAirportName(title+airport2.getTitle());
                     airport.setCreateTime(new Date());
                     airport.setStatus(6);
-                    if(country.equals("CN")){
+                    if(!country.equals("CN")){
                         Airport airport3=airportRepository.findAirportByCode(airport2.getCode());
                         if(null==airport3){
                             airportRepository.insertAirport(airport);

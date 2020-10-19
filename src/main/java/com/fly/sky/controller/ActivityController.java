@@ -62,7 +62,7 @@ public class ActivityController {
 
     @PostMapping("airportHelpDetail")
     @ApiOperation(value = "机场指南接口详情 ", notes = "机场指南接口详情")
-    public ResponseResult<Activity> airportHelpDetail(@RequestBody ActivityCondition condition){
+    public ResponseResult<Activity> airportHelpDetail(@RequestBody ActivityCondition condition) throws IllegalAccessException, InstantiationException, ClassNotFoundException {
         String logTitle = "=机场指南接口详情=";
         log.info("{} - 参数：airportHelpDetail={}", logTitle, JsonUtil.toJSONString(condition));
         ResponseResult<Activity> responseResult = new ResponseResult<>();

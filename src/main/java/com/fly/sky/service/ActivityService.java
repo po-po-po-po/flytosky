@@ -18,6 +18,6 @@ public interface ActivityService {
 
     Activity findActivityDetail(ActivityCondition condition);
 
-    Activity findActivityAirportCode(ActivityCondition condition);
+    Activity findActivityAirportCode(ActivityCondition condition) throws ClassNotFoundException, IllegalAccessException, InstantiationException;
 
 }
