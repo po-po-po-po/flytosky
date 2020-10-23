@@ -71,6 +71,7 @@ public class AirlinesServiceImpl implements AirlinesService {
 
 
     public AirlinesDetail findFlightsAndAirportsByAirlines(FlightCondition condition){
+
         if("不限".equals(condition.getFlightNameStart())){
             condition.setFlightNameStart("");
         }
@@ -115,6 +116,12 @@ public class AirlinesServiceImpl implements AirlinesService {
         detail.setAirportStartList(airportStartList);
         //第一次进来 默认查询该航司的基地数据
         if(null==condition.getFlightNameStart()&&!airportStartList.isEmpty()){
+            if(null!=airportStartList.get(0)){
+                condition.setAirportNameStart(airportStartList.get(0).getAirportAbbreviate());
+            }
+        }
+        //出发机场和到达机场必须选一个 如果不选那默认给出发机场基地机场
+        if("".equals(condition.getFlightNameStart())&&"".equals(condition.getFlightNameEnd())){
             if(null!=airportStartList.get(0)){
                 condition.setAirportNameStart(airportStartList.get(0).getAirportAbbreviate());
             }
