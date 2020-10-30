@@ -3,11 +3,14 @@ package com.fly.sky.pythons;
 
 import com.alibaba.fastjson.JSONObject;
 import com.fly.sky.AirportApplication;
+import com.fly.sky.condition.AirwayCondition;
 import com.fly.sky.domain.Airport;
 import com.fly.sky.domain.AirportCode;
+import com.fly.sky.domain.Airway;
 import com.fly.sky.domain.Flight;
 import com.fly.sky.repository.AirportCodeRepository;
 import com.fly.sky.repository.AirportRepository;
+import com.fly.sky.repository.AirwayRepository;
 import com.fly.sky.repository.FlightRepository;
 import com.fly.sky.scrable.domain.hbgj.DATA;
 import com.fly.sky.scrable.domain.hbgj.HBGJ;
@@ -52,6 +55,10 @@ public class HBGJFlightUtil {
 
     @Autowired
     private HttpRequestUtils httpRequestUtils;
+
+
+    @Autowired
+    private AirwayRepository airwayRepository;
 
     @Test
     @Rollback(false)
@@ -99,6 +106,22 @@ public class HBGJFlightUtil {
                                 flightRepository.insertFlight(flight);
                             }
 
+                        }
+                        //插入的航线
+                        AirwayCondition condition=new AirwayCondition();
+                        Airport dept = airportRepository.findAirportByCode(airport1.getDeptCode());
+                        Airport arr = airportRepository.findAirportByCode(airport1.getArrCode());
+                        condition.setAirwayNameStart(dept.getAirportAbbreviate());
+                        condition.setAirwayNameEnd(arr.getAirportAbbreviate());
+                        Airway airway=airwayRepository.findAirwaysByStartAndEnd(condition);
+                        if(null==airway){
+                            Airway airway1y=new Airway();
+                            airway1y.setAirwayNameStart(dept.getAirportAbbreviate());
+                            airway1y.setAirwayNameEnd(arr.getAirportAbbreviate());
+                            airway1y.setAirwayNameStartCode(airport1.getDeptCode());
+                            airway1y.setAirwayNameEndCode(airport1.getArrCode());
+                            airwayRepository.insertAirway(airway1y);
+                            log.info("。。。。。。。。。。插入航线。。。。。。。。。。。。。"+airway1y);
                         }
                     }else {
                         airport1.setDesc("没有航班信息");
