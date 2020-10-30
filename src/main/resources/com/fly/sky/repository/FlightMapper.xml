@@ -352,10 +352,9 @@
 
     <select id="findFlightsGroupByAirportNameAndAirportNameEnd"
             resultType="com.fly.sky.domain.Flight">
-     select airport_name_start as airportNameStart,airport_name_start_code as airportNameStartCode ,
+     select distinct airport_name_start as airportNameStart,airport_name_start_code as airportNameStartCode ,
       airport_name_end as airportNameEnd,airport_name_end_code as airportNameEndCode
-      from flight  WHERE id>5816
-      group by airport_name_start, airport_name_end,airport_name_start_code,airport_name_end_code
+      from flight
      </select>
 
 
