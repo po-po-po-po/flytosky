@@ -187,15 +187,6 @@
         <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode!='HNA'">
             and airlines_code=#{airlinesCode,jdbcType=VARCHAR}
         </if>
-
-        <if test="sortId != null  and sortId != '' ">
-            and flight.flight_frequency=#{sortId,jdbcType=INTEGER}
-        </if>
-
-        <if test="sortId == null  ">
-            and flight.flight_frequency=7
-        </if>
-
                 group by airportAbbreviate ) a
         on airport.airport_abbreviate=a.airportAbbreviate
 
@@ -219,13 +210,6 @@
 
         <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode!='HNA'">
             and airlines_code=#{airlinesCode,jdbcType=VARCHAR}
-        </if>
-        <if test="sortId != null  and sortId != '' ">
-            and flight.flight_frequency=#{sortId,jdbcType=INTEGER}
-        </if>
-
-        <if test="sortId == null  ">
-            and flight.flight_frequency=7
         </if>
         group by airportAbbreviate  ) a
         on airport.airport_abbreviate=a.airportAbbreviate

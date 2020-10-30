@@ -89,6 +89,14 @@ public class AirlinesServiceImpl implements AirlinesService {
         if(StringUtils.isNotEmpty(condition.getFlightNameEnd())){
             condition.setAirportNameEnd(condition.getFlightNameEnd().replace("机场",""));
         }
+        //查询航司能飞往的出发机场列表
+        List<Airport> airportStartList=flightRepository.findFlightsGroupByFlightNameStartByAirlinesCode(condition.getAirlinesCode(),condition.getSortId());
+        //如果出发机场和到达机场都是空 那就指定一个
+        if(StringUtils.isEmpty(condition.getFlightNameStart())&&StringUtils.isEmpty(condition.getFlightNameEnd())){
+            if(null!=airportStartList.get(0)){
+                condition.setAirportNameStart(airportStartList.get(0).getAirportAbbreviate());
+            }
+        }
         //查询航司能飞往的航班列表
         List<FlightDetail> flightList=flightRepository.findFlightsAndAirlinesByCondition(condition);
         detail.setFlightList(flightList);
@@ -111,8 +119,7 @@ public class AirlinesServiceImpl implements AirlinesService {
 
         }
         detail.setFlightList(flightList);
-        //查询航司能飞往的出发机场列表
-        List<Airport> airportStartList=flightRepository.findFlightsGroupByFlightNameStartByAirlinesCode(condition.getAirlinesCode(),condition.getSortId());
+
         detail.setAirportStartList(airportStartList);
         //第一次进来 默认查询该航司的基地数据
         if(null==condition.getFlightNameStart()&&!airportStartList.isEmpty()){
