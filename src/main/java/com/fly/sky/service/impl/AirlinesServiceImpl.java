@@ -72,6 +72,10 @@ public class AirlinesServiceImpl implements AirlinesService {
 
     public AirlinesDetail findFlightsAndAirportsByAirlines(FlightCondition condition){
 
+        if(StringUtils.isNotEmpty(condition.getFlightRequency())){
+            condition.setSortId(Integer.parseInt(condition.getFlightRequency()));
+        }
+
         if("不限".equals(condition.getFlightNameStart())){
             condition.setFlightNameStart("");
         }
