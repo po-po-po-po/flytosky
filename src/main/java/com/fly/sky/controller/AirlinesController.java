@@ -71,7 +71,7 @@ public class AirlinesController {
     @ApiOperation(value = "查询航司列表", notes = "查询航司列表")
     public ResponseResult<List<AirlinesVo>> findAirlinesIndex(@RequestBody AirlineCondition condition){
         String logTitle = "=查询航司列表=";
-        log.info("{} - 参数：findAllAirlines={}", logTitle, JsonUtil.toJSONString(condition));
+        log.info("{} - 参数：findAirlinesIndex={}", logTitle, JsonUtil.toJSONString(condition));
         ResponseResult<List<AirlinesVo>> responseResult = new ResponseResult<>();
         responseResult.setData(airlinesService.findAirlinesIndex(condition));
         return responseResult;

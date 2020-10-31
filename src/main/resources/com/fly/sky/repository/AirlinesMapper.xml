@@ -74,7 +74,7 @@
         airlines_description as airlinesDescription,airlines_abbreviate AS airlinesAbbreviate,
         airlines_img as airlinesImg,airlines_alliance as airlinesAlliance
         from airlines left join (
-select COUNT(*) AS flightNumber,airlines_code from flight GROUP BY airlines_code
+select COUNT(*) AS flightNumber,f.airlines_code from (select distinct flight_no,airlines_code from flight) as f GROUP BY f.airlines_code
 ) as b on airlines.airlines_code=b.airlines_code
 left join (
 select airway.airlines_code ,count(*) as  airwayNumber from (
