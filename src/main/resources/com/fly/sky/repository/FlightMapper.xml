@@ -170,16 +170,17 @@
 
         right join (
                 select  flight.airport_name_start as airportAbbreviate,COUNT(*) AS sort
-                from flight  where flight.status=0
+                from (select distinct flight_no,airport_name_start,airlines_code from flight  where flight.status=0) as flight1
+                  where 1=1
         <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode=='HNA'">
-            and  ( flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN' OR   flight.airlines_code = 'UQ'
-            OR   flight.airlines_code = 'Y8' OR   flight.airlines_code = 'GT' OR   flight.airlines_code = '9H'
-            OR   flight.airlines_code = 'FU' OR   flight.airlines_code = 'GX' OR   flight.airlines_code = 'PN'
-            OR   flight.airlines_code = '8L' OR   flight.airlines_code = 'JD' OR   flight.airlines_code = 'GS')
+            and  ( flight1.airlines_code = 'HU' OR   flight1.airlines_code = 'CN' OR   flight1.airlines_code = 'UQ'
+            OR   flight1.airlines_code = 'Y8' OR   flight1.airlines_code = 'GT' OR   flight1.airlines_code = '9H'
+            OR   flight1.airlines_code = 'FU' OR   flight1.airlines_code = 'GX' OR   flight1.airlines_code = 'PN'
+            OR   flight1.airlines_code = '8L' OR   flight1.airlines_code = 'JD' OR   flight1.airlines_code = 'GS')
         </if>
 
         <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode!='HNA'">
-            and airlines_code=#{airlinesCode,jdbcType=VARCHAR}
+            and flight1.airlines_code=#{airlinesCode,jdbcType=VARCHAR}
         </if>
                 group by airportAbbreviate ) a
         on airport.airport_abbreviate=a.airportAbbreviate
@@ -193,17 +194,18 @@
         SELECT a.airportAbbreviate ,a.sort,airport.airport_location AS airportLocation FROM airport
 
         right join (
-       select  flight.airport_name_end as airportAbbreviate,COUNT(*) AS sort
-        from flight  where  flight.status=0
+       select  flight1.airport_name_end as airportAbbreviate,COUNT(*) AS sort
+        from (select distinct flight_no,airport_name_start from flight  where flight.status=0) as flight1
+          where  1=1
         <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode=='HNA'">
-            and  ( flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN' OR   flight.airlines_code = 'UQ'
-            OR   flight.airlines_code = 'Y8' OR   flight.airlines_code = 'GT' OR   flight.airlines_code = '9H'
-            OR   flight.airlines_code = 'FU' OR   flight.airlines_code = 'GX' OR   flight.airlines_code = 'PN'
-            OR   flight.airlines_code = '8L' OR   flight.airlines_code = 'JD' OR   flight.airlines_code = 'GS')
+            and  ( flight1.airlines_code = 'HU' OR   flight1.airlines_code = 'CN' OR   flight1.airlines_code = 'UQ'
+            OR   flight1.airlines_code = 'Y8' OR   flight1.airlines_code = 'GT' OR   flight1.airlines_code = '9H'
+            OR   flight1.airlines_code = 'FU' OR   flight1.airlines_code = 'GX' OR   flight1.airlines_code = 'PN'
+            OR   flight1.airlines_code = '8L' OR   flight1.airlines_code = 'JD' OR   flight1.airlines_code = 'GS')
         </if>
 
         <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode!='HNA'">
-            and airlines_code=#{airlinesCode,jdbcType=VARCHAR}
+            and flight1.airlines_code=#{airlinesCode,jdbcType=VARCHAR}
         </if>
         group by airportAbbreviate  ) a
         on airport.airport_abbreviate=a.airportAbbreviate
