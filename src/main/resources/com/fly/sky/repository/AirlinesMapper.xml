@@ -89,11 +89,11 @@ order by b.flightNumber desc
     <select id="findAirlinesHNAFLIGHTNO"
             parameterType="com.fly.sky.condition.AirlineCondition"
             resultType="com.fly.sky.vo.AirlinesVo">
-   SELECT COUNT(*) AS flightNumber FROM flight
-WHERE    flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN' OR   flight.airlines_code = 'UQ'
-            OR   flight.airlines_code = 'Y8' OR   flight.airlines_code = 'GT' OR   flight.airlines_code = '9H'
-            OR   flight.airlines_code = 'FU' OR   flight.airlines_code = 'GX' OR   flight.airlines_code = 'PN'
-            OR   flight.airlines_code = '8L' OR   flight.airlines_code = 'JD' OR   flight.airlines_code = 'GS'
+   SELECT COUNT(*) AS flightNumber FROM (select distinct flight_no,airlines_code from flight) f
+WHERE    f.airlines_code = 'HU' OR   f.airlines_code = 'CN' OR   f.airlines_code = 'UQ'
+            OR   f.airlines_code = 'Y8' OR   f.airlines_code = 'GT' OR   f.airlines_code = '9H'
+            OR   f.airlines_code = 'FU' OR   f.airlines_code = 'GX' OR   f.airlines_code = 'PN'
+            OR   f.airlines_code = '8L' OR   f.airlines_code = 'JD' OR   f.airlines_code = 'GS'
     </select>
 
 
