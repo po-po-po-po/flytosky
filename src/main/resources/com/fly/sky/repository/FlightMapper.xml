@@ -109,7 +109,7 @@
         <if test="flightRequency != null  and flightRequency != '' ">
             AND flight.flight_frequency = #{flightRequency,jdbcType=VARCHAR}
         </if>
-
+       order by flight.flight_date asc
 
     </select>
 
