@@ -195,7 +195,7 @@
 
         right join (
        select  flight1.airport_name_end as airportAbbreviate,COUNT(*) AS sort
-        from (select distinct flight_no,airport_name_end from flight  where flight.status=0) as flight1
+        from (select distinct flight_no,airport_name_end ,airlines_code from flight  where flight.status=0) as flight1
           where  1=1
         <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode=='HNA'">
             and  ( flight1.airlines_code = 'HU' OR   flight1.airlines_code = 'CN' OR   flight1.airlines_code = 'UQ'
