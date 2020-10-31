@@ -134,10 +134,9 @@
 
     <select id="findFlightsGroupByFlightNameStart"
             resultType="com.fly.sky.vo.AirportVo">
-      select  flight.airport_name_start as airportAbbreviate,
+      select  f.airport_name_start as airportAbbreviate,
         count(*) as airportFlightNum
-        from flight
-        where flight.status=0
+        from (select distinct flight_no,airport_name_start from flight  where flight.status=0) as f
         group by airportAbbreviate
      </select>
 
