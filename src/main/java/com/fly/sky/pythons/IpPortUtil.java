@@ -26,7 +26,7 @@ public class IpPortUtil {
     //获取代理ip和端口
     public static String[] getIpAndPort() {
 
-        String urlPath="http://http.9vps.com/getip.asp?username=13522715896&pwd=92f165049d908d67d3ee7beefe4f5068&geshi=1&fenge=1&fengefu=&getnum=100";
+        String urlPath="http://http.9vps.com/getip.asp?username=13522715896&pwd=035e01af12f531aa2f3f8110c3854506&geshi=1&fenge=1&fengefu=&getnum=100";
         // 首先抓取异常并处理
         String returnString = "1";
         try{

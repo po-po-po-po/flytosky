@@ -68,7 +68,7 @@ public class HBGJFlightUtil {
         List<AirportCode> airportsList=airportCodeRepository.findAirportCode(airportCode);
             for (AirportCode airport1 : airportsList) {
                 //抓取ZH地址
-                String url="https://api.133.cn/third/flight?d=2020-11-02&dc="+airport1.getDeptCode()+"&ac="+airport1.getArrCode();
+                String url="https://api.133.cn/third/flight?d=2020-11-06&dc="+airport1.getDeptCode()+"&ac="+airport1.getArrCode();
                 //获取机场列表
                 //每请求一次休息5秒
                 Thread.currentThread().sleep(5000);
@@ -87,7 +87,7 @@ public class HBGJFlightUtil {
                                 flight.setFlightDate(hbgj.getDepPlanTime() + "-" + hbgj.getArrPlanTime());
                                 flight.setAirportNameStartCode(hbgj.getDepCode());
                                 flight.setAirportNameEndCode(hbgj.getArrCode());
-                                flight.setFlightRequency("1");
+                                flight.setFlightRequency("5");
                                 //根据机场code查询机场数据
                                 Airport dept = airportRepository.findAirportByCode(hbgj.getDepCode());
                                 Airport arr = airportRepository.findAirportByCode(hbgj.getArrCode());
