@@ -80,6 +80,10 @@ public class FlightController {
             List<Airlines> airlinesList=airlinesService.selectAirlineListByAirlinesCodeList(airlinesCodeList);
             flightList.setAirlinesList(airlinesList);
         }
+        //处理flightRequency为0的问题
+        if(!StringUtils.isEmpty(condition.getFlightRequency())&&"0".equals(condition.getFlightRequency())){
+            condition.setFlightRequency("");
+        }
         AirwayCondition airwayCondition=new AirwayCondition();
         airwayCondition.setAirwayNameStart(condition.getAirportNameStart());
         airwayCondition.setAirwayNameEnd(condition.getAirportNameEnd());
