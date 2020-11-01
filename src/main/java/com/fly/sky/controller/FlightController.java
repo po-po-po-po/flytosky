@@ -70,6 +70,10 @@ public class FlightController {
     public ResponseResult<FlightList> findAllFlightsByAirline(@RequestBody FlightCondition condition){
         String logTitle = "=根据航线查询航班信息=";
         log.info("{} - 参数：findAllFlightsByAirline={}", logTitle, JsonUtil.toJSONString(condition));
+        //处理flightRequency为0的问题
+        if(!StringUtils.isEmpty(condition.getFlightRequency())&&"0".equals(condition.getFlightRequency())){
+            condition.setFlightRequency("7");
+        }
         ResponseResult<FlightList> responseResult = new ResponseResult<>();
         FlightList flightList=new FlightList();
         List<FlightDetail> flightDetailList=flightService.findAllFlightsByAirline(condition);
@@ -80,10 +84,7 @@ public class FlightController {
             List<Airlines> airlinesList=airlinesService.selectAirlineListByAirlinesCodeList(airlinesCodeList);
             flightList.setAirlinesList(airlinesList);
         }
-        //处理flightRequency为0的问题
-        if(!StringUtils.isEmpty(condition.getFlightRequency())&&"0".equals(condition.getFlightRequency())){
-            condition.setFlightRequency("");
-        }
+
         AirwayCondition airwayCondition=new AirwayCondition();
         airwayCondition.setAirwayNameStart(condition.getAirportNameStart());
         airwayCondition.setAirwayNameEnd(condition.getAirportNameEnd());
