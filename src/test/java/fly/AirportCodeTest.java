@@ -49,10 +49,10 @@ public class AirportCodeTest {
         List<Airport> airportsList1=airportRepository.findAirportsByCondition(new AirportCondition());
         for (Airport airport : airportsList1) {
                     AirportCode airportCode=new AirportCode();
-                    airportCode.setDeptCode("PKX");
+                    airportCode.setDeptCode("NAO");
                     airportCode.setArrCode(airport.getAirportCode());
                     airportCode.setStatus("0");
-                    airportCode.setDeptName("北京大兴");
+                    airportCode.setDeptName("南充高坪");
                     airportCode.setArrName(airport.getAirportLocation());
                     log.info("插入机场code："+airportCode);
                     airportCode.setStatus(null);
@@ -64,27 +64,7 @@ public class AirportCodeTest {
     }
 
 
-    @Test
-    @Rollback(false)
-    public void test1() throws Exception {
-        //获取机场列表
-        List<Airport> airportsList2=airportRepository.findAirportsByCondition(new AirportCondition());
-            for (Airport airport : airportsList2) {
-                AirportCode airportCode=new AirportCode();
-                airportCode.setDeptCode(airport.getAirportCode());
-                airportCode.setArrCode("PKX");
-                airportCode.setStatus("0");
-                airportCode.setDeptName(airport.getAirportLocation());
-                airportCode.setArrName("北京大兴");
-                log.info("插入机场code："+airportCode);
-                airportCode.setStatus(null);
-                List<AirportCode> airportCodesList= airportCodeRepository.findAirportCode(airportCode);
-                if(CollectionUtils.isEmpty(airportCodesList)){
-                    airportCodeRepository.insertAirportCode(airportCode);
-                }
-        }
-        //List<AirportCode> LIST= airportCodeRepository.findAirportCode("SA","SA");
-    }
+
 
 
 }
