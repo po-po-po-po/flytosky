@@ -103,7 +103,12 @@ public class FlightController {
             condition.setAirportNameStartCode("SHA");
         }
         ResponseResult<PagedList<Flight>> responseResult = new ResponseResult<>();
-        responseResult.setData(flightService.findMUFlights6(condition));
+        if(CollectionUtils.isEmpty(flightService.findMUFlights6(condition).getData())){
+
+        }else{
+            responseResult.setData(flightService.findMUFlights6(condition));
+        }
+
         return responseResult;
     }
 
