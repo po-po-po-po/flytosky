@@ -6,6 +6,7 @@ import com.fly.sky.condition.FlightCondition;
 import com.fly.sky.condition.UserFlightCondition;
 import com.fly.sky.domain.Airport;
 import com.fly.sky.domain.Flight;
+import com.fly.sky.util.PagedList;
 import com.fly.sky.vo.AirportVo;
 import com.fly.sky.vo.FlightDetail;
 import org.apache.ibatis.annotations.Param;
@@ -40,4 +41,15 @@ public interface FlightRepository {
     Flight findFlightOne(UserFlightCondition condition);
     List<Airport> findFlightsGroupByAirportCode();
     List<FlightDetail> findFlightsAirwayNumberByAirlinesCode(FlightCondition flightCondition);
+
+
+    //mu航班
+    List<Flight> findMUFlights6(FlightCondition condition);
+    List<Flight> findMUFlights7(FlightCondition condition);
+    List<Flight> findMUFlights8BEFORE(FlightCondition condition);
+    List<Flight> findMUFlights8AFTER(FlightCondition condition);
+    List<Flight> findMUFlightsXIYU(FlightCondition condition);
+    List<Flight> findMUFlightsDAWAN(FlightCondition condition);
+
+
 }

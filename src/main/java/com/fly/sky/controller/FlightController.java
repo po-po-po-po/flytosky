@@ -93,4 +93,64 @@ public class FlightController {
         responseResult.setData(flightList);
         return responseResult;
     }
+
+    @PostMapping("findMUFlights6")
+    @ApiOperation(value = "查询东航周六航班", notes = "查询东航周六航班")
+    public ResponseResult<PagedList<Flight>> findMUFlights6(@RequestBody FlightCondition condition){
+        String logTitle = "=findMUFlights6=";
+        log.info("{} - 参数：findMUFlights6={}", logTitle, JsonUtil.toJSONString(condition));
+        ResponseResult<PagedList<Flight>> responseResult = new ResponseResult<>();
+        responseResult.setData(flightService.findMUFlights6(condition));
+        return responseResult;
+    }
+
+    @PostMapping("findMUFlights7")
+    @ApiOperation(value = "查询东航周日航班", notes = "查询东航周日航班")
+    public ResponseResult<PagedList<Flight>> findMUFlights7(@RequestBody FlightCondition condition){
+        String logTitle = "=findMUFlights6=";
+        log.info("{} - 参数：findMUFlights6={}", logTitle, JsonUtil.toJSONString(condition));
+        ResponseResult<PagedList<Flight>> responseResult = new ResponseResult<>();
+        responseResult.setData(flightService.findMUFlights7(condition));
+        return responseResult;
+    }
+
+    @PostMapping("findMUFlights8BEFORE")
+    @ApiOperation(value = "查询航班列表", notes = "查询航班列表")
+    public ResponseResult<PagedList<Flight>> findMUFlights8BEFORE(@RequestBody FlightCondition condition){
+        String logTitle = "=findMUFlights8BEFORE=";
+        log.info("{} - 参数：findMUFlights8BEFORE={}", logTitle, JsonUtil.toJSONString(condition));
+        ResponseResult<PagedList<Flight>> responseResult = new ResponseResult<>();
+        responseResult.setData(flightService.findMUFlights8BEFORE(condition));
+        return responseResult;
+    }
+
+    @PostMapping("findMUFlights8AFTER")
+    @ApiOperation(value = "查询航班列表", notes = "查询航班列表")
+    public ResponseResult<PagedList<Flight>> findMUFlights8AFTER(@RequestBody FlightCondition condition){
+        String logTitle = "=findMUFlights8AFTER=";
+        log.info("{} - 参数：findMUFlights8AFTER={}", logTitle, JsonUtil.toJSONString(condition));
+        ResponseResult<PagedList<Flight>> responseResult = new ResponseResult<>();
+        responseResult.setData(flightService.findMUFlights8AFTER(condition));
+        return responseResult;
+    }
+
+    @PostMapping("findMUFlightsXIYU")
+    @ApiOperation(value = "查询航班列表", notes = "查询航班列表")
+    public ResponseResult<PagedList<Flight>> findMUFlightsXIYU(@RequestBody FlightCondition condition){
+        String logTitle = "=findMUFlightsXIYU=";
+        log.info("{} - 参数：findMUFlightsXIYU={}", logTitle, JsonUtil.toJSONString(condition));
+        ResponseResult<PagedList<Flight>> responseResult = new ResponseResult<>();
+        responseResult.setData(flightService.findMUFlightsXIYU(condition));
+        return responseResult;
+    }
+
+    @PostMapping("findMUFlightsDAWAN")
+    @ApiOperation(value = "查询航班列表", notes = "查询航班列表")
+    public ResponseResult<PagedList<Flight>> findMUFlightsDAWAN(@RequestBody FlightCondition condition){
+        String logTitle = "=findMUFlightsDAWAN=";
+        log.info("{} - 参数：findMUFlightsDAWAN={}", logTitle, JsonUtil.toJSONString(condition));
+        ResponseResult<PagedList<Flight>> responseResult = new ResponseResult<>();
+        responseResult.setData(flightService.findMUFlightsDAWAN(condition));
+        return responseResult;
+    }
 }

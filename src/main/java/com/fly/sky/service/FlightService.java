@@ -24,4 +24,12 @@ public interface FlightService {
 
     void synchronizeFeiChangzhunFlight(FlightCondition condition) throws Exception;
 
+    PagedList<Flight> findMUFlights6(FlightCondition condition);
+    PagedList<Flight> findMUFlights7(FlightCondition condition);
+    PagedList<Flight> findMUFlights8BEFORE(FlightCondition condition);
+    PagedList<Flight> findMUFlights8AFTER(FlightCondition condition);
+    PagedList<Flight> findMUFlightsXIYU(FlightCondition condition);
+    PagedList<Flight> findMUFlightsDAWAN(FlightCondition condition);
+
+
 }

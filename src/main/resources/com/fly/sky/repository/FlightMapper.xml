@@ -412,4 +412,107 @@
      </select>
 
 
+    <select id="findMUFlights6"
+            parameterType="com.fly.sky.condition.FlightCondition"
+            resultType="com.fly.sky.domain.Flight">
+        select id as id,flight_no as flightNo , flight_name_start as flightNameStart ,airlines_code as airlinesCode,
+        airway_id as airwayId,flight_frequency as flightRequency,flight_name_end as flightNameEnd,flight_date as flightDate,
+        create_time as createTime,flight_remark as flightRemark from flight WHERE 1=1 and status=0
+        and  (airlines_code ='MU' OR airlines_code ='FM') and flight_frequency=6
+        <if test="flightNameEnd != null  and flightNameEnd != '' ">
+            AND flight_name_end = #{flightNameEnd,jdbcType=VARCHAR}
+        </if>
+        <if test="flightNameStart != null  and flightNameStart != '' ">
+            AND flight_name_start = #{flightNameStart,jdbcType=VARCHAR}
+        </if>
+        order by flight.flight_date asc
+    </select>
+
+
+    <select id="findMUFlights7"
+            parameterType="com.fly.sky.condition.FlightCondition"
+            resultType="com.fly.sky.domain.Flight">
+        select id as id,flight_no as flightNo , flight_name_start as flightNameStart ,airlines_code as airlinesCode,
+        airway_id as airwayId,flight_frequency as flightRequency,flight_name_end as flightNameEnd,flight_date as flightDate,
+        create_time as createTime,flight_remark as flightRemark from flight WHERE 1=1 and status=0
+        and  (airlines_code ='MU' OR airlines_code ='FM') and flight_frequency=7
+        <if test="flightNameEnd != null  and flightNameEnd != '' ">
+            AND flight_name_end = #{flightNameEnd,jdbcType=VARCHAR}
+        </if>
+
+        <if test="flightNameStart != null  and flightNameStart != '' ">
+            AND flight_name_start = #{flightNameStart,jdbcType=VARCHAR}
+        </if>
+        order by flight.flight_date asc
+    </select>
+
+    <select id="findMUFlights8BEFORE"
+            parameterType="com.fly.sky.condition.FlightCondition"
+            resultType="com.fly.sky.domain.Flight">
+        select id as id,flight_no as flightNo , flight_name_start as flightNameStart ,airlines_code as airlinesCode,
+        airway_id as airwayId,flight_frequency as flightRequency,flight_name_end as flightNameEnd,flight_date as flightDate,
+        create_time as createTime,flight_remark as flightRemark from flight WHERE 1=1 and status=0
+        and  (airlines_code ='MU' OR airlines_code ='FM') and flight_frequency=7
+        <if test="flightNameEnd != null  and flightNameEnd != '' ">
+            AND flight_name_end = #{flightNameEnd,jdbcType=VARCHAR}
+        </if>
+
+        <if test="flightNameStart != null  and flightNameStart != '' ">
+            AND flight_name_start = #{flightNameStart,jdbcType=VARCHAR}
+        </if>
+        order by flight.flight_date asc
+    </select>
+
+    <select id="findMUFlights8AFTER"
+            parameterType="com.fly.sky.condition.FlightCondition"
+            resultType="com.fly.sky.domain.Flight">
+        select id as id,flight_no as flightNo , flight_name_start as flightNameStart ,airlines_code as airlinesCode,
+        airway_id as airwayId,flight_frequency as flightRequency,flight_name_end as flightNameEnd,flight_date as flightDate,
+        create_time as createTime,flight_remark as flightRemark from flight WHERE 1=1 and status=0
+        and  (airlines_code ='MU' OR airlines_code ='FM') and flight_frequency=7
+        <if test="flightNameEnd != null  and flightNameEnd != '' ">
+            AND flight_name_end = #{flightNameEnd,jdbcType=VARCHAR}
+        </if>
+
+        <if test="flightNameStart != null  and flightNameStart != '' ">
+            AND flight_name_start = #{flightNameStart,jdbcType=VARCHAR}
+        </if>
+        order by flight.flight_date asc
+    </select>
+
+    <select id="findMUFlightsXIYU"
+            parameterType="com.fly.sky.condition.FlightCondition"
+            resultType="com.fly.sky.domain.Flight">
+        select id as id,flight_no as flightNo , flight_name_start as flightNameStart ,airlines_code as airlinesCode,
+        airway_id as airwayId,flight_frequency as flightRequency,flight_name_end as flightNameEnd,flight_date as flightDate,
+        create_time as createTime,flight_remark as flightRemark from flight WHERE 1=1 and status=0
+        and  (airlines_code ='MU' OR airlines_code ='FM') and flight_frequency=7
+        <if test="flightNameEnd != null  and flightNameEnd != '' ">
+            AND flight_name_end = #{flightNameEnd,jdbcType=VARCHAR}
+        </if>
+
+        <if test="flightNameStart != null  and flightNameStart != '' ">
+            AND flight_name_start = #{flightNameStart,jdbcType=VARCHAR}
+        </if>
+        order by flight.flight_date asc
+    </select>
+
+    <select id="findMUFlightsDAWAN"
+            parameterType="com.fly.sky.condition.FlightCondition"
+            resultType="com.fly.sky.domain.Flight">
+        select id as id,flight_no as flightNo , flight_name_start as flightNameStart ,airlines_code as airlinesCode,
+        airway_id as airwayId,flight_frequency as flightRequency,flight_name_end as flightNameEnd,flight_date as flightDate,
+        create_time as createTime,flight_remark as flightRemark from flight WHERE 1=1 and status=0
+        and  (airlines_code ='MU' OR airlines_code ='FM') and flight_frequency=7
+        <if test="flightNameEnd != null  and flightNameEnd != '' ">
+            AND flight_name_end = #{flightNameEnd,jdbcType=VARCHAR}
+        </if>
+
+        <if test="flightNameStart != null  and flightNameStart != '' ">
+            AND flight_name_start = #{flightNameStart,jdbcType=VARCHAR}
+        </if>
+        order by flight.flight_date asc
+    </select>
+
+
 </mapper>

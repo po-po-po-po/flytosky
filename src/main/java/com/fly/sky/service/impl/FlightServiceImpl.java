@@ -135,5 +135,83 @@ public class FlightServiceImpl implements FlightService {
         }
     }
 
+    @Override
+    public PagedList<Flight> findMUFlights6(FlightCondition condition) {
+        PagedList<Flight> listPagedList = new PagedList<Flight>();
+        PageHelper.startPage(condition.getPageNo(), condition.getPageSize());
+        List<Flight>  airportList=flightRepository.findMUFlights6(condition);
+        PageInfo pageInfo = new PageInfo(airportList);
+        listPagedList.setPageNo(condition.getPageNo());
+        listPagedList.setPageSize(condition.getPageSize());
+        listPagedList.setData(airportList);
+        listPagedList.setTotalRows(pageInfo.getTotal());
+        return listPagedList;
+    }
+
+    @Override
+    public PagedList<Flight> findMUFlights7(FlightCondition condition) {
+        PagedList<Flight> listPagedList = new PagedList<Flight>();
+        PageHelper.startPage(condition.getPageNo(), condition.getPageSize());
+        List<Flight>  airportList=flightRepository.findMUFlights7(condition);
+        PageInfo pageInfo = new PageInfo(airportList);
+        listPagedList.setPageNo(condition.getPageNo());
+        listPagedList.setPageSize(condition.getPageSize());
+        listPagedList.setData(airportList);
+        listPagedList.setTotalRows(pageInfo.getTotal());
+        return listPagedList;
+    }
+
+    @Override
+    public PagedList<Flight> findMUFlights8BEFORE(FlightCondition condition) {
+        PagedList<Flight> listPagedList = new PagedList<Flight>();
+        PageHelper.startPage(condition.getPageNo(), condition.getPageSize());
+        List<Flight>  airportList=flightRepository.findMUFlights8BEFORE(condition);
+        PageInfo pageInfo = new PageInfo(airportList);
+        listPagedList.setPageNo(condition.getPageNo());
+        listPagedList.setPageSize(condition.getPageSize());
+        listPagedList.setData(airportList);
+        listPagedList.setTotalRows(pageInfo.getTotal());
+        return listPagedList;
+    }
+
+    @Override
+    public PagedList<Flight> findMUFlights8AFTER(FlightCondition condition) {
+        PagedList<Flight> listPagedList = new PagedList<Flight>();
+        PageHelper.startPage(condition.getPageNo(), condition.getPageSize());
+        List<Flight>  airportList=flightRepository.findMUFlights8AFTER(condition);
+        PageInfo pageInfo = new PageInfo(airportList);
+        listPagedList.setPageNo(condition.getPageNo());
+        listPagedList.setPageSize(condition.getPageSize());
+        listPagedList.setData(airportList);
+        listPagedList.setTotalRows(pageInfo.getTotal());
+        return listPagedList;
+    }
+
+    @Override
+    public PagedList<Flight> findMUFlightsXIYU(FlightCondition condition) {
+        PagedList<Flight> listPagedList = new PagedList<Flight>();
+        PageHelper.startPage(condition.getPageNo(), condition.getPageSize());
+        List<Flight>  airportList=flightRepository.findMUFlightsXIYU(condition);
+        PageInfo pageInfo = new PageInfo(airportList);
+        listPagedList.setPageNo(condition.getPageNo());
+        listPagedList.setPageSize(condition.getPageSize());
+        listPagedList.setData(airportList);
+        listPagedList.setTotalRows(pageInfo.getTotal());
+        return listPagedList;
+    }
+
+    @Override
+    public PagedList<Flight> findMUFlightsDAWAN(FlightCondition condition) {
+        PagedList<Flight> listPagedList = new PagedList<Flight>();
+        PageHelper.startPage(condition.getPageNo(), condition.getPageSize());
+        List<Flight>  airportList=flightRepository.findMUFlightsDAWAN(condition);
+        PageInfo pageInfo = new PageInfo(airportList);
+        listPagedList.setPageNo(condition.getPageNo());
+        listPagedList.setPageSize(condition.getPageSize());
+        listPagedList.setData(airportList);
+        listPagedList.setTotalRows(pageInfo.getTotal());
+        return listPagedList;
+    }
+
 
 }
