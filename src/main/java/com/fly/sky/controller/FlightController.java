@@ -165,7 +165,7 @@ public class FlightController {
         return responseResult;
     }
 
-    @PostMapping("findMUFlightsDAWAN")
+    @PostMapping("find9CFlightsZHE")
     @ApiOperation(value = "查询航班列表", notes = "查询航班列表")
     public ResponseResult<List<Flight>> find9CFlightsZHE(@RequestBody FlightCondition condition){
         String logTitle = "=find9CFlightsZHE=";
