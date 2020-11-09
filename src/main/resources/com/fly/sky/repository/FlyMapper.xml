@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fly.sky.repository.FlyRepository">
+
+    <resultMap id="BaseResultMap" type="com.fly.sky.domain.Fly">
+        <result column="id" jdbcType="INTEGER" property="id" />
+        <result column="fly_name" jdbcType="VARCHAR" property="flyName" />
+        <result column="airlines_code" jdbcType="VARCHAR" property="airlinesCode" />
+        <result column="fly_icon" jdbcType="VARCHAR" property="flyIcon" />
+        <result column="sort" jdbcType="INTEGER" property="sort" />
+    </resultMap>
+
+    <select id="findFlyByCondition"
+            parameterType="com.fly.sky.condition.FlyCondition"
+            resultType="com.fly.sky.domain.Fly">
+        select id as id,airlines_code as airlinesCode ,
+        fly_name as flyName,fly_icon as flyIcon
+         from fly WHERE 1=1
+        <if test="id != null">
+            and  id = #{id,jdbcType=BIGINT}
+        </if>
+
+        order by sort asc
+    </select>
+
+
+
+</mapper>
