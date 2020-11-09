@@ -419,12 +419,12 @@
         airway_id as airwayId,'周六' as flightRequency,flight_name_end as flightNameEnd,flight_date as flightDate,
         create_time as createTime,flight_remark as flightRemark from flight WHERE 1=1 and status=0
         and  (airlines_code ='MU' OR airlines_code ='FM') and flight_frequency=6
-        <if test="flightNameEnd != null  and flightNameEnd != '' ">
-            AND airportNameStartCode = #{flightNameEnd,jdbcType=VARCHAR}
+        <if test="airportNameStartCode != null  and airportNameStartCode != '' ">
+            AND airport_name_start_code = #{airportNameStartCode,jdbcType=VARCHAR}
         </if>
 
-        <if test="flightNameStart != null  and flightNameStart != '' ">
-            AND airportNameEndCode = #{flightNameStart,jdbcType=VARCHAR}
+        <if test="airportNameEndCode != null  and airportNameEndCode != '' ">
+            AND airport_name_end_code = #{airportNameEndCode,jdbcType=VARCHAR}
         </if>
         order by flight.flight_date asc
     </select>
@@ -438,11 +438,11 @@
         create_time as createTime,flight_remark as flightRemark from flight WHERE 1=1 and status=0
         and  (airlines_code ='MU' OR airlines_code ='FM') and flight_frequency=7
         <if test="airportNameStartCode != null  and airportNameStartCode != '' ">
-            AND airportNameStartCode = #{flightNameEnd,jdbcType=VARCHAR}
+            AND airport_name_start_code = #{airportNameStartCode,jdbcType=VARCHAR}
         </if>
 
         <if test="airportNameEndCode != null  and airportNameEndCode != '' ">
-            AND airportNameEndCode = #{flightNameStart,jdbcType=VARCHAR}
+            AND airport_name_end_code = #{airportNameEndCode,jdbcType=VARCHAR}
         </if>
         order by flight.flight_date asc
     </select>
