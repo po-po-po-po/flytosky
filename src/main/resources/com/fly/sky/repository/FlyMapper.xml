@@ -8,14 +8,15 @@
         <result column="airlines_code" jdbcType="VARCHAR" property="airlinesCode" />
         <result column="fly_icon" jdbcType="VARCHAR" property="flyIcon" />
         <result column="sort" jdbcType="INTEGER" property="sort" />
+        <result column="status" jdbcType="INTEGER" property="status" />
     </resultMap>
 
     <select id="findFlyByCondition"
             parameterType="com.fly.sky.condition.FlyCondition"
             resultType="com.fly.sky.domain.Fly">
         select id as id,airlines_code as airlinesCode ,
-        fly_name as flyName,fly_icon as flyIcon,sort
-         from fly WHERE 1=1
+        fly_name as flyName,fly_icon as flyIcon,sort,status
+         from fly WHERE 1=1 and status=0
         <if test="id != null">
             and  id = #{id,jdbcType=BIGINT}
         </if>
