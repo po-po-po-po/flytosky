@@ -516,4 +516,20 @@
     </select>
 
 
+
+    <select id="find9CFlightsZHE"
+            parameterType="com.fly.sky.condition.FlightCondition"
+            resultType="com.fly.sky.domain.Flight">
+        select id as id,flight_no as flightNo , flight_name_start as flightNameStart ,airlines_code as airlinesCode,
+        airway_id as airwayId,'周日' as flightRequency,flight_name_end as flightNameEnd,flight_date as flightDate,
+        create_time as createTime,flight_remark as flightRemark from flight WHERE 1=1 and status=0
+        and  airlines_code ='9C' and flight_frequency=7
+            AND ( airport_name_start_code = #{airportNameStartCode,jdbcType=VARCHAR}
+            or  airport_name_end_code = #{airportNameEndCode,jdbcType=VARCHAR}
+            )
+        order by airport_name_start_code,flight.flight_date asc
+    </select>
+
+
+
 </mapper>

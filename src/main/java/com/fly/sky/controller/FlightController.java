@@ -164,4 +164,14 @@ public class FlightController {
         responseResult.setData(flightService.findMUFlightsDAWAN(condition));
         return responseResult;
     }
+
+    @PostMapping("findMUFlightsDAWAN")
+    @ApiOperation(value = "查询航班列表", notes = "查询航班列表")
+    public ResponseResult<List<Flight>> find9CFlightsZHE(@RequestBody FlightCondition condition){
+        String logTitle = "=find9CFlightsZHE=";
+        log.info("{} - 参数：find9CFlights浙={}", logTitle, JsonUtil.toJSONString(condition));
+        ResponseResult<List<Flight>> responseResult = new ResponseResult<>();
+        responseResult.setData(flightService.find9CFlightsZHE(condition));
+        return responseResult;
+    }
 }

@@ -214,4 +214,10 @@ public class FlightServiceImpl implements FlightService {
     }
 
 
+    @Override
+    public List<Flight> find9CFlightsZHE(FlightCondition condition) {
+        return flightRepository.find9CFlightsZHE(condition);
+    }
+
+
 }

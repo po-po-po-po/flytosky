@@ -51,5 +51,8 @@ public interface FlightRepository {
     List<Flight> findMUFlightsXIYU(FlightCondition condition);
     List<Flight> findMUFlightsDAWAN(FlightCondition condition);
 
+    //春秋航空
+    List<Flight> find9CFlightsZHE(FlightCondition condition);
+
 
 }

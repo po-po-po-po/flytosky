@@ -30,6 +30,6 @@ public interface FlightService {
     PagedList<Flight> findMUFlights8AFTER(FlightCondition condition);
     PagedList<Flight> findMUFlightsXIYU(FlightCondition condition);
     PagedList<Flight> findMUFlightsDAWAN(FlightCondition condition);
-
+    List<Flight> find9CFlightsZHE(FlightCondition condition);
 
 }
