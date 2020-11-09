@@ -527,7 +527,7 @@
             AND ( airport_name_start_code = #{airportNameStartCode,jdbcType=VARCHAR}
             or  airport_name_end_code = #{airportNameEndCode,jdbcType=VARCHAR}
             )
-        order by airport_name_start_code,flight.flight_date asc
+        order by flight.flight_no asc,flight.flight_date asc
     </select>
 
 
