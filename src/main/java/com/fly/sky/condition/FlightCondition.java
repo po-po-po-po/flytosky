@@ -49,5 +49,8 @@ public class FlightCondition extends PagedCondition{
     private String flightDateStart;
     @ApiModelProperty("下拉列表航司的编号")
     private String flightDateEnd;
-
+    @ApiModelProperty("出发机场code")
+    private String airportNameStartCode;
+    @ApiModelProperty("到达机场code")
+    private String airportNameEndCode;
 }

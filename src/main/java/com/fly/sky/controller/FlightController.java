@@ -99,6 +99,9 @@ public class FlightController {
     public ResponseResult<PagedList<Flight>> findMUFlights6(@RequestBody FlightCondition condition){
         String logTitle = "=findMUFlights6=";
         log.info("{} - 参数：findMUFlights6={}", logTitle, JsonUtil.toJSONString(condition));
+        if(StringUtils.isEmpty(condition.getAirportNameStartCode())&&StringUtils.isEmpty(condition.getAirportNameEndCode())){
+            condition.setAirportNameStartCode("SHA");
+        }
         ResponseResult<PagedList<Flight>> responseResult = new ResponseResult<>();
         responseResult.setData(flightService.findMUFlights6(condition));
         return responseResult;
@@ -107,8 +110,11 @@ public class FlightController {
     @PostMapping("findMUFlights7")
     @ApiOperation(value = "查询东航周日航班", notes = "查询东航周日航班")
     public ResponseResult<PagedList<Flight>> findMUFlights7(@RequestBody FlightCondition condition){
-        String logTitle = "=findMUFlights6=";
-        log.info("{} - 参数：findMUFlights6={}", logTitle, JsonUtil.toJSONString(condition));
+        String logTitle = "=findMUFlights7=";
+        log.info("{} - 参数：findMUFlights7={}", logTitle, JsonUtil.toJSONString(condition));
+        if(StringUtils.isEmpty(condition.getAirportNameStartCode())&&StringUtils.isEmpty(condition.getAirportNameEndCode())){
+            condition.setAirportNameStartCode("SHA");
+        }
         ResponseResult<PagedList<Flight>> responseResult = new ResponseResult<>();
         responseResult.setData(flightService.findMUFlights7(condition));
         return responseResult;
