@@ -202,6 +202,10 @@ public class FlightController {
         if(!StringUtils.isEmpty(condition.getFlightRequency())&&condition.getFlightRequency().contains("周")){
             condition.setFlightRequency( WeekUtil.getWeekCode(condition.getFlightRequency()));
         }
+        //处理不限问题航空公司
+        if(!StringUtils.isEmpty(condition.getAirlinesCode())&&"1".equals(condition.getAirlinesCode())){
+            condition.setAirlinesCode("");
+        }
         String logTitle = "=查询航班列表=";
         log.info("{} - 参数：findFlightsForSUIXINFEI={}", logTitle, JsonUtil.toJSONString(condition));
         if(StringUtils.isEmpty(condition.getAirportNameStartCode())&&StringUtils.isEmpty(condition.getAirportNameEndCode())){
