@@ -49,7 +49,7 @@ public class FlightServiceImpl implements FlightService {
     public PagedList<Flight> findFlightsForSUIXINFEI(FlightCondition condition) {
         PagedList<Flight> listPagedList = new PagedList<Flight>();
         PageHelper.startPage(condition.getPageNo(), condition.getPageSize());
-        List<Flight>  airportList=flightRepository.findFlightsByCondition(condition);
+        List<Flight>  airportList=flightRepository.findFlightsForSUIXINFEI(condition);
         PageInfo pageInfo = new PageInfo(airportList);
         listPagedList.setPageNo(condition.getPageNo());
         listPagedList.setPageSize(condition.getPageSize());
