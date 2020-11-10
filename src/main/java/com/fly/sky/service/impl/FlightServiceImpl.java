@@ -45,6 +45,20 @@ public class FlightServiceImpl implements FlightService {
     }
 
 
+
+    public PagedList<Flight> findFlightsForSUIXINFEI(FlightCondition condition) {
+        PagedList<Flight> listPagedList = new PagedList<Flight>();
+        PageHelper.startPage(condition.getPageNo(), condition.getPageSize());
+        List<Flight>  airportList=flightRepository.findFlightsByCondition(condition);
+        PageInfo pageInfo = new PageInfo(airportList);
+        listPagedList.setPageNo(condition.getPageNo());
+        listPagedList.setPageSize(condition.getPageSize());
+        listPagedList.setData(airportList);
+        listPagedList.setTotalRows(pageInfo.getTotal());
+        return listPagedList;
+    }
+
+
     public List<FlightDetail> findAllFlightsByAirline(FlightCondition condition) {
         if(null!=condition&& StringUtils.isNotEmpty(condition.getAirlinesSelectId())){
             condition.setAirlinesCode(AirlinesEnum.getAirlineCode(condition.getAirlinesSelectId()));

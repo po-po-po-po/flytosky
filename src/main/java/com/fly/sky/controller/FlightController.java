@@ -174,4 +174,14 @@ public class FlightController {
         responseResult.setData(flightService.find9CFlightsZHE(condition));
         return responseResult;
     }
+
+    @PostMapping("findFlightsForSUIXINFEI")
+    @ApiOperation(value = "查询航班列表", notes = "查询航班列表")
+    public ResponseResult<PagedList<Flight>> findFlightsForSUIXINFEI(@RequestBody FlightCondition condition){
+        String logTitle = "=查询航班列表=";
+        log.info("{} - 参数：findFlightsForSUIXINFEI={}", logTitle, JsonUtil.toJSONString(condition));
+        ResponseResult<PagedList<Flight>> responseResult = new ResponseResult<>();
+        responseResult.setData(flightService.findFlightsForSUIXINFEI(condition));
+        return responseResult;
+    }
 }
