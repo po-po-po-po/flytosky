@@ -180,6 +180,9 @@ public class FlightController {
     public ResponseResult<PagedList<Flight>> findFlightsForSUIXINFEI(@RequestBody FlightCondition condition){
         String logTitle = "=查询航班列表=";
         log.info("{} - 参数：findFlightsForSUIXINFEI={}", logTitle, JsonUtil.toJSONString(condition));
+        if(StringUtils.isEmpty(condition.getAirportNameStartCode())&&StringUtils.isEmpty(condition.getAirportNameEndCode())){
+           condition.setPageSize(200);
+        }
         ResponseResult<PagedList<Flight>> responseResult = new ResponseResult<>();
         responseResult.setData(flightService.findFlightsForSUIXINFEI(condition));
         return responseResult;
