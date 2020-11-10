@@ -9,6 +9,7 @@ import com.fly.sky.pythons.XcFlightUtil;
 import com.fly.sky.repository.FlightRepository;
 import com.fly.sky.service.FlightService;
 import com.fly.sky.util.PagedList;
+import com.fly.sky.util.WeekUtil;
 import com.fly.sky.vo.FlightDetail;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -49,11 +50,13 @@ public class FlightServiceImpl implements FlightService {
     public PagedList<Flight> findFlightsForSUIXINFEI(FlightCondition condition) {
         PagedList<Flight> listPagedList = new PagedList<Flight>();
         PageHelper.startPage(condition.getPageNo(), condition.getPageSize());
-        List<Flight>  airportList=flightRepository.findFlightsForSUIXINFEI(condition);
-        PageInfo pageInfo = new PageInfo(airportList);
+        List<Flight>  flightList=flightRepository.findFlightsForSUIXINFEI(condition);
+        //对list进行处理
+        flightList.stream().forEach(f-> f.setFlightRequency(WeekUtil.getWeekName(f.getFlightRequency())));
+        PageInfo pageInfo = new PageInfo(flightList);
         listPagedList.setPageNo(condition.getPageNo());
         listPagedList.setPageSize(condition.getPageSize());
-        listPagedList.setData(airportList);
+        listPagedList.setData(flightList);
         listPagedList.setTotalRows(pageInfo.getTotal());
         return listPagedList;
     }
