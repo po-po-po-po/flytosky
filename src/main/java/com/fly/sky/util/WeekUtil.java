@@ -40,4 +40,38 @@ public class WeekUtil {
         return weekName;
 
     }
+
+
+    public static String getWeekCode(String weekName){
+
+        switch (weekName) {
+            case "周一":
+                weekName="1";
+                break;
+            case "周二":
+                weekName="2";
+                break;
+            case "周三":
+                weekName="3";
+                break;
+            case "周四":
+                weekName="4";
+                break;
+            case "周五":
+                weekName="5";
+                break;
+            case "周六":
+                weekName="6";
+                break;
+            case "周日":
+                weekName="7";
+                break;
+            default:
+                weekName="7";
+                break;
+        }
+
+        return weekName;
+
+    }
 }

@@ -11,6 +11,7 @@ import com.fly.sky.service.FlightService;
 import com.fly.sky.util.JsonUtil;
 import com.fly.sky.util.PagedList;
 import com.fly.sky.util.ResponseResult;
+import com.fly.sky.util.WeekUtil;
 import com.fly.sky.vo.FlightDetail;
 import com.fly.sky.vo.FlightList;
 import io.swagger.annotations.Api;
@@ -178,6 +179,10 @@ public class FlightController {
     @PostMapping("findFlightsForSUIXINFEI")
     @ApiOperation(value = "查询航班列表", notes = "查询航班列表")
     public ResponseResult<PagedList<Flight>> findFlightsForSUIXINFEI(@RequestBody FlightCondition condition){
+        //处理航班周期问题
+        if(!StringUtils.isEmpty(condition.getFlightRequency())&&condition.getFlightRequency().contains("周")){
+            condition.setFlightRequency( WeekUtil.getWeekCode(condition.getFlightRequency()));
+        }
         String logTitle = "=查询航班列表=";
         log.info("{} - 参数：findFlightsForSUIXINFEI={}", logTitle, JsonUtil.toJSONString(condition));
         if(StringUtils.isEmpty(condition.getAirportNameStartCode())&&StringUtils.isEmpty(condition.getAirportNameEndCode())){
