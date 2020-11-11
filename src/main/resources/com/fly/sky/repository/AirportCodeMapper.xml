@@ -28,6 +28,7 @@
         <if test="arrCode != null  and arrCode != '' ">
             AND arr_code  = #{arrCode,jdbcType=VARCHAR}
         </if>
+
         order by ID ASC;
     </select>
 
