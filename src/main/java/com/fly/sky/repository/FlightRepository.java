@@ -55,4 +55,8 @@ public interface FlightRepository {
     List<Flight> find9CFlightsZHE(FlightCondition condition);
 
 
+    //所以随心飞
+    List<Flight> findFlightsForSUIXINFEI(FlightCondition condition);
+
+
 }

@@ -32,4 +32,6 @@ public interface FlightService {
     PagedList<Flight> findMUFlightsDAWAN(FlightCondition condition);
     List<Flight> find9CFlightsZHE(FlightCondition condition);
 
+
+    PagedList<Flight> findFlightsForSUIXINFEI(FlightCondition condition);
 }

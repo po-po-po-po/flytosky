@@ -33,8 +33,6 @@ public class FlyController {
     @PostMapping("flyList")
     @ApiOperation(value = "随心飞接口列表 ", notes = "随心飞接口列表")
     public ResponseResult<List<Fly>> flyList(@RequestBody FlyCondition condition){
-        String logTitle = "=航司随心飞接口列表=";
-        log.info("{} - 参数：flyList={}", logTitle, JsonUtil.toJSONString(condition));
         ResponseResult<List<Fly>> responseResult = new ResponseResult<>();
         responseResult.setData(flyService.findFlyByCondition(condition));
         return responseResult;

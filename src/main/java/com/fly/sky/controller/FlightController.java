@@ -11,6 +11,7 @@ import com.fly.sky.service.FlightService;
 import com.fly.sky.util.JsonUtil;
 import com.fly.sky.util.PagedList;
 import com.fly.sky.util.ResponseResult;
+import com.fly.sky.util.WeekUtil;
 import com.fly.sky.vo.FlightDetail;
 import com.fly.sky.vo.FlightList;
 import io.swagger.annotations.Api;
@@ -125,6 +126,25 @@ public class FlightController {
         return responseResult;
     }
 
+    @PostMapping("findMUFlights67")
+    @ApiOperation(value = "查询东航周六航班", notes = "查询东航周六航班")
+    public ResponseResult<PagedList<Flight>> findMUFlights67(@RequestBody FlightCondition condition){
+        String logTitle = "=findMUFlights67=";
+        log.info("{} - 参数：findMUFlights67={}", logTitle, JsonUtil.toJSONString(condition));
+
+        ResponseResult<PagedList<Flight>> responseResult = new ResponseResult<>();
+        //处理航班周期问题
+        if(!StringUtils.isEmpty(condition.getFlightRequency())&&condition.getFlightRequency().contains("周")){
+            condition.setFlightRequency( WeekUtil.getWeekCode(condition.getFlightRequency()));
+        }
+        if("6".equals(condition.getFlightRequency())){
+            responseResult.setData(flightService.findMUFlights7(condition));
+        }else if("7".equals(condition.getFlightRequency())){
+            responseResult.setData(flightService.findMUFlights6(condition));
+        }
+        return responseResult;
+    }
+
     @PostMapping("findMUFlights8BEFORE")
     @ApiOperation(value = "查询航班列表", notes = "查询航班列表")
     public ResponseResult<PagedList<Flight>> findMUFlights8BEFORE(@RequestBody FlightCondition condition){
@@ -172,6 +192,27 @@ public class FlightController {
         log.info("{} - 参数：find9CFlights浙={}", logTitle, JsonUtil.toJSONString(condition));
         ResponseResult<List<Flight>> responseResult = new ResponseResult<>();
         responseResult.setData(flightService.find9CFlightsZHE(condition));
+        return responseResult;
+    }
+
+    @PostMapping("findFlightsForSUIXINFEI")
+    @ApiOperation(value = "查询航班列表", notes = "查询航班列表")
+    public ResponseResult<PagedList<Flight>> findFlightsForSUIXINFEI(@RequestBody FlightCondition condition){
+        //处理航班周期问题
+        if(!StringUtils.isEmpty(condition.getFlightRequency())&&condition.getFlightRequency().contains("周")){
+            condition.setFlightRequency( WeekUtil.getWeekCode(condition.getFlightRequency()));
+        }
+        //处理不限问题航空公司
+        if(!StringUtils.isEmpty(condition.getAirlinesCode())&&"1".equals(condition.getAirlinesCode())){
+            condition.setAirlinesCode("");
+        }
+        String logTitle = "=查询航班列表=";
+        log.info("{} - 参数：findFlightsForSUIXINFEI={}", logTitle, JsonUtil.toJSONString(condition));
+        if(StringUtils.isEmpty(condition.getAirportNameStartCode())&&StringUtils.isEmpty(condition.getAirportNameEndCode())){
+           condition.setPageSize(200);
+        }
+        ResponseResult<PagedList<Flight>> responseResult = new ResponseResult<>();
+        responseResult.setData(flightService.findFlightsForSUIXINFEI(condition));
         return responseResult;
     }
 }
