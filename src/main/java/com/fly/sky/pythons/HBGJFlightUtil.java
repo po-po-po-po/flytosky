@@ -87,7 +87,7 @@ public class HBGJFlightUtil {
                                 flight.setFlightDate(hbgj.getDepPlanTime() + "-" + hbgj.getArrPlanTime());
                                 flight.setAirportNameStartCode(hbgj.getDepCode());
                                 flight.setAirportNameEndCode(hbgj.getArrCode());
-                                flight.setFlightRequency("7");
+                                flight.setFlightRequency("6");
                                 //根据机场code查询机场数据
                                 Airport dept = airportRepository.findAirportByCode(hbgj.getDepCode());
                                 Airport arr = airportRepository.findAirportByCode(hbgj.getArrCode());
