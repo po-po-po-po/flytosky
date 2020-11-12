@@ -540,7 +540,8 @@
         select id as id,flight_no as flightNo , flight_name_start as flightNameStart ,airlines_code as airlinesCode,
         airway_id as airwayId,flight_frequency as flightRequency,flight_name_end as flightNameEnd,flight_date as flightDate,
         create_time as createTime,flight_remark as flightRemark ,airport_name_start_code as airportNameStartCode,
-        airport_name_end_code as airportNameEndCode
+        airport_name_end_code as airportNameEndCode,  airport_name_start as airportNameStart,
+        airport_name_end as airportNameEnd
         from flight WHERE 1=1 and status=0
         <if test="id != null">
             and  id = #{id,jdbcType=BIGINT}
@@ -664,6 +665,56 @@
     </select>
 
 
+    <select id="findHX2HB"
+            parameterType="com.fly.sky.condition.FlightCondition"
+            resultType="com.fly.sky.vo.FlightDetail">
+        select id as id,flight_no as flightNo , flight_name_start as flightNameStart ,airlines_code as airlinesCode,
+         flight_frequency as flightRequency,flight_name_end as flightNameEnd,flight_date as flightDate,
+        airport_name_start_code as airportNameStartCode,
+        airport_name_end_code as airportNameEndCode,
+        airport_name_start as airportNameStart,
+        airport_name_end as airportNameEnd
+        from flight WHERE 1=1 and status=0
+
+        <if test="id != null">
+            and  id = #{id,jdbcType=BIGINT}
+        </if>
+
+        <if test="airportNameStartCode != null  and airportNameStartCode != '' ">
+            AND airport_name_start_code = #{airportNameStartCode,jdbcType=VARCHAR}
+        </if>
+
+        <if test="airportNameEndCode != null  and airportNameEndCode != '' ">
+            AND airport_name_end_code = #{airportNameEndCode,jdbcType=VARCHAR}
+        </if>
+
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode=='MU'">
+            and  ( flight.airlines_code = 'MU' OR   flight.airlines_code = 'FM')
+        </if>
+
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode=='HU'">
+            and  ( flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN')
+        </if>
+
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode=='HNA'">
+            and  ( flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN' OR   flight.airlines_code = 'UQ'
+            OR   flight.airlines_code = 'Y8' OR   flight.airlines_code = 'GT' OR   flight.airlines_code = '9H'
+            OR   flight.airlines_code = 'FU' OR   flight.airlines_code = 'GX' OR   flight.airlines_code = 'PN'
+            OR   flight.airlines_code = '8L'  OR   flight.airlines_code = 'JD' OR   flight.airlines_code = 'GS')
+        </if>
+
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode!='MU'  and airlinesCode!='HU' and airlinesCode!='HNA'">
+            and   flight.airlines_code = #{airlinesCode,jdbcType=VARCHAR}
+        </if>
+
+        <if test="flightRequency != null  and flightRequency != '' ">
+            and  flight_frequency = #{flightRequency,jdbcType=VARCHAR}
+        </if>
+
+        order by flight.flight_frequency asc
+
+
+    </select>
 
 
 </mapper>

@@ -6,6 +6,7 @@ import com.fly.sky.domain.Airport;
 import com.fly.sky.domain.Flight;
 import com.fly.sky.util.PagedList;
 import com.fly.sky.vo.FlightDetail;
+import com.fly.sky.vo.FlightList;
 
 import java.util.List;
 
@@ -42,5 +43,7 @@ public interface FlightService {
     List<FlightDetail> findHX(FlightCondition condition);
 
     List<Airport> findAirportsForStartAndEnd(FlightCondition condition);
+
+    FlightList findHX2HB(FlightCondition condition);
 
 }

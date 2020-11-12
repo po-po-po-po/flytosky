@@ -71,4 +71,7 @@ public interface FlightRepository {
     List<FlightDetail> findHX(FlightCondition condition);
 
 
+    List<FlightDetail> findHX2HB(FlightCondition condition);
+
+
 }

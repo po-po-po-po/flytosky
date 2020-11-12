@@ -252,4 +252,17 @@ public class FlightController {
         responseResult.setData(airlinesDetail);
         return responseResult;
     }
+
+
+
+    @PostMapping("findHX2HB")
+    @ApiOperation(value = "查询航线TO航班列表", notes = "查询航线TO航班列表")
+    public ResponseResult<FlightList> findHX2HB(@RequestBody FlightCondition condition){
+
+        String logTitle = "=查询航线TO航班列表=";
+        log.info("{} - 参数：查询航线TO航班列表={}", logTitle, JsonUtil.toJSONString(condition));
+        ResponseResult<FlightList> responseResult = new ResponseResult<>();
+        responseResult.setData(flightService.findHX2HB(condition));
+        return responseResult;
+    }
 }

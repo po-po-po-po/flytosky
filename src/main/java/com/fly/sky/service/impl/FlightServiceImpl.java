@@ -2,17 +2,21 @@ package com.fly.sky.service.impl;
 
 
 import com.fly.sky.condition.FlightCondition;
+import com.fly.sky.domain.Airlines;
 import com.fly.sky.domain.Airport;
+import com.fly.sky.domain.Airway;
 import com.fly.sky.domain.Flight;
 import com.fly.sky.enums.AirlinesEnum;
 import com.fly.sky.pythons.IpPortUtil;
 import com.fly.sky.pythons.XcFlightUtil;
+import com.fly.sky.repository.AirlinesRepository;
 import com.fly.sky.repository.AirportRepository;
 import com.fly.sky.repository.FlightRepository;
 import com.fly.sky.service.FlightService;
 import com.fly.sky.util.PagedList;
 import com.fly.sky.util.WeekUtil;
 import com.fly.sky.vo.FlightDetail;
+import com.fly.sky.vo.FlightList;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.apache.commons.lang3.StringUtils;
@@ -37,6 +41,9 @@ public class FlightServiceImpl implements FlightService {
 
     @Resource
     AirportRepository airportRepository;
+
+    @Resource
+    AirlinesRepository airlinesRepository;
 
     public PagedList<Flight> findAllFlights(FlightCondition condition) {
         PagedList<Flight> listPagedList = new PagedList<Flight>();
@@ -259,6 +266,26 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public List<Airport> findAirportsForStartAndEnd(FlightCondition condition) {
         return airportRepository.findAirportsForStartAndEnd(condition);
+    }
+
+    @Override
+    public FlightList findHX2HB(FlightCondition condition) {
+        FlightList flightLists=new FlightList();
+        //航班信息列表
+        List<FlightDetail>  flightList=flightRepository.findHX2HB(condition);
+        flightLists.setFlightList(flightList);
+
+        //航空公司信息
+        Airlines airlines=airlinesRepository.findAirlinesByAirlinesCode(condition.getAirlinesCode());
+        flightLists.setAirLines(airlines);
+
+        //航线信息
+        Airway airway=new Airway();
+        airway.setAirwayNameStart(airportRepository.findAirportByCode(condition.getAirportNameStartCode()).getAirportAbbreviate());
+        airway.setAirwayNameEndCode(condition.getAirportNameEndCode());
+        airway.setAirwayNameEnd(airportRepository.findAirportByCode(condition.getAirportNameEndCode()).getAirportAbbreviate());
+        airway.setAirwayNameStartCode(condition.getAirportNameStartCode());
+        return flightLists;
     }
 
 }

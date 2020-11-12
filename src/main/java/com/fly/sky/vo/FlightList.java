@@ -22,6 +22,8 @@ public class FlightList {
     private List<FlightDetail> flightList;
     //所属航线
     private Airway airway;
+    //航空公司
+    private Airlines airLines;
     //航空公司列表
     private List<Airlines> airlinesList;
 }
