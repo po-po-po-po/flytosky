@@ -272,6 +272,12 @@ public class FlightController {
         String logTitle = "=查询航线TO航班列表=";
         log.info("{} - 参数：查询航线TO航班列表={}", logTitle, JsonUtil.toJSONString(condition));
         ResponseResult<FlightList> responseResult = new ResponseResult<>();
+        if("null".equals(condition.getFlightDateStart())){
+            condition.setFlightDateStart("");
+        }
+        if("null".equals(condition.getFlightDateEnd())){
+            condition.setFlightDateEnd("");
+        }
 
         responseResult.setData(flightService.findHX2HB(condition));
         return responseResult;
