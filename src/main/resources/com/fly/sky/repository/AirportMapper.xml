@@ -130,4 +130,13 @@
     </select>
 
 
+    <select id="findAirportsForStartAndEnd" resultType="com.fly.sky.domain.Airport">
+          SELECT    airport_name as airportName , airport_code as airportCode ,
+           airport_location as airportLocation,airport_area as airportArea,
+          airport_abbreviate AS airportAbbreviate
+         from  airport where airport_code = #{airportCode} limit 1
+         order by id asc
+    </select>
+
+
 </mapper>

@@ -7,6 +7,7 @@ import com.fly.sky.domain.Flight;
 import com.fly.sky.enums.AirlinesEnum;
 import com.fly.sky.pythons.IpPortUtil;
 import com.fly.sky.pythons.XcFlightUtil;
+import com.fly.sky.repository.AirportRepository;
 import com.fly.sky.repository.FlightRepository;
 import com.fly.sky.service.FlightService;
 import com.fly.sky.util.PagedList;
@@ -33,6 +34,9 @@ public class FlightServiceImpl implements FlightService {
 
     @Resource
     FlightRepository flightRepository;
+
+    @Resource
+    AirportRepository airportRepository;
 
     public PagedList<Flight> findAllFlights(FlightCondition condition) {
         PagedList<Flight> listPagedList = new PagedList<Flight>();
@@ -250,6 +254,11 @@ public class FlightServiceImpl implements FlightService {
     @Override
     public List<FlightDetail> findHX(FlightCondition condition){
         return flightRepository.findHX(condition);
+    }
+
+    @Override
+    public List<Airport> findAirportsForStartAndEnd(FlightCondition condition) {
+        return airportRepository.findAirportsForStartAndEnd(condition);
     }
 
 }

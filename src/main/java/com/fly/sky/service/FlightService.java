@@ -41,4 +41,6 @@ public interface FlightService {
     //航线
     List<FlightDetail> findHX(FlightCondition condition);
 
+    List<Airport> findAirportsForStartAndEnd(FlightCondition condition);
+
 }

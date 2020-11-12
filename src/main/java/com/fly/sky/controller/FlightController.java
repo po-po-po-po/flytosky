@@ -236,9 +236,11 @@ public class FlightController {
         }
 
         //查询航司的出发机场列表
-        airlinesDetail.setAirportStartList(flightService.findStartHX(condition));
+        //airlinesDetail.setAirportStartList(flightService.findStartHX(condition));
+        airlinesDetail.setAirportStartList(flightService.findAirportsForStartAndEnd(condition));
         //查询航司的到达机场列表
-        airlinesDetail.setAirportEndList(flightService.findEndHX(condition));
+        //airlinesDetail.setAirportEndList(flightService.findEndHX(condition));
+        airlinesDetail.setAirportEndList(flightService.findAirportsForStartAndEnd(condition));
         //查询航空公司列表
         airlinesDetail.setAirlinesList(airlinesService.findAllAirlines(new AirlineCondition()));
         //航线列表
