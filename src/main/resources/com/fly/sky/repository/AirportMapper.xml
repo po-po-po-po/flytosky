@@ -134,7 +134,7 @@
           SELECT    airport_name as airportName , airport_code as airportCode ,
            airport_location as airportLocation,airport_area as airportArea,
           airport_abbreviate AS airportAbbreviate
-         from  airport where airport_code = #{airportCode} limit 1
+         from  airport
          order by id asc
     </select>
 
