@@ -2,6 +2,7 @@ package com.fly.sky.service.impl;
 
 
 import com.fly.sky.condition.FlightCondition;
+import com.fly.sky.domain.Airport;
 import com.fly.sky.domain.Flight;
 import com.fly.sky.enums.AirlinesEnum;
 import com.fly.sky.pythons.IpPortUtil;
@@ -59,6 +60,16 @@ public class FlightServiceImpl implements FlightService {
         listPagedList.setData(flightList);
         listPagedList.setTotalRows(pageInfo.getTotal());
         return listPagedList;
+    }
+
+    @Override
+    public List<Airport> findStartHX(FlightCondition condition) {
+        return flightRepository.findStartHX(condition);
+    }
+
+    @Override
+    public List<Airport> findEndHX(FlightCondition condition) {
+        return flightRepository.findEndHX(condition);
     }
 
 
@@ -236,5 +247,9 @@ public class FlightServiceImpl implements FlightService {
         return flightRepository.find9CFlightsZHE(condition);
     }
 
+    @Override
+    public List<FlightDetail> findHX(FlightCondition condition){
+        return flightRepository.findHX(condition);
+    }
 
 }

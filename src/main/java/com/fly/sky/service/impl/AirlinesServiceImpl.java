@@ -159,7 +159,14 @@ public class AirlinesServiceImpl implements AirlinesService {
         detail.setAirwayList(airwayList);
         detail.setFlightCondition(condition);
         return detail;
-    };
+    }
+
+    @Override
+    public Airlines findAirlinesByCode(String code) {
+        return airlinesRepository.findAirlinesByAirlinesCode(code);
+    }
+
+    ;
 
 
     public Map<String, WechaIndexAirlines> wechatIndexAirlines(AirlineCondition condition){

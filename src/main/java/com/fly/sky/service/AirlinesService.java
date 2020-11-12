@@ -34,4 +34,6 @@ public interface AirlinesService {
     List<Airlines> selectAirlineListByAirlinesCodeList(List airlinesCodeList);
 
     AirlinesDetail findFlightsAndAirportsByAirlines(FlightCondition condition);
+
+    Airlines findAirlinesByCode(String code);
 }

@@ -569,5 +569,65 @@
 
 
 
+    <select id="findStartHX"
+            parameterType="com.fly.sky.condition.FlightCondition"
+            resultType="com.fly.sky.domain.Airport">
+        select distinct airway_name_start_code as airportCode,
+        airway_name_start as airportAbbreviate from airway inner join flight on
+        airway.airway_name_start_code=flight.airport_name_start_code
+        and airway.airway_name_end_code=flight.airport_name_end_code
+        WHERE 1=1 and flight.status=0
+        <if test="airlinesCode != null  and airlinesCode != '' ">
+            and  flight.airlines_code = #{airlinesCode,jdbcType=VARCHAR}
+        </if>
+
+    </select>
+
+
+
+    <select id="findEndHX"
+            parameterType="com.fly.sky.condition.FlightCondition"
+            resultType="com.fly.sky.domain.Airport">
+        select distinct airway_name_end_code as airportCode,
+        airway_name_end as airportAbbreviate from airway inner join flight on
+        airway.airway_name_start_code=flight.airport_name_start_code
+        and airway.airway_name_end_code=flight.airport_name_end_code
+        WHERE 1=1 and flight.status=0
+        <if test="airlinesCode != null  and airlinesCode != '' ">
+            and  flight.airlines_code = #{airlinesCode,jdbcType=VARCHAR}
+        </if>
+
+    </select>
+
+
+    <select id="findHX"
+            parameterType="com.fly.sky.condition.FlightCondition"
+            resultType="com.fly.sky.vo.FlightDetail">
+        select distinct airway_name_start_code as airportNameStartCode,
+        airway_name_end_code as airportNameEndCode,
+        airway_name_start as airportNameStart,
+        airway_name_end  as airportNameEnd
+        from airway inner join flight on
+        airway.airway_name_start_code=flight.airport_name_start_code
+        and airway.airway_name_end_code=flight.airport_name_end_code
+        where 1=1
+        <if test="airlinesCode != null  and airlinesCode != '' ">
+            and  flight.airlines_code = #{airlinesCode,jdbcType=VARCHAR}
+        </if>
+        <if test="flightDateStart != null  and flightDateStart != '' ">
+            AND SUBSTR( flight.flight_date,1 , 5 )>= #{flightDateStart,jdbcType=VARCHAR}
+        </if>
+        <if test="airportNameEndCode != null  and airportNameEndCode != '' ">
+            AND airway.airway_name_end_code = #{airportNameEndCode,jdbcType=VARCHAR}
+        </if>
+        <if test="airportNameStartCode != null  and airportNameStartCode != '' ">
+            AND airway.airway_name_start_code = #{airportNameStartCode,jdbcType=VARCHAR}
+        </if>
+        order by airway_name_start_code asc
+
+    </select>
+
+
+
 
 </mapper>

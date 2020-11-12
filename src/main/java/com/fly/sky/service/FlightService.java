@@ -2,6 +2,7 @@ package com.fly.sky.service;
 
 
 import com.fly.sky.condition.FlightCondition;
+import com.fly.sky.domain.Airport;
 import com.fly.sky.domain.Flight;
 import com.fly.sky.util.PagedList;
 import com.fly.sky.vo.FlightDetail;
@@ -34,4 +35,10 @@ public interface FlightService {
 
 
     PagedList<Flight> findFlightsForSUIXINFEI(FlightCondition condition);
+    //出发机场  到达机场
+    List<Airport> findStartHX(FlightCondition condition);
+    List<Airport> findEndHX(FlightCondition condition);
+    //航线
+    List<FlightDetail> findHX(FlightCondition condition);
+
 }

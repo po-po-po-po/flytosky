@@ -40,5 +40,9 @@ public class AirlinesDetail {
     @ApiModelProperty("航司信息")
     FlightCondition flightCondition;
 
+    @ApiModelProperty("航司信息")
+    List<Airlines> airlinesList;
+
+
 
 }

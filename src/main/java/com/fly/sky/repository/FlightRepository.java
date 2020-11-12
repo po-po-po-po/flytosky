@@ -59,4 +59,16 @@ public interface FlightRepository {
     List<Flight> findFlightsForSUIXINFEI(FlightCondition condition);
 
 
+
+    //所以随心飞
+    List<Airport> findStartHX(FlightCondition condition);
+
+
+    //所以随心飞
+    List<Airport> findEndHX(FlightCondition condition);
+
+    //所以随心飞
+    List<FlightDetail> findHX(FlightCondition condition);
+
+
 }

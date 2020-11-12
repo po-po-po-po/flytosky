@@ -1,5 +1,6 @@
 package com.fly.sky.controller;
 
+import com.fly.sky.condition.AirlineCondition;
 import com.fly.sky.condition.AirwayCondition;
 import com.fly.sky.condition.FlightCondition;
 import com.fly.sky.domain.Airlines;
@@ -12,6 +13,7 @@ import com.fly.sky.util.JsonUtil;
 import com.fly.sky.util.PagedList;
 import com.fly.sky.util.ResponseResult;
 import com.fly.sky.util.WeekUtil;
+import com.fly.sky.vo.AirlinesDetail;
 import com.fly.sky.vo.FlightDetail;
 import com.fly.sky.vo.FlightList;
 import io.swagger.annotations.Api;
@@ -213,6 +215,34 @@ public class FlightController {
         }
         ResponseResult<PagedList<Flight>> responseResult = new ResponseResult<>();
         responseResult.setData(flightService.findFlightsForSUIXINFEI(condition));
+        return responseResult;
+    }
+
+
+    @PostMapping("findFlightsForSUIXINFEIHX")
+    @ApiOperation(value = "查询航线信息", notes = "查询航线信息")
+    public ResponseResult<AirlinesDetail> findFlightsForSUIXINFEIHX(@RequestBody FlightCondition condition){
+        //处理不限问题航空公司
+        if(!StringUtils.isEmpty(condition.getAirlinesCode())){
+            condition.setAirlinesCode("MU");
+        }
+        String logTitle = "=查询航线信息=";
+        log.info("{} - 参数：findFlightsForSUIXINFEIHX={}", logTitle, JsonUtil.toJSONString(condition));
+        AirlinesDetail airlinesDetail=new AirlinesDetail();
+
+        //查询航司的出发机场列表
+        airlinesDetail.setAirportStartList(flightService.findStartHX(condition));
+        //查询航司的到达机场列表
+        airlinesDetail.setAirportEndList(flightService.findEndHX(condition));
+        //查询航空公司列表
+        airlinesDetail.setAirlinesList(airlinesService.findAllAirlines(new AirlineCondition()));
+        //航线列表
+        airlinesDetail.setAirwayList(flightService.findHX(condition));
+        //航空公司信息
+        airlinesDetail.setAirlines(airlinesService.findAirlinesByCode(condition.getAirlinesCode()));
+
+        ResponseResult<AirlinesDetail> responseResult = new ResponseResult<>();
+        responseResult.setData(airlinesDetail);
         return responseResult;
     }
 }
