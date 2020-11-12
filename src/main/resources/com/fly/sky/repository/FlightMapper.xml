@@ -603,10 +603,11 @@
     <select id="findHX"
             parameterType="com.fly.sky.condition.FlightCondition"
             resultType="com.fly.sky.vo.FlightDetail">
-        select distinct airway_name_start_code as airportNameStartCode,
+        select  airway_name_start_code as airportNameStartCode,
         airway_name_end_code as airportNameEndCode,
         airway_name_start as airportNameStart,
-        airway_name_end  as airportNameEnd
+        airway_name_end  as airportNameEnd,
+        round(count(*)/7,0) as flightNumber
         from airway inner join flight on
         airway.airway_name_start_code=flight.airport_name_start_code
         and airway.airway_name_end_code=flight.airport_name_end_code
@@ -623,7 +624,8 @@
         <if test="airportNameStartCode != null  and airportNameStartCode != '' ">
             AND airway.airway_name_start_code = #{airportNameStartCode,jdbcType=VARCHAR}
         </if>
-        order by airway_name_start_code asc
+        group by airway_name_start_code,airway_name_end_code,airway_name_start,airway_name_end
+        order by flightNumber desc
 
     </select>
 
