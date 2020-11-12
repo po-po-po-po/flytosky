@@ -229,10 +229,11 @@ public class FlightController {
         FlightCondition condition1=new FlightCondition();
         //处理时间查询问题
         if(!StringUtils.isEmpty(condition.getFlightDateStart())){
-            String dates[] =condition.getFlightDate().split("-");
+            String dates[] =condition.getFlightDateStart().split("-");
             condition.setFlightDateStart(dates[0]);
             condition.setFlightDateEnd(dates[1]);
-            condition1.setFlightDateStart(condition.getFlightDateStart());
+            condition1.setFlightDateStart(dates[0]);
+            condition1.setFlightDateEnd(dates[1]);
         }
         String logTitle = "=查询航线信息=";
         log.info("{} - 参数：findFlightsForSUIXINFEIHX={}", logTitle, JsonUtil.toJSONString(condition));

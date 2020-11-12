@@ -273,6 +273,8 @@ public class FlightServiceImpl implements FlightService {
         FlightList flightLists=new FlightList();
         //航班信息列表
         List<FlightDetail>  flightList=flightRepository.findHX2HB(condition);
+        //对list进行处理
+        flightList.stream().forEach(f-> f.setFlightRequency(WeekUtil.getWeekName(f.getFlightRequency())));
         flightLists.setFlightList(flightList);
 
         //航空公司信息
