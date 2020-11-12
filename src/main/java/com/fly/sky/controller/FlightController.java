@@ -223,7 +223,7 @@ public class FlightController {
     @ApiOperation(value = "查询航线信息", notes = "查询航线信息")
     public ResponseResult<AirlinesDetail> findFlightsForSUIXINFEIHX(@RequestBody FlightCondition condition){
         //处理不限问题航空公司
-        if(!StringUtils.isEmpty(condition.getAirlinesCode())){
+        if(StringUtils.isEmpty(condition.getAirlinesCode())){
             condition.setAirlinesCode("MU");
         }
         String logTitle = "=查询航线信息=";
