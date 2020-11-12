@@ -554,8 +554,23 @@
             AND airport_name_end_code = #{airportNameEndCode,jdbcType=VARCHAR}
         </if>
 
-        <if test="airlinesCode != null  and airlinesCode != '' ">
-            and  airlines_code = #{airlinesCode,jdbcType=VARCHAR}
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode=='MU'">
+            and  ( flight.airlines_code = 'MU' OR   flight.airlines_code = 'FM')
+        </if>
+
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode=='HU'">
+            and  ( flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN')
+        </if>
+
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode=='HNA'">
+            and  ( flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN' OR   flight.airlines_code = 'UQ'
+            OR   flight.airlines_code = 'Y8' OR   flight.airlines_code = 'GT' OR   flight.airlines_code = '9H'
+            OR   flight.airlines_code = 'FU' OR   flight.airlines_code = 'GX' OR   flight.airlines_code = 'PN'
+            OR   flight.airlines_code = '8L'  OR   flight.airlines_code = 'JD' OR   flight.airlines_code = 'GS')
+        </if>
+
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode!='MU'  and airlinesCode!='HU' and airlinesCode!='HNA'">
+            and   flight.airlines_code = #{airlinesCode,jdbcType=VARCHAR}
         </if>
 
         <if test="flightRequency != null  and flightRequency != '' ">
@@ -612,17 +627,36 @@
         airway.airway_name_start_code=flight.airport_name_start_code
         and airway.airway_name_end_code=flight.airport_name_end_code
         where 1=1
-        <if test="airlinesCode != null  and airlinesCode != '' ">
-            and  flight.airlines_code = #{airlinesCode,jdbcType=VARCHAR}
-        </if>
+
         <if test="flightDateStart != null  and flightDateStart != '' ">
             AND SUBSTR( flight.flight_date,1 , 5 )>= #{flightDateStart,jdbcType=VARCHAR}
+        </if>
+        <if test="flightDateEnd != null  and flightDateEnd != '' ">
+            AND #{flightDateEnd,jdbcType=VARCHAR}>=SUBSTR( flight_date, 1, 5)
         </if>
         <if test="airportNameEndCode != null  and airportNameEndCode != '' ">
             AND airway.airway_name_end_code = #{airportNameEndCode,jdbcType=VARCHAR}
         </if>
         <if test="airportNameStartCode != null  and airportNameStartCode != '' ">
             AND airway.airway_name_start_code = #{airportNameStartCode,jdbcType=VARCHAR}
+        </if>
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode=='MU'">
+            and  ( flight.airlines_code = 'MU' OR   flight.airlines_code = 'FM')
+        </if>
+
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode=='HU'">
+            and  ( flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN')
+        </if>
+
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode=='HNA'">
+            and  ( flight.airlines_code = 'HU' OR   flight.airlines_code = 'CN' OR   flight.airlines_code = 'UQ'
+            OR   flight.airlines_code = 'Y8' OR   flight.airlines_code = 'GT' OR   flight.airlines_code = '9H'
+            OR   flight.airlines_code = 'FU' OR   flight.airlines_code = 'GX' OR   flight.airlines_code = 'PN'
+            OR   flight.airlines_code = '8L'  OR   flight.airlines_code = 'JD' OR   flight.airlines_code = 'GS')
+        </if>
+
+        <if test="airlinesCode != null  and airlinesCode != '' and airlinesCode!='MU'  and airlinesCode!='HU' and airlinesCode!='HNA'">
+            and   flight.airlines_code = #{airlinesCode,jdbcType=VARCHAR}
         </if>
         group by airway_name_start_code,airway_name_end_code,airway_name_start,airway_name_end
         order by flightNumber desc
