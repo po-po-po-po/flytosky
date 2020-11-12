@@ -230,6 +230,11 @@ public class FlightController {
         log.info("{} - 参数：findFlightsForSUIXINFEIHX={}", logTitle, JsonUtil.toJSONString(condition));
         AirlinesDetail airlinesDetail=new AirlinesDetail();
 
+        //如果出发机场和到达机场都是空 那就指定一个
+        if(StringUtils.isEmpty(condition.getAirportNameStartCode())&& StringUtils.isEmpty(condition.getAirportNameEndCode())){
+            condition.setAirportNameStartCode("SHA");
+        }
+
         //查询航司的出发机场列表
         airlinesDetail.setAirportStartList(flightService.findStartHX(condition));
         //查询航司的到达机场列表
