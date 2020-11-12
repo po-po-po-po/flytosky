@@ -226,6 +226,14 @@ public class FlightController {
         if(StringUtils.isEmpty(condition.getAirlinesCode())){
             condition.setAirlinesCode("MU");
         }
+        FlightCondition condition1=new FlightCondition();
+        //处理时间查询问题
+        if(!StringUtils.isEmpty(condition.getFlightDateStart())){
+            String dates[] =condition.getFlightDate().split("-");
+            condition.setFlightDateStart(dates[0]);
+            condition.setFlightDateEnd(dates[1]);
+            condition1.setFlightDateStart(condition.getFlightDateStart());
+        }
         String logTitle = "=查询航线信息=";
         log.info("{} - 参数：findFlightsForSUIXINFEIHX={}", logTitle, JsonUtil.toJSONString(condition));
         AirlinesDetail airlinesDetail=new AirlinesDetail();
@@ -247,7 +255,8 @@ public class FlightController {
         airlinesDetail.setAirwayList(flightService.findHX(condition));
         //航空公司信息
         airlinesDetail.setAirlines(airlinesService.findAirlinesByCode(condition.getAirlinesCode()));
-
+        //查询条件
+        airlinesDetail.setFlightCondition(condition1);
         ResponseResult<AirlinesDetail> responseResult = new ResponseResult<>();
         responseResult.setData(airlinesDetail);
         return responseResult;
@@ -262,6 +271,7 @@ public class FlightController {
         String logTitle = "=查询航线TO航班列表=";
         log.info("{} - 参数：查询航线TO航班列表={}", logTitle, JsonUtil.toJSONString(condition));
         ResponseResult<FlightList> responseResult = new ResponseResult<>();
+
         responseResult.setData(flightService.findHX2HB(condition));
         return responseResult;
     }

@@ -707,8 +707,11 @@
             and   flight.airlines_code = #{airlinesCode,jdbcType=VARCHAR}
         </if>
 
-        <if test="flightRequency != null  and flightRequency != '' ">
-            and  flight_frequency = #{flightRequency,jdbcType=VARCHAR}
+        <if test="flightDateStart != null  and flightDateStart != '' ">
+            AND SUBSTR( flight.flight_date,1 , 5 )>= #{flightDateStart,jdbcType=VARCHAR}
+        </if>
+        <if test="flightDateEnd != null  and flightDateEnd != '' ">
+            AND #{flightDateEnd,jdbcType=VARCHAR}>=SUBSTR( flight_date, 1, 5)
         </if>
 
         order by flight.flight_frequency asc,flight_date asc
