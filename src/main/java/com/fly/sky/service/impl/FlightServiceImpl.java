@@ -285,6 +285,9 @@ public class FlightServiceImpl implements FlightService {
         airway.setAirwayNameEndCode(condition.getAirportNameEndCode());
         airway.setAirwayNameEnd(airportRepository.findAirportByCode(condition.getAirportNameEndCode()).getAirportAbbreviate());
         airway.setAirwayNameStartCode(condition.getAirportNameStartCode());
+        flightLists.setAirway(airway);
+
+
         return flightLists;
     }
 

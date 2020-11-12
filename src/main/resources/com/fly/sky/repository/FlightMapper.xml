@@ -711,7 +711,7 @@
             and  flight_frequency = #{flightRequency,jdbcType=VARCHAR}
         </if>
 
-        order by flight.flight_frequency asc
+        order by flight.flight_frequency asc,flight_date asc
 
 
     </select>
