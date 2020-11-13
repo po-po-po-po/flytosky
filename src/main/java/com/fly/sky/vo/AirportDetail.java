@@ -23,4 +23,6 @@ public class AirportDetail {
     Airport airport;
     @ApiModelProperty("可飞往的目的地机场")
     PagedList<Airport> airportsList;
+    @ApiModelProperty("可飞往的目的地机场")
+    List<FlightDetail> flightDetailList;
 }

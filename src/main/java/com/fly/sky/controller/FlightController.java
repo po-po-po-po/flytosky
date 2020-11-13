@@ -14,6 +14,7 @@ import com.fly.sky.util.PagedList;
 import com.fly.sky.util.ResponseResult;
 import com.fly.sky.util.WeekUtil;
 import com.fly.sky.vo.AirlinesDetail;
+import com.fly.sky.vo.AirportDetail;
 import com.fly.sky.vo.FlightDetail;
 import com.fly.sky.vo.FlightList;
 import io.swagger.annotations.Api;
@@ -280,6 +281,17 @@ public class FlightController {
         }
 
         responseResult.setData(flightService.findHX2HB(condition));
+        return responseResult;
+    }
+
+
+    @PostMapping("findAIRPORTSHB")
+    @ApiOperation(value = "查询机场航班列表", notes = "查询机场航班列表")
+    public ResponseResult<AirportDetail> findAIRPORTSHB(@RequestBody FlightCondition condition){
+        String logTitle = "=查询机场航班列表=";
+        log.info("{} - 参数：findAIRPORTSHB={}", logTitle, JsonUtil.toJSONString(condition));
+        ResponseResult<AirportDetail> responseResult = new ResponseResult<>();
+        responseResult.setData(flightService.findAIRPORTSHB(condition));
         return responseResult;
     }
 }

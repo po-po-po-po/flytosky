@@ -720,4 +720,39 @@
     </select>
 
 
+
+
+
+
+    <select id="findAIRPORTSHB"
+            parameterType="com.fly.sky.condition.FlightCondition"
+            resultType="com.fly.sky.vo.FlightDetail">
+        select id as id,flight_no as flightNo , flight_name_start as flightNameStart ,airlines_code as airlinesCode,
+        flight_frequency as flightRequency,flight_name_end as flightNameEnd,flight_date as flightDate,
+        airport_name_start_code as airportNameStartCode,
+        airport_name_end_code as airportNameEndCode,
+        airport_name_start as airportNameStart,
+        airport_name_end as airportNameEnd
+        from flight WHERE 1=1 and status=0
+        <if test="id != null">
+            and  id = #{id,jdbcType=BIGINT}
+        </if>
+
+        <if test="airportNameStartCode != null  and airportNameStartCode != '' ">
+            AND airport_name_start_code = #{airportNameStartCode,jdbcType=VARCHAR}
+        </if>
+
+        <if test="airportNameEndCode != null  and airportNameEndCode != '' ">
+            AND airport_name_end_code = #{airportNameEndCode,jdbcType=VARCHAR}
+        </if>
+        <if test="flightRequency != null  and flightRequency != '' ">
+            AND flight_frequency = #{flightRequency,jdbcType=VARCHAR}
+        </if>
+        order by flight.flight_date asc
+
+    </select>
+
+
+
+
 </mapper>

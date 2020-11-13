@@ -15,6 +15,7 @@ import com.fly.sky.repository.FlightRepository;
 import com.fly.sky.service.FlightService;
 import com.fly.sky.util.PagedList;
 import com.fly.sky.util.WeekUtil;
+import com.fly.sky.vo.AirportDetail;
 import com.fly.sky.vo.FlightDetail;
 import com.fly.sky.vo.FlightList;
 import com.github.pagehelper.PageHelper;
@@ -291,6 +292,23 @@ public class FlightServiceImpl implements FlightService {
 
 
         return flightLists;
+    }
+
+
+    @Override
+    public AirportDetail findAIRPORTSHB(FlightCondition condition) {
+        AirportDetail airportDetail=new AirportDetail();
+        //机场航班信息列表
+        List<FlightDetail>  flightList=flightRepository.findHX2HB(condition);
+        //对list进行处理
+        flightList.stream().forEach(f-> f.setFlightRequency(WeekUtil.getWeekName(f.getFlightRequency())));
+        airportDetail.setFlightDetailList(flightList);
+
+        //机场信息
+        Airport airport=airportRepository.findAirportByCode(condition.getAirportNameStartCode());
+        airportDetail.setAirport(airport);
+
+        return airportDetail;
     }
 
 }
