@@ -25,4 +25,6 @@ public class Fly {
     private String flyIcon;
     @ApiModelProperty("随心飞图标")
     private Integer sort;
+    @ApiModelProperty("随心飞跳转url")
+    private String url;
 }
