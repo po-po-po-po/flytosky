@@ -19,7 +19,7 @@
         fly_name as flyName,fly_icon as flyIcon,sort,status,url
          from fly WHERE 1=1 and status=0
         <if test="id != null">
-            and  id = #{id,jdbcType=BIGINT}
+            and  id = #{id,jdbcType=BIGINTupdate airport_code set status=0}
         </if>
 
         order by sort asc

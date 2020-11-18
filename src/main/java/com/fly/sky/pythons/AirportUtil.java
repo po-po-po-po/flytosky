@@ -166,4 +166,18 @@ public class AirportUtil {
     }
 
 
+
+    @Test
+    @Rollback(false)
+    public  void  scrableCode2222 () {
+        //获取机场列表
+        List<Airport> airportsList1=airportRepository.findAirportsByCondition(new AirportCondition());
+        for (Airport airport : airportsList1) {
+            System.out.println(airport.getAirportCode()+"|"+airport.getAirportName());
+        }
+
+    }
+
+
+
 }
