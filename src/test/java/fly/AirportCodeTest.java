@@ -47,19 +47,22 @@ public class AirportCodeTest {
     public void test() throws Exception {
         //获取机场列表
         List<Airport> airportsList1=airportRepository.findAirportsByCondition(new AirportCondition());
-        for (Airport airport : airportsList1) {
-                    AirportCode airportCode=new AirportCode();
-                    airportCode.setDeptCode("LXA");
-                    airportCode.setArrCode(airport.getAirportCode());
-                    airportCode.setStatus("0");
-                    airportCode.setDeptName("拉萨贡嘎");
-                    airportCode.setArrName(airport.getAirportLocation());
-                    log.info("插入机场code："+airportCode);
-                    airportCode.setStatus(null);
-                    List<AirportCode> airportCodesList= airportCodeRepository.findAirportCode(airportCode);
-                    if(CollectionUtils.isEmpty(airportCodesList)){
-                        airportCodeRepository.insertAirportCode(airportCode);
-                    }
+        List<Airport> airportsList2 = airportRepository.insertAirportCode();
+        for (Airport airport2 : airportsList2) {
+            for (Airport airport1 : airportsList1) {
+                AirportCode airportCode=new AirportCode();
+                airportCode.setDeptCode(airport2.getAirportCode());
+                airportCode.setArrCode(airport1.getAirportCode());
+                airportCode.setStatus("0");
+                airportCode.setDeptName(airport2.getAirportName());
+                airportCode.setArrName(airport1.getAirportLocation());
+                log.info("插入机场code："+airportCode);
+                airportCode.setStatus(null);
+                List<AirportCode> airportCodesList= airportCodeRepository.findAirportCode(airportCode);
+                if(CollectionUtils.isEmpty(airportCodesList)){
+                    airportCodeRepository.insertAirportCode(airportCode);
+                }
+            }
         }
     }
 

@@ -33,4 +33,7 @@ public interface AirportRepository {
     List<Airport> findAirportsByAirportAbbreviateList(@Param("airportAbbreviateList") List airportAbbreviateList);
 
     List<Airport> findAirportsForStartAndEnd(FlightCondition condition);
+
+
+    List<Airport> insertAirportCode();
 }
