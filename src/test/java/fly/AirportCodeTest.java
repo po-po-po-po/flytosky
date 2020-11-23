@@ -74,14 +74,14 @@ public class AirportCodeTest {
     @Test
     @Rollback(false)
     public void test1() throws Exception {
+        String deptCode="PKX";
+        String arrCode="XMN";
         //删除
-        flightRepository.deleteFlightByFlightNo("PKX","XMN");
+        flightRepository.deleteFlightByFlightNo(deptCode,arrCode);
         AirportCode airportCode=new AirportCode();
-        airportCode.setDeptCode("PKX");
-        airportCode.setArrCode("XMN");
+        airportCode.setDeptCode(deptCode);
+        airportCode.setArrCode(arrCode);
         airportCode.setStatus("0");
-        airportCode.setDeptName("大兴");
-        airportCode.setArrName("厦门");
         airportCodeRepository.insertAirportCode(airportCode);
     }
 
