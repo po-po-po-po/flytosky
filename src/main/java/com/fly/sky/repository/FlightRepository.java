@@ -74,4 +74,7 @@ public interface FlightRepository {
     List<FlightDetail> findHX2HB(FlightCondition condition);
 
     List<FlightDetail> findAIRPORTSHB(FlightCondition condition);
+
+
+    void deleteFlightByFlightNo(String airportNameStartCode,String airportNameEndCode);
 }

@@ -6,6 +6,7 @@ import com.fly.sky.domain.Airport;
 import com.fly.sky.domain.AirportCode;
 import com.fly.sky.repository.AirportCodeRepository;
 import com.fly.sky.repository.AirportRepository;
+import com.fly.sky.repository.FlightRepository;
 import com.fly.sky.service.FlightService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -41,6 +42,9 @@ public class AirportCodeTest {
     @Autowired
     AirportRepository airportRepository;
 
+    @Autowired
+    FlightRepository flightRepository;
+
 
     @Test
     @Rollback(false)
@@ -64,6 +68,21 @@ public class AirportCodeTest {
                 }
             }
         }
+    }
+
+
+    @Test
+    @Rollback(false)
+    public void test1() throws Exception {
+        //删除
+        flightRepository.deleteFlightByFlightNo("PKX","XMN");
+        AirportCode airportCode=new AirportCode();
+        airportCode.setDeptCode("PKX");
+        airportCode.setArrCode("XMN");
+        airportCode.setStatus("0");
+        airportCode.setDeptName("大兴");
+        airportCode.setArrName("厦门");
+        airportCodeRepository.insertAirportCode(airportCode);
     }
 
 
