@@ -222,13 +222,20 @@
         select flight.id as id,flight.flight_no as flightNo , flight.flight_name_start as flightNameStart ,
         flight.airlines_code as airlinesCode,flight.airway_id as airwayId,flight.flight_frequency as flightRequency,
         flight.flight_name_end as flightNameEnd,flight.flight_date as flightDate,airlines.airlines_name AS airlinesName,
-        flight.flight_remark as flightRemark,airlines.airlines_img as airlinesImg,airlines.airlines_abbreviate as airlinesAbbreviate  from flight left join
+        flight.flight_remark as flightRemark,airlines.airlines_img as airlinesImg,airlines.airlines_abbreviate as airlinesAbbreviate,
+        flight.airport_name_start_code as airportNameStartCode,flight.airport_name_end_code as airportNameEndCode
+         from flight left join
         airlines on flight.airlines_code=airlines.airlines_code WHERE 1=1 and flight.status=0
         <if test="id != null">
             and  flight.id = #{id,jdbcType=BIGINT}
         </if>
 
-
+        <if test="airportNameEndCode != null  and airportNameEndCode != '' ">
+            AND airport_name_end_code = #{airportNameEndCode,jdbcType=VARCHAR}
+        </if>
+        <if test="airportNameStartCode != null  and airportNameStartCode != '' ">
+            AND airport_name_start_code = #{airportNameStartCode,jdbcType=VARCHAR}
+        </if>
         <if test="airportNameEnd != null  and airportNameEnd != '' ">
             AND airport_name_end = #{airportNameEnd,jdbcType=VARCHAR}
         </if>
