@@ -726,6 +726,10 @@
             AND #{flightDateEnd,jdbcType=VARCHAR}>=SUBSTR( flight_date, 1, 5)
         </if>
 
+        <if test="flightRequency != null  and flightRequency != '' ">
+            AND flight_frequency = #{flightRequency,jdbcType=VARCHAR}
+        </if>
+
         order by flight.flight_frequency asc,flight_date asc
 
 

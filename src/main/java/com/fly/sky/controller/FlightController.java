@@ -279,6 +279,9 @@ public class FlightController {
         if("null".equals(condition.getFlightDateEnd())){
             condition.setFlightDateEnd("");
         }
+        if(!StringUtils.isEmpty(condition.getFlightRequency())&&"0".equals(condition.getFlightRequency())){
+            condition.setFlightRequency("");
+        }
 
         responseResult.setData(flightService.findHX2HB(condition));
         return responseResult;
