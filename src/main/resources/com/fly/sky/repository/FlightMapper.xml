@@ -770,6 +770,14 @@
 
 
 
+    <delete id="deleteFlightByCode" >
+    delete  from  Flight
+    where airport_name_start_code=#{airportNameStartCode}
+    and airport_name_end_code=#{airportNameEndCode}
+  </delete>
+
+
+
 
 
     <delete id="deleteFlightByCode" >
