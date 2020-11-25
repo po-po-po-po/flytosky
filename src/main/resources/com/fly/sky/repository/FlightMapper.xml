@@ -774,6 +774,7 @@
     delete  from  flight
     where airport_name_start_code=#{airportNameStartCode}
     and airport_name_end_code=#{airportNameEndCode}
+    and flight_frequency=#{flightFrequency}
   </delete>
 
 

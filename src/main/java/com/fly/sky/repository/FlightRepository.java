@@ -76,5 +76,5 @@ public interface FlightRepository {
     List<FlightDetail> findAIRPORTSHB(FlightCondition condition);
 
 
-    void deleteFlightByCode(String airportNameStartCode,String airportNameEndCode);
+    void deleteFlightByCode(String airportNameStartCode,String airportNameEndCode,String flightFrequency);
 }
