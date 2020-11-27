@@ -74,10 +74,10 @@ public class AirportCodeTest {
     @Test
     @Rollback(false)
     public void test1() throws Exception {
-        String deptCode="PKX";
-        String arrCode="XMN";
+        String deptCode="";
+        String arrCode="PKX";
         //删除
-        flightRepository.deleteFlightByCode(deptCode,arrCode,"7");
+        flightRepository.deleteFlightByCode(deptCode,arrCode,"6");
         AirportCode airportCode=new AirportCode();
         airportCode.setDeptCode(deptCode);
         airportCode.setArrCode(arrCode);
@@ -86,7 +86,22 @@ public class AirportCodeTest {
     }
 
 
-
+    @Test
+    @Rollback(false)
+    public void test3() throws Exception {
+        //获取机场列表
+        List<Airport> airportsList=airportRepository.findAirportsByCondition(new AirportCondition());
+        for (Airport airport : airportsList) {
+                AirportCode airportCode=new AirportCode();
+                airportCode.setDeptCode(airport.getAirportCode());
+                airportCode.setArrCode("PKX");
+                airportCode.setStatus("0");
+                airportCode.setDeptName(airport.getAirportName());
+                airportCode.setArrName("大兴");
+                log.info("插入机场code："+airportCode);
+                airportCodeRepository.insertAirportCode(airportCode);
+        }
+    }
 
 
 }

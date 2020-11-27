@@ -94,8 +94,8 @@ public class AirportUtil {
             AirportCode airportCode=new AirportCode();
             airportCode.setDeptCode(code.getDeptCode());
             airportCode.setDeptName(code.getDeptName());
-            airportCode.setArrCode("she");
-            airportCode.setArrName("沈阳");
+            airportCode.setArrCode("PKX");
+            airportCode.setArrName("大兴");
             airportCodeRepository.insertAirportCode(airportCode);
         }
         //flightList
