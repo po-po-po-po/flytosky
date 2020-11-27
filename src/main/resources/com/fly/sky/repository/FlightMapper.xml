@@ -772,8 +772,15 @@
 
     <delete id="deleteFlightByCode" >
     delete  from  flight
-    where airport_name_start_code=#{airportNameStartCode}
-    and airport_name_end_code=#{airportNameEndCode}
+    where 1=1
+        <if test="airportNameStartCode != null  and airportNameStartCode != '' ">
+            AND airport_name_start_code=#{airportNameStartCode}
+        </if>
+
+        <if test="airportNameEndCode != null  and airportNameEndCode != '' ">
+            and airport_name_end_code=#{airportNameEndCode}
+        </if>
+
     and flight_frequency=#{flightFrequency}
   </delete>
 
