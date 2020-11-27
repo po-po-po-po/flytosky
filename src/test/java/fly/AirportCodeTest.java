@@ -104,4 +104,21 @@ public class AirportCodeTest {
     }
 
 
+    @Test
+    @Rollback(false)
+    public void test4() throws Exception {
+        //获取机场列表
+        List<Airport> airportsList=airportRepository.findAirportsByCondition(new AirportCondition());
+        for (Airport airport : airportsList) {
+            AirportCode airportCode=new AirportCode();
+            airportCode.setDeptCode("PKX");
+            airportCode.setArrCode(airport.getAirportCode());
+            airportCode.setStatus("0");
+            airportCode.setDeptName("大兴");
+            airportCode.setArrName(airport.getAirportName());
+            log.info("插入机场code："+airportCode);
+            airportCodeRepository.insertAirportCode(airportCode);
+        }
+    }
+
 }
