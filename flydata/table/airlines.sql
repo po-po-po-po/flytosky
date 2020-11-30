@@ -4,13 +4,13 @@ Navicat MySQL Data Transfer
 Source Server         : po
 Source Server Version : 50649
 Source Host           : 49.232.228.221:3306
-Source Database       : fly
+Source Database       : fly1
 
 Target Server Type    : MYSQL
 Target Server Version : 50649
 File Encoding         : 65001
 
-Date: 2020-09-17 15:06:41
+Date: 2020-11-30 14:08:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,25 +29,26 @@ CREATE TABLE `airlines` (
   `airlines_abbreviate` varchar(255) DEFAULT NULL,
   `airlines_rank` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of airlines
 -- ----------------------------
-INSERT INTO `airlines` VALUES ('1', '中国联合航空', 'KN', '../airlinesflights/airlinesflights?airline_id=kn', 'https://www.potucs.com/wechat/airline/kn.png', '', '中国联航', null);
-INSERT INTO `airlines` VALUES ('2', '中国南方航空|重庆航空', 'CZ', '../airlinesflights/airlinesflights?airline_id=cz', 'https://www.potucs.com/wechat/airline/cz.png', '', '南方航空', null);
-INSERT INTO `airlines` VALUES ('3', '厦门航空', 'MF', '../airlinesflights/airlinesflights?airline_id=mf', 'https://www.potucs.com/wechat/airline/mf.png', '', '厦门航空', null);
-INSERT INTO `airlines` VALUES ('4', '中国东方航空|上海航空', 'MU', '../airlinesflights/airlinesflights?airline_id=mu', 'https://www.potucs.com/wechat/airline/mu.png', '', '东方航空', null);
-INSERT INTO `airlines` VALUES ('5', '中国国际航空', 'CA', '../airlinesflights/airlinesflights?airline_id=ca', 'https://www.potucs.com/wechat/airline/ca.png', '', '中国国航', null);
-INSERT INTO `airlines` VALUES ('6', '海南航空|大新华航空', 'HU', '../airlinesflights/airlinesflights?airline_id=hu', 'https://www.potucs.com/wechat/airline/hu.png', '', '海南航空', null);
+INSERT INTO `airlines` VALUES ('0', '海航集团', 'HNA', '../airlinesflights/airlinesflights?airline_id=HNA', 'https://www.potucs.com/wechat/airline/pangxie.png', '', '海航集团', null);
+INSERT INTO `airlines` VALUES ('1', '南方航空', 'CZ', '../airlinesflights/airlinesflights?airline_id=cz', 'https://www.potucs.com/wechat/airline/cz.png', '', '南方航空', null);
+INSERT INTO `airlines` VALUES ('2', '东方航空', 'MU', '../airlinesflights/airlinesflights?airline_id=mu', 'https://www.potucs.com/wechat/airline/mu.png', '', '东方航空', null);
+INSERT INTO `airlines` VALUES ('3', '四川航空', '3U', '../airlinesflights/airlinesflights?airline_id=3u', 'https://www.potucs.com/wechat/airline/3u.png', '', '四川航空', null);
+INSERT INTO `airlines` VALUES ('4', '中国国航', 'CA', '../airlinesflights/airlinesflights?airline_id=ca', 'https://www.potucs.com/wechat/airline/ca.png', '', '中国国航', null);
+INSERT INTO `airlines` VALUES ('5', '厦门航空', 'MF', '../airlinesflights/airlinesflights?airline_id=mf', 'https://www.potucs.com/wechat/airline/mf.png', '', '厦门航空', null);
+INSERT INTO `airlines` VALUES ('6', '海南航空', 'HU', '../airlinesflights/airlinesflights?airline_id=hu', 'https://www.potucs.com/wechat/airline/hu.png', '', '海南航空', null);
 INSERT INTO `airlines` VALUES ('7', '首都航空', 'JD', '../airlinesflights/airlinesflights?airline_id=jd', 'https://www.potucs.com/wechat/airline/jd.png', '', '首都航空', null);
 INSERT INTO `airlines` VALUES ('8', '上海航空', 'FM', '../airlinesflights/airlinesflights?airline_id=fm', 'https://www.potucs.com/wechat/airline/fm.png', '', '上海航空', null);
-INSERT INTO `airlines` VALUES ('9', '浙江长龙航空', 'GJ', '../airlinesflights/airlinesflights?airline_id=gj', 'https://www.potucs.com/wechat/airline/gj.png', '', '长龙航空', null);
+INSERT INTO `airlines` VALUES ('9', '长龙航空', 'GJ', '../airlinesflights/airlinesflights?airline_id=gj', 'https://www.potucs.com/wechat/airline/gj.png', '', '长龙航空', null);
 INSERT INTO `airlines` VALUES ('10', '深圳航空', 'ZH', '../airlinesflights/airlinesflights?airline_id=zh', 'https://www.potucs.com/wechat/airline/zh.png', '', '深圳航空', null);
 INSERT INTO `airlines` VALUES ('11', '河北航空', 'NS', '../airlinesflights/airlinesflights?airline_id=ns', 'https://www.potucs.com/wechat/airline/ns.png', '', '河北航空', null);
 INSERT INTO `airlines` VALUES ('12', '吉祥航空', 'HO', '../airlinesflights/airlinesflights?airline_id=ho', 'https://www.potucs.com/wechat/airline/ho.png', '', '吉祥航空', null);
 INSERT INTO `airlines` VALUES ('13', '春秋航空', '9C', '../airlinesflights/airlinesflights?airline_id=9c', 'https://www.potucs.com/wechat/airline/9c.png', '', '春秋航空', null);
-INSERT INTO `airlines` VALUES ('14', '四川航空', '3U', '../airlinesflights/airlinesflights?airline_id=3u', 'https://www.potucs.com/wechat/airline/3u.png', '', '四川航空', null);
+INSERT INTO `airlines` VALUES ('14', '中国联航', 'KN', '../airlinesflights/airlinesflights?airline_id=kn', 'https://www.potucs.com/wechat/airline/kn.png', '', '中国联航', null);
 INSERT INTO `airlines` VALUES ('15', '成都航空', 'EU', '../airlinesflights/airlinesflights?airline_id=eu', 'https://www.potucs.com/wechat/airline/eu.png', '', '成都航空', null);
 INSERT INTO `airlines` VALUES ('16', '西藏航空', 'TV', '../airlinesflights/airlinesflights?airline_id=tv', 'https://www.potucs.com/wechat/airline/tv.png', '', '西藏航空', null);
 INSERT INTO `airlines` VALUES ('17', '天津航空', 'GS', '../airlinesflights/airlinesflights?airline_id=gs', 'https://www.potucs.com/wechat/airline/gs.png', '', '天津航空', null);
@@ -71,5 +72,6 @@ INSERT INTO `airlines` VALUES ('34', '幸福航空', 'JR', '../airlinesflights/a
 INSERT INTO `airlines` VALUES ('35', '乌鲁木齐航空', 'UQ', '../airlinesflights/airlinesflights?airline_id=uq', 'https://www.potucs.com/wechat/airline/uq.png', '', '乌鲁木齐航空', null);
 INSERT INTO `airlines` VALUES ('36', '江西航空', 'RY', '../airlinesflights/airlinesflights?airline_id=ry', 'https://www.potucs.com/wechat/airline/ry.png', '', '江西航空', null);
 INSERT INTO `airlines` VALUES ('37', '多彩贵州航空', 'GY', '../airlinesflights/airlinesflights?airline_id=gy', 'https://www.potucs.com/wechat/airline/muyou.png', '', '多彩贵州航空', null);
-INSERT INTO `airlines` VALUES ('38', '广西北部湾航空', 'GX', '../airlinesflights/airlinesflights?airline_id=gx', 'https://www.potucs.com/wechat/airline/gx.png', '', '北部湾航空', null);
+INSERT INTO `airlines` VALUES ('38', '北部湾航空', 'GX', '../airlinesflights/airlinesflights?airline_id=gx', 'https://www.potucs.com/wechat/airline/gx.png', '', '北部湾航空', null);
 INSERT INTO `airlines` VALUES ('39', '长安航空', '9H', '../airlinesflights/airlinesflights?airline_id=9h', 'https://www.potucs.com/wechat/airline/9h.png', '', '长安航空', null);
+INSERT INTO `airlines` VALUES ('40', '天骄航空', '9D', '../airlinesflights/airlinesflights?airline_id=9d', 'https://www.potucs.com/wechat/airline/muyou.png', null, '天骄航空', null);
