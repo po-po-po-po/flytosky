@@ -74,10 +74,10 @@ public class AirportCodeTest {
     @Test
     @Rollback(false)
     public void test1() throws Exception {
-        String deptCode="XIY";
-        String arrCode="";
+        String deptCode="";
+        String arrCode="PKX";
         //删除
-        flightRepository.deleteFlightByCode(deptCode,arrCode,"6");
+        flightRepository.deleteFlightByCode(deptCode,arrCode,"5");
         AirportCode airportCode=new AirportCode();
         airportCode.setDeptCode(deptCode);
         airportCode.setArrCode(arrCode);
