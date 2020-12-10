@@ -724,8 +724,11 @@ select distinct flight.flight_no,flight.airport_name_end,flight.airlines_code fr
         airport_name_end as airportNameEnd
         from flight WHERE 1=1 and status=0
         and  ( flight.airlines_code = 'MU' OR   flight.airlines_code = 'FM')
-        and  ( flight_frequency = '1' OR flight_frequency = '2' OR flight_frequency = '3' OR
-         flight_frequency = '4' OR flight_frequency = '5'  )
+
+        <if test="flightRequency != null  and flightRequency != '' ">
+            and  flight_frequency = #{flightRequency,jdbcType=VARCHAR}
+        </if>
+
         AND( SUBSTR( flight.flight_date,1 , 5 )>= '20:00'
         or
         '08:00'>=SUBSTR( flight.flight_date, 1, 5)
