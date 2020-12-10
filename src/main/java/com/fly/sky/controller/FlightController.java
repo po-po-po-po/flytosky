@@ -325,7 +325,7 @@ public class FlightController {
     @ApiOperation(value = "查询早晚随心飞航班列表", notes = "查询早晚随心飞航班列表")
     public ResponseResult<PagedList<Flight>> findFlightsForSUIXINFEIZW(@RequestBody FlightCondition condition){
         //处理航班周期问题
-        if(StringUtils.isEmpty(condition.getFlightRequency())){
+        if(StringUtils.isEmpty(condition.getFlightRequency())||"7".equals(condition.getFlightRequency())){
             condition.setFlightRequency( WeekUtil.getWeekCode("1"));
         }
         //处理不限问题航空公司
