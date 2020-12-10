@@ -398,7 +398,7 @@ public class FlightServiceImpl implements FlightService {
             condition.setAirportNameEnd(condition.getFlightNameEnd().replace("机场",""));
         }
         //查询航司能飞往的出发机场列表
-        List<Airport> airportStartList=flightRepository.findFlights67GroupByFlightNameStartByAirlinesCode();
+        List<Airport> airportStartList=flightRepository.findFlights820GroupByFlightNameStartByAirlinesCode();
         //如果出发机场和到达机场都是空 那就指定一个
         if(StringUtils.isEmpty(condition.getFlightNameStart())&&StringUtils.isEmpty(condition.getFlightNameEnd())){
             if(null!=airportStartList.get(0)){
