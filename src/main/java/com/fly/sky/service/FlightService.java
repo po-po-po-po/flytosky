@@ -38,6 +38,7 @@ public interface FlightService {
 
 
     PagedList<Flight> findFlightsForSUIXINFEI(FlightCondition condition);
+    PagedList<Flight> findFlightsForSUIXINFEIZW(FlightCondition condition);
     //出发机场  到达机场
     List<Airport> findStartHX(FlightCondition condition);
     List<Airport> findEndHX(FlightCondition condition);

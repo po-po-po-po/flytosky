@@ -319,4 +319,23 @@ public class FlightController {
         responseResult.setData(flightService.findFlights820(condition));
         return responseResult;
     }
+
+
+    @PostMapping("findFlightsForSUIXINFEIZW")
+    @ApiOperation(value = "查询早晚随心飞航班列表", notes = "查询早晚随心飞航班列表")
+    public ResponseResult<PagedList<Flight>> findFlightsForSUIXINFEIZW(@RequestBody FlightCondition condition){
+        //处理航班周期问题
+        if(!StringUtils.isEmpty(condition.getFlightRequency())&&condition.getFlightRequency().contains("周")){
+            condition.setFlightRequency( WeekUtil.getWeekCode(condition.getFlightRequency()));
+        }
+        //处理不限问题航空公司
+        if(!StringUtils.isEmpty(condition.getAirlinesCode())&&"1".equals(condition.getAirlinesCode())){
+            condition.setAirlinesCode("");
+        }
+        String logTitle = "=查询早晚随心飞航班列表=";
+        log.info("{} - 参数：findFlightsForSUIXINFEIZW={}", logTitle, JsonUtil.toJSONString(condition));
+        ResponseResult<PagedList<Flight>> responseResult = new ResponseResult<>();
+        responseResult.setData(flightService.findFlightsForSUIXINFEIZW(condition));
+        return responseResult;
+    }
 }

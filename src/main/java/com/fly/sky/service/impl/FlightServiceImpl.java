@@ -72,6 +72,20 @@ public class FlightServiceImpl implements FlightService {
         return listPagedList;
     }
 
+    public PagedList<Flight> findFlightsForSUIXINFEIZW(FlightCondition condition) {
+        PagedList<Flight> listPagedList = new PagedList<Flight>();
+        PageHelper.startPage(condition.getPageNo(), condition.getPageSize());
+        List<Flight>  flightList=flightRepository.findFlightsForSUIXINFEIZW(condition);
+        //对list进行处理
+        flightList.stream().forEach(f-> f.setFlightRequency(WeekUtil.getWeekName(f.getFlightRequency())));
+        PageInfo pageInfo = new PageInfo(flightList);
+        listPagedList.setPageNo(condition.getPageNo());
+        listPagedList.setPageSize(condition.getPageSize());
+        listPagedList.setData(flightList);
+        listPagedList.setTotalRows(pageInfo.getTotal());
+        return listPagedList;
+    }
+
     @Override
     public List<Airport> findStartHX(FlightCondition condition) {
         return flightRepository.findStartHX(condition);
