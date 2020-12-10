@@ -51,4 +51,6 @@ public interface FlightService {
     AirportDetail findAIRPORTSHB(FlightCondition condition);
 
     AirlinesDetail findFlights67(FlightCondition condition);
+
+    AirlinesDetail findFlights820(FlightCondition condition);
 }

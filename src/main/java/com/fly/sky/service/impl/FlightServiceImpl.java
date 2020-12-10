@@ -370,4 +370,67 @@ public class FlightServiceImpl implements FlightService {
         return detail;
     }
 
+
+
+
+
+    public AirlinesDetail findFlights820(FlightCondition condition){
+
+        if(StringUtils.isNotEmpty(condition.getFlightRequency())){
+            condition.setSortId(Integer.parseInt(condition.getFlightRequency()));
+        }
+
+        if("不限".equals(condition.getFlightNameStart())){
+            condition.setFlightNameStart("");
+        }
+        if("不限".equals(condition.getFlightNameEnd())){
+            condition.setFlightNameEnd("");
+        }
+        if("1".equals(condition.getAirlinesCode())){
+            condition.setAirlinesCode("");
+        }
+        AirlinesDetail detail=new AirlinesDetail();
+        //机场处理
+        if(StringUtils.isNotEmpty(condition.getFlightNameStart())){
+            condition.setAirportNameStart(condition.getFlightNameStart().replace("机场",""));
+        }
+        if(StringUtils.isNotEmpty(condition.getFlightNameEnd())){
+            condition.setAirportNameEnd(condition.getFlightNameEnd().replace("机场",""));
+        }
+        //查询航司能飞往的出发机场列表
+        List<Airport> airportStartList=flightRepository.findFlights67GroupByFlightNameStartByAirlinesCode();
+        //如果出发机场和到达机场都是空 那就指定一个
+        if(StringUtils.isEmpty(condition.getFlightNameStart())&&StringUtils.isEmpty(condition.getFlightNameEnd())){
+            if(null!=airportStartList.get(0)){
+                condition.setAirportNameStart(airportStartList.get(0).getAirportAbbreviate());
+            }
+        }
+        //查询航司能飞往的航班列表
+        List<FlightDetail> flightList=flightRepository.findFlightsAndAirlinesByCondition(condition);
+        detail.setFlightList(flightList);
+        detail.setAirportStartList(airportStartList);
+        //第一次进来 默认查询该航司的基地数据
+        if(null==condition.getFlightNameStart()&&!airportStartList.isEmpty()){
+            if(null!=airportStartList.get(0)){
+                condition.setAirportNameStart(airportStartList.get(0).getAirportAbbreviate());
+            }
+        }
+        //出发机场和到达机场必须选一个 如果不选那默认给出发机场基地机场
+        if("".equals(condition.getFlightNameStart())&&"".equals(condition.getFlightNameEnd())){
+            if(null!=airportStartList.get(0)){
+                condition.setAirportNameStart(airportStartList.get(0).getAirportAbbreviate());
+            }
+        }
+        //查询航司能飞往的到达机场列表
+        List<Airport> airportEndList=flightRepository.findFlights820GroupByFlightNameEndByAirlinesCode();
+        detail.setAirportEndList(airportEndList);
+        //查询航司信息
+        Airlines airlines=airlinesRepository.findAirlinesByAirlinesCode("MU");
+        detail.setAirlines(airlines);
+        List<FlightDetail> airwayList=flightRepository.findFlights820AirwayNumberByAirlinesCode(condition);
+        detail.setAirwayList(airwayList);
+        detail.setFlightCondition(condition);
+        return detail;
+    }
+
 }
