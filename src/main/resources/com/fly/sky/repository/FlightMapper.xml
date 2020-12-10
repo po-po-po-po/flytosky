@@ -189,6 +189,22 @@
 
      </select>
 
+
+    <select id="findFlights67GroupByFlightNameStartByAirlinesCode"
+            resultType="com.fly.sky.domain.Airport">
+        SELECT a.airportAbbreviate ,a.sort,airport.airport_location AS airportLocation FROM airport
+        right join (
+        select  flight1.airport_name_start as airportAbbreviate,COUNT(*) AS sort
+        from (select distinct flight_no,airport_name_start,airlines_code from flight  where flight.status=0
+       AND (flight.flight_frequency='6' OR flight.flight_frequency='7')
+        ) as flight1
+        where 1=1 and (flight1.airlines_code='MU' OR flight1.airlines_code='FM')
+        group by airportAbbreviate ) a
+        on airport.airport_abbreviate=a.airportAbbreviate
+        order by a.sort desc
+
+    </select>
+
     <select id="findFlightsGroupByFlightNameEndByAirlinesCode"
             resultType="com.fly.sky.domain.Airport">
         SELECT a.airportAbbreviate ,a.sort,airport.airport_location AS airportLocation FROM airport
@@ -214,7 +230,21 @@
 
     </select>
 
+    <select id="findFlights67GroupByFlightNameEndByAirlinesCode"
+            resultType="com.fly.sky.domain.Airport">
+                SELECT a.airportAbbreviate ,a.sort,airport.airport_location AS airportLocation FROM airport
+        right join (
+        select  flight1.airport_name_end as airportAbbreviate,COUNT(*) AS sort
+        from (select distinct flight_no,airport_name_end,airlines_code from flight  where flight.status=0
+       AND (flight.flight_frequency='6' OR flight.flight_frequency='7')
+) as flight1
+        where 1=1 and (flight1.airlines_code='MU' OR flight1.airlines_code='FM')
 
+        group by airportAbbreviate ) a
+        on airport.airport_abbreviate=a.airportAbbreviate
+
+        order by a.sort desc
+    </select>
 
     <select id="findFlightsAndAirlinesByCondition"
             parameterType="com.fly.sky.condition.FlightCondition"
@@ -371,13 +401,32 @@
      </select>
 
 
-    <select id="findFlightsAirwayNumberByAirlinesCode"
+    <select id="findFlights67AirwayNumberByAirlinesCode"
             parameterType="com.fly.sky.condition.FlightCondition"
             resultType="com.fly.sky.vo.FlightDetail">
          select airport_name_start as airportNameStart ,airport_name_end as airportNameEnd,
          airport_name_start_code as airportNameStartCode ,airport_name_end_code as airportNameEndCode,
          count(*) AS flightNumber from flight
-         where 1=1
+         where 1=1 and   (flight.flight_frequency='6' OR flight.flight_frequency='7')
+        and  ( flight.airlines_code = 'MU' OR   flight.airlines_code = 'FM')
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            AND airport_name_end = #{airportNameEnd,jdbcType=VARCHAR}
+        </if>
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            AND airport_name_start = #{airportNameStart,jdbcType=VARCHAR}
+        </if>
+        group by airport_name_start,airport_name_end,airport_name_start_code,airport_name_end_code
+        ORDER BY flightNumber DESC
+     </select>
+
+
+    <select id="findFlightsAirwayNumberByAirlinesCode"
+            parameterType="com.fly.sky.condition.FlightCondition"
+            resultType="com.fly.sky.vo.FlightDetail">
+        select airport_name_start as airportNameStart ,airport_name_end as airportNameEnd,
+        airport_name_start_code as airportNameStartCode ,airport_name_end_code as airportNameEndCode,
+        count(*) AS flightNumber from flight
+        where 1=1
         <if test="sortId != null and sortId != '' ">
             and   flight.flight_frequency=#{sortId,jdbcType=BIGINT}
         </if>
@@ -413,8 +462,7 @@
         </if>
         group by airport_name_start,airport_name_end,airport_name_start_code,airport_name_end_code
         ORDER BY flightNumber DESC
-     </select>
-
+    </select>
 
     <select id="findMUFlights6"
             parameterType="com.fly.sky.condition.FlightCondition"

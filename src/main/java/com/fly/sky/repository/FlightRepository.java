@@ -42,7 +42,7 @@ public interface FlightRepository {
     List<Airport> findFlightsGroupByAirportCode();
     List<FlightDetail> findFlightsAirwayNumberByAirlinesCode(FlightCondition flightCondition);
 
-
+    List<FlightDetail> findFlights67AirwayNumberByAirlinesCode(FlightCondition flightCondition);
     //mu航班
     List<Flight> findMUFlights6(FlightCondition condition);
     List<Flight> findMUFlights7(FlightCondition condition);
@@ -75,6 +75,7 @@ public interface FlightRepository {
 
     List<FlightDetail> findAIRPORTSHB(FlightCondition condition);
 
-
+    List<Airport> findFlights67GroupByFlightNameStartByAirlinesCode();
+    List<Airport> findFlights67GroupByFlightNameEndByAirlinesCode();
     void deleteFlightByCode(String airportNameStartCode,String airportNameEndCode,String flightFrequency);
 }

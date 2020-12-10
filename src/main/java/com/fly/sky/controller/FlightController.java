@@ -297,4 +297,15 @@ public class FlightController {
         responseResult.setData(flightService.findAIRPORTSHB(condition));
         return responseResult;
     }
+
+
+    @PostMapping("findFlights67")
+    @ApiOperation(value = "查询东航能飞往的机场列表和航班信息", notes = "查询东航能飞往的机场列表和航班信息")
+    public ResponseResult<AirlinesDetail> findFlights67(@RequestBody FlightCondition condition){
+        String logTitle = "=查询东航能飞往的机场列表和航班信息=";
+        log.info("{} - 参数：findFlights67={}", logTitle, JsonUtil.toJSONString(condition));
+        ResponseResult<AirlinesDetail> responseResult = new ResponseResult<>();
+        responseResult.setData(flightService.findFlights67(condition));
+        return responseResult;
+    }
 }

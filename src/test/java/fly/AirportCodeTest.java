@@ -74,10 +74,10 @@ public class AirportCodeTest {
     @Test
     @Rollback(false)
     public void test1() throws Exception {
-        String deptCode="";
-        String arrCode="PKX";
+        String deptCode="XNN";
+        String arrCode="";
         //删除
-        flightRepository.deleteFlightByCode(deptCode,arrCode,"5");
+        flightRepository.deleteFlightByCode(deptCode,arrCode,"6");
         AirportCode airportCode=new AirportCode();
         airportCode.setDeptCode(deptCode);
         airportCode.setArrCode(arrCode);
@@ -94,10 +94,10 @@ public class AirportCodeTest {
         for (Airport airport : airportsList) {
                 AirportCode airportCode=new AirportCode();
                 airportCode.setDeptCode(airport.getAirportCode());
-                airportCode.setArrCode("PKX");
+                airportCode.setArrCode("HAK");
                 airportCode.setStatus("0");
                 airportCode.setDeptName(airport.getAirportName());
-                airportCode.setArrName("大兴");
+                airportCode.setArrName("HAK");
                 log.info("插入机场code："+airportCode);
                 airportCodeRepository.insertAirportCode(airportCode);
         }
@@ -111,10 +111,10 @@ public class AirportCodeTest {
         List<Airport> airportsList=airportRepository.findAirportsByCondition(new AirportCondition());
         for (Airport airport : airportsList) {
             AirportCode airportCode=new AirportCode();
-            airportCode.setDeptCode("XIY");
+            airportCode.setDeptCode("XNN");
             airportCode.setArrCode(airport.getAirportCode());
             airportCode.setStatus("0");
-            airportCode.setDeptName("XIAN");
+            airportCode.setDeptName("XNN");
             airportCode.setArrName(airport.getAirportName());
             log.info("插入机场code："+airportCode);
             airportCodeRepository.insertAirportCode(airportCode);
