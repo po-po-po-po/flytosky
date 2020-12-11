@@ -626,4 +626,82 @@ public class FlightServiceImpl implements FlightService {
         detail.setFlightCondition(condition);
         return detail;
     }
+
+
+    public AirlinesDetail findFlightsWQ(FlightCondition condition){
+
+
+        if("不限".equals(condition.getFlightNameStart())){
+            condition.setFlightNameStart("");
+        }
+        if("不限".equals(condition.getFlightNameEnd())){
+            condition.setFlightNameEnd("");
+        }
+
+        AirlinesDetail detail=new AirlinesDetail();
+        //机场处理
+        if(StringUtils.isNotEmpty(condition.getFlightNameStart())){
+            condition.setAirportNameStart(condition.getFlightNameStart().replace("机场",""));
+        }
+        if(StringUtils.isNotEmpty(condition.getFlightNameEnd())){
+            condition.setAirportNameEnd(condition.getFlightNameEnd().replace("机场",""));
+        }
+        //查询航司能飞往的出发机场列表
+        List<Airport> airportList=new ArrayList<>();
+        Airport airport1=new Airport();
+        airport1.setAirportAbbreviate("广州");
+        airport1.setAirportLocation("广州");
+        airportList.add(airport1);
+        Airport airport2=new Airport();
+        airport2.setAirportAbbreviate("深圳");
+        airport2.setAirportLocation("深圳");
+        airportList.add(airport2);
+        Airport airport3=new Airport();
+        airport3.setAirportAbbreviate("珠海");
+        airport3.setAirportLocation("珠海");
+        airportList.add(airport3);
+        Airport airport4=new Airport();
+        airport4.setAirportAbbreviate("惠州");
+        airport4.setAirportLocation("惠州");
+        airportList.add(airport4);
+        Airport airport5=new Airport();
+        airport5.setAirportAbbreviate("湛江");
+        airport5.setAirportLocation("湛江");
+        airportList.add(airport5);
+        Airport airport6=new Airport();
+        airport5.setAirportAbbreviate("汕头");
+        airport5.setAirportLocation("汕头");
+        airportList.add(airport6);
+        Airport airport7=new Airport();
+        airport5.setAirportAbbreviate("香港");
+        airport5.setAirportLocation("香港");
+        airportList.add(airport7);
+        Airport airport8=new Airport();
+        airport5.setAirportAbbreviate("澳门");
+        airport5.setAirportLocation("澳门");
+        airportList.add(airport8);
+        //出发机场 和 到达机场
+        detail.setAirportEndList(airportList);
+        detail.setAirportStartList(airportList);
+
+        //第一次进来 默认查询该兰州的基地数据
+        if(null==condition.getFlightNameStart()){
+            condition.setAirportNameStart("广州");
+        }
+
+        //出发机场和到达机场必须选一个 如果不选那默认给出发机场基地机场
+        if("".equals(condition.getFlightNameStart())&&"".equals(condition.getFlightNameEnd())){
+            condition.setAirportNameStart("广州");
+        }
+
+        //查询航司信息
+        Airlines airlines=airlinesRepository.findAirlinesByAirlinesCode("MU");
+        detail.setAirlines(airlines);
+
+        List<FlightDetail> airwayList=flightRepository.findFlightsMUWQAirwayNumberByAirlinesCode(condition);
+
+        detail.setAirwayList(airwayList);
+        detail.setFlightCondition(condition);
+        return detail;
+    }
 }

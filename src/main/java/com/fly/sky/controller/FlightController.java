@@ -376,6 +376,16 @@ public class FlightController {
         return responseResult;
     }
 
+    @PostMapping("findFlightsWQ")
+    @ApiOperation(value = "查询湾区随心飞", notes = "查询湾区随心飞")
+    public ResponseResult<AirlinesDetail> findFlightsWQ(@RequestBody FlightCondition condition){
+        String logTitle = "=查询湾区随心飞=";
+        log.info("{} - 参数：findFlightsWQ={}", logTitle, JsonUtil.toJSONString(condition));
+        ResponseResult<AirlinesDetail> responseResult = new ResponseResult<>();
+        responseResult.setData(flightService.findFlightsWQ(condition));
+        return responseResult;
+    }
+
 
     @PostMapping("findFlightsForSUIXINFEIXY")
     @ApiOperation(value = "查询西域随心飞航班列表", notes = "查询西域随心飞航班列表")

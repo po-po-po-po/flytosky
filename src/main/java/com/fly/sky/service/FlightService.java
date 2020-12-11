@@ -60,4 +60,6 @@ public interface FlightService {
     AirlinesDetail findFlightsCQ(FlightCondition condition);
 
     AirlinesDetail findFlightsXY(FlightCondition condition);
+
+    AirlinesDetail findFlightsWQ(FlightCondition condition);
 }

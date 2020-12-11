@@ -707,6 +707,134 @@ select distinct flight.flight_no,flight.airport_name_end,flight.airlines_code fr
 
 
 
+
+    <select id="findFlightsMUWQAirwayNumberByAirlinesCode"
+            parameterType="com.fly.sky.condition.FlightCondition"
+            resultType="com.fly.sky.vo.FlightDetail">
+        select airport_name_start as airportNameStart ,airport_name_end as airportNameEnd,
+        airport_name_start_code as airportNameStartCode ,airport_name_end_code as airportNameEndCode,
+        count(*) AS flightNumber from flight
+        where 1=1
+        and   flight.airlines_code = 'MU'
+        and
+        (
+        flight.flight_frequency='1' OR flight.flight_frequency='2'
+        OR flight.flight_frequency='3'  OR flight.flight_frequency='4'
+        OR flight.flight_frequency='5'
+        )
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+        <if test="airportNameStart == '广州' ">
+                AND airport_name_end_code = 'CAN'
+        </if>
+        </if>
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+        <if test="airportNameStart == '广州' ">
+            AND airport_name_start_code = 'CAN'
+        </if>
+        </if>
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+        <if test="airportNameStart == '深圳' ">
+            AND airport_name_end_code = 'SZX'
+        </if>
+        </if>
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+        <if test="airportNameStart == '深圳' ">
+            AND airport_name_start_code = 'SZX'
+        </if>
+        </if>
+
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameStart == '珠海' ">
+                AND airport_name_end_code = 'ZUH'
+            </if>
+        </if>
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '珠海' ">
+                AND airport_name_start_code = 'ZUH'
+            </if>
+        </if>
+
+
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameStart == '惠州' ">
+                AND airport_name_end_code = 'HUZ'
+            </if>
+        </if>
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '惠州' ">
+                AND airport_name_start_code = 'HUZ'
+            </if>
+        </if>
+
+
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameStart == '湛江' ">
+                AND airport_name_end_code = 'ZHA'
+            </if>
+        </if>
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '湛江' ">
+                AND airport_name_start_code = 'ZHA'
+            </if>
+        </if>
+
+
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameStart == '汕头' ">
+                AND airport_name_end_code = 'SWA'
+            </if>
+        </if>
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '汕头' ">
+                AND airport_name_start_code = 'SWA'
+            </if>
+        </if>
+
+
+
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameStart == '香港' ">
+                AND airport_name_end_code = 'HKG'
+            </if>
+        </if>
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '香港' ">
+                AND airport_name_start_code = 'HKG'
+            </if>
+        </if>
+
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameStart == '澳门' ">
+                AND airport_name_end_code = 'MFM'
+            </if>
+        </if>
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '澳门' ">
+                AND airport_name_start_code = 'MFM'
+            </if>
+        </if>
+
+
+        group by airport_name_start,airport_name_end,airport_name_start_code,airport_name_end_code
+        ORDER BY flightNumber DESC
+    </select>
+
     <select id="findFlightsAirwayNumberByAirlinesCode"
             parameterType="com.fly.sky.condition.FlightCondition"
             resultType="com.fly.sky.vo.FlightDetail">

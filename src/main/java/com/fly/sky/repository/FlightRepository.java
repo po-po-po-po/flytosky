@@ -46,6 +46,7 @@ public interface FlightRepository {
     List<FlightDetail> findFlights820AirwayNumberByAirlinesCode(FlightCondition flightCondition);
     List<FlightDetail> findFlights9CQYAirwayNumberByAirlinesCode(FlightCondition flightCondition);
     List<FlightDetail> findFlightsMUXYAirwayNumberByAirlinesCode(FlightCondition flightCondition);
+    List<FlightDetail> findFlightsMUWQAirwayNumberByAirlinesCode(FlightCondition flightCondition);
     //mu航班
     List<Flight> findMUFlights6(FlightCondition condition);
     List<Flight> findMUFlights7(FlightCondition condition);
