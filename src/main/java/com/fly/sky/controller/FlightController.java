@@ -355,7 +355,7 @@ public class FlightController {
     public ResponseResult<PagedList<Flight>> findFlightsForSUIXINFEICQ(@RequestBody FlightCondition condition){
         //处理航班周期问题
         if(StringUtils.isEmpty(condition.getFlightRequency())){
-            condition.setFlightRequency("7");
+            condition.setFlightRequency("6");
         }
         condition.setAirlinesCode("9C");
         String logTitle = "=查询春秋区域随心飞航班列表=";

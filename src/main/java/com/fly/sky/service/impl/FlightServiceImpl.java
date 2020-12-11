@@ -517,14 +517,14 @@ public class FlightServiceImpl implements FlightService {
         //第一次进来 默认查询该兰州的基地数据
         if(null==condition.getFlightNameStart()&&!airportStartList.isEmpty()){
             if(null!=airportStartList.get(0)){
-                condition.setAirportNameStartCode("NGB");
+                condition.setAirportNameStart("浙江");
             }
         }
 
         //出发机场和到达机场必须选一个 如果不选那默认给出发机场基地机场
         if("".equals(condition.getFlightNameStart())&&"".equals(condition.getFlightNameEnd())){
             if(null!=airportStartList.get(0)){
-                condition.setAirportNameStartCode("NGB");
+                condition.setAirportNameStart("浙江");
             }
         }
 
@@ -532,7 +532,7 @@ public class FlightServiceImpl implements FlightService {
         Airlines airlines=airlinesRepository.findAirlinesByAirlinesCode("9C");
         detail.setAirlines(airlines);
 
-        List<FlightDetail> airwayList=flightRepository.findFlights820AirwayNumberByAirlinesCode(condition);
+        List<FlightDetail> airwayList=flightRepository.findFlights9CQYAirwayNumberByAirlinesCode(condition);
 
         detail.setAirwayList(airwayList);
         detail.setFlightCondition(condition);

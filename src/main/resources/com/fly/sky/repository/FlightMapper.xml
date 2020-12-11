@@ -801,12 +801,18 @@ select distinct flight.flight_no,flight.airport_name_end,flight.airlines_code fr
             and  id = #{id,jdbcType=BIGINT}
         </if>
 
-        <if test="airportNameStartCode != null  and airportNameStartCode != '' ">
-            AND airport_name_start_code = #{airportNameStartCode,jdbcType=VARCHAR}
+        <if test="flightNameStart != null  and flightNameStart != '' ">
+            <if test="flightNameStart == '浙江' ">
+                AND (airport_name_start_code = 'NGB' OR airport_name_start_code = 'HGH' OR
+                airport_name_start_code = 'WNZ' )
+            </if>
         </if>
 
-        <if test="airportNameEndCode != null  and airportNameEndCode != '' ">
-            AND airport_name_end_code = #{airportNameEndCode,jdbcType=VARCHAR}
+        <if test="flightNameEnd != null  and flightNameEnd != '' ">
+            <if test="flightNameEnd == '浙江' ">
+                AND (airport_name_end_code = 'NGB' OR airport_name_end_code = 'HGH' OR
+                airport_name_end_code = 'WNZ' )
+            </if>
         </if>
 
 
