@@ -512,14 +512,86 @@ select distinct flight.flight_no,flight.airport_name_end,flight.airlines_code fr
         <if test="airportNameEnd != null  and airportNameEnd != '' ">
             <if test="airportNameEnd == '浙江' ">
             AND (airport_name_end_code = 'NGB' OR airport_name_end_code = 'HGH' OR
-                airport_name_end_code = 'WNZ' )
+                airport_name_end_code = 'WNZ' OR airport_name_end_code = 'HSN' OR airport_name_end_code = 'YIW'
+                 OR airport_name_end_code = 'HYN' OR airport_name_end_code = 'JUZ' )
+            </if>
+        </if>
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameEnd == '河北' ">
+                AND (airport_name_end_code = 'SJW' OR airport_name_end_code = 'ZQZ' OR
+                airport_name_end_code = 'BPE' OR airport_name_end_code = 'TVS' OR airport_name_end_code = 'HDG'
+                OR airport_name_end_code = 'CDE' OR airport_name_end_code = 'XNT' )
+            </if>
+        </if>
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameEnd == '江苏' ">
+                AND (airport_name_end_code = 'NKG' OR airport_name_end_code = 'NKG' OR airport_name_end_code = 'NTG'
+                OR airport_name_end_code = 'CZX' OR airport_name_end_code = 'YNZ' OR airport_name_end_code = 'XUZ'
+                OR airport_name_end_code = 'HIA' OR airport_name_end_code = 'YTY' OR airport_name_end_code = 'LYG' )
+            </if>
+        </if>
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameEnd == '兰州' ">
+                AND (airport_name_end_code = 'LHW' )
+            </if>
+        </if>
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameEnd == '沈阳' ">
+                AND (airport_name_end_code = 'SHE' )
+            </if>
+        </if>
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameEnd == '潮汕' ">
+                AND (airport_name_end_code = 'SWA' )
             </if>
         </if>
 
         <if test="airportNameStart != null  and airportNameStart != '' ">
             <if test="airportNameStart == '浙江' ">
                 AND (airport_name_start_code = 'NGB' OR airport_name_start_code = 'HGH' OR
-                airport_name_start_code = 'WNZ' )
+                airport_name_start_code = 'WNZ' OR airport_name_start_code = 'HSN' OR airport_name_start_code = 'YIW'
+                OR airport_name_start_code = 'HYN' OR airport_name_start_code = 'JUZ' )
+            </if>
+        </if>
+
+
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '河北' ">
+                AND (airport_name_start_code = 'SJW' OR airport_name_start_code = 'ZQZ' OR
+                airport_name_start_code = 'BPE' OR airport_name_start_code = 'TVS' OR airport_name_start_code = 'HDG'
+                OR airport_name_start_code = 'CDE' OR airport_name_start_code = 'XNT' )
+            </if>
+        </if>
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '江苏' ">
+                AND (airport_name_start_code = 'NKG' OR airport_name_start_code = 'NKG' OR airport_name_start_code = 'NTG'
+                OR airport_name_start_code = 'CZX' OR airport_name_start_code = 'YNZ' OR airport_name_start_code = 'XUZ'
+                OR airport_name_start_code = 'HIA' OR airport_name_start_code = 'YTY' OR airport_name_start_code = 'LYG' )
+            </if>
+        </if>
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '兰州' ">
+                AND (airport_name_start_code = 'LHW' )
+            </if>
+        </if>
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '沈阳' ">
+                AND (airport_name_start_code = 'SHE' )
+            </if>
+        </if>
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '潮汕' ">
+                AND (airport_name_start_code = 'SWA' )
             </if>
         </if>
 
@@ -801,17 +873,89 @@ select distinct flight.flight_no,flight.airport_name_end,flight.airlines_code fr
             and  id = #{id,jdbcType=BIGINT}
         </if>
 
-        <if test="flightNameStart != null  and flightNameStart != '' ">
-            <if test="flightNameStart == '浙江' ">
-                AND (airport_name_start_code = 'NGB' OR airport_name_start_code = 'HGH' OR
-                airport_name_start_code = 'WNZ' )
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameEnd == '浙江' ">
+                AND (airport_name_end_code = 'NGB' OR airport_name_end_code = 'HGH' OR
+                airport_name_end_code = 'WNZ' OR airport_name_end_code = 'HSN' OR airport_name_end_code = 'YIW'
+                OR airport_name_end_code = 'HYN' OR airport_name_end_code = 'JUZ' )
             </if>
         </if>
 
-        <if test="flightNameEnd != null  and flightNameEnd != '' ">
-            <if test="flightNameEnd == '浙江' ">
-                AND (airport_name_end_code = 'NGB' OR airport_name_end_code = 'HGH' OR
-                airport_name_end_code = 'WNZ' )
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameEnd == '河北' ">
+                AND (airport_name_end_code = 'SJW' OR airport_name_end_code = 'ZQZ' OR
+                airport_name_end_code = 'BPE' OR airport_name_end_code = 'TVS' OR airport_name_end_code = 'HDG'
+                OR airport_name_end_code = 'CDE' OR airport_name_end_code = 'XNT' )
+            </if>
+        </if>
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameEnd == '江苏' ">
+                AND (airport_name_end_code = 'NKG' OR airport_name_end_code = 'NKG' OR airport_name_end_code = 'NTG'
+                OR airport_name_end_code = 'CZX' OR airport_name_end_code = 'YNZ' OR airport_name_end_code = 'XUZ'
+                OR airport_name_end_code = 'HIA' OR airport_name_end_code = 'YTY' OR airport_name_end_code = 'LYG' )
+            </if>
+        </if>
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameEnd == '兰州' ">
+                AND (airport_name_end_code = 'LHW' )
+            </if>
+        </if>
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameEnd == '沈阳' ">
+                AND (airport_name_end_code = 'SHE' )
+            </if>
+        </if>
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameEnd == '潮汕' ">
+                AND (airport_name_end_code = 'SWA' )
+            </if>
+        </if>
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '浙江' ">
+                AND (airport_name_start_code = 'NGB' OR airport_name_start_code = 'HGH' OR
+                airport_name_start_code = 'WNZ' OR airport_name_start_code = 'HSN' OR airport_name_start_code = 'YIW'
+                OR airport_name_start_code = 'HYN' OR airport_name_start_code = 'JUZ' )
+            </if>
+        </if>
+
+
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '河北' ">
+                AND (airport_name_start_code = 'SJW' OR airport_name_start_code = 'ZQZ' OR
+                airport_name_start_code = 'BPE' OR airport_name_start_code = 'TVS' OR airport_name_start_code = 'HDG'
+                OR airport_name_start_code = 'CDE' OR airport_name_start_code = 'XNT' )
+            </if>
+        </if>
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '江苏' ">
+                AND (airport_name_start_code = 'NKG' OR airport_name_start_code = 'NKG' OR airport_name_start_code = 'NTG'
+                OR airport_name_start_code = 'CZX' OR airport_name_start_code = 'YNZ' OR airport_name_start_code = 'XUZ'
+                OR airport_name_start_code = 'HIA' OR airport_name_start_code = 'YTY' OR airport_name_start_code = 'LYG' )
+            </if>
+        </if>
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '兰州' ">
+                AND (airport_name_start_code = 'LHW' )
+            </if>
+        </if>
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '沈阳' ">
+                AND (airport_name_start_code = 'SHE' )
+            </if>
+        </if>
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '潮汕' ">
+                AND (airport_name_start_code = 'SWA' )
             </if>
         </if>
 

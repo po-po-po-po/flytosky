@@ -92,6 +92,8 @@ public class FlightServiceImpl implements FlightService {
         PagedList<Flight> listPagedList = new PagedList<Flight>();
         PageHelper.startPage(condition.getPageNo(), condition.getPageSize());
         List<Flight>  flightList=flightRepository.findFlightsForSUIXINFEICQ(condition);
+        condition.setAirportNameStart(condition.getFlightNameStart());
+        condition.setAirportNameEnd(condition.getFlightNameEnd());
         //对list进行处理
         flightList.stream().forEach(f-> f.setFlightRequency(WeekUtil.getWeekName(f.getFlightRequency())));
         PageInfo pageInfo = new PageInfo(flightList);
