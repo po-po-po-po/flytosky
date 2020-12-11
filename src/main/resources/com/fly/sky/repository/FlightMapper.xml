@@ -1084,7 +1084,7 @@ select distinct flight.flight_no,flight.airport_name_end,flight.airlines_code fr
         airport_name_end_code as airportNameEndCode,  airport_name_start as airportNameStart,
         airport_name_end as airportNameEnd
         from flight WHERE 1=1 and status=0
-        and   flight.airlines_code = '9C'
+        and   (flight.airlines_code = 'MU' or flight.airlines_code = 'FM')
 
         <if test="flightRequency != null  and flightRequency != '' ">
             and  flight_frequency = #{flightRequency,jdbcType=VARCHAR}
