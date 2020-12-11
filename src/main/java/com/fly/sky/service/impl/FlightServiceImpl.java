@@ -669,16 +669,16 @@ public class FlightServiceImpl implements FlightService {
         airport5.setAirportLocation("湛江");
         airportList.add(airport5);
         Airport airport6=new Airport();
-        airport5.setAirportAbbreviate("汕头");
-        airport5.setAirportLocation("汕头");
+        airport6.setAirportAbbreviate("汕头");
+        airport6.setAirportLocation("汕头");
         airportList.add(airport6);
         Airport airport7=new Airport();
-        airport5.setAirportAbbreviate("香港");
-        airport5.setAirportLocation("香港");
+        airport7.setAirportAbbreviate("香港");
+        airport7.setAirportLocation("香港");
         airportList.add(airport7);
         Airport airport8=new Airport();
-        airport5.setAirportAbbreviate("澳门");
-        airport5.setAirportLocation("澳门");
+        airport8.setAirportAbbreviate("澳门");
+        airport8.setAirportLocation("澳门");
         airportList.add(airport8);
         //出发机场 和 到达机场
         detail.setAirportEndList(airportList);
