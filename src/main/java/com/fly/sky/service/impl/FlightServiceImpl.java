@@ -104,6 +104,24 @@ public class FlightServiceImpl implements FlightService {
         return listPagedList;
     }
 
+
+    @Override
+    public PagedList<Flight> findFlightsForSUIXINFEIXY(FlightCondition condition) {
+        PagedList<Flight> listPagedList = new PagedList<Flight>();
+        PageHelper.startPage(condition.getPageNo(), condition.getPageSize());
+        List<Flight>  flightList=flightRepository.findFlightsForSUIXINFEIXY(condition);
+        condition.setAirportNameStart(condition.getFlightNameStart());
+        condition.setAirportNameEnd(condition.getFlightNameEnd());
+        //对list进行处理
+        flightList.stream().forEach(f-> f.setFlightRequency(WeekUtil.getWeekName(f.getFlightRequency())));
+        PageInfo pageInfo = new PageInfo(flightList);
+        listPagedList.setPageNo(condition.getPageNo());
+        listPagedList.setPageSize(condition.getPageSize());
+        listPagedList.setData(flightList);
+        listPagedList.setTotalRows(pageInfo.getTotal());
+        return listPagedList;
+    }
+
     @Override
     public List<Airport> findStartHX(FlightCondition condition) {
         return flightRepository.findStartHX(condition);
@@ -535,6 +553,74 @@ public class FlightServiceImpl implements FlightService {
         detail.setAirlines(airlines);
 
         List<FlightDetail> airwayList=flightRepository.findFlights9CQYAirwayNumberByAirlinesCode(condition);
+
+        detail.setAirwayList(airwayList);
+        detail.setFlightCondition(condition);
+        return detail;
+    }
+
+
+
+    public AirlinesDetail findFlightsXY(FlightCondition condition){
+
+
+        if("不限".equals(condition.getFlightNameStart())){
+            condition.setFlightNameStart("");
+        }
+        if("不限".equals(condition.getFlightNameEnd())){
+            condition.setFlightNameEnd("");
+        }
+
+        AirlinesDetail detail=new AirlinesDetail();
+        //机场处理
+        if(StringUtils.isNotEmpty(condition.getFlightNameStart())){
+            condition.setAirportNameStart(condition.getFlightNameStart().replace("机场",""));
+        }
+        if(StringUtils.isNotEmpty(condition.getFlightNameEnd())){
+            condition.setAirportNameEnd(condition.getFlightNameEnd().replace("机场",""));
+        }
+        //查询航司能飞往的出发机场列表
+        List<Airport> airportList=new ArrayList<>();
+        Airport airport1=new Airport();
+        airport1.setAirportAbbreviate("陕西");
+        airport1.setAirportLocation("陕西");
+        airportList.add(airport1);
+        Airport airport2=new Airport();
+        airport2.setAirportAbbreviate("甘肃");
+        airport2.setAirportLocation("甘肃");
+        airportList.add(airport2);
+        Airport airport3=new Airport();
+        airport3.setAirportAbbreviate("青海");
+        airport3.setAirportLocation("青海");
+        airportList.add(airport3);
+        Airport airport4=new Airport();
+        airport4.setAirportAbbreviate("新疆");
+        airport4.setAirportLocation("新疆");
+        airportList.add(airport4);
+        Airport airport5=new Airport();
+        airport5.setAirportAbbreviate("宁夏");
+        airport5.setAirportLocation("宁夏");
+        airportList.add(airport5);
+
+        //出发机场 和 到达机场
+        detail.setAirportEndList(airportList);
+        detail.setAirportStartList(airportList);
+
+        //第一次进来 默认查询该兰州的基地数据
+        if(null==condition.getFlightNameStart()){
+           condition.setAirportNameStart("陕西");
+        }
+
+        //出发机场和到达机场必须选一个 如果不选那默认给出发机场基地机场
+        if("".equals(condition.getFlightNameStart())&&"".equals(condition.getFlightNameEnd())){
+            condition.setAirportNameStart("陕西");
+        }
+
+        //查询航司信息
+        Airlines airlines=airlinesRepository.findAirlinesByAirlinesCode("MU");
+        detail.setAirlines(airlines);
+
+        List<FlightDetail> airwayList=flightRepository.findFlightsMUXYAirwayNumberByAirlinesCode(condition);
 
         detail.setAirwayList(airwayList);
         detail.setFlightCondition(condition);

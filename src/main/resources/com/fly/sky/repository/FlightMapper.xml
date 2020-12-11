@@ -600,6 +600,113 @@ select distinct flight.flight_no,flight.airport_name_end,flight.airlines_code fr
     </select>
 
 
+
+    <select id="findFlightsMUXYAirwayNumberByAirlinesCode"
+            parameterType="com.fly.sky.condition.FlightCondition"
+            resultType="com.fly.sky.vo.FlightDetail">
+        select airport_name_start as airportNameStart ,airport_name_end as airportNameEnd,
+        airport_name_start_code as airportNameStartCode ,airport_name_end_code as airportNameEndCode,
+        count(*) AS flightNumber from flight
+        where 1=1
+        and   flight.airlines_code = 'MU'
+        and
+        (
+        flight.flight_frequency='1' OR flight.flight_frequency='2'
+        OR flight.flight_frequency='3'  OR flight.flight_frequency='4'
+        OR flight.flight_frequency='5'
+        )
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameEnd == '陕西' ">
+                AND (airport_name_end_code = 'XIY' OR airport_name_end_code = 'UYN' OR
+                airport_name_end_code = 'HZG' OR airport_name_end_code = 'ENY'  )
+            </if>
+        </if>
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameEnd == '甘肃' ">
+                AND (airport_name_end_code = 'LHW' OR airport_name_end_code = 'THQ' OR
+                airport_name_end_code = 'GXH' OR airport_name_end_code = 'DNH' OR airport_name_end_code = 'JGN'
+                OR airport_name_end_code = 'JIC' OR airport_name_end_code = 'LNL' OR airport_name_end_code = 'IQN' OR airport_name_end_code = 'YZY')
+            </if>
+        </if>
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameEnd == '青海' ">
+                AND (airport_name_end_code = 'XNN' OR airport_name_end_code = 'GOQ' OR airport_name_end_code = 'YUS'
+                OR airport_name_end_code = 'HXD' OR airport_name_end_code = 'GMQ' OR airport_name_end_code = 'HMI'
+                OR airport_name_end_code = 'HTT' OR airport_name_end_code = 'HBQ' )
+            </if>
+        </if>
+
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameEnd == '宁夏' ">
+                AND (airport_name_end_code = 'INC' OR airport_name_end_code = 'GYU' OR airport_name_end_code = 'ZHY')
+            </if>
+        </if>
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameEnd == '新疆' ">
+                AND (airport_name_end_code = 'URC' OR airport_name_end_code = 'KHG' OR airport_name_end_code = 'QSZ' OR airport_name_end_code = 'SHF' OR
+                airport_name_end_code = 'KRL' OR airport_name_end_code = 'YIN' OR airport_name_end_code = 'HTN' OR airport_name_end_code = 'KRY'
+                OR airport_name_end_code = 'AKU' OR airport_name_end_code = 'AAT' OR airport_name_end_code = 'BPL' OR airport_name_end_code = 'KCA'
+                OR airport_name_end_code = 'TLQ' OR airport_name_end_code = 'RQA' OR airport_name_end_code = 'FYN' OR airport_name_end_code = 'KJI'
+                OR airport_name_end_code = 'IQM' OR airport_name_end_code = 'TCG')
+            </if>
+        </if>
+
+
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '陕西' ">
+                AND (airport_name_start_code = 'XIY' OR airport_name_start_code = 'UYN' OR
+                airport_name_start_code = 'UYN' OR airport_name_start_code = 'ENY'  )
+            </if>
+        </if>
+
+
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '甘肃' ">
+                AND (airport_name_start_code = 'YZY' OR airport_name_start_code = 'IQN' OR
+                airport_name_start_code = 'LNL' OR airport_name_start_code = 'JIC' OR airport_name_start_code = 'JGN'
+                OR airport_name_start_code = 'DNH' OR airport_name_start_code = 'GXH' OR airport_name_start_code = 'THQ' OR airport_name_start_code = 'LHW')
+            </if>
+        </if>
+
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '青海' ">
+                AND (airport_name_start_code = 'XNN' OR airport_name_start_code = 'GOQ' OR airport_name_start_code = 'YUS'
+                OR airport_name_start_code = 'HXD' OR airport_name_start_code = 'GMQ' OR airport_name_start_code = 'HMI'
+                OR airport_name_start_code = 'HTT' OR airport_name_start_code = 'HBQ' )
+            </if>
+        </if>
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '宁夏' ">
+                AND (airport_name_start_code = 'INC' OR airport_name_start_code = 'GYU' OR airport_name_start_code = 'ZHY')
+            </if>
+        </if>
+
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '新疆' ">
+                AND (airport_name_start_code = 'URC' OR airport_name_start_code = 'KHG' OR airport_name_start_code = 'QSZ' OR airport_name_start_code = 'SHF' OR
+                airport_name_start_code = 'KRL' OR airport_name_start_code = 'YIN' OR airport_name_end_code = 'HTN' OR airport_name_start_code = 'KRY'
+                OR airport_name_start_code = 'AKU' OR airport_name_start_code = 'AAT' OR airport_name_start_code = 'BPL' OR airport_name_start_code = 'KCA'
+                OR airport_name_start_code = 'TLQ' OR airport_name_start_code = 'RQA' OR airport_name_start_code = 'FYN' OR airport_name_start_code = 'KJI'
+                OR airport_name_start_code = 'IQM' OR airport_name_start_code = 'TCG')
+            </if>
+        </if>
+
+        group by airport_name_start,airport_name_end,airport_name_start_code,airport_name_end_code
+        ORDER BY flightNumber DESC
+    </select>
+
+
+
     <select id="findFlightsAirwayNumberByAirlinesCode"
             parameterType="com.fly.sky.condition.FlightCondition"
             resultType="com.fly.sky.vo.FlightDetail">
@@ -964,6 +1071,118 @@ select distinct flight.flight_no,flight.airport_name_end,flight.airlines_code fr
 
 
     </select>
+
+
+
+
+    <select id="findFlightsForSUIXINFEIXY"
+            parameterType="com.fly.sky.condition.FlightCondition"
+            resultType="com.fly.sky.domain.Flight">
+        select id as id,flight_no as flightNo , flight_name_start as flightNameStart ,airlines_code as airlinesCode,
+        airway_id as airwayId,flight_frequency as flightRequency,flight_name_end as flightNameEnd,flight_date as flightDate,
+        create_time as createTime,flight_remark as flightRemark ,airport_name_start_code as airportNameStartCode,
+        airport_name_end_code as airportNameEndCode,  airport_name_start as airportNameStart,
+        airport_name_end as airportNameEnd
+        from flight WHERE 1=1 and status=0
+        and   flight.airlines_code = '9C'
+
+        <if test="flightRequency != null  and flightRequency != '' ">
+            and  flight_frequency = #{flightRequency,jdbcType=VARCHAR}
+        </if>
+
+        <if test="id != null">
+            and  id = #{id,jdbcType=BIGINT}
+        </if>
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameEnd == '陕西' ">
+                AND (airport_name_end_code = 'XIY' OR airport_name_end_code = 'UYN' OR
+                airport_name_end_code = 'HZG' OR airport_name_end_code = 'ENY'  )
+            </if>
+        </if>
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameEnd == '甘肃' ">
+                AND (airport_name_end_code = 'LHW' OR airport_name_end_code = 'THQ' OR
+                airport_name_end_code = 'GXH' OR airport_name_end_code = 'DNH' OR airport_name_end_code = 'JGN'
+                OR airport_name_end_code = 'JIC' OR airport_name_end_code = 'LNL' OR airport_name_end_code = 'IQN' OR airport_name_end_code = 'YZY')
+            </if>
+        </if>
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameEnd == '青海' ">
+                AND (airport_name_end_code = 'XNN' OR airport_name_end_code = 'GOQ' OR airport_name_end_code = 'YUS'
+                OR airport_name_end_code = 'HXD' OR airport_name_end_code = 'GMQ' OR airport_name_end_code = 'HMI'
+                OR airport_name_end_code = 'HTT' OR airport_name_end_code = 'HBQ' )
+            </if>
+        </if>
+
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameEnd == '宁夏' ">
+                AND (airport_name_end_code = 'INC' OR airport_name_end_code = 'GYU' OR airport_name_end_code = 'ZHY')
+            </if>
+        </if>
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameEnd == '新疆' ">
+                AND (airport_name_end_code = 'URC' OR airport_name_end_code = 'KHG' OR airport_name_end_code = 'QSZ' OR airport_name_end_code = 'SHF' OR
+                airport_name_end_code = 'KRL' OR airport_name_end_code = 'YIN' OR airport_name_end_code = 'HTN' OR airport_name_end_code = 'KRY'
+                OR airport_name_end_code = 'AKU' OR airport_name_end_code = 'AAT' OR airport_name_end_code = 'BPL' OR airport_name_end_code = 'KCA'
+                OR airport_name_end_code = 'TLQ' OR airport_name_end_code = 'RQA' OR airport_name_end_code = 'FYN' OR airport_name_end_code = 'KJI'
+                OR airport_name_end_code = 'IQM' OR airport_name_end_code = 'TCG')
+            </if>
+        </if>
+
+
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '陕西' ">
+                AND (airport_name_start_code = 'XIY' OR airport_name_start_code = 'UYN' OR
+                airport_name_start_code = 'UYN' OR airport_name_start_code = 'ENY'  )
+            </if>
+        </if>
+
+
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '甘肃' ">
+                AND (airport_name_start_code = 'YZY' OR airport_name_start_code = 'IQN' OR
+                airport_name_start_code = 'LNL' OR airport_name_start_code = 'JIC' OR airport_name_start_code = 'JGN'
+                OR airport_name_start_code = 'DNH' OR airport_name_start_code = 'GXH' OR airport_name_start_code = 'THQ' OR airport_name_start_code = 'LHW')
+            </if>
+        </if>
+
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '青海' ">
+                AND (airport_name_start_code = 'XNN' OR airport_name_start_code = 'GOQ' OR airport_name_start_code = 'YUS'
+                OR airport_name_start_code = 'HXD' OR airport_name_start_code = 'GMQ' OR airport_name_start_code = 'HMI'
+                OR airport_name_start_code = 'HTT' OR airport_name_start_code = 'HBQ' )
+            </if>
+        </if>
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '宁夏' ">
+                AND (airport_name_start_code = 'INC' OR airport_name_start_code = 'GYU' OR airport_name_start_code = 'ZHY')
+            </if>
+        </if>
+
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '新疆' ">
+                AND (airport_name_start_code = 'URC' OR airport_name_start_code = 'KHG' OR airport_name_start_code = 'QSZ' OR airport_name_start_code = 'SHF' OR
+                airport_name_start_code = 'KRL' OR airport_name_start_code = 'YIN' OR airport_name_end_code = 'HTN' OR airport_name_start_code = 'KRY'
+                OR airport_name_start_code = 'AKU' OR airport_name_start_code = 'AAT' OR airport_name_start_code = 'BPL' OR airport_name_start_code = 'KCA'
+                OR airport_name_start_code = 'TLQ' OR airport_name_start_code = 'RQA' OR airport_name_start_code = 'FYN' OR airport_name_start_code = 'KJI'
+                OR airport_name_start_code = 'IQM' OR airport_name_start_code = 'TCG')
+            </if>
+        </if>
+        order by flight.flight_date asc
+
+
+    </select>
+
 
 
     <select id="findStartHX"

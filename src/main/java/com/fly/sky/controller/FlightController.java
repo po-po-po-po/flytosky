@@ -364,4 +364,31 @@ public class FlightController {
         responseResult.setData(flightService.findFlightsForSUIXINFEICQ(condition));
         return responseResult;
     }
+
+
+    @PostMapping("findFlightsXY")
+    @ApiOperation(value = "查询西域随心飞", notes = "查询西域随心飞")
+    public ResponseResult<AirlinesDetail> findFlightsXY(@RequestBody FlightCondition condition){
+        String logTitle = "=查询西域随心飞=";
+        log.info("{} - 参数：findFlightsXY={}", logTitle, JsonUtil.toJSONString(condition));
+        ResponseResult<AirlinesDetail> responseResult = new ResponseResult<>();
+        responseResult.setData(flightService.findFlightsCQ(condition));
+        return responseResult;
+    }
+
+
+    @PostMapping("findFlightsForSUIXINFEIXY")
+    @ApiOperation(value = "查询西域随心飞航班列表", notes = "查询西域随心飞航班列表")
+    public ResponseResult<PagedList<Flight>> findFlightsForSUIXINFEIXY(@RequestBody FlightCondition condition){
+        //处理航班周期问题
+        if(StringUtils.isEmpty(condition.getFlightRequency())){
+            condition.setFlightRequency("5");
+        }
+        condition.setAirlinesCode("MU");
+        String logTitle = "=查询西域随心飞航班列表=";
+        log.info("{} - 参数：findFlightsForSUIXINFEIXY={}", logTitle, JsonUtil.toJSONString(condition));
+        ResponseResult<PagedList<Flight>> responseResult = new ResponseResult<>();
+        responseResult.setData(flightService.findFlightsForSUIXINFEIXY(condition));
+        return responseResult;
+    }
 }
