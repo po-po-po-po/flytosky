@@ -39,6 +39,7 @@ public interface FlightService {
 
     PagedList<Flight> findFlightsForSUIXINFEI(FlightCondition condition);
     PagedList<Flight> findFlightsForSUIXINFEIZW(FlightCondition condition);
+    PagedList<Flight> findFlightsForSUIXINFEICQ(FlightCondition condition);
     //出发机场  到达机场
     List<Airport> findStartHX(FlightCondition condition);
     List<Airport> findEndHX(FlightCondition condition);
@@ -54,4 +55,6 @@ public interface FlightService {
     AirlinesDetail findFlights67(FlightCondition condition);
 
     AirlinesDetail findFlights820(FlightCondition condition);
+
+    AirlinesDetail findFlightsCQ(FlightCondition condition);
 }

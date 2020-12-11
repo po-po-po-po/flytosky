@@ -338,4 +338,30 @@ public class FlightController {
         responseResult.setData(flightService.findFlightsForSUIXINFEIZW(condition));
         return responseResult;
     }
+
+
+    @PostMapping("findFlightsCQ")
+    @ApiOperation(value = "查询春秋区域随心飞", notes = "查询春秋区域随心飞")
+    public ResponseResult<AirlinesDetail> findFlightsCQ(@RequestBody FlightCondition condition){
+        String logTitle = "=查询春秋区域随心飞=";
+        log.info("{} - 参数：findFlightsCQ={}", logTitle, JsonUtil.toJSONString(condition));
+        ResponseResult<AirlinesDetail> responseResult = new ResponseResult<>();
+        responseResult.setData(flightService.findFlightsCQ(condition));
+        return responseResult;
+    }
+
+    @PostMapping("findFlightsForSUIXINFEICQ")
+    @ApiOperation(value = "查询春秋区域随心飞航班列表", notes = "查询春秋区域随心飞航班列表")
+    public ResponseResult<PagedList<Flight>> findFlightsForSUIXINFEICQ(@RequestBody FlightCondition condition){
+        //处理航班周期问题
+        if(StringUtils.isEmpty(condition.getFlightRequency())){
+            condition.setFlightRequency("7");
+        }
+        condition.setAirlinesCode("9C");
+        String logTitle = "=查询春秋区域随心飞航班列表=";
+        log.info("{} - 参数：findFlightsForSUIXINFEICQ={}", logTitle, JsonUtil.toJSONString(condition));
+        ResponseResult<PagedList<Flight>> responseResult = new ResponseResult<>();
+        responseResult.setData(flightService.findFlightsForSUIXINFEICQ(condition));
+        return responseResult;
+    }
 }

@@ -498,6 +498,36 @@ select distinct flight.flight_no,flight.airport_name_end,flight.airlines_code fr
         group by airport_name_start,airport_name_end,airport_name_start_code,airport_name_end_code
         ORDER BY flightNumber DESC
     </select>
+
+
+    <select id="findFlights9CQYAirwayNumberByAirlinesCode"
+            parameterType="com.fly.sky.condition.FlightCondition"
+            resultType="com.fly.sky.vo.FlightDetail">
+        select airport_name_start as airportNameStart ,airport_name_end as airportNameEnd,
+        airport_name_start_code as airportNameStartCode ,airport_name_end_code as airportNameEndCode,
+        count(*) AS flightNumber from flight
+        where 1=1
+        and   flight.airlines_code = '9C'
+
+        <if test="airportNameEnd != null  and airportNameEnd != '' ">
+            <if test="airportNameEnd == '浙江' ">
+            AND (airport_name_end_code = 'NGB' OR airport_name_end_code = 'HGH' OR
+                airport_name_end_code = 'WNZ' )
+            </if>
+        </if>
+
+        <if test="airportNameStart != null  and airportNameStart != '' ">
+            <if test="airportNameStart == '浙江' ">
+                AND (airport_name_start_code = 'NGB' OR airport_name_start_code = 'HGH' OR
+                airport_name_start_code = 'WNZ' )
+            </if>
+        </if>
+
+        group by airport_name_start,airport_name_end,airport_name_start_code,airport_name_end_code
+        ORDER BY flightNumber DESC
+    </select>
+
+
     <select id="findFlightsAirwayNumberByAirlinesCode"
             parameterType="com.fly.sky.condition.FlightCondition"
             resultType="com.fly.sky.vo.FlightDetail">
@@ -750,6 +780,42 @@ select distinct flight.flight_no,flight.airport_name_end,flight.airlines_code fr
 
 
     </select>
+
+
+    <select id="findFlightsForSUIXINFEICQ"
+            parameterType="com.fly.sky.condition.FlightCondition"
+            resultType="com.fly.sky.domain.Flight">
+        select id as id,flight_no as flightNo , flight_name_start as flightNameStart ,airlines_code as airlinesCode,
+        airway_id as airwayId,flight_frequency as flightRequency,flight_name_end as flightNameEnd,flight_date as flightDate,
+        create_time as createTime,flight_remark as flightRemark ,airport_name_start_code as airportNameStartCode,
+        airport_name_end_code as airportNameEndCode,  airport_name_start as airportNameStart,
+        airport_name_end as airportNameEnd
+        from flight WHERE 1=1 and status=0
+        and   flight.airlines_code = '9C'
+
+        <if test="flightRequency != null  and flightRequency != '' ">
+            and  flight_frequency = #{flightRequency,jdbcType=VARCHAR}
+        </if>
+
+        <if test="id != null">
+            and  id = #{id,jdbcType=BIGINT}
+        </if>
+
+        <if test="airportNameStartCode != null  and airportNameStartCode != '' ">
+            AND airport_name_start_code = #{airportNameStartCode,jdbcType=VARCHAR}
+        </if>
+
+        <if test="airportNameEndCode != null  and airportNameEndCode != '' ">
+            AND airport_name_end_code = #{airportNameEndCode,jdbcType=VARCHAR}
+        </if>
+
+
+        order by flight.flight_date asc
+
+
+    </select>
+
+
     <select id="findStartHX"
             parameterType="com.fly.sky.condition.FlightCondition"
             resultType="com.fly.sky.domain.Airport">

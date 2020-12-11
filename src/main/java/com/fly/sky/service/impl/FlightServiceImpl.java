@@ -23,6 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -76,6 +77,21 @@ public class FlightServiceImpl implements FlightService {
         PagedList<Flight> listPagedList = new PagedList<Flight>();
         PageHelper.startPage(condition.getPageNo(), condition.getPageSize());
         List<Flight>  flightList=flightRepository.findFlightsForSUIXINFEIZW(condition);
+        //对list进行处理
+        flightList.stream().forEach(f-> f.setFlightRequency(WeekUtil.getWeekName(f.getFlightRequency())));
+        PageInfo pageInfo = new PageInfo(flightList);
+        listPagedList.setPageNo(condition.getPageNo());
+        listPagedList.setPageSize(condition.getPageSize());
+        listPagedList.setData(flightList);
+        listPagedList.setTotalRows(pageInfo.getTotal());
+        return listPagedList;
+    }
+
+    @Override
+    public PagedList<Flight> findFlightsForSUIXINFEICQ(FlightCondition condition) {
+        PagedList<Flight> listPagedList = new PagedList<Flight>();
+        PageHelper.startPage(condition.getPageNo(), condition.getPageSize());
+        List<Flight>  flightList=flightRepository.findFlightsForSUIXINFEICQ(condition);
         //对list进行处理
         flightList.stream().forEach(f-> f.setFlightRequency(WeekUtil.getWeekName(f.getFlightRequency())));
         PageInfo pageInfo = new PageInfo(flightList);
@@ -447,4 +463,79 @@ public class FlightServiceImpl implements FlightService {
         return detail;
     }
 
+
+    public AirlinesDetail findFlightsCQ(FlightCondition condition){
+
+
+        if("不限".equals(condition.getFlightNameStart())){
+            condition.setFlightNameStart("");
+        }
+        if("不限".equals(condition.getFlightNameEnd())){
+            condition.setFlightNameEnd("");
+        }
+
+        AirlinesDetail detail=new AirlinesDetail();
+        //机场处理
+        if(StringUtils.isNotEmpty(condition.getFlightNameStart())){
+            condition.setAirportNameStart(condition.getFlightNameStart().replace("机场",""));
+        }
+        if(StringUtils.isNotEmpty(condition.getFlightNameEnd())){
+            condition.setAirportNameEnd(condition.getFlightNameEnd().replace("机场",""));
+        }
+        //查询航司能飞往的出发机场列表
+        List<Airport> airportStartList=flightRepository.findFlights820GroupByFlightNameStartByAirlinesCode();
+        List<Airport> airportList=new ArrayList<>();
+        Airport airport1=new Airport();
+        airport1.setAirportAbbreviate("浙江");
+        airport1.setAirportLocation("浙江");
+        airportList.add(airport1);
+        Airport airport2=new Airport();
+        airport2.setAirportAbbreviate("江苏");
+        airport2.setAirportLocation("江苏");
+        airportList.add(airport2);
+        Airport airport3=new Airport();
+        airport3.setAirportAbbreviate("兰州");
+        airport3.setAirportLocation("兰州");
+        airportList.add(airport3);
+        Airport airport4=new Airport();
+        airport4.setAirportAbbreviate("沈阳");
+        airport4.setAirportLocation("沈阳");
+        airportList.add(airport4);
+        Airport airport5=new Airport();
+        airport5.setAirportAbbreviate("潮汕");
+        airport5.setAirportLocation("潮汕");
+        airportList.add(airport5);
+        Airport airport6=new Airport();
+        airport6.setAirportAbbreviate("河北");
+        airport6.setAirportLocation("河北");
+        airportList.add(airport6);
+
+        //出发机场 和 到达机场
+        detail.setAirportEndList(airportList);
+        detail.setAirportStartList(airportList);
+
+        //第一次进来 默认查询该兰州的基地数据
+        if(null==condition.getFlightNameStart()&&!airportStartList.isEmpty()){
+            if(null!=airportStartList.get(0)){
+                condition.setAirportNameStart("LHW");
+            }
+        }
+
+        //出发机场和到达机场必须选一个 如果不选那默认给出发机场基地机场
+        if("".equals(condition.getFlightNameStart())&&"".equals(condition.getFlightNameEnd())){
+            if(null!=airportStartList.get(0)){
+                condition.setAirportNameStart("LHW");
+            }
+        }
+
+        //查询航司信息
+        Airlines airlines=airlinesRepository.findAirlinesByAirlinesCode("9C");
+        detail.setAirlines(airlines);
+
+        List<FlightDetail> airwayList=flightRepository.findFlights820AirwayNumberByAirlinesCode(condition);
+
+        detail.setAirwayList(airwayList);
+        detail.setFlightCondition(condition);
+        return detail;
+    }
 }
