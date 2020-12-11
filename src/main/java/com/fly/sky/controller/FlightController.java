@@ -372,7 +372,7 @@ public class FlightController {
         String logTitle = "=查询西域随心飞=";
         log.info("{} - 参数：findFlightsXY={}", logTitle, JsonUtil.toJSONString(condition));
         ResponseResult<AirlinesDetail> responseResult = new ResponseResult<>();
-        responseResult.setData(flightService.findFlightsCQ(condition));
+        responseResult.setData(flightService.findFlightsXY(condition));
         return responseResult;
     }
 
