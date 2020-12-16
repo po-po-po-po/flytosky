@@ -724,7 +724,7 @@ select distinct flight.flight_no,flight.airport_name_end,flight.airlines_code fr
         )
 
         <if test="airportNameEnd != null  and airportNameEnd != '' ">
-        <if test="airportNameStart == '广州' ">
+        <if test="airportNameEnd == '广州' ">
                 AND airport_name_end_code = 'CAN'
         </if>
         </if>
@@ -736,7 +736,7 @@ select distinct flight.flight_no,flight.airport_name_end,flight.airlines_code fr
         </if>
 
         <if test="airportNameEnd != null  and airportNameEnd != '' ">
-        <if test="airportNameStart == '深圳' ">
+        <if test="airportNameEnd == '深圳' ">
             AND airport_name_end_code = 'SZX'
         </if>
         </if>
@@ -749,7 +749,7 @@ select distinct flight.flight_no,flight.airport_name_end,flight.airlines_code fr
 
 
         <if test="airportNameEnd != null  and airportNameEnd != '' ">
-            <if test="airportNameStart == '珠海' ">
+            <if test="airportNameEnd == '珠海' ">
                 AND airport_name_end_code = 'ZUH'
             </if>
         </if>
@@ -763,7 +763,7 @@ select distinct flight.flight_no,flight.airport_name_end,flight.airlines_code fr
 
 
         <if test="airportNameEnd != null  and airportNameEnd != '' ">
-            <if test="airportNameStart == '惠州' ">
+            <if test="airportNameEnd == '惠州' ">
                 AND airport_name_end_code = 'HUZ'
             </if>
         </if>
@@ -777,7 +777,7 @@ select distinct flight.flight_no,flight.airport_name_end,flight.airlines_code fr
 
 
         <if test="airportNameEnd != null  and airportNameEnd != '' ">
-            <if test="airportNameStart == '湛江' ">
+            <if test="airportNameEnd == '湛江' ">
                 AND airport_name_end_code = 'ZHA'
             </if>
         </if>
@@ -791,7 +791,7 @@ select distinct flight.flight_no,flight.airport_name_end,flight.airlines_code fr
 
 
         <if test="airportNameEnd != null  and airportNameEnd != '' ">
-            <if test="airportNameStart == '汕头' ">
+            <if test="airportNameEnd == '汕头' ">
                 AND airport_name_end_code = 'SWA'
             </if>
         </if>
@@ -806,7 +806,7 @@ select distinct flight.flight_no,flight.airport_name_end,flight.airlines_code fr
 
 
         <if test="airportNameEnd != null  and airportNameEnd != '' ">
-            <if test="airportNameStart == '香港' ">
+            <if test="airportNameEnd == '香港' ">
                 AND airport_name_end_code = 'HKG'
             </if>
         </if>
@@ -819,7 +819,7 @@ select distinct flight.flight_no,flight.airport_name_end,flight.airlines_code fr
 
 
         <if test="airportNameEnd != null  and airportNameEnd != '' ">
-            <if test="airportNameStart == '澳门' ">
+            <if test="airportNameEnd == '澳门' ">
                 AND airport_name_end_code = 'MFM'
             </if>
         </if>
