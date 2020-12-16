@@ -694,7 +694,7 @@ select distinct flight.flight_no,flight.airport_name_end,flight.airlines_code fr
         <if test="airportNameStart != null  and airportNameStart != '' ">
             <if test="airportNameStart == '新疆' ">
                 AND (airport_name_start_code = 'URC' OR airport_name_start_code = 'KHG' OR airport_name_start_code = 'QSZ' OR airport_name_start_code = 'SHF' OR
-                airport_name_start_code = 'KRL' OR airport_name_start_code = 'YIN' OR airport_name_end_code = 'HTN' OR airport_name_start_code = 'KRY'
+                airport_name_start_code = 'KRL' OR airport_name_start_code = 'YIN' OR airport_name_start_code = 'HTN' OR airport_name_start_code = 'KRY'
                 OR airport_name_start_code = 'AKU' OR airport_name_start_code = 'AAT' OR airport_name_start_code = 'BPL' OR airport_name_start_code = 'KCA'
                 OR airport_name_start_code = 'TLQ' OR airport_name_start_code = 'RQA' OR airport_name_start_code = 'FYN' OR airport_name_start_code = 'KJI'
                 OR airport_name_start_code = 'IQM' OR airport_name_start_code = 'TCG')
