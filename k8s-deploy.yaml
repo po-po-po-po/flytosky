@@ -1,0 +1,46 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: PROJECT-NAME
+  namespace: NAMESPACE
+spec:
+  replicas: REPLICAS
+  selector:
+    matchLabels:
+      project: PROJECT-NAME
+      app: PROJECT-NAME
+  template:
+    metadata:
+      labels:
+        project: PROJECT-NAME
+        app: PROJECT-NAME
+    spec:
+      containers:
+      - name: PROJECT-NAME
+        image: DOCKER-IMAGE-URL/PROJECT-NAME:NAMESPACE_latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: PORT
+          name: web
+          protocol: TCP
+        envFrom:
+          - configMapRef:
+              name: common-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: PROJECT-NAME
+  namespace: NAMESPACE
+  labels:
+    project: PROJECT-NAME
+    app: PROJECT-NAME
+spec:
+  selector:
+    project: PROJECT-NAME
+    app: PROJECT-NAME
+  ports:
+  - name: web
+    port: PORT
+    targetPort: PORT
+  type: NodePort
