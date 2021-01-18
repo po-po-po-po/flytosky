@@ -25,7 +25,7 @@ spec:
           protocol: TCP
         envFrom:
           - configMapRef:
-              name: common-config
+              name: mysql-config
 ---
 apiVersion: v1
 kind: Service
