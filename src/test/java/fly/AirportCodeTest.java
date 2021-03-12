@@ -2,11 +2,13 @@ package fly;
 
 import com.fly.sky.AirportApplication;
 import com.fly.sky.condition.AirportCondition;
+import com.fly.sky.condition.UserFlightCondition;
 import com.fly.sky.domain.Airport;
 import com.fly.sky.domain.AirportCode;
 import com.fly.sky.repository.AirportCodeRepository;
 import com.fly.sky.repository.AirportRepository;
 import com.fly.sky.repository.FlightRepository;
+import com.fly.sky.repository.UserFlightRepository;
 import com.fly.sky.service.FlightService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
@@ -45,6 +47,9 @@ public class AirportCodeTest {
     @Autowired
     FlightRepository flightRepository;
 
+    @Autowired
+    UserFlightRepository userFlightRepository;
+
 
     @Test
     @Rollback(false)
@@ -74,7 +79,7 @@ public class AirportCodeTest {
     @Test
     @Rollback(false)
     public void test1() throws Exception {
-        String deptCode="XNN";
+        String deptCode="PKX";
         String arrCode="";
         //删除
         flightRepository.deleteFlightByCode(deptCode,arrCode,"6");
@@ -111,13 +116,29 @@ public class AirportCodeTest {
         List<Airport> airportsList=airportRepository.findAirportsByCondition(new AirportCondition());
         for (Airport airport : airportsList) {
             AirportCode airportCode=new AirportCode();
-            airportCode.setDeptCode("XNN");
+            airportCode.setDeptCode("PKX");
             airportCode.setArrCode(airport.getAirportCode());
             airportCode.setStatus("0");
-            airportCode.setDeptName("XNN");
+            airportCode.setDeptName("PKX");
             airportCode.setArrName(airport.getAirportName());
             log.info("插入机场code："+airportCode);
             airportCodeRepository.insertAirportCode(airportCode);
+        }
+    }
+
+
+
+
+    @Test
+    @Rollback(false)
+    public void test5()  {
+        //获取机场列表
+        List<Airport> airportsList=airportRepository.findAirportsByCondition(new AirportCondition());
+        for (Airport airport : airportsList) {
+            String airportAbbreviate=airport.getAirportAbbreviate();
+            UserFlightCondition condition=new UserFlightCondition();
+            condition.setFlightNameEnd(airportAbbreviate);
+            userFlightRepository.insertUserFlights(condition);
         }
     }
 

@@ -142,8 +142,6 @@
 
     <select id="insertAirportCode" resultType="com.fly.sky.domain.Airport">
           SELECT    airport_name as airportName , airport_code as airportCode from airport
-        where airport_code not in(
-        select distinct airport_name_start_code  from flight where flight_frequency=7)
     </select>
 
 
