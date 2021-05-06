@@ -15,7 +15,7 @@
     <select id="findAirportCode"  parameterType="com.fly.sky.domain.AirportCode" resultType="com.fly.sky.domain.AirportCode">
         select dept_code AS  deptCode ,arr_code AS arrCode,
         dept_name AS  deptName ,arr_name AS arrName,
-        status,create_time AS createTime from airport_code where 1=1
+        status,create_time AS createTime from airport_code where status=0
 
         <if test="status != null  and status != ''  ">
             AND status = #{status,jdbcType=VARCHAR}
@@ -29,7 +29,7 @@
             AND arr_code  = #{arrCode,jdbcType=VARCHAR}
         </if>
 
-        order by ID ASC;
+         limit 1,100
     </select>
 
 
