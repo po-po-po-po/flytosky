@@ -33,5 +33,8 @@ public class AirlineCondition {
     private Integer airlinesRank;
     @ApiModelProperty("出发机场")
     private String flightNameStart;
-
+    @ApiModelProperty("父code")
+    private String parentCode;
+    @ApiModelProperty("父code")
+    private String airlinesStatus;
 }

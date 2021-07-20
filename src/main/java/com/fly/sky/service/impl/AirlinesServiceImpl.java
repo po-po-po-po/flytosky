@@ -49,6 +49,9 @@ public class AirlinesServiceImpl implements AirlinesService {
                 airlines.setAirwayNumber(airlinesRepository.findAirlinesHNAAIRWAYNO(condition).getAirwayNumber());
                 airlines.setFlightNumber(airlinesRepository.findAirlinesHNAFLIGHTNO(condition).getFlightNumber());
             }
+            if(null==airlines.getFlightNumber()){
+                airlines.setFlightNumber(0);
+            }
         }
         airlinesList = airlinesList.stream().sorted(Comparator.comparing(AirlinesVo::getFlightNumber).reversed()).collect(Collectors.toList());
 

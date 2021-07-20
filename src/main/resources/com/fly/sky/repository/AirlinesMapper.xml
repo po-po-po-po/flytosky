@@ -81,7 +81,13 @@ select airway.airlines_code ,count(*) as  airwayNumber from (
 select airlines_code,airport_name_start_code,airport_name_end_code from flight
 GROUP BY airlines_code,airport_name_start_code,airport_name_end_code) as airway
 group by airlines_code
-) as c on airlines.airlines_code=c.airlines_code where airlines_status=0
+) as c on airlines.airlines_code=c.airlines_code where 1=1
+        <if test="airlinesStatus!=null and airlinesStatus!='' ">
+            and airlines_status=#{airlinesStatus,jdbcType=INTEGER}
+        </if>
+        <if test="parentCode!=null and parentCode!='' ">
+        and parent_code=#{parentCode,jdbcType=VARCHAR}
+        </if>
 order by b.flightNumber desc
     </select>
 
