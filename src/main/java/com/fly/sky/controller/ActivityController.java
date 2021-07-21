@@ -4,6 +4,7 @@ import com.fly.sky.condition.ActivityCondition;
 import com.fly.sky.condition.AirlineCondition;
 import com.fly.sky.condition.FlightCondition;
 import com.fly.sky.domain.Activity;
+import com.fly.sky.domain.Activitys;
 import com.fly.sky.domain.Airlines;
 import com.fly.sky.exceptions.BusinessCode;
 import com.fly.sky.service.ActivityService;
@@ -39,6 +40,9 @@ public class ActivityController {
     @Resource
     private ActivityService activityService;
 
+    @Resource
+    private AirlinesService airlinesService;
+
     @PostMapping("activityList")
     @ApiOperation(value = "航司活动接口列表 ", notes = "航司活动接口列表")
     public ResponseResult<List<Activity>> activityList(@RequestBody ActivityCondition condition){
@@ -57,6 +61,19 @@ public class ActivityController {
         log.info("{} - 参数：activityDetail={}", logTitle, JsonUtil.toJSONString(condition));
         ResponseResult<Activity> responseResult = new ResponseResult<>();
         responseResult.setData(activityService.findActivityDetail(condition));
+        return responseResult;
+    }
+
+    @PostMapping("activityDetails")
+    @ApiOperation(value = "航司活动接口详情 ", notes = "航司活动接口详情")
+    public ResponseResult<Activitys> activityDetails(@RequestBody ActivityCondition condition){
+        String logTitle = "=航司活动接口详情=";
+        log.info("{} - 参数：activityDetail={}", logTitle, JsonUtil.toJSONString(condition));
+        ResponseResult<Activitys> responseResult = new ResponseResult<>();
+        Activitys activitys=new Activitys();
+        activitys.setActivity(activityService.findActivityDetail(condition));
+        activitys.setAirlines(airlinesService.findAirlinesByCode(condition.getAirportCode()));
+        responseResult.setData(activitys);
         return responseResult;
     }
 

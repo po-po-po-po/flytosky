@@ -71,7 +71,7 @@ public class HBGJFlightUtil {
                 String url="https://api.133.cn/third/flight?d=2021-08-01&dc="+airport1.getDeptCode()+"&ac="+airport1.getArrCode();
                 //获取机场列表
                 //每请求一次休息5秒
-                Thread.currentThread().sleep(5000);
+                Thread.currentThread().sleep(1000);
                 String[] ip=IpPortUtil.getIpAndPortNEW();
                 String content = httpRequestUtils.sendGetProxy(url,ip[0],ip[1]);
                 log.info("爬取网站的原始数据是：" + content);
