@@ -116,10 +116,10 @@ public class AirportCodeTest {
         List<Airport> airportsList=airportRepository.findAirportsByCondition(new AirportCondition());
         for (Airport airport : airportsList) {
             AirportCode airportCode=new AirportCode();
-            airportCode.setDeptCode("PEK");
+            airportCode.setDeptCode("PKX");
             airportCode.setArrCode(airport.getAirportCode());
             airportCode.setStatus("0");
-            airportCode.setDeptName("北京首都");
+            airportCode.setDeptName("北京大兴");
             airportCode.setArrName(airport.getAirportName());
             log.info("插入机场code："+airportCode);
             airportCodeRepository.insertAirportCode(airportCode);

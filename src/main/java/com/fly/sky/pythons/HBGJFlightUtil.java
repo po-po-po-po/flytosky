@@ -72,7 +72,7 @@ public class HBGJFlightUtil {
                 //获取机场列表
                 //每请求一次休息5秒
                 Thread.currentThread().sleep(5000);
-                String[] ip=IpPortUtil.getIpAndPort();
+                String[] ip=IpPortUtil.getIpAndPortNEW();
                 String content = httpRequestUtils.sendGetProxy(url,ip[0],ip[1]);
                 log.info("爬取网站的原始数据是：" + content);
                 DATA data = new JSONObject().parseObject(content, DATA.class);

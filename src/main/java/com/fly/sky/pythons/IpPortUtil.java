@@ -65,6 +65,22 @@ public class IpPortUtil {
 
 
 
+    //获取代理ip和端口
+    public static String[] getIpAndPortNEW() {
+
+        String urlPath="http://http.9vps.com/getip.asp?username=13522715896&pwd=3a5a49ebf42a64a31aeba64b06178253&geshi=1&fenge=1&fengefu=&getnum=100";
+        String returnString=HmSyncHttpClientUtils.httpGet(urlPath);
+        if(returnString.contains(":")){
+            String[] split = returnString.split(":");
+            log.info("获取的代理IP："+split[0]+"，端口号："+split[1]);
+            return split;
+        }else{
+            return null;
+        }
+    }
+
+
+
     public static void main(String[] args){
         Socket connect = new Socket();
         try {
