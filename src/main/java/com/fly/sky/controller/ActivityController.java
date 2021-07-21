@@ -71,7 +71,12 @@ public class ActivityController {
         log.info("{} - 参数：activityDetail={}", logTitle, JsonUtil.toJSONString(condition));
         ResponseResult<Activitys> responseResult = new ResponseResult<>();
         Activitys activitys=new Activitys();
-        activitys.setActivity(activityService.findActivityDetail(condition));
+        Activity ACTIVITY=activityService.findActivityDetail(condition);
+        if(null==ACTIVITY){
+            ACTIVITY=new Activity();
+            ACTIVITY.setContent("-");
+        }
+        activitys.setActivity(ACTIVITY);
         activitys.setAirlines(airlinesService.findAirlinesByCode(condition.getAirportCode()));
         responseResult.setData(activitys);
         return responseResult;
