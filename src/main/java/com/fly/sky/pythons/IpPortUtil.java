@@ -68,7 +68,7 @@ public class IpPortUtil {
     //获取代理ip和端口
     public static String[] getIpAndPortNEW() {
 
-        String urlPath="http://http.9vps.com/getip.asp?username=13522715896&pwd=3a5a49ebf42a64a31aeba64b06178253&geshi=1&fenge=1&fengefu=&getnum=100";
+        String urlPath="http://http2.9vps.com/getip.asp?username=13522715896&pwd=9c6108f84372ae7504f28c2607eb6b23&geshi=1&fenge=1&fengefu=&getnum=100";
         String returnString=HmSyncHttpClientUtils.httpGet(urlPath);
         if(returnString.contains(":")){
             String[] split = returnString.split(":");

@@ -99,10 +99,10 @@ public class AirportCodeTest {
         for (Airport airport : airportsList) {
                 AirportCode airportCode=new AirportCode();
                 airportCode.setDeptCode(airport.getAirportCode());
-                airportCode.setArrCode("PEK");
+                airportCode.setArrCode("CTU");
                 airportCode.setStatus("0");
                 airportCode.setDeptName(airport.getAirportName());
-                airportCode.setArrName("北京首都");
+                airportCode.setArrName("成都双流");
                 log.info("插入机场code："+airportCode);
                 airportCodeRepository.insertAirportCode(airportCode);
         }
@@ -116,10 +116,10 @@ public class AirportCodeTest {
         List<Airport> airportsList=airportRepository.findAirportsByCondition(new AirportCondition());
         for (Airport airport : airportsList) {
             AirportCode airportCode=new AirportCode();
-            airportCode.setDeptCode("PKX");
+            airportCode.setDeptCode("SHA");
             airportCode.setArrCode(airport.getAirportCode());
             airportCode.setStatus("0");
-            airportCode.setDeptName("北京大兴");
+            airportCode.setDeptName("上海虹桥");
             airportCode.setArrName(airport.getAirportName());
             log.info("插入机场code："+airportCode);
             airportCodeRepository.insertAirportCode(airportCode);

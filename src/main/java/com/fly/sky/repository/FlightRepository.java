@@ -87,5 +87,5 @@ public interface FlightRepository {
     List<Airport> findFlights820GroupByFlightNameStartByAirlinesCode();
     List<Airport> findFlights67GroupByFlightNameEndByAirlinesCode();
     List<Airport> findFlights820GroupByFlightNameEndByAirlinesCode();
-    void deleteFlightByCode(String airportNameStartCode,String airportNameEndCode,String flightFrequency);
+    void deleteFlightByCode(@Param("airportNameStartCode") String airportNameStartCode,@Param("airportNameEndCode") String airportNameEndCode,@Param("flightFrequency") String flightFrequency);
 }

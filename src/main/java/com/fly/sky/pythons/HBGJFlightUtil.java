@@ -4,6 +4,7 @@ package com.fly.sky.pythons;
 import com.alibaba.fastjson.JSONObject;
 import com.fly.sky.AirportApplication;
 import com.fly.sky.condition.AirwayCondition;
+import com.fly.sky.condition.FlightCondition;
 import com.fly.sky.domain.Airport;
 import com.fly.sky.domain.AirportCode;
 import com.fly.sky.domain.Airway;
@@ -79,6 +80,16 @@ public class HBGJFlightUtil {
                 if(null!=data){
                     List<HBGJ> data1 = data.getData();
                     if(!CollectionUtils.isEmpty(data1)){
+                        //有此航班数据 删除航班数据 重新插入
+                        FlightCondition flightCondition1=new FlightCondition();
+                        flightCondition1.setAirportNameStartCode(airport1.getDeptCode());
+                        flightCondition1.setAirportNameEndCode(airport1.getArrCode());
+                        flightCondition1.setFlightRequency("7");
+                        List<Flight> flightssss=  flightRepository.findFlightsByCondition(flightCondition1);
+                        if(!CollectionUtils.isEmpty(flightssss)){
+                            log.info("库中已经有此数据处理删除。。。。。：" + flightssss);
+                            flightRepository.deleteFlightByCode(airport1.getDeptCode(),airport1.getArrCode(),"7");
+                        }
                         for (HBGJ hbgj : data1) {
                             if("0".equals(hbgj.getShareFlag())){
                                 Flight flight = new Flight();
@@ -101,6 +112,7 @@ public class HBGJFlightUtil {
                                     Airport aiop = airportRepository.findAirportByCode(city.getAirportCode());
                                     flight.setFlightRemark(aiop.getAirportAbbreviate());
                                 }
+
                                 log.info("入库数据是：" + flight);
                                 airport1.setDesc("爬取成功");
                                 flightRepository.insertFlight(flight);
